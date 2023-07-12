@@ -15,13 +15,19 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
 
         internal override float Duration => 20.0f;
 
-        public override EntityStats GetStats()
+        public override bool ModifyStats()
         {
-            if(StatsProvider is IDamageable componenet)
-            {
-                componenet.MaxHealth = (int)(componenet.MaxHealth * 1.5f);
-            }
-            return StatsProvider;
+            IDamageable healthAttrib = StatsProvider as IDamageable;
+            if (healthAttrib == null) return false;
+            healthAttrib.MaxHealth = (int)(healthAttrib.MaxHealth *1.5f);
+            return true;
+        }
+
+        public override void UnmodifyStats()
+        {
+            IDamageable healthAttrib = StatsProvider as IDamageable;
+
+            healthAttrib.MaxHealth = (int)(healthAttrib.MaxHealth / 1.5f);
         }
     }
 }

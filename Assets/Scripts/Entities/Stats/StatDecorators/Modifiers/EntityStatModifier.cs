@@ -20,6 +20,7 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers
         {
             StatsProvider = statProvider;
         }
-        public abstract EntityStats GetStats();
+        public abstract bool ModifyStats();
+        public abstract void UnmodifyStats();
     }
 }
