@@ -23,7 +23,7 @@ public class PlacementSystem : MonoBehaviour
         for (int i = 0; i < database.Entities.Count; i++)
         {
             EntityHolder obj = Instantiate(entityHolder, parent);
-            obj.Init(database.Entities[i].ID);
+            obj.Init(i);
         }
     }
     private void Update()
@@ -35,7 +35,7 @@ public class PlacementSystem : MonoBehaviour
     }
     public void SetCurrentEntityID(int id)
     {
-        selectedEntityIndex = database.Entities.FindIndex(data => data.ID == id);
+        selectedEntityIndex = id;
         if (selectedEntityIndex < 0)
         {
             Debug.LogError($"нет такого id: {id}");
@@ -54,7 +54,7 @@ public class PlacementSystem : MonoBehaviour
         GameObject entity = Instantiate(database.Entities[selectedEntityIndex].Prefab, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)), Quaternion.identity);
         placedEntities.Add(entity);
         gridData.AddEntityAt(gridPos, database.Entities[selectedEntityIndex].Size,
-            database.Entities[selectedEntityIndex].ID, placedEntities.Count - 1);
+            selectedEntityIndex, placedEntities.Count - 1);
     }
     private bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)
     {
