@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.Player
 {
-    internal class PlayerStats : EntityStats, IDamageable, IMoveable
+    internal class PlayerStats : EntityStats, IDamageable, IMoveable, IHaveTargetRadius
     {
         public int MaxHealth { get; set; }
 
@@ -15,14 +15,18 @@ namespace Assets.Scripts.Entities.Stats.Player
 
         public bool IsInvulnerable => false;
 
-        public int MaxSpeed { get; set; }
+        public float MaxSpeed { get; set; }
 
-        public int CurrentSpeed { get; }
-        public PlayerStats(int maxHealth, int maxSpeed) 
+        public float CurrentSpeed { get; }
+        public float TargetRadius { get; set; }
+
+        public PlayerStats(int maxHealth, float maxSpeed, float attackDistance) 
         {
             MaxHealth = maxHealth;
             CurrentHealth = maxHealth;
             MaxSpeed = maxSpeed;
+            CurrentSpeed = maxSpeed;
+            TargetRadius = attackDistance;
         }
     }
 }

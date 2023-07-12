@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.Interfaces.Stats
 {
-    internal interface IMoveable
+    /// <summary>
+    /// Entity keeps moving until target is inside TargetRadius
+    /// </summary>
+    internal interface IHaveTargetRadius
     {
-        float MaxSpeed { get; set; }
-        float CurrentSpeed { get; }
+        float TargetRadius { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Entities.Player
 {
     internal class Player : Entity
     {
-        public override EntityStats Stats => new PlayerStats(100, 8);
+        public override EntityStats Stats => new PlayerStats(100, 2.3f, 1.5f);
 
         public override EntityTypeBase ThisType => new EntityType<PlayerTag>(PlayerTag.PLAYER);
     }

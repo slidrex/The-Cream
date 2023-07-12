@@ -8,23 +8,24 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Movement.Mob.Dummy
 {
-    internal class DummyStats : EntityStats, IMoveable, IDamageable
+    internal class DummyStats : EntityStats, IMoveable, IDamageable, IHaveTargetRadius
     {
-        public int MaxSpeed { get; set; }
+        public float MaxSpeed { get; set; }
 
-        public int CurrentSpeed { get; set; }
+        public float CurrentSpeed { get; set; }
         public int MaxHealth { get; set; }
-
         public int CurrentHealth { get; set; }
 
         public bool IsInvulnerable { get; set; }
+        public float TargetRadius { get; set; }
 
-        public DummyStats(int maxHealth, int maxSpeed)
+        public DummyStats(int maxHealth, int maxSpeed, float attackDistance)
         {
             MaxHealth = maxHealth;
             MaxSpeed = maxSpeed;
             CurrentSpeed = maxSpeed;
             CurrentHealth = maxHealth;
+            TargetRadius = attackDistance;
         }
     }
 }

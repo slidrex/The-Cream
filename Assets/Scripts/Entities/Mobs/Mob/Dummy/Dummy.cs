@@ -15,6 +15,6 @@ namespace Assets.Scripts.Entities.Movement.Mob.Dummy
 
         public override EntityTypeBase ThisType => new EntityType<MobTag>(MobTag.AGGRESSIVE);
 
-        public override EntityStats Stats => new DummyStats(100, 1);
+        public override EntityStats Stats => new DummyStats(100, 1, 0.75f);
     }
 }

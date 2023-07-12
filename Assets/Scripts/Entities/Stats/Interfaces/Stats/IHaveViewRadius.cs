@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.Interfaces.Stats
 {
-    internal interface IMoveable
+    internal interface IHaveViewRadius
     {
-        float MaxSpeed { get; set; }
-        float CurrentSpeed { get; }
+        int ViewDistance { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Navigation.Target;
+using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Functions;
 using System;
 using System.Collections.Generic;
@@ -18,24 +19,28 @@ namespace Assets.Scripts.Entities.Navigation.Navigator
         private Entity _entity;
         private EntityType<TargetType> _targets;
         private float _targetFindRadius;
-        public EntityNavigator(EntityType<TargetType> targets, float targetFindRadius = NOT_ASSIGNED) 
+        public EntityNavigator(EntityType<TargetType> targets) 
         {
-            _targetFindRadius = targetFindRadius;
+            _targetFindRadius = NOT_ASSIGNED;
             _targets = targets;
         }
         public void AssignEntity(Entity entity)
         {
             _entity = entity;
+            if(_entity.Stats is IHaveViewRadius radStat) {
+                _targetFindRadius = radStat.ViewDistance;
+            }
         }
         public Entity GetNearestTarget()
         {
             var entitites = _targetFindRadius == NOT_ASSIGNED ? LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities : Physics2D.OverlapCircleAll(_entity.transform.position, _targetFindRadius).Select(x => x.GetComponent<Entity>()).NotNull();
             List<Entity> potentialEntities = new();
-            
-
+            if (_entity == null) throw new NullReferenceException("Attached Entity wasn't found. Please, make sure that you've called 'Assign Entity' before using EntityNavigator.");
+            if(entitites != null)
             foreach(var entity in entitites)
             {
-                if (entity.GetInstanceID() != _entity.GetInstanceID() && entity.ThisType is EntityType<TargetType> entityType)
+                if (entity.GetInstanceID() != _entity.GetInstanceID() 
+                        && entity.ThisType is EntityType<TargetType> entityType)
                 {
                     if (IsEntityTarget(entityType))
                     {
