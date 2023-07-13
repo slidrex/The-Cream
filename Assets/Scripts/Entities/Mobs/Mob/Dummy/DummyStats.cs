@@ -27,5 +27,10 @@ namespace Assets.Scripts.Entities.Movement.Mob.Dummy
             CurrentHealth = maxHealth;
             TargetRadius = attackDistance;
         }
+
+        public void Heal(int heal)
+        {
+
+        }
     }
 }

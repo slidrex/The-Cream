@@ -11,5 +11,6 @@ namespace Assets.Scripts.Entities.Stats.Interfaces.Stats
         int MaxHealth { get; set; }
         int CurrentHealth { get; }
         bool IsInvulnerable { get; }
+        void Heal(int heal);
     }
 }

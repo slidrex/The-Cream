@@ -12,7 +12,7 @@ namespace Assets.Scripts.Entities.Movement
 {
     internal abstract class EntityMovement : MonoBehaviour, ILevelRunHandler
     {
-        public Entity AttachedEntity;
+        public Entity AttachedEntity { get; private set; }
         protected IMoveable Stats;
         private bool _isRunning;
         protected float SafeDistance { get; private set; }

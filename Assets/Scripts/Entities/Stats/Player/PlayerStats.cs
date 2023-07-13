@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats.Player
 {
     internal class PlayerStats : EntityStats, IDamageable, IMoveable, IHaveTargetRadius
     {
-        public int MaxHealth { get; set; }
+        [field: SerializeField] public int MaxHealth { get; set; }
 
         public int CurrentHealth { get; set; }
 
@@ -27,6 +28,11 @@ namespace Assets.Scripts.Entities.Stats.Player
             MaxSpeed = maxSpeed;
             CurrentSpeed = maxSpeed;
             TargetRadius = attackDistance;
+        }
+
+        public void Heal(int heal)
+        {
+            CurrentHealth = Mathf.Clamp(CurrentHealth + heal, 0, MaxHealth);
         }
     }
 }

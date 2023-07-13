@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
 {
-    internal class HealthBooster : EntityStatModifier
+    internal class HealthBooster : EntityStatModifier, IDurationable
     {
         public HealthBooster(EntityStats statProvider) : base(statProvider)
         {
         }
 
-        internal override float Duration => 20.0f;
+        public float Duration { get; set; } = 20.0f;
 
         public override bool ModifyStats()
         {
@@ -23,7 +24,7 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
             return true;
         }
 
-        public override void UnmodifyStats()
+        public void UnmodifyStats()
         {
             IDamageable healthAttrib = StatsProvider as IDamageable;
 
