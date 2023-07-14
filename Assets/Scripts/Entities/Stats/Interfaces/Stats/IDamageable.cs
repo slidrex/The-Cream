@@ -9,8 +9,10 @@ namespace Assets.Scripts.Entities.Stats.Interfaces.Stats
     internal interface IDamageable 
     {
         int MaxHealth { get; set; }
-        int CurrentHealth { get; }
+        int CurrentHealth { get; set; }
         bool IsInvulnerable { get; }
         void Heal(int heal);
+        void Damage(int damage);
+        void OnDie();
     }
 }

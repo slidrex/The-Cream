@@ -4,27 +4,23 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Movement.Mob
 {
-    internal class MobChaseMovement : EntityMovement
+    internal sealed class MobChaseMovement : EntityMovement
     {
         [Tooltip("Will attack any entity with target tags if you leave it empty"), SerializeField] private PlayerTag[] _targetTags;
-        private EntityNavigator<PlayerTag> _navigator;
-        private Transform _target;
-        protected override void OnAfterStart()
-        {
-            if (_targetTags.Length == 0) _navigator = new(new EntityType<PlayerTag>().Any());
-            else _navigator = new(new EntityType<PlayerTag>(_targetTags));
-            _navigator.AssignEntity(AttachedEntity);
-        }
+        [SerializeField] private Navigator _navigator;
+        private Entity _target;
         protected override void LevelRunningUpdate()
         {
-            if(_target == null) _target = _navigator.GetNearestTarget()?.transform;
+            if(_target == null) _target = _navigator.GetNearestTarget();
 
             if(_target != null)
             {
-                if (_navigator.IsTargetValid(_target))
+                if (_navigator.IsTargetValid(_target.transform))
                 {
+                    _navigator.SetTarget(_target);
                     float targetDistSqr = Vector2.SqrMagnitude(_target.transform.position - transform.position);
-                    if(targetDistSqr > SafeDistance * SafeDistance)
+                    float dist = SafeDistance.SafeDistance;
+                    if(targetDistSqr > dist * dist)
                         transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, Time.deltaTime * Stats.CurrentSpeed);
                 }
                 else _target = null;

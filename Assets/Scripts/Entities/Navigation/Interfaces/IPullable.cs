@@ -11,5 +11,6 @@ namespace Assets.Scripts.Entities.Navigation.Interfaces
     internal interface IPullable
     {
         void Pull(Transform pullZone);
+        void Revoke(Transform pullZone);
     }
 }

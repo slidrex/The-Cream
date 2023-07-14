@@ -13,43 +13,40 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Navigation.Navigator
 {
-    internal class EntityNavigator<TargetType> where TargetType : Enum
+    internal class EntityNavigator<TargetType> : Navigator where TargetType : Enum
     {
-        private const int NOT_ASSIGNED = -1;
+        private const int NOT_ASSIGNED = 0;
+        private Entity _target;
+        [field: Tooltip("Leave it zero to have infinite target radius"), SerializeField] public float TargetFindRadius { get; private set; }
+        [Tooltip("Leave it empty to make any tag in list targetable."), SerializeField] private TargetType[] _targetTags;
         private Entity _entity;
         private EntityType<TargetType> _targets;
-        private float _targetFindRadius;
-        public EntityNavigator(EntityType<TargetType> targets) 
+        private void Awake()
         {
-            _targetFindRadius = NOT_ASSIGNED;
-            _targets = targets;
+            _entity = GetComponent<Entity>();
+            if (_targetTags.Length == 0)
+                _targets = new EntityType<TargetType>().Any();
+            else _targets = new EntityType<TargetType>(_targetTags);
         }
-        public void AssignEntity(Entity entity)
+        public override Entity GetNearestTarget() => Mathc.GetNearestTo(_entity, GetTargets());
+        public override List<Entity> GetTargets()
         {
-            _entity = entity;
-            if(_entity.Stats is IHaveViewRadius radStat) {
-                _targetFindRadius = radStat.ViewDistance;
-            }
-        }
-        public Entity GetNearestTarget()
-        {
-            var entitites = _targetFindRadius == NOT_ASSIGNED ? LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities : Physics2D.OverlapCircleAll(_entity.transform.position, _targetFindRadius).Select(x => x.GetComponent<Entity>()).NotNull();
             List<Entity> potentialEntities = new();
+            var entitites = TargetFindRadius == NOT_ASSIGNED ? LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities : Physics2D.OverlapCircleAll(_entity.transform.position, TargetFindRadius).Select(x => x.GetComponent<Entity>()).NotNull();
             if (_entity == null) throw new NullReferenceException("Attached Entity wasn't found. Please, make sure that you've called 'Assign Entity' before using EntityNavigator.");
-            if(entitites != null)
-            foreach(var entity in entitites)
-            {
-                if (entity.GetInstanceID() != _entity.GetInstanceID() 
-                        && entity.ThisType is EntityType<TargetType> entityType)
+            if (entitites != null)
+                foreach (var entity in entitites)
                 {
-                    if (IsEntityTarget(entityType))
+                    if (entity.GetInstanceID() != _entity.GetInstanceID()
+                            && entity.ThisType is EntityType<TargetType> entityType)
                     {
-                        potentialEntities.Add(entity);
+                        if (IsEntityTarget(entityType))
+                        {
+                            potentialEntities.Add(entity);
+                        }
                     }
                 }
-            }
-            var nearest = Mathc.GetNearestTo(_entity, potentialEntities);
-            return nearest;
+            return potentialEntities;
         }
         private bool IsEntityTarget(EntityType<TargetType> targetTypes)
         {
@@ -64,9 +61,24 @@ namespace Assets.Scripts.Entities.Navigation.Navigator
             }
             return false;
         }
-        public bool IsTargetValid(Transform target)
+        public override bool IsTargetValid(Transform target)
         {
-            return _targetFindRadius == NOT_ASSIGNED || Vector2.SqrMagnitude(target.position - _entity.transform.position) <= _targetFindRadius * _targetFindRadius;
+            return TargetFindRadius == NOT_ASSIGNED || Vector2.SqrMagnitude(target.position - _entity.transform.position) <= TargetFindRadius * TargetFindRadius;
+        }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, TargetFindRadius);
+        }
+
+        public override void SetTarget(Entity target)
+        {
+            _target = target;
+        }
+
+        public override Entity GetTarget()
+        {
+            return _target;
         }
     }
 }

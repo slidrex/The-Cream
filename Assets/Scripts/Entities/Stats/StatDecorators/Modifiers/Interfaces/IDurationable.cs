@@ -10,8 +10,8 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Interfaces
     {
         public float Duration { get; set; }
         /// <summary>
-        /// Calls when effect is over
+        /// Calls when effect is over.
         /// </summary>
-        public void UnmodifyStats();
+        public void OnEffectEnd();
     }
 }

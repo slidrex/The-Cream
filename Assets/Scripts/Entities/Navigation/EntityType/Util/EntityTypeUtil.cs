@@ -21,8 +21,10 @@ namespace Assets.Scripts.Entities.Navigation.EntityType.Util
         }
         public static List<Entity> GetEntitiesOfTypeInRadius<EntityType>(Vector2 origin, float radius) where EntityType : Enum
         {
-            List<Entity> result = new List<Entity>();
+            List<Entity> result = new();
+
             var entities = Physics2D.OverlapCircleAll(origin, radius).Select(x => x.GetComponent<Entity>()).NotNull();
+            
             foreach ( var entity in entities)
             {
                 if(entity.ThisType as EntityType<EntityType> != null)

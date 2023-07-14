@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Navigation.Interfaces;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Level;
 using System;
@@ -15,7 +16,7 @@ namespace Assets.Scripts.Entities.Movement
         public Entity AttachedEntity { get; private set; }
         protected IMoveable Stats;
         private bool _isRunning;
-        protected float SafeDistance { get; private set; }
+        protected IMovementSafeDistanceProvider SafeDistance { get; private set; }
         private void Update()
         {
             if (_isRunning) LevelRunningUpdate();
@@ -23,12 +24,10 @@ namespace Assets.Scripts.Entities.Movement
         protected virtual void Start()
         {
             var entity = GetComponent<Entity>();
-            SafeDistance = 0;
-            if(entity.Stats is IHaveTargetRadius dist) {
-                SafeDistance = dist.TargetRadius;
-            }
+            SafeDistance = GetComponent<IMovementSafeDistanceProvider>();
+
             AttachedEntity = entity;
-            Stats = entity.Stats as IMoveable;
+            Stats = entity as IMoveable;
             if (Stats == null) throw new Exception("Entity doesn't have IMoveable attribute");
             _isRunning = LevelCompositeRoot.Instance.Runner.IsLevelRunning;
             OnAfterStart();
@@ -43,7 +42,8 @@ namespace Assets.Scripts.Entities.Movement
         }
         protected bool IsInsideSafeZone(Transform target)
         {
-            return Vector2.SqrMagnitude(target.position - AttachedEntity.transform.position) <= SafeDistance * SafeDistance;
+            float dist = SafeDistance.SafeDistance;
+            return Vector2.SqrMagnitude(target.position - AttachedEntity.transform.position) <= dist * dist;
         }
         public void OnLevelRun(bool run)
         {

@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+﻿using Assets.Scripts.Entities.Navigation.EntityType;
+using Assets.Scripts.Entities.Navigation.EntityType.Util;
+using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Level;
 using System;
 using System.Collections.Generic;
@@ -10,20 +12,20 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats.Structure.Aura
 {
-    internal class AuraStructure : MonoBehaviour, ILevelRunHandler
+    internal abstract class AuraStructure<TargetEntityType> : MonoBehaviour, ILevelRunHandler where TargetEntityType : Enum
     {
         [SerializeField] private float _activateInterval;
         private float _timeSinceActivate;
         protected bool IsReady { get; private set; }
         protected bool _isRunning;
-        private float _targetRadius;
-        private void Start()
-        {
-            _targetRadius = (GetComponent<Entity>().Stats as IHaveTargetRadius).TargetRadius;
-        }
+        [SerializeField] private float _targetRadius;
         public void OnLevelRun(bool run)
         {
             _isRunning = run;
+        }
+        protected virtual void OnActivateEntityTypeInsideAuraAndReady(List<Entity> entitiesOfActivateType)
+        {
+
         }
         protected virtual void OnLevelRunUpdate()
         {
@@ -40,6 +42,13 @@ namespace Assets.Scripts.Entities.Stats.Structure.Aura
                 IsReady = true;
                 OnAuraBecomeReady();
             }
+            if (IsReady) OnReadyUpdate();
+        }
+        private void OnReadyUpdate()
+        {
+            List<Entity> listOfActivateEntities = EntityTypeUtil.GetEntitiesOfTypeInRadius<TargetEntityType>(transform.position, _targetRadius);
+            
+            if (listOfActivateEntities.Count > 0) OnActivateEntityTypeInsideAuraAndReady(listOfActivateEntities);
         }
         protected void Update()
         {
@@ -49,10 +58,7 @@ namespace Assets.Scripts.Entities.Stats.Structure.Aura
                 LevelRunningUpdate();
             }
         }
-        protected virtual void OnAuraBecomeReady()
-        {
-
-        }
+        protected virtual void OnAuraBecomeReady() { }
         protected bool TryActivate()
         {
             if(_timeSinceActivate >= _activateInterval)
@@ -67,6 +73,10 @@ namespace Assets.Scripts.Entities.Stats.Structure.Aura
         protected virtual void OnActivate(Entity[] entitiesInRadius)
         {
 
+        }
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, _targetRadius);
         }
     }
 }

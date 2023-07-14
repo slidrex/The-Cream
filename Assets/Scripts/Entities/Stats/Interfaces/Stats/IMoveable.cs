@@ -8,7 +8,6 @@ namespace Assets.Scripts.Entities.Stats.Interfaces.Stats
 {
     internal interface IMoveable
     {
-        float MaxSpeed { get; set; }
-        float CurrentSpeed { get; }
+        float CurrentSpeed { get; set; }
     }
 }

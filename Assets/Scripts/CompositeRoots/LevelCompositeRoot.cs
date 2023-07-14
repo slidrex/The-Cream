@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Level;
+﻿using Assets.Scripts.Entities;
+using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Level;
 using Assets.Scripts.Level.InfoProviders;
 using System;
 using System.Collections.Generic;

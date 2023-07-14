@@ -5,11 +5,11 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers
 
     internal abstract class EntityStatModifier : StatDecorator
     {
-        protected EntityStats StatsProvider;
-        public EntityStatModifier(EntityStats statProvider)
+        protected Entity StatsProvider;
+        public EntityStatModifier(Entity statProvider)
         {
             StatsProvider = statProvider;
         }
-        public abstract bool ModifyStats();
+        public abstract bool OnEffectStart();
     }
 }

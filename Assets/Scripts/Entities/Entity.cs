@@ -5,11 +5,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
-    [RequireComponent(typeof(StatModifierHandler))]
+    [RequireComponent(typeof(StatModifierHandler), typeof(Collider2D))]
     internal abstract class Entity : MonoBehaviour
     {
+        protected SpriteRenderer SpriteRenderer { get; private set; }
+        public Color DefaultColor { get; private set; }
         public abstract EntityTypeBase ThisType { get; }
-        public abstract EntityStats Stats { get; }
         public StatModifierHandler StatModifierHandler { get; private set; }
         protected virtual void OnDestroy()
         {
@@ -18,6 +19,8 @@ namespace Assets.Scripts.Entities
         protected virtual void Awake()
         {
             StatModifierHandler = GetComponent<StatModifierHandler>();
+            SpriteRenderer = GetComponent<SpriteRenderer>();
+            DefaultColor = SpriteRenderer.color;
             LevelCompositeRoot.Instance.LevelInfo.RegisterEntity(this);
         }
     }

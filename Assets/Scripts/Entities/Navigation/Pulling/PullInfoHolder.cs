@@ -9,13 +9,13 @@ namespace Assets.Scripts.Entities.Navigation.Pulling
 {
     internal class PullInfoHolder
     {
-        private Queue<Transform> _pullQueue;
+        private List<Transform> _pullQueue;
         private Transform _currentTarget;
         private Transform transform;
         public PullInfoHolder(Transform currentTransform)
         {
             transform = currentTransform;
-            _pullQueue = new Queue<Transform>();
+            _pullQueue = new();
         }
         public bool TryGetPullTarget(out Transform target)
         {
@@ -24,16 +24,23 @@ namespace Assets.Scripts.Entities.Navigation.Pulling
                 bool positionEquals = Mathf.Approximately(_currentTarget.position.x, transform.position.x) && Mathf.Approximately(_currentTarget.position.y, transform.position.y);
                 if (positionEquals) _currentTarget = null;
             }
-            if(_currentTarget == null)
+            if(_currentTarget == null && _pullQueue.Count > 0)
             {
-                _pullQueue.TryDequeue(out _currentTarget);
+                _currentTarget = _pullQueue[0];
+                _pullQueue.RemoveAt(0);
             }
             target = _currentTarget;
             return target != null;
         }
         public void AddPullTarget(Transform target)
         {
-            _pullQueue.Enqueue(target);
+            if(!_pullQueue.Contains(target))
+                _pullQueue.Add(target);
+        }
+        public void TryRevoke(Transform target)
+        {
+            _pullQueue.Remove(target);
+            if (target == _currentTarget) _currentTarget = null;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Assets.Scripts.Level
         public bool IsLevelRunning { get; private set; }
         internal void Configure()
         {
-            _runHandlers = LevelCompositeRoot.Instance.LevelInfo.StartEntities.Select(x => x.GetComponent<ILevelRunHandler>()).Where(x => x != null);
+            _runHandlers = LevelCompositeRoot.Instance.LevelInfo.StartEntities.SelectMany(x => x.GetComponents<ILevelRunHandler>()).NotNull();
         }
         public void RunLevel()
         {
@@ -24,6 +25,7 @@ namespace Assets.Scripts.Level
             {
                 obj.OnLevelRun(true);
             }
+
             OnLevelRun?.Invoke(true);
         }
         public void StopLevel()
