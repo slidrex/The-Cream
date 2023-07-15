@@ -1,6 +1,4 @@
 ﻿using Assets.Scripts.Entities.Navigation.EntityType;
-using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
-using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
 using Assets.Scripts.Entities.Stats.Structure.Aura;
 using Assets.Scripts.Entities.Stats.Structure.Util;
@@ -14,11 +12,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
 {
-    internal class SpeedFountainAura : AuraStructure<PlayerTag>
+    internal class StrengthFountainAura : AuraStructure<PlayerTag>
     {
         [SerializeField] private GameObject _particles;
         private PullingUtil _pullUtil = new();
-        [UnityEngine.SerializeField] private float _speedMultiplier;
+        [UnityEngine.SerializeField] private float _strengthMultiplier;
         private void OnEnable() => _pullUtil.OnStart(OnRegister);
         private void OnDisable() => _pullUtil.OnEnd();
         private void OnRegister(Entity entity, bool register) => _pullUtil.TryRegister(entity, register, out var e);
@@ -27,7 +25,7 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
             foreach (var entity in entitiesInRadius)
             {
                 if (entity.ThisType is EntityType<PlayerTag>)
-                    entity.StatModifierHandler.AddModifier(new SpeedBooster(entity, _speedMultiplier));
+                    entity.StatModifierHandler.AddModifier(new SpeedBooster(entity, _strengthMultiplier));
             }
             ParticlesUtil.SpawnParticles(_particles, transform);
         }

@@ -44,7 +44,8 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
         {
             foreach(var entity in entitiesInRadius)
             {
-                entity.StatModifierHandler.AddModifier(new InstantHeal(entity, _healingPercent));
+                if(entity.ThisType is EntityType<PlayerTag>)
+                    entity.StatModifierHandler.AddModifier(new InstantHeal(entity, _healingPercent));
             }
             ParticlesUtil.SpawnParticles(_particles, transform);
         }

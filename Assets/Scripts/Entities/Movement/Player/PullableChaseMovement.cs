@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Movement.Player
@@ -33,7 +34,9 @@ namespace Assets.Scripts.Entities.Movement.Player
             }
             if(target != null && (isTargetPullZone || IsInsideSafeZone(target) == false))
             {
-                transform.position = Vector2.MoveTowards(transform.position, target.transform.position, Stats.CurrentSpeed * Time.deltaTime);
+                Vector2 position = Vector2.MoveTowards(transform.position, target.position, Stats.CurrentSpeed * Time.deltaTime);
+                if (float.IsNaN(position.x) == false)
+                    transform.position = position;
             }
         }
 
