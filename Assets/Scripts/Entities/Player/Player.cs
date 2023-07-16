@@ -12,6 +12,7 @@ namespace Assets.Scripts.Entities.Player
     internal class Player : Entity, IDamageable, IMoveable, IHealthChangedHandler, ICanDamage
     {
         public override EntityTypeBase ThisType => new EntityType<PlayerTag>(PlayerTag.PLAYER);
+        public override EntityTypeBase TargetType => new EntityType<MobTag>().Any();
 
         public int MaxHealth { get; set; } = 100;
 
@@ -19,14 +20,13 @@ namespace Assets.Scripts.Entities.Player
 
         public bool IsInvulnerable { get; set; }
 
-        public float CurrentSpeed { get; set; } = 2.0f;
+        public float CurrentSpeed { get; set; } = 2.5f;
         public Action<int> OnHealthChanged { get; set; }
         public Action<int> OnDamage { get; set; }
         public Action<int> OnHeal { get; set; }
-        public EntityType<MobTag> TargetEntityTags => new EntityType<MobTag>().Any();
+        public float AttackSpeed { get; set; } = 1;
+        public int AttackDamage { get; set; } = 1;
 
-        public float AttackSpeed { get; set; } = 2;
-        public int AttackDamage { get; set; } = 2;
 
         public void Damage(int damage)
         {

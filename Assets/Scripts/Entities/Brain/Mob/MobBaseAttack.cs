@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Brain;
 using Assets.Scripts.Entities.Movement;
 using Assets.Scripts.Entities.Navigation.Interfaces;
 using Assets.Scripts.Entities.Navigation.Navigator;
@@ -13,48 +14,46 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Attack
 {
-    [RequireComponent(typeof(Entity))]
-    internal class EntityBaseAttack : MonoBehaviour, IMovementSafeDistanceProvider
+    [RequireComponent (typeof(Navigator))]
+    [RequireComponent(typeof (EntityMovement))]
+    internal class MobBaseAttack : EntityBrain
     {
-        [SerializeField] private Navigator _navigator;
-        [SerializeField] private EntityMovement _movement;
         [SerializeField] private float _attackDistance;
-        private Entity _entity;
         private ICanDamage _attackComponent;
-        private float _timeSinceAttack;
-        private float _timeToAttack;
+        protected float _timeSinceAttack;
+        protected float _timeToAttack;
 
-        public float SafeDistance { get; private set; }
+        protected Navigator Navigator;
+        protected EntityMovement Movement;
 
-        private void Awake()
+        protected virtual void Start()
         {
-            _entity = GetComponent<Entity>();
-            _attackComponent = _entity as ICanDamage;
+            Movement = GetComponent<EntityMovement>();
+            Navigator = GetComponent<Navigator>();
+            Movement.SetSafeDistance(_attackDistance);
+
+            _attackComponent = Entity as ICanDamage;
             if (_attackComponent == null) throw new NullReferenceException("Entity " + name + " doesn't contain ICanDamage interface");
-            SafeDistance = _attackDistance;
+
             ResetAttackTimer();
         }
-        private void Update()
+        protected override void RuntimeUpdate()
         {
-            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning)
-            {
-                LevelUpdate();
-            }
-        }
-        private void LevelUpdate()
-        {
+            if (Navigator.GetTargetTransform() == null)
+                Navigator.SetTarget(Navigator.GetNearestTargetEntity());
+
             if (_timeSinceAttack < _timeToAttack)
             {
                 _timeSinceAttack += Time.deltaTime;
             }
             else
             {
-                var target = _navigator.GetTarget();
-
-                if (target != null && target is IDamageable && Vector2.SqrMagnitude(target.transform.position - transform.position) <= _attackDistance * _attackDistance) Attack(target);
+                var target = Navigator.GetTarget();
+                if (target != null && target is IDamageable && Movement.IsInsideSafeDistance(target.transform)) Attack(target);
             }
+            Movement.MoveToTarget(stopIfSafeDistance: true);
         }
-        private void Attack(Entity target)
+        protected void Attack(Entity target)
         {
             ResetAttackTimer();
             var damageable = target as IDamageable;

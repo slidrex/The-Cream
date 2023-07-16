@@ -11,5 +11,7 @@ namespace Assets.Scripts.Entities.Player.Companion
     internal class Companion : Entity
     {
         public override EntityTypeBase ThisType => new EntityType<PlayerTag>(PlayerTag.COMPANION);
+
+        public override EntityTypeBase TargetType => new EntityType<MobTag>().Any();
     }
 }

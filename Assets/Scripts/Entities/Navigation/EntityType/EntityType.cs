@@ -23,5 +23,29 @@ namespace Assets.Scripts.Entities.Navigation.EntityType
             IsAny = true;
             return new EntityType<T>(Enum.GetValues(typeof(T)).Cast<T>().ToArray());
         }
+
+        public override bool MatchesTag(Entity entity)
+        {
+            if (entity.ThisType is EntityType<T> type)
+            {
+                if (_types.Length == 0) return true;
+                foreach (var tag in type.GetTags())
+                {
+                    foreach (var secondTag in _types)
+                    {
+                        if (tag.ToString().Equals(secondTag.ToString())) return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public override bool MatchesEntityType(Entity entity)
+        {
+            if (entity.ThisType is EntityType<T> type)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

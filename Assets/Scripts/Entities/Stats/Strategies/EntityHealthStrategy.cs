@@ -37,7 +37,7 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             IDamageable damageable = entity as IDamageable;
             IHealthChangedHandler changeHealthHandler = entity as IHealthChangedHandler;
             damageable.CurrentHealth = damageable.MaxHealth;
-            changeHealthHandler?.OnHealthChanged.Invoke(damageable.CurrentHealth);
+            changeHealthHandler?.OnHealthChanged?.Invoke(damageable.CurrentHealth);
         }
     }
 }

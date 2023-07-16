@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers;
+﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Interfaces;
 using Assets.Scripts.Level;
 using System;
@@ -58,14 +59,9 @@ namespace Assets.Scripts.Entities.Stats
             }
         }
     }
-    internal sealed class StatModifierHandler : MonoBehaviour, ILevelRunHandler
+    internal sealed class StatModifierHandler
     {
-        private List<DurationableModifier> _activeMods;
-        private bool isRunning;
-        public StatModifierHandler()
-        {
-            _activeMods = new();
-        }
+        private List<DurationableModifier> _activeMods = new();
         public bool AddModifier(EntityStatModifier mod)
         {
             bool modified = mod.OnEffectStart();
@@ -79,14 +75,9 @@ namespace Assets.Scripts.Entities.Stats
 
             return modified;
         }
-
-        public void OnLevelRun(bool run)
+        public void OnUpdate()
         {
-            isRunning = run;
-        }
-        private void Update()
-        {
-            if (isRunning) OnLevelUpdate();
+            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning) OnLevelUpdate();
         }
         private void OnLevelUpdate()
         {
@@ -101,9 +92,6 @@ namespace Assets.Scripts.Entities.Stats
                 
             }
         }
-        private void OnModExpired(int index)
-        {
-            _activeMods.RemoveAt(index);
-        }
+        private void OnModExpired(int index) => _activeMods.RemoveAt(index);
     }
 }

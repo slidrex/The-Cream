@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Navigation.Interfaces
 {
-    internal interface IMovementSafeDistanceProvider
+    internal interface ISafeDistanceProvider
     {
         float SafeDistance { get; }
     }

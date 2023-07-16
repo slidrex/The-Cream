@@ -21,7 +21,7 @@ namespace Assets.Scripts.Entities.Navigation.Pulling
         {
             if(_currentTarget != null)
             {
-                bool positionEquals = Mathf.Approximately(_currentTarget.position.x, transform.position.x) && Mathf.Approximately(_currentTarget.position.y, transform.position.y);
+                bool positionEquals = Vector2.SqrMagnitude(_currentTarget.transform.position - transform.position) <= 0.05f;
                 if (positionEquals) _currentTarget = null;
             }
             if(_currentTarget == null && _pullQueue.Count > 0)

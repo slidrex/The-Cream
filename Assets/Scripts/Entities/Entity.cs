@@ -5,23 +5,27 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
-    [RequireComponent(typeof(StatModifierHandler), typeof(Collider2D))]
-    internal abstract class Entity : MonoBehaviour
+    [RequireComponent(typeof(Collider2D))]
+    internal abstract class Entity : BaseEntity
     {
-        protected SpriteRenderer SpriteRenderer { get; private set; }
-        public Color DefaultColor { get; private set; }
         public abstract EntityTypeBase ThisType { get; }
-        public StatModifierHandler StatModifierHandler { get; private set; }
+        public abstract EntityTypeBase TargetType { get; }
+        public SpriteRenderer SpriteRenderer { get; private set; }
+        public Color DefaultColor { get; private set; }
+        public StatModifierHandler StatModifierHandler { get; private set; } = new();
         protected virtual void OnDestroy()
         {
             LevelCompositeRoot.Instance.LevelInfo.UnregisterEntity(this);
         }
         protected virtual void Awake()
         {
-            StatModifierHandler = GetComponent<StatModifierHandler>();
             SpriteRenderer = GetComponent<SpriteRenderer>();
             DefaultColor = SpriteRenderer.color;
             LevelCompositeRoot.Instance.LevelInfo.RegisterEntity(this);
+        }
+        private void Update()
+        {
+            StatModifierHandler.OnUpdate();   
         }
     }
 }

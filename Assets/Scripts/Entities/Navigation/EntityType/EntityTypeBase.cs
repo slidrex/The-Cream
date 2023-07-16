@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Navigation.EntityType
 {
-    internal class EntityTypeBase
+    internal abstract class EntityTypeBase
     {
+        public abstract bool MatchesEntityType(Entity entityType);
+        public abstract bool MatchesTag(Entity entityType);
     }
 }

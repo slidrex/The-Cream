@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+﻿using Assets.Scripts.Entities.Placeable;
+using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,11 @@ namespace Assets.Scripts.Entities.Stats.Interfaces.Templates
     /// IDamageable
     /// IMoveable
     /// ICanAttack
+    /// IPlaceable
+    /// IEditorSpaceRequired
     /// 
     /// </summary>
-    internal interface IBaseMobStatsProvider : IDamageable, ICanDamage, IMoveable
+    internal interface IBaseMobStatsProvider : IDamageable, ICanDamage, IMoveable, IPlaceable, IEditorSpaceRequired
     {
     }
 }
