@@ -17,7 +17,17 @@ public class GridData
             placedEntities[pos] = data;
         }
     }
-
+    public int GetEntityIDAt(Vector2Int gridPosition)
+    {
+        if (placedEntities.ContainsKey(gridPosition) == false)
+        {
+            return -1;
+        }
+        else
+        {
+            return placedEntities[gridPosition].PlacedEntityIndex;
+        }
+    }
     private List<Vector2Int> CalculatePositions(Vector2Int gridPosition, Vector2Int entitySize)
     {
         List<Vector2Int> val = new();
@@ -38,6 +48,14 @@ public class GridData
             if (placedEntities.ContainsKey(pos)) return false;
         }
         return true;
+    }
+
+    public void RemoveObjectAt(Vector2Int gridPos)
+    {
+        foreach (Vector2Int pos in placedEntities[gridPos].OccupiedPositions)
+        {
+            placedEntities.Remove(pos);
+        }
     }
 }
 public class PlacementData

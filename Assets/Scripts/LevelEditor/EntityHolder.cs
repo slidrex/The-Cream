@@ -6,12 +6,15 @@ public class EntityHolder : MonoBehaviour
     [SerializeField] private Image icon;
     private Button button;
 
-    private void Awake()
+    public void Init(int id, EntityDatabase data, PlacementSystem system)
     {
+        icon.sprite = data.Entities[id].Prefab.GetComponent<SpriteRenderer>().sprite;
         button = GetComponent<Button>();
-    }
-    public void Init(int id)
-    {
-        button.onClick.AddListener(delegate { Editor.Instance._placementSystem.SetCurrentEntityID(id); });
+        button.onClick.AddListener(delegate { system.SetCurrentEntityID(id); });
+        button.onClick.AddListener(delegate {
+            Editor.Instance._inputManager._previewEntity.Init(
+                data.Entities[id].Prefab.transform.localScale, 
+                data.Entities[id].Prefab.GetComponent<SpriteRenderer>().sprite);
+        });
     }
 }

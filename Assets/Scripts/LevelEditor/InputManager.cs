@@ -4,10 +4,15 @@ using UnityEngine.EventSystems;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private Transform cellIndicator;
+    [field: SerializeField] public PreviewEntity _previewEntity { get; private set; }
+    private SpriteRenderer indicatorRenderer;
+    private const byte limitingLayer = 7;
+    private Vector2Int lastPosition;
     private Grid grid;
     private void Start()
     {
-        grid = Editor.Instance._placementSystem.GetGrid();
+        indicatorRenderer = cellIndicator.GetComponent<SpriteRenderer>();
+        grid = Editor.Instance.GetGrid();
     }
     private void Update()
     {
@@ -15,20 +20,52 @@ public class InputManager : MonoBehaviour
     }
     private void UpdateCursorPosition()
     {
-        if (Editor.Instance._placementSystem.GetSelectedEntityIndex() < 0) return;
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
+        if (lastPosition == gridPos) return;
+        lastPosition = gridPos;
         cellIndicator.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 0));
+        if(Editor.Instance.GameModeIs(GameMode.EDIT))
+        {
+            if (Editor.Instance._editSystem.GetSelectedEntityIndex() < 0) return;
+            bool placementValidity = Editor.Instance._editSystem.CheckPlacementValidity(gridPos, Editor.Instance._editSystem.GetSelectedEntityIndex());
+            if (placementValidity == true)
+            {
+                ColorIndicator(new Color32(0, 255, 0, 100));
+            }
+            else
+            {
+                ColorIndicator(new Color32(255, 0, 0, 100));
+            }
+        }
+        if (Editor.Instance.GameModeIs(GameMode.RUNTIME))
+        {
+            if (Editor.Instance._runtimeSystem.GetSelectedEntityIndex() < 0) return;
+            bool placementValidity = Editor.Instance._runtimeSystem.CheckPlacementValidity(gridPos, Editor.Instance._runtimeSystem.GetSelectedEntityIndex());
+            if (placementValidity == true)
+            {
+                ColorIndicator(new Color32(0, 255, 0, 100));
+            }
+            else
+            {
+                ColorIndicator(new Color32(255, 0, 0, 100));
+            }
+        }
     }
     public Vector2 GetCursorPosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-        if (hit.collider != null)
+
+        if (hit.collider != null && hit.collider.gameObject.layer != limitingLayer)
         {
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         else
-            return Vector2.zero;
+            return new Vector2(-10, 20);
+    }
+    private void ColorIndicator(Color32 color)
+    {
+        indicatorRenderer.color = color;
     }
     public bool IsPointerOverUI()
     {
