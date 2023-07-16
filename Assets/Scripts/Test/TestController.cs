@@ -12,6 +12,7 @@ namespace Assets.Scripts.Test
 {
     internal class TestController : MonoBehaviour
     {
+        [SerializeField] private GameObject _anim;
         private Player _player;
         private void Awake()
         {
@@ -23,20 +24,9 @@ namespace Assets.Scripts.Test
             {
                 LevelCompositeRoot.Instance.Runner.RunLevel();
             }
-            if(Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                var instantDamageMod = new InstantDamage(_player, 0.3f);
-                _player.StatModifierHandler.AddModifier(instantDamageMod);
-            }
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                var instantHealthMod = new InstantHeal(_player, 0.2f);
-                _player.StatModifierHandler.AddModifier(instantHealthMod);
-            }
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                var poison = new Poison(_player, 10, 6, 0.3f);
-                _player.StatModifierHandler.AddModifier(poison);
+                Instantiate(_anim, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             }
         }
     }
