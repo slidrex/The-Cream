@@ -6,7 +6,7 @@ public class GridData
 {
     private Dictionary<Vector2Int, PlacementData> placedEntities = new();
 
-    public void AddEntityAt(Vector2Int gridPosition, Vector2Int entitySize, int id, int entityIndex)
+    public void AddEntityAt(Vector2Int gridPosition, byte entitySize, int id, int entityIndex)
     {
         List<Vector2Int> positionToOccupy = CalculatePositions(gridPosition, entitySize);
         PlacementData data = new(positionToOccupy, id, entityIndex);
@@ -28,19 +28,19 @@ public class GridData
             return placedEntities[gridPosition].PlacedEntityIndex;
         }
     }
-    private List<Vector2Int> CalculatePositions(Vector2Int gridPosition, Vector2Int entitySize)
+    private List<Vector2Int> CalculatePositions(Vector2Int gridPosition, byte entitySize)
     {
         List<Vector2Int> val = new();
-        for (int x = 0; x < entitySize.x; x++)
+        for (int x = 0; x < entitySize; x++)
         {
-            for (int y = 0; y < entitySize.y; y++)
+            for (int y = 0; y < entitySize; y++)
             {
                 val.Add(gridPosition + new Vector2Int(x, y));
             }
         }
         return val;
     }
-    public bool CanPlaceObjectAt(Vector2Int gridPosition, Vector2Int entitySize)
+    public bool CanPlaceObjectAt(Vector2Int gridPosition, byte entitySize)
     {
         List<Vector2Int> positionToOccupy = CalculatePositions(gridPosition, entitySize);
         foreach (Vector2Int pos in positionToOccupy)

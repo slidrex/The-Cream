@@ -1,11 +1,11 @@
+using Assets.Editor;
 using UnityEngine;
 
-public class RuntimeSystem : PlacementSystem
+internal class RuntimeSystem : PlacementSystem
 {
     protected override void Start()
     {
         base.Start();
-        editor.SetGamemode(GameMode.RUNTIME);
         for (int i = 0; i < database.Entities.Count; i++)
         {
             EntityHolder obj = Instantiate(entityHolder, editor.Parent);
@@ -14,7 +14,7 @@ public class RuntimeSystem : PlacementSystem
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(GameMode.RUNTIME))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.RUNTIME))
         {
             OnPlace?.Invoke();
         }
@@ -24,9 +24,11 @@ public class RuntimeSystem : PlacementSystem
         if (editor._inputManager.IsPointerOverUI()) return;
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(editor._inputManager.GetCursorPosition());
         bool validity = CheckPlacementValidity(gridPos, selectedEntityIndex);
+        var model = database.Entities[selectedEntityIndex].GetModel();
+
         if (validity == true)
         {
-            GameObject entity = Instantiate(database.Entities[selectedEntityIndex].Prefab, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)), Quaternion.identity);
+            var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
         }
     }
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)

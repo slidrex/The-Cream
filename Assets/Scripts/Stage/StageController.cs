@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using static Editor;
+using static Assets.Editor.Editor;
 
 namespace Assets.Scripts.Stage
 {
@@ -25,6 +25,7 @@ namespace Assets.Scripts.Stage
         private StageTileElement _currentElement;
         private void Start()
         {
+            Editor.Editor.Instance._spaceController.OnSpaceChanged = OnSpaceChanged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie += OnEntityDie;
             _camera = Camera.main;
             StartGame();
@@ -40,6 +41,12 @@ namespace Assets.Scripts.Stage
         private void OnEntityDie(Entity entity)
         {
             UpdateRuntimeMap();
+        }
+        private void OnSpaceChanged(int newSpace)
+        {
+            bool isFullFilled = newSpace >= Editor.Editor.Instance._spaceController.GetMaxSpaceReqiured();
+            if(isFullFilled) OnEditorFullfilled();
+            else OnEditorNotFullFilled();
         }
         private void UpdateRuntimeMap()
         {

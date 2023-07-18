@@ -21,7 +21,7 @@ namespace Assets.Scripts.Entities.Movement.Mob.Dummy
         public override float AttackSpeed { get; set; } = 1.5f;
         public override float CurrentSpeed { get; set; } = 1.5f;
         public override byte SpaceRequired => 8;
-
+        
         public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
 
         public Action<int> OnHealthChanged { get; set; }

@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: EntityDatabase
   m_EditorClassIdentifier: 
   Entities:
-  - <Name>k__BackingField: SmallSql
-    <ID>k__BackingField: 0
-    <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 8318036778920269191, guid: e2701755293baf04d90b725c1dd80e15, type: 3}
-  - <Name>k__BackingField: BigSql
-    <ID>k__BackingField: 1
-    <Size>k__BackingField: {x: 2, y: 2}
-    <Prefab>k__BackingField: {fileID: 6588375008312590593, guid: ccb142cec550c1645b0f816ec54bad62, type: 3}
+  - {fileID: 11400000, guid: 2451c7ca99365f44d949fa053a4804ff, type: 2}
+  - {fileID: 11400000, guid: fe967eca8b718fa4fb7e9fed5f48a2df, type: 2}
+  - {fileID: 11400000, guid: 846bcf5c9fef56a4da5827d0e3036bea, type: 2}

@@ -19,7 +19,7 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             if (damageable.IsInvulnerable == false)
                 damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth - damage, 0, damageable.MaxHealth);
             
-            changeHealthHandler?.OnHealthChanged.Invoke(damageable.CurrentHealth);
+            changeHealthHandler?.OnHealthChanged?.Invoke(damageable.CurrentHealth);
             if(damageable.CurrentHealth == 0)
             {
                 LevelCompositeRoot.Instance.LevelInfo.OnEntityDie.Invoke(entity);

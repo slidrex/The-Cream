@@ -1,17 +1,22 @@
+using Assets.Editor;
+using Assets.Scripts.Databases.dto.Runtime;
+using Assets.Scripts.Entities;
+using Assets.Scripts.Entities.Placeable;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EditSystem : PlacementSystem
+internal class EditSystem : PlacementSystem
 {
     private List<GameObject> placedEntities = new();
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(GameMode.EDIT))
+        
+        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.EDIT))
         {
             OnPlace?.Invoke();
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse1) && editor.GameModeIs(GameMode.EDIT))
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && editor.GameModeIs(Editor.GameMode.EDIT))
         {
             OnDelete?.Invoke();
         }
@@ -19,7 +24,6 @@ public class EditSystem : PlacementSystem
     protected override void Start()
     {
         base.Start();
-        editor.SetGamemode(GameMode.EDIT);
         for (int i = 0; i < database.Entities.Count; i++)
         {
             EntityHolder obj = Instantiate(entityHolder, editor.Parent);
@@ -34,10 +38,13 @@ public class EditSystem : PlacementSystem
         bool placementValidity = CheckPlacementValidity(gridPos, selectedEntityIndex);
         if (placementValidity == false) return;
 
-        GameObject entity = Instantiate(database.Entities[selectedEntityIndex].Prefab, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)), Quaternion.identity);
-        placedEntities.Add(entity);
+        var model = database.Entities[selectedEntityIndex].GetModel();
+        var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
 
-        gridData.AddEntityAt(gridPos, database.Entities[selectedEntityIndex].Size,
+        placedEntities.Add(entity.gameObject);
+        ((IPlaceable)entity).OnContruct();
+
+        gridData.AddEntityAt(gridPos, model.Size,
             selectedEntityIndex, placedEntities.Count - 1);
     }
     private void DeleteEntity()
@@ -45,7 +52,7 @@ public class EditSystem : PlacementSystem
         GridData selectedData = null;
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(editor._inputManager.GetCursorPosition());
 
-        if (gridData.CanPlaceObjectAt(gridPos, Vector2Int.one) == false)
+        if (gridData.CanPlaceObjectAt(gridPos, 1) == false)
         {
             selectedData = gridData;
         }
@@ -58,6 +65,7 @@ public class EditSystem : PlacementSystem
                 if (placedEntities.Count <= id || placedEntities[id] == null) return;
                 else
                 {
+                    placedEntities[id].GetComponent<IPlaceable>().OnDeconstruct();
                     selectedData.RemoveObjectAt(gridPos);
                     Destroy(placedEntities[id]);
                     placedEntities[id] = null;
@@ -68,12 +76,14 @@ public class EditSystem : PlacementSystem
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)
     {
         if (selectedEntityIndex < 0) return false;
+        if (editor._spaceController.IsOverloaded()) return false;
         int count = 0;
-        Vector3Int[] posns = new Vector3Int[database.Entities[selectedEntityIndex].Size.x * database.Entities[selectedEntityIndex].Size.y];
+        var model = database.Entities[selectedEntityIndex].GetModel();
+        Vector3Int[] posns = new Vector3Int[model.Size * model.Size];
 
-        for (int x = 1; x <= database.Entities[selectedEntityIndex].Size.x; x++)
+        for (int x = 1; x <= model.Size; x++)
         {
-            for (int y = 1; y <= database.Entities[selectedEntityIndex].Size.y; y++)
+            for (int y = 1; y <= model.Size; y++)
             {
                 posns[count] = new Vector3Int(x, y, 0);
                 count++;
@@ -87,7 +97,7 @@ public class EditSystem : PlacementSystem
                 return false;
             }
         }
-        return gridData.CanPlaceObjectAt(gridPosition, database.Entities[selectedEntityIndex].Size);
+        return gridData.CanPlaceObjectAt(gridPosition, model.Size);
     }
     public void SignMethods(bool active)
     {

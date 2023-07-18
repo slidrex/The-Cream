@@ -6,7 +6,7 @@ namespace Assets.Scripts.Entities
         public abstract byte SpaceRequired { get; }
         public virtual void OnContruct()
         {
-            
+
         }
 
         public virtual void OnDeconstruct()

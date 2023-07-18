@@ -1,9 +1,9 @@
+using Assets.Editor;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public abstract class PlacementSystem : MonoBehaviour
+internal abstract class PlacementSystem : MonoBehaviour
 {
     [SerializeField] protected EntityDatabase database;
     protected GridData gridData = new();

@@ -32,15 +32,16 @@ namespace Assets.Scripts.Entities.Templates
         {
             EntityHealthStrategy.Heal(this, heal);
         }
-
+        
         public void OnContruct()
         {
-
+            
+            Editor.Editor.Instance._spaceController.ChangeSpace(SpaceRequired);
         }
 
         public void OnDeconstruct()
         {
-
+            Editor.Editor.Instance._spaceController.ChangeSpace(-SpaceRequired);
         }
 
         public virtual void OnDie()

@@ -1,7 +1,8 @@
+using Assets.Editor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InputManager : MonoBehaviour
+internal class InputManager : MonoBehaviour
 {
     [SerializeField] private Transform cellIndicator;
     [field: SerializeField] public PreviewEntity _previewEntity { get; private set; }
@@ -23,8 +24,12 @@ public class InputManager : MonoBehaviour
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
         if (lastPosition == gridPos) return;
         lastPosition = gridPos;
-        cellIndicator.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 0));
-        if(Editor.Instance.GameModeIs(GameMode.EDIT))
+        if (_previewEntity.GetModel().Entity != null)
+        {
+            cellIndicator.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 0)) + new Vector3(_previewEntity.GetModel().Size, _previewEntity.GetModel().Size)/2;
+
+        }
+        if(Editor.Instance.GameModeIs(Editor.GameMode.EDIT))
         {
             if (Editor.Instance._editSystem.GetSelectedEntityIndex() < 0) return;
             bool placementValidity = Editor.Instance._editSystem.CheckPlacementValidity(gridPos, Editor.Instance._editSystem.GetSelectedEntityIndex());
@@ -37,7 +42,7 @@ public class InputManager : MonoBehaviour
                 ColorIndicator(new Color32(255, 0, 0, 100));
             }
         }
-        if (Editor.Instance.GameModeIs(GameMode.RUNTIME))
+        if (Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME))
         {
             if (Editor.Instance._runtimeSystem.GetSelectedEntityIndex() < 0) return;
             bool placementValidity = Editor.Instance._runtimeSystem.CheckPlacementValidity(gridPos, Editor.Instance._runtimeSystem.GetSelectedEntityIndex());
