@@ -26,7 +26,7 @@ internal class EditSystem : PlacementSystem
         base.Start();
         for (int i = 0; i < database.Entities.Count; i++)
         {
-            EntityHolder obj = Instantiate(entityHolder, editor.Parent);
+            EntityHolder obj = Instantiate(entityHolder, editor.EntityHolderContainer);
             obj.Init(i, database, this);
         }
     }
@@ -76,9 +76,9 @@ internal class EditSystem : PlacementSystem
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)
     {
         if (selectedEntityIndex < 0) return false;
-        if (editor._spaceController.IsOverloaded()) return false;
         int count = 0;
         var model = database.Entities[selectedEntityIndex].GetModel();
+        if (editor._spaceController.IsOverloaded(model.EditorSpaceRequired.SpaceRequired)) return false;
         Vector3Int[] posns = new Vector3Int[model.Size * model.Size];
 
         for (int x = 1; x <= model.Size; x++)

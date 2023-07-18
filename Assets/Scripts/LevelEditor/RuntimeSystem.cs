@@ -8,7 +8,7 @@ internal class RuntimeSystem : PlacementSystem
         base.Start();
         for (int i = 0; i < database.Entities.Count; i++)
         {
-            EntityHolder obj = Instantiate(entityHolder, editor.Parent);
+            EntityHolder obj = Instantiate(entityHolder, editor.EntityHolderContainer);
             obj.Init(i, database, this);
         }
     }

@@ -11,7 +11,7 @@ namespace Assets.Editor
     {
         [SerializeField] private GameObject runtime, editor;
         public static Editor Instance { get; private set; }
-        [field: SerializeField] public Transform Parent { get; private set; }
+        [field: SerializeField] public Transform EntityHolderContainer { get; private set; }
         [field: SerializeField] public Tilemap LimitingTileMap { get; private set; }
         [field: SerializeField] public EditSystem _editSystem { get; private set; }
         [field: SerializeField] public RuntimeSystem _runtimeSystem { get; private set; }
@@ -69,7 +69,7 @@ namespace Assets.Editor
         }
         public void ClearContent()
         {
-            EntityHolder[] objs = Parent.GetComponentsInChildren<EntityHolder>();
+            EntityHolder[] objs = EntityHolderContainer.GetComponentsInChildren<EntityHolder>();
             foreach (EntityHolder obj in objs)
             {
                 Destroy(obj.gameObject);

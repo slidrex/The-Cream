@@ -16,7 +16,7 @@ public class SpaceController : MonoBehaviour
     public void ChangeSpace(int required)
     {
         CurrentSpaceReqiured += required;
-        if (IsOverloaded() == true)
+        if (IsOverloaded(0) == true)
         {
             return;
         }
@@ -26,5 +26,5 @@ public class SpaceController : MonoBehaviour
         }
         OnSpaceChanged?.Invoke(CurrentSpaceReqiured);
     }
-    public bool IsOverloaded() => CurrentSpaceReqiured > maxSpaceReqiured;
+    public bool IsOverloaded(int space) => CurrentSpaceReqiured + space > maxSpaceReqiured;
 }
