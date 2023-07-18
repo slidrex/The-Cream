@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed8f7c2e941c6d45be5cb0613f4d7c9, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 4772354945443665560, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
   ManaPool: 100
-  Skills:
-  - {fileID: 11400000, guid: e19fa86f0d342f54abbf83b897a52602, type: 2}
+  Skills: []

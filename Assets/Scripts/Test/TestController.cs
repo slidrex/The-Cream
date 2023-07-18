@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
+using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,13 @@ namespace Assets.Scripts.Test
         }
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Space)) 
-            {
-                LevelCompositeRoot.Instance.Runner.RunLevel();
-            }
             if (Input.GetKeyDown(KeyCode.F))
             {
                 Instantiate(_anim, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+            }
+            if(Input.GetKeyDown(KeyCode.Space)) 
+            {
+                FindObjectOfType<PlayerRuntimeSpace>().TrySpendMana(5);
             }
         }
     }

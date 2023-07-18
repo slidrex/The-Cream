@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player
 {
-    [CreateAssetMenu(menuName = "Cream/Database/Character/New skill")]
-    internal class PlayerSkill : ScriptableObject
+    internal abstract class PlayerSkill : ScriptableObject
     {
         public Sprite Icon;
-        public bool IsPassive;
-        public int BaseManacost;
-        public float BaseCooldown;
+        public virtual void OnStart(Player player)
+        {
+            
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Level.InfoProviders
         public Entity[] StartEntities { get; private set; }
         public List<Entity> RuntimeEntities { get; private set; }
         private System.Action<Entity, bool> OnEntityRegister;
+        public Action<Entity> OnEntityDie { get; set; }
         public void ConfigureLevelInfo()
         {
             RuntimeEntities = new List<Entity>();

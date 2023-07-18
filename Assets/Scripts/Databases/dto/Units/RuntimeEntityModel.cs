@@ -23,20 +23,10 @@ namespace Assets.Scripts.Databases.dto
             public BaseEntity Entity;
             public int BaseManacost;
             public float Cooldown;
-            public bool IsPassive;
-            public Model(PlayerSkill skill)
-            {
-                Icon = skill.Icon;
-                BaseManacost = skill.BaseManacost;
-                Cooldown = skill.BaseCooldown;
-                IsPassive = skill.IsPassive;
-                Entity = null;
-            }
             public Model(RuntimeEntityModel model)
             {
                 Icon = model._icon;
                 Entity = model._entity;
-                IsPassive = false;
                 BaseManacost = model._baseManacost;
                 Cooldown = model._cooldown;
             }

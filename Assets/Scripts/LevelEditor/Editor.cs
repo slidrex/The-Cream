@@ -1,3 +1,6 @@
+using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Level.Stages;
+using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,6 +13,8 @@ public class Editor : MonoBehaviour
     [field: SerializeField] public RuntimeSystem _runtimeSystem { get; private set; }
     [field: SerializeField] public InputManager _inputManager { get; private set; }
     [field: SerializeField] public LevelActions _levelActions { get; private set; }
+    [field: SerializeField] internal Dockspace Dockspace { get; private set; }
+    [field: SerializeField] internal PlayerRuntimeSpace PlayerSpace { get; private set; }
     public GameMode CurrentGamemode { get; private set; } = GameMode.NONE;
     private Grid grid;
 
@@ -33,12 +38,14 @@ public class Editor : MonoBehaviour
             case GameMode.EDIT:
                 {
                     _editSystem.SignMethods(true);
+                    LevelCompositeRoot.Instance.Runner.StopLevel();
                     _runtimeSystem.SignMethods(false);
                     break;
                 }
             case GameMode.RUNTIME:
                 {
                     _editSystem.SignMethods(false);
+                    LevelCompositeRoot.Instance.Runner.RunLevel();
                     _runtimeSystem.SignMethods(true);
                     break;
                 }

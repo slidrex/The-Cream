@@ -1,14 +1,16 @@
 using Assets.Editor;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelActions : MonoBehaviour, IActivateButton
 {
-    public Button Start, Stop, MoveNextLevel;
-
+    public Button Start, Stop;
+    public Action<ButtonType> OnButtonSwitched;
     public void ActivateButton(ButtonType type)
     {
         EnableButton(type);
+        OnButtonSwitched.Invoke(type);
         switch (type)
         {
             case ButtonType.START_RUNTIME:
@@ -36,7 +38,7 @@ public class LevelActions : MonoBehaviour, IActivateButton
     {
         Start.gameObject.SetActive(false);
         Stop.gameObject.SetActive(false);
-        MoveNextLevel.gameObject.SetActive(false);
+
         switch (type)
         {
             case ButtonType.NONE:
@@ -55,7 +57,6 @@ public class LevelActions : MonoBehaviour, IActivateButton
                 }
             case ButtonType.MOVE_NEXT_LEVEL:
                 {
-                    MoveNextLevel.gameObject.SetActive(true);
                     break;
                 }
         }

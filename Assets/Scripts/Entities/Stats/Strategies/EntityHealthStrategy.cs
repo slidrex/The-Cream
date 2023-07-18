@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
+﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             changeHealthHandler?.OnHealthChanged.Invoke(damageable.CurrentHealth);
             if(damageable.CurrentHealth == 0)
             {
+                LevelCompositeRoot.Instance.LevelInfo.OnEntityDie.Invoke(entity);
                 damageable.OnDie();
             }
         }

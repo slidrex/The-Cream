@@ -8,6 +8,18 @@ namespace Assets.Scripts.Databases.Model.Player
     {
         public Entities.Player.Player Player;
         public int ManaPool;
-        public PlayerSkill[] Skills;
+        private bool _configured;
+        [SerializeField] private PlayerSkill[] _skills;
+        public void ConfigureSkills()
+        {
+            if (_configured) return;
+            _configured = true;
+            Skills = new PlayerSkill[_skills.Length];
+            for(int i = 0; i < _skills.Length; i++)
+            {
+                Skills[i] = Instantiate(_skills[i]);
+            }
+        }
+        public PlayerSkill[] Skills { get; set; }
     }
 }
