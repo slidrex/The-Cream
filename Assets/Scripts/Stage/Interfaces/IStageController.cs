@@ -9,7 +9,7 @@ namespace Assets.Scripts.Stage.Interfaces
 {
     internal interface IStageController
     {
-        void StartGame();
+        void StartStageLevel(StageTileElementHolder holder, bool init = false);
         void Move(Direction direction);
     }
 }

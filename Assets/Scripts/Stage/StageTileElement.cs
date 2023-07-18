@@ -11,7 +11,7 @@ namespace Assets.Scripts.Stage
     internal class StageTileElement : MonoBehaviour
     {
         public Transform PlayerPosition;
-        public int CameraSize;
+        public int CameraSize = 5;
         public RelationElement[] Elements;
         [Serializable]
         public struct RelationElement

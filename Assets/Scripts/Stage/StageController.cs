@@ -19,16 +19,21 @@ namespace Assets.Scripts.Stage
 {
     internal class StageController : MonoBehaviour, IStageController
     {
-        [SerializeField] private StageTileElement _initialElement;
         private Player _player;
         private Camera _camera;
         private StageTileElement _currentElement;
-        private void Start()
+        private StageTileElement _endElement;
+        public Action OnLastStageLeft;
+        private StageTileElementHolder _currentStageLevel;
+        private void OnEnable()
         {
-            Editor.Editor.Instance._spaceController.OnSpaceChanged = OnSpaceChanged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie += OnEntityDie;
             _camera = Camera.main;
-            StartGame();
+            Editor.Editor.Instance._spaceController.OnSpaceChanged = OnSpaceChanged;
+        }
+        private void OnDisable()
+        {
+            LevelCompositeRoot.Instance.LevelInfo.OnEntityDie -= OnEntityDie;
         }
         private void OnEditorFullfilled()
         {
@@ -53,8 +58,17 @@ namespace Assets.Scripts.Stage
             var entities = NavigationUtil.GetEntitiesOfType(_player.TargetType, _player.transform);
             if(entities == null || entities.Count == 0 || entities.Any(x => x is IDamageable d && d.CurrentHealth > 0) == false) 
             {
-                Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
+                if(_currentElement == _endElement)
+                {
+                    OnLastStageCompleted();
+                }
+                else
+                    Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
             }
+        }
+        private void OnLastStageCompleted()
+        {
+            OnLastStageLeft.Invoke();
         }
         public void RestoreRuntime()
         {
@@ -75,17 +89,23 @@ namespace Assets.Scripts.Stage
         {
             var temp = _currentElement;
 
+            
             Instance.Dockspace.DisableDockspace();
             for (int i = 0; i < temp.Elements.Length; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
 
+            
             Instance.SetGamemode(GameMode.EDIT);
-            Instance._levelActions.ActivateButton(ButtonType.NONE);
         }
-
-        public void StartGame()
+        private void InitPlayer()
         {
-            _player = Instance.PlayerSpace.InitPlayer(_initialElement.PlayerPosition.transform.position);
-            SetCurrentElement(_initialElement);
+            _player = Instance.PlayerSpace.InitPlayer(_currentStageLevel.InitialElement.PlayerPosition.transform.position);
+        }
+        public void StartStageLevel(StageTileElementHolder currentStageLevel, bool init = false)
+        {
+            _currentStageLevel = currentStageLevel;
+            if (init) InitPlayer();
+            _endElement = currentStageLevel.EndElement;
+            SetCurrentElement(currentStageLevel.InitialElement);
             Instance._levelActions.OnButtonSwitched = OnButtonSwitched;
             Instance.SetGamemode(GameMode.NONE);
             Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
