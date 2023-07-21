@@ -1,4 +1,7 @@
 using Assets.Editor;
+using Assets.Scripts.Databases.dto.Units;
+using Assets.Scripts.Entities.Player;
+using System.Collections.Generic;
 using UnityEngine;
 
 internal class RuntimeSystem : PlacementSystem
@@ -6,10 +9,19 @@ internal class RuntimeSystem : PlacementSystem
     protected override void Start()
     {
         base.Start();
+        SkillHolder skillHolder = Resources.Load<SkillHolder>("UI/SkillHolder");
         for (int i = 0; i < database.Entities.Count; i++)
         {
-            EntityHolder obj = Instantiate(entityHolder, editor.EntityHolderContainer);
+            EntityHolder obj = Instantiate(entityHolder, editor.RuntimeHolderContainer);
             obj.Init(i, database, this);
+        }
+
+        List <PlayerSkillModel.Model> list = Editor.Instance.PlayerSpace.GetPlayerSkillModels();
+        Player player = Editor.Instance.PlayerSpace.GetCharacterModel().Player;
+        for (int i = 0; i < list.Count; i++)
+        {
+            var obj = Instantiate(skillHolder, editor.RuntimePlayerContainer);
+            obj.Init(list[i].Skill, player);
         }
     }
     private void Update()
@@ -24,6 +36,7 @@ internal class RuntimeSystem : PlacementSystem
         if (editor._inputManager.IsPointerOverUI()) return;
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(editor._inputManager.GetCursorPosition());
         bool validity = CheckPlacementValidity(gridPos, selectedEntityIndex);
+        if (validity == false) return;
         var model = database.Entities[selectedEntityIndex].GetModel();
 
         if (validity == true)
@@ -34,7 +47,8 @@ internal class RuntimeSystem : PlacementSystem
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)
     {
         if(selectedEntityIndex < 0) return false;
-        if (editor.LimitingTileMap.HasTile(new Vector3Int(gridPosition.x, gridPosition.y)))
+        if (editor.LimitingTileMap.HasTile(new Vector3Int(gridPosition.x, gridPosition.y)) ||
+            !editor.PlacementTileMap.HasTile(new Vector3Int(gridPosition.x, gridPosition.y)))
         {
             return false;
         }

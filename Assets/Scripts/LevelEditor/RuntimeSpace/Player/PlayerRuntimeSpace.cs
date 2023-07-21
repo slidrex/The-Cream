@@ -20,6 +20,10 @@ namespace Assets.Scripts.LevelEditor.RuntimeSpace.Player
             SetMana(_character.ManaPool);
             return Instantiate(_character.Player, position, Quaternion.identity);
         }
+        public void OnConfigure()
+        {
+            _character.OnAwake();
+        }
         public List<PlayerSkillModel.Model> GetPlayerSkillModels()
         {
             _character.ConfigureSkills();
@@ -42,5 +46,6 @@ namespace Assets.Scripts.LevelEditor.RuntimeSpace.Player
             CurrentMana = mana;
             _view.SetMana(CurrentMana, _character.ManaPool);
         }
+        public CharacterModel GetCharacterModel() => _character;
     }
 }

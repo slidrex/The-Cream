@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Player;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Assets.Scripts.Databases.Model.Player
@@ -19,6 +20,10 @@ namespace Assets.Scripts.Databases.Model.Player
             {
                 Skills[i] = Instantiate(_skills[i]);
             }
+        }
+        public void OnAwake()
+        {
+            _configured = false;
         }
         public PlayerSkill[] Skills { get; set; }
     }

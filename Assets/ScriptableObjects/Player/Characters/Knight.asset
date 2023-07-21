@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 4772354945443665560, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
   ManaPool: 100
-  Skills: []
+  _skills:
+  - {fileID: 11400000, guid: 10b2e584a7b6a5842afa38a54475b77e, type: 2}
+  - {fileID: 11400000, guid: 2859ad96009434e41b174cf705b93a90, type: 2}
+  - {fileID: 11400000, guid: 9a7af40521c228640a5b6853bcbcb793, type: 2}

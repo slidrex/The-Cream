@@ -26,7 +26,7 @@ internal class EditSystem : PlacementSystem
         base.Start();
         for (int i = 0; i < database.Entities.Count; i++)
         {
-            EntityHolder obj = Instantiate(entityHolder, editor.EntityHolderContainer);
+            EntityHolder obj = Instantiate(entityHolder, editor.EditorHolderContainer);
             obj.Init(i, database, this);
         }
     }
@@ -92,7 +92,7 @@ internal class EditSystem : PlacementSystem
         foreach (Vector3Int p in posns)
         {
             Vector3Int pos = new Vector3Int(gridPosition.x, gridPosition.y, 0) + p - new Vector3Int(1, 1, 0);
-            if (editor.LimitingTileMap.HasTile(pos))
+            if (editor.LimitingTileMap.HasTile(pos) || !editor.PlacementTileMap.HasTile(pos))
             {
                 return false;
             }

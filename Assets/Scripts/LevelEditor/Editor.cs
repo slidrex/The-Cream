@@ -1,7 +1,6 @@
 using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Level.Stages;
 using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,8 +10,11 @@ namespace Assets.Editor
     {
         [SerializeField] private GameObject runtime, editor;
         public static Editor Instance { get; private set; }
-        [field: SerializeField] public Transform EntityHolderContainer { get; private set; }
+        [field: SerializeField] public Transform EditorHolderContainer { get; private set; }
+        [field: SerializeField] public Transform RuntimeHolderContainer { get; private set; }
+        [field: SerializeField] public Transform RuntimePlayerContainer { get; private set; }
         [field: SerializeField] public Tilemap LimitingTileMap { get; private set; }
+        [field: SerializeField] public Tilemap PlacementTileMap { get; private set; }
         [field: SerializeField] public EditSystem _editSystem { get; private set; }
         [field: SerializeField] public RuntimeSystem _runtimeSystem { get; private set; }
         [field: SerializeField] public InputManager _inputManager { get; private set; }
@@ -27,6 +29,7 @@ namespace Assets.Editor
         {
             Instance = this;
             grid = FindObjectOfType<Grid>();
+            PlayerSpace.OnConfigure();
         }
         public bool GameModeIs(GameMode mode) => CurrentGamemode == mode;
         public void SetGamemode(GameMode gamemode)
@@ -69,7 +72,7 @@ namespace Assets.Editor
         }
         public void ClearContent()
         {
-            EntityHolder[] objs = EntityHolderContainer.GetComponentsInChildren<EntityHolder>();
+            EntityHolder[] objs = EditorHolderContainer.GetComponentsInChildren<EntityHolder>();
             foreach (EntityHolder obj in objs)
             {
                 Destroy(obj.gameObject);
