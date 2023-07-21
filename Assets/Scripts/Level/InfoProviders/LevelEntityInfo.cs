@@ -8,6 +8,7 @@ namespace Assets.Scripts.Level.InfoProviders
 {
     internal class LevelEntityInfo :MonoBehaviour
     {
+        public Action OnEntityDamaged;
         public Entity[] StartEntities { get; private set; }
         public List<Entity> RuntimeEntities { get; private set; }
         private System.Action<Entity, bool> OnEntityRegister;

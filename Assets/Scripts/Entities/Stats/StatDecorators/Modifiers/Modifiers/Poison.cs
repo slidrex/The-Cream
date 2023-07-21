@@ -51,7 +51,7 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
         {
             if (StatsProvider is IDamageable damageable)
             {
-                damageable.Damage(_tickDamage);
+                damageable.Damage(_tickDamage, null);
             }
         }
     }

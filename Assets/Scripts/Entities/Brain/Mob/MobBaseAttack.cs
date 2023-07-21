@@ -57,7 +57,7 @@ namespace Assets.Scripts.Entities.Attack
         {
             ResetAttackTimer();
             var damageable = target as IDamageable;
-            damageable.Damage(_attackComponent.AttackDamage);
+            damageable.Damage(_attackComponent.AttackDamage, Entity);
             OnAttack(target);
         }
         protected virtual void OnAttack(Entity target) { }

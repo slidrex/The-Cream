@@ -25,14 +25,17 @@ namespace Assets.Scripts.Stage
         private StageTileElement _endElement;
         public Action OnLastStageLeft;
         private StageTileElementHolder _currentStageLevel;
+        private bool _runtimeActivated;
         private void OnEnable()
         {
+            LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged += OnEntityDamaged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie += OnEntityDie;
             _camera = Camera.main;
             Editor.Editor.Instance._spaceController.OnSpaceChanged = OnSpaceChanged;
         }
         private void OnDisable()
         {
+            LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged -= OnEntityDamaged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie -= OnEntityDie;
         }
         private void OnEditorFullfilled()
@@ -74,11 +77,22 @@ namespace Assets.Scripts.Stage
         {
             LevelCompositeRoot.Instance.Runner.RunLevel();
             Instance.SetGamemode(GameMode.RUNTIME);
+            Instance._levelActions.ActivateButton(ButtonType.STOP_RUNTIME);
+            _runtimeActivated = true;
+        }
+        private void OnEntityDamaged()
+        {
+            if (Instance.CurrentGamemode == GameMode.RUNTIME && _runtimeActivated)
+            {
+                Instance._levelActions.ActivateButton(ButtonType.NONE);
+                _runtimeActivated = false;
+            }
         }
         public void StopLevel()
         {
             LevelCompositeRoot.Instance.Runner.StopLevel();
             Instance.SetGamemode(GameMode.EDIT);
+            Instance._levelActions.ActivateButton(ButtonType.NONE);
         }
         private void OnButtonSwitched(ButtonType type)
         {

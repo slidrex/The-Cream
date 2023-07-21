@@ -13,6 +13,7 @@ namespace Assets.Scripts.Entities
         public SpriteRenderer SpriteRenderer { get; private set; }
         public Color DefaultColor { get; private set; }
         public StatModifierHandler StatModifierHandler { get; private set; } = new();
+        public Vector2 AwakePosition { get; private set; }
         protected virtual void OnDestroy()
         {
             LevelCompositeRoot.Instance.LevelInfo.UnregisterEntity(this);
@@ -22,6 +23,7 @@ namespace Assets.Scripts.Entities
             SpriteRenderer = GetComponent<SpriteRenderer>();
             DefaultColor = SpriteRenderer.color;
             LevelCompositeRoot.Instance.LevelInfo.RegisterEntity(this);
+            AwakePosition = transform.position;
         }
         private void Update()
         {

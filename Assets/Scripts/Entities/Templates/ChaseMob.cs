@@ -23,9 +23,9 @@ namespace Assets.Scripts.Entities.Templates
 
         public abstract byte SpaceRequired { get; }
 
-        public void Damage(int damage)
+        public void Damage(int damage, Entity deler)
         {
-            EntityHealthStrategy.Damage(this, damage);
+            EntityHealthStrategy.Damage(this, damage, deler);
         }
 
         public void Heal(int heal)

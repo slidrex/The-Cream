@@ -19,7 +19,7 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
         {
             if (StatsProvider is IDamageable damageable)
             {
-                damageable.Damage((int)(damageable.MaxHealth * _maxHealthDamagePercent));
+                damageable.Damage((int)(damageable.MaxHealth * _maxHealthDamagePercent), null);
                 return true;
             }
             return false;
