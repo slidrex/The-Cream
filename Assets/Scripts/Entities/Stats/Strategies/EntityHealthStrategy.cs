@@ -37,6 +37,14 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             changeHealthHandler?.OnHealthChanged.Invoke(damageable.CurrentHealth);
 
         }
+        public static void SetHealth(Entity entity, int health) 
+        {
+            var damageable = entity as IDamageable;
+            var changeHealthHandler = entity as IHealthChangedHandler;
+            damageable.CurrentHealth = health;
+            if(changeHealthHandler != null)
+                changeHealthHandler.OnHealthChanged?.Invoke(damageable.CurrentHealth);
+        }
         public static void ResetHealth(Entity entity)
         {
             IDamageable damageable = entity as IDamageable;

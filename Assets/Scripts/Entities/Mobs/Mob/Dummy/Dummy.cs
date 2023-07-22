@@ -17,8 +17,8 @@ namespace Assets.Scripts.Entities.Movement.Mob.Dummy
     internal class Dummy : ChaseMob, IHealthChangedHandler
     {
         public override int MaxHealth { get; set; } = 40;
-        public override int AttackDamage { get; set; } = 5;
-        public override float AttackSpeed { get; set; } = 1.5f;
+        public override int AttackDamage { get; set; } = 2;
+        public override float AttackSpeed { get; set; } = 1.0f;
         public override float CurrentSpeed { get; set; } = 1.5f;
         public override byte SpaceRequired => 8;
         

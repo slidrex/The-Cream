@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Stage;
+﻿using Assets.Scripts.Entities.Strategies;
+using Assets.Scripts.Stage;
 using Assets.Scripts.Stage.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Assets.Scripts.LevelEntry
         private StageController _stageController;
         private StageTileElementHolder[] _internalLevels;
         private int _currentStageLevel;
+        public Action<StageTileElementHolder> OnHolderActivate;
         private void Start()
         {
             ConfigureServices();
@@ -23,7 +25,6 @@ namespace Assets.Scripts.LevelEntry
         private void OnDestroy()
         {
             _stageController.OnLastStageLeft -= StartNextStageLevel;
-            
         }
         private void ConfigureServices()
         {
@@ -32,6 +33,7 @@ namespace Assets.Scripts.LevelEntry
         }
         public void StartNextStageLevel()
         {
+            EntityBaseStrategy.OnGameStart();
             if(_currentStageLevel > 0) _internalLevels[_currentStageLevel - 1].gameObject.SetActive(false);
             if (_currentStageLevel >= _internalLevels.Length)
             {
@@ -39,9 +41,10 @@ namespace Assets.Scripts.LevelEntry
                 return;
             }
             _internalLevels[_currentStageLevel].gameObject.SetActive(true);
-
+            _internalLevels[_currentStageLevel].Configure();
             _stageController.StartStageLevel(_internalLevels[_currentStageLevel], _currentStageLevel == 0);
 
+            OnHolderActivate.Invoke(_internalLevels[_currentStageLevel]);
             _currentStageLevel++;
         }
         private void OnLevelCompletelyFinished()

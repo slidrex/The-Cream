@@ -15,17 +15,17 @@ namespace Assets.Scripts.Level
         private readonly Action<bool> OnLevelRun;
         private IEnumerable<ILevelRunHandler> _runHandlers;
         private IEnumerable<IResettable> _resetHandlers;
-        private bool _isResetted;
         public bool IsLevelRunning { get; private set; }
         internal void Configure()
         {
-            _resetHandlers = LevelCompositeRoot.Instance.LevelInfo.StartEntities.Select(x => x.GetComponent<IResettable>()).NotNull();
-            _runHandlers = LevelCompositeRoot.Instance.LevelInfo.StartEntities.SelectMany(x => x.GetComponents<ILevelRunHandler>()).NotNull();
+            _resetHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.Select(x => x.GetComponent<IResettable>()).NotNull();
+            _runHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<ILevelRunHandler>()).NotNull();
         }
         public void RunLevel()
         {
-            if (_isResetted == false) TriggerResets();
+            if (IsLevelRunning) throw new Exception("Level already run!");
             IsLevelRunning = true;
+            TriggerResets(true);
             foreach (var obj in _runHandlers)
             {
                 obj.OnLevelRun(true);
@@ -35,20 +35,30 @@ namespace Assets.Scripts.Level
         }
         public void StopLevel()
         {
+            if (!IsLevelRunning) throw new Exception("Level hasn't been started!");
             IsLevelRunning = false;
             foreach (var obj in _runHandlers)
             {
                 obj.OnLevelRun(false);
             }
             OnLevelRun?.Invoke(false);
-            TriggerResets();
+            TriggerResets(false);
         }
-        private void TriggerResets()
+        private void TriggerResets(bool before)
         {
-            _isResetted = true;
+            print(before ? "ON before reset (save tp pos)" : "On after reset (tp all)");
             foreach(var obj in _resetHandlers)
             {
                 obj.OnReset();
+            }
+
+            foreach(var entity in LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities)
+            {
+                if (before)
+                {
+                    entity.OnBeforeReset();
+                }
+                else entity.OnAfterReset();
             }
         }
     }

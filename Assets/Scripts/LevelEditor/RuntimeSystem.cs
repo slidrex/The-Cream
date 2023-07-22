@@ -26,6 +26,10 @@ internal class RuntimeSystem : PlacementSystem
     }
     private void Update()
     {
+        foreach(var skill in Editor.Instance.PlayerSpace.GetPlayerSkillModels())
+        {
+            skill.Skill.Update();
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.RUNTIME))
         {
             OnPlace?.Invoke();

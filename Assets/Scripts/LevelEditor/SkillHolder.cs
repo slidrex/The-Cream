@@ -13,6 +13,7 @@ internal class SkillHolder : MonoBehaviour
     {
         icon.sprite = skill.Icon;
         button = GetComponent<Button>();
+        skill.OnStart(player);
         if (skill is PlayerActiveSkill active)
         {
             button.onClick.AddListener(delegate { active.TryActivate(player); });

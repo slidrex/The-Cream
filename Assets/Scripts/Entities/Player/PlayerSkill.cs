@@ -14,5 +14,9 @@ namespace Assets.Scripts.Entities.Player
         {
             
         }
+        public virtual void Update()
+        {
+            
+        }
     }
 }

@@ -93,6 +93,7 @@ namespace Assets.Scripts.Stage
             LevelCompositeRoot.Instance.Runner.StopLevel();
             Instance.SetGamemode(GameMode.EDIT);
             Instance._levelActions.ActivateButton(ButtonType.NONE);
+            OnSpaceChanged(Instance._spaceController.CurrentSpaceReqiured);
         }
         private void OnButtonSwitched(ButtonType type)
         {
@@ -128,7 +129,7 @@ namespace Assets.Scripts.Stage
         {
             _currentElement = element;
             _camera.transform.position = new Vector3(_currentElement.transform.position.x, _currentElement.transform.position.y, _camera.transform.position.z);
-            _player.transform.position = element.PlayerPosition.position;
+            _player.transform.position = _currentElement.PlayerPosition.position;
             _camera.orthographicSize = _currentElement.CameraSize;
         }
         private void EnableDockspace()

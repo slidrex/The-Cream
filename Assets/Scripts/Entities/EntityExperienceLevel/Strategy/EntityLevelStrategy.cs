@@ -31,11 +31,15 @@ namespace Assets.Scripts.Entities.EntityExperienceLevel.Strategy
                 }
             }
         }
+        public static void SetExpStatus(ILevelEntity levelEntity, byte level, int exp)
+        {
+            levelEntity.CurrentExp = exp;
+            levelEntity.CurrentLevel = level;
+            levelEntity.AddExperience(0);
+        }
         public static void ResetLevel(ILevelEntity levelEntity) 
         {
-            levelEntity.CurrentLevel = 0;
-            levelEntity.CurrentExp = 0;
-            levelEntity.AddExperience(0);
+            SetExpStatus(levelEntity, 0, 0);
         }
     }
 }

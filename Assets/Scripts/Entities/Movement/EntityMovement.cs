@@ -15,7 +15,7 @@ namespace Assets.Scripts.Entities.Movement
 {
     [RequireComponent(typeof(Navigator))]
     [RequireComponent(typeof(Rigidbody2D))]
-    internal sealed class EntityMovement : MonoBehaviour, IMovement
+    internal sealed class EntityMovement : MonoBehaviour, IMovement, ILevelRunHandler
     {
         private Navigator _navigator;
         private IMoveable _stats;
@@ -60,5 +60,10 @@ namespace Assets.Scripts.Entities.Movement
             _safeDistance = distance;
         }
         public bool IsInsideSafeDistance(Transform target) => Vector2.SqrMagnitude(target.position - transform.position) <= _safeDistance * _safeDistance;
+
+        public void OnLevelRun(bool run)
+        {
+            if (!run) Stop();
+        }
     }
 }

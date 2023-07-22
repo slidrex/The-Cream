@@ -10,7 +10,7 @@ namespace Assets.Scripts.Entities.Reset
     internal interface IResettable
     {
         /// <summary>
-        /// Alternative start for Entity.
+        /// Start method for Entity.
         /// </summary>
         void OnReset();
     }

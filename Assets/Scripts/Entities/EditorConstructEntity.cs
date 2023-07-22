@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Entities.Placeable;
 using Assets.Scripts.Entities.Reset;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.Strategies;
 using Assets.Scripts.Entities.Strategies;
 
 namespace Assets.Scripts.Entities
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Entities
 
         public void OnReset()
         {
-            EntityBaseStrategy.OnReset(this);
+            EntityHealthStrategy.ResetHealth(this);
             OnEntityReset();
         }
         protected virtual void OnEntityReset()

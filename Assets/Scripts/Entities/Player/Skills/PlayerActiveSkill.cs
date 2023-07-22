@@ -13,16 +13,19 @@ namespace Assets.Scripts.Entities.Player.Skills
         public int BaseManacost;
         public float BaseCooldown;
         private float _timeSinceActivation;
-        public Boolean TryActivate(Player player)
+        public bool TryActivate(Player player)
         {
-            if (_timeSinceActivation < BaseCooldown) return false;
+            var playerSpace = Editor.Editor.Instance.PlayerSpace;
+
+            if (_timeSinceActivation < BaseCooldown || !playerSpace.TrySpendMana(BaseManacost)) return false;
             OnActivate(player);
+
             _timeSinceActivation = 0;
             return true;
         }
-        public void Update()
+        public override void Update()
         {
-            if(_timeSinceActivation < BaseCooldown)
+            if (_timeSinceActivation < BaseCooldown)
             {
                 _timeSinceActivation += Time.deltaTime;
             }

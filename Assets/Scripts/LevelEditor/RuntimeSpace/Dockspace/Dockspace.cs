@@ -29,6 +29,7 @@ namespace Assets.Scripts.Level.Stages
         private StageTileElement _currentElement;
         private StageController _stageController;
         private StageTileElement[] _tileElements;
+        private const float DOCKSPACE_SCREEN_ACTIVE_INTENSITY = 2;
         private void Start()
         {
             _tileElements = FindObjectsOfType<StageTileElement>();
@@ -77,10 +78,10 @@ namespace Assets.Scripts.Level.Stages
             Vector2 screenMiddle = new Vector2(Screen.width, Screen.height) / 2;
             Vector2 mouePos = Input.mousePosition;
 
-            bool top = mouePos.y > screenMiddle.y + screenMiddle.y / 2;
-            bool down = mouePos.y < screenMiddle.y / 2;
-            bool right = mouePos.x > screenMiddle.x + screenMiddle.x / 2;
-            bool left = mouePos.x < screenMiddle.x / 2;
+            bool top = mouePos.y > screenMiddle.y + screenMiddle.y / DOCKSPACE_SCREEN_ACTIVE_INTENSITY;
+            bool down = mouePos.y < screenMiddle.y / DOCKSPACE_SCREEN_ACTIVE_INTENSITY;
+            bool right = mouePos.x > screenMiddle.x + screenMiddle.x / DOCKSPACE_SCREEN_ACTIVE_INTENSITY;
+            bool left = mouePos.x < screenMiddle.x / DOCKSPACE_SCREEN_ACTIVE_INTENSITY;
             return GetAppropriateDirection(top ? Direction.UP : Direction.NONE, down ? Direction.DOWN : Direction.NONE, left ? Direction.LEFT : Direction.NONE, right ? Direction.RIGHT : Direction.NONE);
         }
         private Direction GetAppropriateDirection(params Direction[] input)

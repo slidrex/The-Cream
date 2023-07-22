@@ -1,6 +1,10 @@
 using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Level;
 using Assets.Scripts.Level.Stages;
+using Assets.Scripts.Level.Tilemap;
 using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
+using Assets.Scripts.LevelEntry;
+using Assets.Scripts.Stage;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,8 +17,8 @@ namespace Assets.Editor
         [field: SerializeField] public Transform EditorHolderContainer { get; private set; }
         [field: SerializeField] public Transform RuntimeHolderContainer { get; private set; }
         [field: SerializeField] public Transform RuntimePlayerContainer { get; private set; }
-        [field: SerializeField] public Tilemap LimitingTileMap { get; private set; }
-        [field: SerializeField] public Tilemap PlacementTileMap { get; private set; }
+        public Tilemap LimitingTileMap { get; private set; }
+        public Tilemap PlacementTileMap { get; private set; }
         [field: SerializeField] public EditSystem _editSystem { get; private set; }
         [field: SerializeField] public RuntimeSystem _runtimeSystem { get; private set; }
         [field: SerializeField] public InputManager _inputManager { get; private set; }
@@ -28,6 +32,7 @@ namespace Assets.Editor
         private void Awake()
         {
             Instance = this;
+            FindObjectOfType<LevelEntryPoint>().OnHolderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
             grid = FindObjectOfType<Grid>();
             PlayerSpace.OnConfigure();
         }
@@ -35,7 +40,7 @@ namespace Assets.Editor
         public void SetGamemode(GameMode gamemode)
         {
             CurrentGamemode = gamemode;
-            ClearContent();
+            // ClearContent();
             SwitchScreen();
             switch (gamemode)
             {
@@ -48,14 +53,12 @@ namespace Assets.Editor
                 case GameMode.EDIT:
                     {
                         _editSystem.SignMethods(true);
-                        LevelCompositeRoot.Instance.Runner.StopLevel();
                         _runtimeSystem.SignMethods(false);
                         break;
                     }
                 case GameMode.RUNTIME:
                     {
                         _editSystem.SignMethods(false);
-                        LevelCompositeRoot.Instance.Runner.RunLevel();
                         _runtimeSystem.SignMethods(true);
                         break;
                     }

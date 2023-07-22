@@ -4,6 +4,7 @@ using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Reset;
 using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.Strategies;
 using Assets.Scripts.Entities.Strategies;
 using System;
@@ -28,13 +29,13 @@ namespace Assets.Scripts.Entities.Player
         public Action<int> OnDamage { get; set; }
         public Action<int> OnHeal { get; set; }
         public float AttackSpeed { get; set; } = 1;
-        public int AttackDamage { get; set; } = 1;
+        public int AttackDamage { get; set; } = 50;
         public byte CurrentLevel { get; set; }
         public int CurrentExp { get; set; }
+        private AttributeHolder holder = new AttributeHolder(new MaxHealthStat(20));
         public void OnReset()
         {
-            print("OnReset");
-            EntityBaseStrategy.OnReset(this);
+            EntityHealthStrategy.ResetHealth(this);
         }
         public void AddExperience(int exp)
         {
