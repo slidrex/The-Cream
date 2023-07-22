@@ -12,13 +12,11 @@ namespace Assets.Scripts.Entities.Stats.Interfaces.Templates
     /// A base template stat interface that includes:
     /// 
     /// IDamageable
-    /// IMoveable
-    /// ICanAttack
     /// IPlaceable
     /// IEditorSpaceRequired
     /// 
     /// </summary>
-    internal interface IBaseMobStatsProvider : IDamageable, ICanDamage, IMoveable, IPlaceable, IEditorSpaceRequired
+    internal interface IBaseMobStatsProvider : IDamageable, IPlaceable, IEditorSpaceRequired
     {
     }
 }

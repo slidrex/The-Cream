@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Navigation.Interfaces;
-using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using System;
 using System.Collections.Generic;
@@ -37,7 +36,7 @@ namespace Assets.Scripts.Entities.Stats.Structure.Util
         }
         public bool TryRegister(Entity entity, bool register, out PullableEntity par)
         {
-            par = default(PullableEntity);
+            par = default;
             if (register && entity.TryGetComponent<IPullable>(out var pullable))
             {
                 var e = new PullableEntity(entity, pullable);

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,26 +11,21 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
 {
     internal class SpeedBooster : EntityStatModifier, IDurationable
     {
-        private float _speedMultiplier;
-        public SpeedBooster(Entity statProvider, float speedMultiplier) : base(statProvider)
+        private AttributeMask _speedMask;
+        public SpeedBooster(Entity statProvider, float speedPercentage) : base(statProvider)
         {
-            _speedMultiplier = speedMultiplier;
+            _speedMask = new() { MaskMultiplier = -speedPercentage };
         }
         public float Duration { get; set; }
 
         public void OnEffectEnd()
         {
-            (StatsProvider as IMoveable).CurrentSpeed /= _speedMultiplier;
+            StatsProvider.Stats.Unmodify<SpeedStat>(_speedMask);
         }
 
         public override bool OnEffectStart()
         {
-            if (StatsProvider is IMoveable move)
-            {
-                move.CurrentSpeed *= _speedMultiplier;
-                return true;
-            }
-            return false;
+            return StatsProvider.Stats.Modify<SpeedStat>(_speedMask);
         }
     }
 }

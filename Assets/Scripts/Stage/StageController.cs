@@ -4,6 +4,7 @@ using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Navigation.Navigator;
 using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player;
+using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Level.Stages;
 using Assets.Scripts.Stage.Interfaces;
@@ -66,7 +67,15 @@ namespace Assets.Scripts.Stage
                     OnLastStageCompleted();
                 }
                 else
+                {
                     Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
+                    var ents = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities;
+                    for(int i = 0; i < ents.Count; i++)
+                    {
+                        if (ents[i] is IStatic == false)
+                            Destroy(ents[i].gameObject);
+                    }
+                }
             }
         }
         private void OnLastStageCompleted()

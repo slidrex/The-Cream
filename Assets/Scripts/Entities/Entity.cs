@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Strategies;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace Assets.Scripts.Entities
         public abstract EntityTypeBase TargetType { get; }
         public SpriteRenderer SpriteRenderer { get; private set; }
         public Color DefaultColor { get; private set; }
-        public StatModifierHandler StatModifierHandler { get; private set; } = new();
+        public abstract AttributeHolder Stats { get; }
 
         protected virtual void OnDestroy()
         {
@@ -35,7 +36,7 @@ namespace Assets.Scripts.Entities
         }
         private void Update()
         {
-            StatModifierHandler.OnUpdate();   
+            Stats.OnUpdate();   
         }
     }
 }

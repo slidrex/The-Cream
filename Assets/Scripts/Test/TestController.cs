@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Player;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
 using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using System;
@@ -27,7 +28,7 @@ namespace Assets.Scripts.Test
             }
             if(Input.GetKeyDown(KeyCode.Space)) 
             {
-                FindObjectOfType<PlayerRuntimeSpace>().TrySpendMana(5);
+                var player = FindObjectOfType<Player>();
             }
         }
     }

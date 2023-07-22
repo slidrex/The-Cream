@@ -3,6 +3,7 @@ using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Navigation.Interfaces;
 using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
 using Assets.Scripts.Entities.Stats.Structure.Aura;
 using Assets.Scripts.Entities.Stats.Structure.Util;
@@ -35,7 +36,7 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
         }
         private void OnTargetChangeHealth(PullingUtil.PullableEntity entity, int newHealth)
         {
-            if(IsReady && newHealth <= (entity.Entity as IDamageable).MaxHealth * _damagePercentBeforePulling)
+            if(IsReady && newHealth <= entity.Entity.Stats.GetAttribute<MaxHealthStat>().GetValue() * _damagePercentBeforePulling)
             {
                 entity.Pullable.Pull(transform);
             }
@@ -45,13 +46,13 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
             foreach(var entity in entitiesInRadius)
             {
                 if(entity.ThisType is EntityType<PlayerTag>)
-                    entity.StatModifierHandler.AddModifier(new InstantHeal(entity, _healingPercent));
+                    entity.Stats.ModifierHolder.AddModifier(new InstantHeal(entity, _healingPercent));
             }
             ParticlesUtil.SpawnParticles(_particles, transform);
         }
         protected override void OnAuraBecomeReady()
         {
-            _pullUtil.PullAll(transform, x => x.Entity is IDamageable d && d.CurrentHealth <= d.MaxHealth * _damagePercentBeforePulling);
+            _pullUtil.PullAll(transform, x => x.Entity is IDamageable d && d.CurrentHealth <= x.Entity.Stats.GetAttribute<MaxHealthStat>().GetValue() * _damagePercentBeforePulling);
         }
         protected override void OnActivateEntityTypeInsideAuraAndReady(List<Entity> entitiesOfActivateType)
         {

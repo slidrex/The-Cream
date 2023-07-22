@@ -3,6 +3,7 @@ using Assets.Scripts.Entities.Movement.Interfaces;
 using Assets.Scripts.Entities.Navigation.Interfaces;
 using Assets.Scripts.Entities.Navigation.Navigator;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Level;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Assets.Scripts.Entities.Movement
     internal sealed class EntityMovement : MonoBehaviour, IMovement, ILevelRunHandler
     {
         private Navigator _navigator;
-        private IMoveable _stats;
+        private SpeedStat _stats;
         private Rigidbody2D _rb;
         public Entity AttachedEntity { get; private set; }
         public bool IsMoving { get; private set; }
@@ -29,12 +30,12 @@ namespace Assets.Scripts.Entities.Movement
             _navigator = GetComponent<Navigator>();
             _rb = GetComponent<Rigidbody2D>();
 
-            _stats = AttachedEntity as IMoveable;
+            _stats = AttachedEntity.Stats.GetAttribute<SpeedStat>();
             if (_stats == null) throw new Exception("Entity doesn't have IMoveable attribute");
         }
         public void SetMoveDirection(Vector2 vector)
         {
-            _rb.velocity = vector * _stats.CurrentSpeed;
+            _rb.velocity = vector * _stats.GetValue();
             if (vector == Vector2.zero) IsMoving = false;
         }
         public void Stop()

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Mobs;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 
 namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers
 {

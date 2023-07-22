@@ -18,12 +18,13 @@ namespace Assets.Scripts.Entities.Structures.Structures.DebuffStructures
         [SerializeField] private float _damageTickInterval;
         [SerializeField] private int _damagePerTick;
         [SerializeField] private float _duration;
+        [SerializeField] private float _percentSlow;
         protected override void OnActivate(Entity[] entitiesInRadius)
         {
             foreach (var entity in entitiesInRadius)
             {
                 if(entity.ThisType is EntityType<MobTag>)
-                    entity.StatModifierHandler.AddModifier(new Poison(entity, _damagePerTick, _duration, _damageTickInterval));
+                    entity.Stats.ModifierHolder.AddModifier(new Poison(entity, _percentSlow, _damagePerTick, _duration, _damageTickInterval));
             }
             ParticlesUtil.SpawnParticles(_particles, transform);
         }

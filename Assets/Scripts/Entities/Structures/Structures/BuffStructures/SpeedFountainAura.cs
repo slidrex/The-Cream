@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Entities.Navigation.EntityType;
-using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
 using Assets.Scripts.Entities.Stats.Structure.Aura;
@@ -27,7 +26,7 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
             foreach (var entity in entitiesInRadius)
             {
                 if (entity.ThisType is EntityType<PlayerTag>)
-                    entity.StatModifierHandler.AddModifier(new SpeedBooster(entity, _speedMultiplier));
+                    entity.Stats.ModifierHolder.AddModifier(new SpeedBooster(entity, _speedMultiplier));
             }
             ParticlesUtil.SpawnParticles(_particles, transform);
         }

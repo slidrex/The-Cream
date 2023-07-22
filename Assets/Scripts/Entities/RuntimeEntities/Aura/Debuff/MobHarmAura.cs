@@ -16,7 +16,7 @@ namespace Assets.Scripts.Entities.RuntimeEntities.Aura.Debuff
             var entities =  NavigationUtil.GetEntitiesOfType(TargetType, transform, Radius);
             foreach (var entity in entities)
             {
-                entity.StatModifierHandler.AddModifier(new InstantDamage(entity, _damagePercent));
+                entity.Stats.ModifierHolder.AddModifier(new InstantDamage(entity, _damagePercent));
             }
             ParticlesUtil.SpawnParticles(_particles, transform);
             Destroy(gameObject);

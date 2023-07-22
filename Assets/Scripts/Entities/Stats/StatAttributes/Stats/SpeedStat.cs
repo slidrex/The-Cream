@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.StatAttributes
 {
-    internal interface IAttribute
+    internal sealed class SpeedStat : Stat
     {
-        float MultiplierMask { get; }
-        float BaseMultiplier { get; }
-        float BaseValue { get; }
-        float GetValue();
+        public SpeedStat(int baseValue) : base(baseValue)
+        {
+        }
     }
 }

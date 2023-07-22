@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.StatAttributes
 {
-    internal class MaxHealthStat : Attribute
+    internal class MaxHealthStat : Stat
     {
         public MaxHealthStat(int baseValue) : base(baseValue)
         {

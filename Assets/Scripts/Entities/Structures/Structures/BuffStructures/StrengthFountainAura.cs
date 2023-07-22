@@ -25,7 +25,7 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
             foreach (var entity in entitiesInRadius)
             {
                 if (entity.ThisType is EntityType<PlayerTag>)
-                    entity.StatModifierHandler.AddModifier(new SpeedBooster(entity, _strengthMultiplier));
+                    entity.Stats.ModifierHolder.AddModifier(new SpeedBooster(entity, _strengthMultiplier));
             }
             ParticlesUtil.SpawnParticles(_particles, transform);
         }

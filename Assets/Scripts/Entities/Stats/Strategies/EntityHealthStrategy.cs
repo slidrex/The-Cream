@@ -2,11 +2,7 @@
 using Assets.Scripts.Entities.EntityExperienceLevel;
 using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats.Strategies
@@ -17,8 +13,8 @@ namespace Assets.Scripts.Entities.Stats.Strategies
         {
             IDamageable damageable = entity as IDamageable;
             IHealthChangedHandler changeHealthHandler = entity as IHealthChangedHandler;
-            if (damageable.IsInvulnerable == false)
-                damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth - damage, 0, damageable.MaxHealth);
+            int maxHealth = entity.Stats.GetValueInt<MaxHealthStat>();
+            damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth - damage, 0, maxHealth);
             
             changeHealthHandler?.OnHealthChanged?.Invoke(damageable.CurrentHealth);
             if(damageable.CurrentHealth == 0)
@@ -33,7 +29,9 @@ namespace Assets.Scripts.Entities.Stats.Strategies
         {
             IDamageable damageable = entity as IDamageable;
             IHealthChangedHandler changeHealthHandler = entity as IHealthChangedHandler;
-            damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth + heal, 0, damageable.MaxHealth);
+            int maxHealth = entity.Stats.GetValueInt<MaxHealthStat>();
+
+            damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth + heal, 0, maxHealth);
             changeHealthHandler?.OnHealthChanged.Invoke(damageable.CurrentHealth);
 
         }
@@ -49,7 +47,9 @@ namespace Assets.Scripts.Entities.Stats.Strategies
         {
             IDamageable damageable = entity as IDamageable;
             IHealthChangedHandler changeHealthHandler = entity as IHealthChangedHandler;
-            damageable.CurrentHealth = damageable.MaxHealth;
+            int maxHealth = entity.Stats.GetValueInt<MaxHealthStat>();
+
+            damageable.CurrentHealth = maxHealth;
             changeHealthHandler?.OnHealthChanged?.Invoke(damageable.CurrentHealth);
         }
     }

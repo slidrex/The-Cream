@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
         {
             if (StatsProvider is IDamageable damageable)
             {
-                damageable.Heal((int)(damageable.MaxHealth * _maxHealthHealPercent));
+                damageable.Heal((int)(StatsProvider.Stats.GetValue<MaxHealthStat>() * _maxHealthHealPercent));
                 return true;
             }
             return false;

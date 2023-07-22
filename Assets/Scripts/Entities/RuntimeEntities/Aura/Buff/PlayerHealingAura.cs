@@ -17,7 +17,7 @@ namespace Assets.Scripts.Entities.RuntimeEntities.Aura.Buff
         protected override void UpdateTargetEntityInside(Entity entity, out float blockTime)
         {
             var heal = new InstantHeal(entity, _percentHealing);
-            entity.StatModifierHandler.AddModifier(heal);
+            entity.Stats.ModifierHolder.AddModifier(heal);
             entity.SpriteRenderer.color = Color.green;
             blockTime = _healingInterval;
         }

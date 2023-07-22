@@ -11,15 +11,7 @@ namespace Assets.Scripts.Entities.Templates
     internal abstract class ChaseMob : Entity, IBaseMobStatsProvider
     {
         public override EntityTypeBase ThisType => new EntityType<MobTag>(MobTag.AGGRESSIVE);
-
-
-        public bool IsInvulnerable => false;
         public int CurrentHealth { get; set; }
-
-        public abstract float CurrentSpeed { get; set; }
-        public abstract int MaxHealth { get; set; }
-        public abstract int AttackDamage { get; set; }
-        public abstract float AttackSpeed { get; set; }
 
         public abstract byte SpaceRequired { get; }
 

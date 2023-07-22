@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,13 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
     /// </summary>
     internal class Poison : EntityStatModifier, ITickable
     {
+        private AttributeMask _speedMask;
+
         private int _tickDamage;
         private SpriteRenderer _renderer;
-        public Poison(Entity statProvider, int tickDamage, float duration, float damageInterval) : base(statProvider)
+        public Poison(Entity statProvider, float percentSlow, int tickDamage, float duration, float damageInterval) : base(statProvider)
         {
+            _speedMask = new AttributeMask() { MaskMultiplier = -percentSlow };
             _tickDamage = tickDamage;
             _renderer = statProvider.GetComponent<SpriteRenderer>();
             CallInterval = damageInterval;
@@ -29,19 +33,14 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
 
         public void OnEffectEnd()
         {
-            if (StatsProvider is IMoveable moveable)
-            {
-                _renderer.color = StatsProvider.DefaultColor;
-                moveable.CurrentSpeed *= 5;
-            }
+            StatsProvider.Stats.Unmodify<SpeedStat>(_speedMask);
         }
 
         public override bool OnEffectStart()
         {
-            if(StatsProvider is IMoveable moveable)
+            if (StatsProvider.Stats.Modify<SpeedStat>(_speedMask))
             {
                 _renderer.color = Color.green;
-                moveable.CurrentSpeed /= 5;
                 return true;
             }
             return false;

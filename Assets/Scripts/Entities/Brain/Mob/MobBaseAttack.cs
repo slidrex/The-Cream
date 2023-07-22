@@ -4,6 +4,7 @@ using Assets.Scripts.Entities.Movement;
 using Assets.Scripts.Entities.Navigation.Interfaces;
 using Assets.Scripts.Entities.Navigation.Navigator;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Functions;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace Assets.Scripts.Entities.Attack
     internal class MobBaseAttack : EntityBrain
     {
         [SerializeField] private float _attackDistance;
-        private ICanDamage _attackComponent;
+        private DamageStat _attackComponent;
+        private AttackSpeedStat _attackSpeed;
         protected float _timeSinceAttack;
         protected float _timeToAttack;
 
@@ -32,7 +34,9 @@ namespace Assets.Scripts.Entities.Attack
             Navigator = GetComponent<Navigator>();
             Movement.SetSafeDistance(_attackDistance);
 
-            _attackComponent = Entity as ICanDamage;
+            _attackComponent = Entity.Stats.GetAttribute<DamageStat>();
+            _attackSpeed = Entity.Stats.GetAttribute<AttackSpeedStat>();
+
             if (_attackComponent == null) throw new NullReferenceException("Entity " + name + " doesn't contain ICanDamage interface");
 
             ResetAttackTimer();
@@ -57,13 +61,13 @@ namespace Assets.Scripts.Entities.Attack
         {
             ResetAttackTimer();
             var damageable = target as IDamageable;
-            damageable.Damage(_attackComponent.AttackDamage, Entity);
+            damageable.Damage((int)_attackComponent.GetValue(), Entity);
             OnAttack(target);
         }
         protected virtual void OnAttack(Entity target) { }
         private void ResetAttackTimer()
         {
-            _timeToAttack = 1 / _attackComponent.AttackSpeed;
+            _timeToAttack = 1 / _attackComponent.GetValue();
             _timeSinceAttack = 0;
         }
         private void OnDrawGizmos()

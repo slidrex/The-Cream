@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.Interfaces.Stats
 {
-    internal interface IMoveable
+    internal interface IDamageable 
     {
-        float CurrentSpeed { get; set; }
+        int CurrentHealth { get; set; }
+        void Heal(int heal);
+        void Damage(int damage, Entity dealer);
+        void OnDie();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,11 @@ namespace Assets.Scripts.Entities.Brain.Boss.Bossbar
             var healthChangedHandler = entity as IHealthChangedHandler;
             _barFill.color = bossbar.BarColor;
             if (healthChangedHandler == null) throw new NullReferenceException("Entity" + entity.name + " must have IHealthChangedHandler interface.");
-            healthChangedHandler.OnHealthChanged += (int newHealth) => OnHealthChanged(entity as IDamageable);
+            healthChangedHandler.OnHealthChanged += (int newHealth) => OnHealthChanged(entity as IDamageable, entity.Stats.GetValueInt<MaxHealthStat>());
         }
-        private void OnHealthChanged(IDamageable health)
+        private void OnHealthChanged(IDamageable health, int maxHealth)
         {
-            _barFill.fillAmount = (float)health.CurrentHealth/health.MaxHealth;
+            _barFill.fillAmount = (float)health.CurrentHealth/ maxHealth;
             if (health.CurrentHealth <= 0) DisableBar(); 
         }
         public void DisableBar()
