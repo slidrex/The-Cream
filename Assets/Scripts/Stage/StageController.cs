@@ -68,6 +68,7 @@ namespace Assets.Scripts.Stage
                 }
                 else
                 {
+                    Instance.SetGamemode(GameMode.NONE);
                     Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
                     var ents = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities;
                     for(int i = 0; i < ents.Count; i++)

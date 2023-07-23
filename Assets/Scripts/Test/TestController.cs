@@ -34,7 +34,6 @@ namespace Assets.Scripts.Test
             {
                 Editor.Editor.Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
             }
-            _cont.UpdateRuntimeMap();
         }
     }
 }
