@@ -83,6 +83,11 @@ namespace Assets.Editor
                 _editSystem.ClearContainer();
             else if(GameModeIs(GameMode.EDIT))
                 _runtimeSystem.ClearContainer();
+            else
+            {
+                _editSystem.ClearContainer();
+                _runtimeSystem.ClearContainer();
+            }
         }
         private void SwitchScreen()
         {
