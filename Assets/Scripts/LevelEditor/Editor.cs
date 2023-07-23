@@ -1,4 +1,7 @@
 using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Databases.Database_providers;
+using Assets.Scripts.Databases.Model.Character;
+using Assets.Scripts.GameProgress;
 using Assets.Scripts.Level;
 using Assets.Scripts.Level.Stages;
 using Assets.Scripts.Level.Tilemap;
@@ -34,6 +37,8 @@ namespace Assets.Editor
             Instance = this;
             FindObjectOfType<LevelEntryPoint>().OnHolderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
             grid = FindObjectOfType<Grid>();
+            int selectedCharacterId = PlayerPrefs.GetInt(PrefsKey.SELECTED_CHARACTER, (int)CharacterDatabaseModel.CharacterID.KNIGHT);
+            PlayerSpace.InitPlayer(GameLevelDatabaseProvider.Instance.CharacterDatabase.GetCharacter((CharacterDatabaseModel.CharacterID)selectedCharacterId));
             PlayerSpace.OnConfigure();
         }
         public bool GameModeIs(GameMode mode) => CurrentGamemode == mode;

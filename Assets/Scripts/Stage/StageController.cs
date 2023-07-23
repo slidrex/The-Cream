@@ -57,7 +57,7 @@ namespace Assets.Scripts.Stage
             if(isFullFilled) OnEditorFullfilled();
             else OnEditorNotFullFilled();
         }
-        private void UpdateRuntimeMap()
+        public void UpdateRuntimeMap()
         {
             var entities = NavigationUtil.GetEntitiesOfType(_player.TargetType, _player.transform);
             if(entities == null || entities.Count == 0 || entities.Any(x => x is IDamageable d && d.CurrentHealth > 0) == false) 

@@ -1,4 +1,9 @@
-﻿using Assets.Scripts.Entities.Strategies;
+﻿using Assets.Scripts.Databases.Database_providers;
+using Assets.Scripts.Databases.Model.Character;
+using Assets.Scripts.Databases.Model.Player;
+using Assets.Scripts.Entities.Strategies;
+using Assets.Scripts.GameProgress;
+using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using Assets.Scripts.Stage;
 using Assets.Scripts.Stage.Interfaces;
 using System;
@@ -7,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.LevelEntry
 {
@@ -16,9 +22,11 @@ namespace Assets.Scripts.LevelEntry
         private StageTileElementHolder[] _internalLevels;
         private int _currentStageLevel;
         public Action<StageTileElementHolder> OnHolderActivate;
+        private PlayerRuntimeSpace _playerSpace;
         private void Start()
         {
             ConfigureServices();
+            InitData();
             StartNextStageLevel();
             _stageController.OnLastStageLeft += StartNextStageLevel;
         }
@@ -26,8 +34,13 @@ namespace Assets.Scripts.LevelEntry
         {
             _stageController.OnLastStageLeft -= StartNextStageLevel;
         }
+        private void InitData()
+        {
+            
+        }
         private void ConfigureServices()
         {
+            _playerSpace = FindObjectOfType<PlayerRuntimeSpace>();
             _stageController = FindObjectOfType<StageController>();
             _internalLevels = GetComponentsInChildren<StageTileElementHolder>(true);
         }
@@ -49,7 +62,7 @@ namespace Assets.Scripts.LevelEntry
         }
         private void OnLevelCompletelyFinished()
         {
-            print("ALL STAGED COMPLETELY FINISHED!");
+            SceneManager.LoadScene(0);
         }
     }
 }

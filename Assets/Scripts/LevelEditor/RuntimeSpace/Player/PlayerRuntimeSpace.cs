@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace Assets.Scripts.LevelEditor.RuntimeSpace.Player
 {
     internal class PlayerRuntimeSpace : MonoBehaviour
     {
-        [SerializeField] private CharacterModel _character;
         [SerializeField] private PlayerRuntimeSpaceView _view;
+        private CharacterModel _character;
         public int CurrentMana { get; private set; }
+        public void InitPlayer(CharacterModel character)
+        {
+            _character = character;
+        }
         public Assets.Scripts.Entities.Player.Player InitPlayer(Vector2 position)
         {
             SetMana(_character.ManaPool);

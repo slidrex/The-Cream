@@ -1,8 +1,10 @@
-﻿using Assets.Scripts.CompositeRoots;
+﻿using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
 using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
+using Assets.Scripts.Stage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +17,11 @@ namespace Assets.Scripts.Test
     internal class TestController : MonoBehaviour
     {
         [SerializeField] private GameObject _anim;
+        private StageController _cont;
         private Player _player;
         private void Awake()
         {
+            _cont = FindObjectOfType<StageController>();
             _player = FindObjectOfType<Player>();
         }
         private void Update()
@@ -28,8 +32,9 @@ namespace Assets.Scripts.Test
             }
             if(Input.GetKeyDown(KeyCode.Space)) 
             {
-                var player = FindObjectOfType<Player>();
+                Editor.Editor.Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
             }
+            _cont.UpdateRuntimeMap();
         }
     }
 }
