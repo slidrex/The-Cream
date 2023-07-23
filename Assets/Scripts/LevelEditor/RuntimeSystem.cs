@@ -6,9 +6,11 @@ using UnityEngine;
 
 internal class RuntimeSystem : PlacementSystem
 {
-    protected override void Start()
+    private List<SkillHolder> skills = new();
+    private List<EntityHolder> runtimeEntities = new(); 
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
     }
     private void Update()
     {
@@ -21,22 +23,39 @@ internal class RuntimeSystem : PlacementSystem
             OnPlace?.Invoke();
         }
     }
-    public void FillContainer()
+    public override void FillContainer()
     {
         SkillHolder skillHolder = Resources.Load<SkillHolder>("UI/SkillHolder");
         for (int i = 0; i < database.Entities.Count; i++)
         {
             EntityHolder obj = Instantiate(entityHolder, editor.RuntimeHolderContainer);
             obj.Init(i, database, this);
+            runtimeEntities.Add(obj);
         }
 
         List <PlayerSkillModel.Model> list = Editor.Instance.PlayerSpace.GetPlayerSkillModels();
         Player player = Editor.Instance.PlayerSpace.GetCharacterModel().Player;
+
         for (int i = 0; i < list.Count; i++)
         {
             var obj = Instantiate(skillHolder, editor.RuntimePlayerContainer);
             obj.Init(list[i].Skill, player);
+            skills.Add(obj);
         }
+    }
+    public override void ClearContainer()
+    {
+        for (int i = 0; i < skills.Count; i++)
+        {
+            Destroy(skills[i].gameObject);
+        }
+        skills.Clear();
+
+        for (int i = 0; i < runtimeEntities.Count; i++)
+        {
+            Destroy(runtimeEntities[i].gameObject);
+        }
+        runtimeEntities.Clear();
     }
     private void PlaceEntity()
     {

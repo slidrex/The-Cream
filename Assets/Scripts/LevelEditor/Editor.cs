@@ -46,8 +46,8 @@ namespace Assets.Editor
         {
             CurrentGamemode = gamemode;
             SwitchScreen();
-            ClearContent();
-            FillContainer(gamemode);
+            ClearContainer();
+            FillContainer();
             switch (gamemode)
             {
                 case GameMode.NONE:
@@ -70,25 +70,19 @@ namespace Assets.Editor
                     }
             }
         }
-        public void FillContainer(GameMode mode)
+        public void FillContainer()
         {
-            switch (mode)
-            {
-                case GameMode.NONE:
-                    {
-                        break;
-                    }
-                case GameMode.EDIT:
-                    {
-                        _editSystem.FillContainer();
-                        break;
-                    }
-                case GameMode.RUNTIME:
-                    {
-                        _runtimeSystem.FillContainer();
-                        break;
-                    }
-            }
+            if (GameModeIs(GameMode.EDIT))
+                _editSystem.FillContainer();
+            else if(GameModeIs(GameMode.RUNTIME))
+                _runtimeSystem.FillContainer();
+        }
+        public void ClearContainer()
+        {
+            if(GameModeIs(GameMode.RUNTIME))
+                _editSystem.ClearContainer();
+            else if(GameModeIs(GameMode.EDIT))
+                _runtimeSystem.ClearContainer();
         }
         private void SwitchScreen()
         {
@@ -97,14 +91,6 @@ namespace Assets.Editor
             if(GameModeIs(GameMode.EDIT)) editor.SetActive(true);
             else if(GameModeIs(GameMode.RUNTIME)) runtime.SetActive(true);
 
-        }
-        public void ClearContent()
-        {
-            EntityHolder[] objs = EditorHolderContainer.GetComponentsInChildren<EntityHolder>();
-            foreach (EntityHolder obj in objs)
-            {
-                Destroy(obj.gameObject);
-            }
         }
         public Grid GetGrid() => grid;
         public enum GameMode

@@ -26,5 +26,10 @@ public class SpaceController : MonoBehaviour
         }
         OnSpaceChanged?.Invoke(CurrentSpaceReqiured);
     }
+    public void ClearSpace()
+    {
+        CurrentSpaceReqiured = 0;
+        spaceRequired.text = CurrentSpaceReqiured.ToString() + "/" + maxSpaceReqiured;
+    }
     public bool IsOverloaded(int space) => CurrentSpaceReqiured + space > maxSpaceReqiured;
 }

@@ -13,12 +13,12 @@ internal abstract class PlacementSystem : MonoBehaviour
     protected int selectedEntityIndex = -1;
     public Action OnPlace, OnDelete;
     protected Editor editor;
-    protected virtual void Start()
+    protected virtual void Awake()
     {
+        entityHolder = Resources.Load<EntityHolder>("UI/EntityHolder");
         editor = Editor.Instance;
         grid = editor.GetGrid();
         limitingTilemap = editor.LimitingTileMap;
-        entityHolder = Resources.Load<EntityHolder>("UI/EntityHolder");
     }
     public void SetCurrentEntityID(int id)
     {
@@ -29,5 +29,7 @@ internal abstract class PlacementSystem : MonoBehaviour
             return;
         }
     }
+    public abstract void ClearContainer();
+    public abstract void FillContainer();
     public int GetSelectedEntityIndex() => selectedEntityIndex;
 }
