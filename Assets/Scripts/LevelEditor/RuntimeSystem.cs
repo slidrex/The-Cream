@@ -9,6 +9,20 @@ internal class RuntimeSystem : PlacementSystem
     protected override void Start()
     {
         base.Start();
+    }
+    private void Update()
+    {
+        foreach(var skill in Editor.Instance.PlayerSpace.GetPlayerSkillModels())
+        {
+            skill.Skill.Update();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.RUNTIME))
+        {
+            OnPlace?.Invoke();
+        }
+    }
+    public void FillContainer()
+    {
         SkillHolder skillHolder = Resources.Load<SkillHolder>("UI/SkillHolder");
         for (int i = 0; i < database.Entities.Count; i++)
         {
@@ -22,17 +36,6 @@ internal class RuntimeSystem : PlacementSystem
         {
             var obj = Instantiate(skillHolder, editor.RuntimePlayerContainer);
             obj.Init(list[i].Skill, player);
-        }
-    }
-    private void Update()
-    {
-        foreach(var skill in Editor.Instance.PlayerSpace.GetPlayerSkillModels())
-        {
-            skill.Skill.Update();
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.RUNTIME))
-        {
-            OnPlace?.Invoke();
         }
     }
     private void PlaceEntity()

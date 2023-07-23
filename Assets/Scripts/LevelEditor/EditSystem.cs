@@ -11,7 +11,6 @@ internal class EditSystem : PlacementSystem
 
     private void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.EDIT))
         {
             OnPlace?.Invoke();
@@ -24,6 +23,9 @@ internal class EditSystem : PlacementSystem
     protected override void Start()
     {
         base.Start();
+    }
+    public void FillContainer()
+    {
         for (int i = 0; i < database.Entities.Count; i++)
         {
             EntityHolder obj = Instantiate(entityHolder, editor.EditorHolderContainer);

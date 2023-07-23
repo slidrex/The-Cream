@@ -40,8 +40,9 @@ namespace Assets.Editor
         public void SetGamemode(GameMode gamemode)
         {
             CurrentGamemode = gamemode;
-            // ClearContent();
             SwitchScreen();
+            ClearContent();
+            FillContainer(gamemode);
             switch (gamemode)
             {
                 case GameMode.NONE:
@@ -64,7 +65,26 @@ namespace Assets.Editor
                     }
             }
         }
-
+        public void FillContainer(GameMode mode)
+        {
+            switch (mode)
+            {
+                case GameMode.NONE:
+                    {
+                        break;
+                    }
+                case GameMode.EDIT:
+                    {
+                        _editSystem.FillContainer();
+                        break;
+                    }
+                case GameMode.RUNTIME:
+                    {
+                        _runtimeSystem.FillContainer();
+                        break;
+                    }
+            }
+        }
         private void SwitchScreen()
         {
             runtime.SetActive(false);
