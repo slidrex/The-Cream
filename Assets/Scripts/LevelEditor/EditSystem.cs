@@ -8,7 +8,7 @@ using UnityEngine;
 internal class EditSystem : PlacementSystem
 {
     private List<GameObject> placedEntities = new();
-
+    [SerializeField] private List<EntityHolder> holders = new();
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.EDIT))
@@ -20,17 +20,26 @@ internal class EditSystem : PlacementSystem
             OnDelete?.Invoke();
         }
     }
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
     }
-    public void FillContainer()
+    public override void FillContainer()
     {
         for (int i = 0; i < database.Entities.Count; i++)
         {
             EntityHolder obj = Instantiate(entityHolder, editor.EditorHolderContainer);
             obj.Init(i, database, this);
+            holders.Add(obj);
         }
+    }
+    public override void ClearContainer()
+    {
+        for (int i = 0; i < holders.Count; i++)
+        {
+            Destroy(holders[i].gameObject);
+        }
+        holders.Clear();
     }
     private void PlaceEntity()
     {

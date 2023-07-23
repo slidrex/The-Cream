@@ -15,17 +15,15 @@ public class LevelActions : MonoBehaviour, IActivateButton
         {
             case ButtonType.START_RUNTIME:
                 {
-                    Editor.Instance.ClearContent();
                     break;
                 }
             case ButtonType.STOP_RUNTIME:
                 {
-                    Editor.Instance.ClearContent();
                     break;
                 }
             case ButtonType.MOVE_NEXT_LEVEL:
                 {
-                    Editor.Instance.ClearContent();
+                    Editor.Instance._spaceController.ClearSpace();
                     break;
                 }
             case ButtonType.NONE:
