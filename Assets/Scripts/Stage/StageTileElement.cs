@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Level.Stages;
+﻿using Assets.Scripts.Entities;
+using Assets.Scripts.Level.Stages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,16 @@ namespace Assets.Scripts.Stage
         {
             public Direction Direction;
             public StageTileElement Element;
+        }
+        private Entity[] _staticEntities;
+        private void Start()
+        {
+            _staticEntities = GetComponentsInChildren<Entity>();
+            ActivateStaticEntities();
+        }
+        private void ActivateStaticEntities()
+        {
+            foreach (var e in _staticEntities) e.HousingElement = this;
         }
     }
 }

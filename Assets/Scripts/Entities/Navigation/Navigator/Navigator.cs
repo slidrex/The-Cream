@@ -30,7 +30,7 @@ namespace Assets.Scripts.Entities.Navigation.Navigator
         public Entity GetNearestTargetEntity() => Mathc.GetNearestTo(_entity, GetTargets());
         public List<Entity> GetTargets()
         {
-            return NavigationUtil.GetEntitiesOfType(_targets, _entity.transform, _targetFindRadius);
+            return NavigationUtil.GetEntitiesOfTypeInsideOriginTile(_targets, _entity, _targetFindRadius);
         }
         public void SetTarget(Entity target)
         {

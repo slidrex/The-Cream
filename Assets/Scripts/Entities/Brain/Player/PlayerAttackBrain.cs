@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Attack;
+﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Attack;
 using Assets.Scripts.Entities.Movement.Interfaces;
 using Assets.Scripts.Entities.Navigation.Interfaces;
 using Assets.Scripts.Entities.Navigation.Pulling;

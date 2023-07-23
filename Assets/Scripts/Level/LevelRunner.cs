@@ -33,7 +33,7 @@ namespace Assets.Scripts.Level
 
             OnLevelRun?.Invoke(true);
         }
-        public void StopLevel()
+        public void StopLevel(bool ignoreTriggers = false)
         {
             if (!IsLevelRunning) throw new Exception("Level hasn't been started!");
             IsLevelRunning = false;
@@ -42,11 +42,11 @@ namespace Assets.Scripts.Level
                 obj.OnLevelRun(false);
             }
             OnLevelRun?.Invoke(false);
-            TriggerResets(false);
+            if(ignoreTriggers == false)
+                TriggerResets(false);
         }
         private void TriggerResets(bool before)
         {
-            print(before ? "ON before reset (save tp pos)" : "On after reset (tp all)");
             foreach(var obj in _resetHandlers)
             {
                 obj.OnReset();

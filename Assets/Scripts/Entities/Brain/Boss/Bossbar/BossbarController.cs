@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
+using Assets.Scripts.Stage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Assets.Scripts.Entities.Brain.Boss.Bossbar
         private Entity _entity;
         public void EnableBar(EntityBossbar bossbar, Entity entity)
         {
+            if (entity.HousingElement != StageController.Singleton._currentElement) return;
             _barObject.gameObject.SetActive(true);
             var healthChangedHandler = entity as IHealthChangedHandler;
             _barFill.color = bossbar.BarColor;

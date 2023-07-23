@@ -22,13 +22,20 @@ namespace Assets.Scripts.Stage
     {
         private Player _player;
         private Camera _camera;
-        private StageTileElement _currentElement;
+        public StageTileElement _currentElement;
         private StageTileElement _endElement;
         public Action OnLastStageLeft;
         private StageTileElementHolder _currentStageLevel;
         private bool _runtimeActivated;
+        private void Awake()
+        {
+            
+            Singleton = this;
+        }
+        public static StageController Singleton { get; private set; }
         private void OnEnable()
         {
+            LevelCompositeRoot.Instance.LevelInfo.OnRegisterSubscribeAndCallOnExist(OnEntitySpawn);
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged += OnEntityDamaged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie += OnEntityDie;
             _camera = Camera.main;
@@ -36,8 +43,13 @@ namespace Assets.Scripts.Stage
         }
         private void OnDisable()
         {
+            LevelCompositeRoot.Instance.LevelInfo.OnRegisterUnsubscribe(OnEntitySpawn);
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged -= OnEntityDamaged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie -= OnEntityDie;
+        }
+        private void OnEntitySpawn(Entity entity, bool isSpawned)
+        {
+            if (isSpawned && entity is IStatic == false) entity.HousingElement = _currentElement;
         }
         private void OnEditorFullfilled()
         {
@@ -59,9 +71,11 @@ namespace Assets.Scripts.Stage
         }
         public void UpdateRuntimeMap()
         {
-            var entities = NavigationUtil.GetEntitiesOfType(_player.TargetType, _player.transform);
+            var entities = NavigationUtil.GetEntitiesOfTypeInsideOriginTile(_player.TargetType, _player);
             if(entities == null || entities.Count == 0 || entities.Any(x => x is IDamageable d && d.CurrentHealth > 0) == false) 
             {
+                LevelCompositeRoot.Instance.Runner.StopLevel(true);
+
                 if(_currentElement == _endElement)
                 {
                     OnLastStageCompleted();
@@ -117,6 +131,7 @@ namespace Assets.Scripts.Stage
             
             Instance.Dockspace.DisableDockspace();
             for (int i = 0; i < temp.Elements.Length; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
+            
 
             
             Instance.SetGamemode(GameMode.EDIT);
@@ -140,7 +155,9 @@ namespace Assets.Scripts.Stage
             _currentElement = element;
             _camera.transform.position = new Vector3(_currentElement.transform.position.x, _currentElement.transform.position.y, _camera.transform.position.z);
             _player.transform.position = _currentElement.PlayerPosition.position;
+            _player.HousingElement = _currentElement;
             _camera.orthographicSize = _currentElement.CameraSize;
+            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning) LevelCompositeRoot.Instance.Runner.StopLevel(true);
         }
         private void EnableDockspace()
         {

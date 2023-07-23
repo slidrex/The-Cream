@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Level;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Assets.Scripts.Entities.Brain
         }
         private void Update()
         {
-            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning) RuntimeUpdate();       
+            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning) RuntimeUpdate();
         }
         protected virtual void RuntimeUpdate()
         {

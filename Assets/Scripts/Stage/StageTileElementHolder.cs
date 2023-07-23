@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Level;
+﻿using Assets.Scripts.Entities;
+using Assets.Scripts.Level;
 using Assets.Scripts.Level.Tilemap;
 using System;
 using System.Collections.Generic;

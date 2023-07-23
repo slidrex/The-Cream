@@ -3,6 +3,7 @@ using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Strategies;
+using Assets.Scripts.Stage;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Entities
         public SpriteRenderer SpriteRenderer { get; private set; }
         public Color DefaultColor { get; private set; }
         public abstract AttributeHolder Stats { get; }
+        public StageTileElement HousingElement { get; set; }
 
         protected virtual void OnDestroy()
         {

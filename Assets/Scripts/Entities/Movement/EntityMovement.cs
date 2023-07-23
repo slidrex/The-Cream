@@ -35,6 +35,11 @@ namespace Assets.Scripts.Entities.Movement
         }
         public void SetMoveDirection(Vector2 vector)
         {
+
+            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning == false)
+            {
+                return;
+            }
             _rb.velocity = vector * _stats.GetValue();
             if (vector == Vector2.zero) IsMoving = false;
         }
@@ -46,6 +51,7 @@ namespace Assets.Scripts.Entities.Movement
         public void MoveToTarget(bool stopIfSafeDistance = true)
         {
             var target = _navigator.GetTargetTransform();
+
             if (target != null)
             {
                 Vector2 dist = target.position - transform.position;

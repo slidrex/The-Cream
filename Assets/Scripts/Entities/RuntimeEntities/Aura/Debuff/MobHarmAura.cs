@@ -13,7 +13,7 @@ namespace Assets.Scripts.Entities.RuntimeEntities.Aura.Debuff
         protected override EntityTypeBase TargetType => new EntityType<MobTag>().Any();
         private void Start()
         {
-            var entities =  NavigationUtil.GetEntitiesOfType(TargetType, transform, Radius);
+            var entities =  NavigationUtil.GetAllEntitiesOfType(TargetType, transform, Radius);
             foreach (var entity in entities)
             {
                 entity.Stats.ModifierHolder.AddModifier(new InstantDamage(entity, _damagePercent));
