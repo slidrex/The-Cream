@@ -15,3 +15,4 @@ MonoBehaviour:
   Icon: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   Size: 3
   Entity: {fileID: 7396742923030798209, guid: 2a747a3b999fe6546a7ea8225ab52f5a, type: 3}
+  Description: {fileID: 11400000, guid: 97930d648ddbf4f4dba28956090fa1c5, type: 2}

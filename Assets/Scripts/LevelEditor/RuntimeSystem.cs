@@ -7,10 +7,13 @@ using UnityEngine;
 internal class RuntimeSystem : PlacementSystem
 {
     private List<SkillHolder> skills = new();
-    private List<EntityHolder> runtimeEntities = new();
+    private List<RuntimeEntityHolder> runtimeEntities = new();
+    private RuntimeEntityHolder entityHolder;
     private Player _player;
+    
     protected override void Awake()
     {
+        entityHolder = Resources.Load<RuntimeEntityHolder>("UI/RuntimeEntityHolder");
         base.Awake();
     }
     private void Update()
@@ -29,7 +32,7 @@ internal class RuntimeSystem : PlacementSystem
         SkillHolder skillHolder = Resources.Load<SkillHolder>("UI/SkillHolder");
         for (int i = 0; i < database.Entities.Count; i++)
         {
-            EntityHolder obj = Instantiate(entityHolder, editor.RuntimeHolderContainer);
+            RuntimeEntityHolder obj = Instantiate(entityHolder, editor.RuntimeHolderContainer);
             obj.Init(i, database, this);
             runtimeEntities.Add(obj);
         }

@@ -11,6 +11,7 @@ namespace Assets.Scripts.Databases.dto.Runtime
         public Sprite Icon;
         public byte Size;
         public BaseEntity Entity;
+        public ObjectDescription Description;
         
         public Model GetModel()
         {
