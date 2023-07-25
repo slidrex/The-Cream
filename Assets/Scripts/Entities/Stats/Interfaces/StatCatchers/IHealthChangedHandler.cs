@@ -8,6 +8,6 @@ namespace Assets.Scripts.Entities.Stats.Interfaces.StatCatchers
 {
     internal interface IHealthChangedHandler
     {
-        Action<int> OnHealthChanged { get; set; }
+        Action<int, int, Entity> OnHealthChanged { get; set; }
     }
 }

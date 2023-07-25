@@ -14,9 +14,10 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             IDamageable damageable = entity as IDamageable;
             IHealthChangedHandler changeHealthHandler = entity as IHealthChangedHandler;
             int maxHealth = entity.Stats.GetValueInt<MaxHealthStat>();
+            int oldHealth = damageable.CurrentHealth;
             damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth - damage, 0, maxHealth);
             
-            changeHealthHandler?.OnHealthChanged?.Invoke(damageable.CurrentHealth);
+            changeHealthHandler?.OnHealthChanged?.Invoke(oldHealth, damageable.CurrentHealth, dealer);
             if(damageable.CurrentHealth == 0)
             {
                 LevelCompositeRoot.Instance.LevelInfo.OnEntityDie.Invoke(entity);
@@ -30,27 +31,29 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             IDamageable damageable = entity as IDamageable;
             IHealthChangedHandler changeHealthHandler = entity as IHealthChangedHandler;
             int maxHealth = entity.Stats.GetValueInt<MaxHealthStat>();
-
+            int oldHealth = damageable.CurrentHealth;
             damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth + heal, 0, maxHealth);
-            changeHealthHandler?.OnHealthChanged.Invoke(damageable.CurrentHealth);
+            changeHealthHandler?.OnHealthChanged.Invoke(oldHealth, damageable.CurrentHealth, null);
 
         }
         public static void SetHealth(Entity entity, int health) 
         {
             var damageable = entity as IDamageable;
             var changeHealthHandler = entity as IHealthChangedHandler;
+            int oldHealth = damageable.CurrentHealth;
             damageable.CurrentHealth = health;
-            if(changeHealthHandler != null)
-                changeHealthHandler.OnHealthChanged?.Invoke(damageable.CurrentHealth);
+
+            if (changeHealthHandler != null)
+                changeHealthHandler.OnHealthChanged?.Invoke(oldHealth, damageable.CurrentHealth, null);
         }
         public static void ResetHealth(Entity entity)
         {
             IDamageable damageable = entity as IDamageable;
             IHealthChangedHandler changeHealthHandler = entity as IHealthChangedHandler;
             int maxHealth = entity.Stats.GetValueInt<MaxHealthStat>();
-
+            int oldHealth = damageable.CurrentHealth;
             damageable.CurrentHealth = maxHealth;
-            changeHealthHandler?.OnHealthChanged?.Invoke(damageable.CurrentHealth);
+            changeHealthHandler?.OnHealthChanged?.Invoke(oldHealth, maxHealth, null);
         }
     }
 }

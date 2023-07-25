@@ -10,5 +10,6 @@ namespace Assets.Scripts.Entities.Navigation.EntityType
     {
         public abstract bool MatchesEntityType(Entity entityType);
         public abstract bool MatchesTag(Entity entityType);
+        public abstract bool MatchesTag(EntityTypeBase entityType);
     }
 }

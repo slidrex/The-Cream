@@ -7,7 +7,8 @@ using UnityEngine;
 internal class RuntimeSystem : PlacementSystem
 {
     private List<SkillHolder> skills = new();
-    private List<EntityHolder> runtimeEntities = new(); 
+    private List<EntityHolder> runtimeEntities = new();
+    private Player _player;
     protected override void Awake()
     {
         base.Awake();
@@ -34,12 +35,12 @@ internal class RuntimeSystem : PlacementSystem
         }
 
         List <PlayerSkillModel.Model> list = Editor.Instance.PlayerSpace.GetPlayerSkillModels();
-        Player player = Editor.Instance.PlayerSpace.GetCharacterModel().Player;
+        if (_player == null) _player = FindObjectOfType<Player>();
 
         for (int i = 0; i < list.Count; i++)
         {
             var obj = Instantiate(skillHolder, editor.RuntimePlayerContainer);
-            obj.Init(list[i].Skill, player);
+            obj.Init(list[i].Skill, _player);
             skills.Add(obj);
         }
     }

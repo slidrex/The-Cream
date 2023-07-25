@@ -24,7 +24,7 @@ namespace Assets.Scripts.Entities.Brain.Boss.Bossbar
             var healthChangedHandler = entity as IHealthChangedHandler;
             _barFill.color = bossbar.BarColor;
             if (healthChangedHandler == null) throw new NullReferenceException("Entity" + entity.name + " must have IHealthChangedHandler interface.");
-            healthChangedHandler.OnHealthChanged += (int newHealth) => OnHealthChanged(entity as IDamageable, entity.Stats.GetValueInt<MaxHealthStat>());
+            healthChangedHandler.OnHealthChanged += (int oldHealth, int newHealth, Entity dealer) => OnHealthChanged(entity as IDamageable, entity.Stats.GetValueInt<MaxHealthStat>());
         }
         private void OnHealthChanged(IDamageable health, int maxHealth)
         {

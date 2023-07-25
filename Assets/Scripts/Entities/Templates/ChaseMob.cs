@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Attack;
+using Assets.Scripts.Entities.Mobs;
 using Assets.Scripts.Entities.Movement;
 using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Stats.Interfaces.Templates;
@@ -8,12 +9,10 @@ namespace Assets.Scripts.Entities.Templates
 {
     [UnityEngine.RequireComponent(typeof(MobBaseAttack))]
     [UnityEngine.RequireComponent(typeof(EntityMovement))]
-    internal abstract class ChaseMob : Entity, IBaseMobStatsProvider
+    internal abstract class ChaseMob : Mob, IBaseMobStatsProvider
     {
         public override EntityTypeBase ThisType => new EntityType<MobTag>(MobTag.AGGRESSIVE);
         public int CurrentHealth { get; set; }
-
-        public abstract byte SpaceRequired { get; }
 
         public void Damage(int damage, Entity deler)
         {
@@ -25,13 +24,13 @@ namespace Assets.Scripts.Entities.Templates
             EntityHealthStrategy.Heal(this, heal);
         }
         
-        public void OnContruct()
+        public override void OnContruct()
         {
-            
+            base.OnContruct();
             Editor.Editor.Instance._spaceController.ChangeSpace(SpaceRequired);
         }
 
-        public void OnDeconstruct()
+        public override void OnDeconstruct()
         {
             Editor.Editor.Instance._spaceController.ChangeSpace(-SpaceRequired);
         }

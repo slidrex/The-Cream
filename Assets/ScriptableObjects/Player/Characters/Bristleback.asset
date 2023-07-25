@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed8f7c2e941c6d45be5cb0613f4d7c9, type: 3}
   m_Name: Bristleback
   m_EditorClassIdentifier: 
-  Player: {fileID: 4772354945443665560, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
-  ManaPool: 30
+  Player: {fileID: 8589825427242544196, guid: d7cf167cfe01a134fba372c3face9761, type: 3}
+  ManaPool: 50
   _skills:
-  - {fileID: 11400000, guid: 10b2e584a7b6a5842afa38a54475b77e, type: 2}
+  - {fileID: 11400000, guid: cd8679cbe06549a438caae1a869cbc66, type: 2}

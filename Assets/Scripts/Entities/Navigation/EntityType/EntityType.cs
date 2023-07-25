@@ -26,7 +26,11 @@ namespace Assets.Scripts.Entities.Navigation.EntityType
 
         public override bool MatchesTag(Entity entity)
         {
-            if (entity.ThisType is EntityType<T> type)
+            return MatchesTag(entity.ThisType);
+        }
+        public override bool MatchesTag(EntityTypeBase targetTag)
+        {
+            if (targetTag is EntityType<T> type)
             {
                 if (_types.Length == 0) return true;
                 foreach (var tag in type.GetTags())

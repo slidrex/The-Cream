@@ -28,7 +28,7 @@ namespace Assets.Scripts.Entities.Util.UIBars
             if (_damageComponent == null || _changeHealthHandler == null) throw new NullReferenceException("Entity " + _entity.name + " has missing interfaces. Please, make sure that entity has IDamageable and IChangeHealthHandler interfaces.");
             _changeHealthHandler.OnHealthChanged += UpdateBar;
         }
-        private void UpdateBar(int newHealth)
+        private void UpdateBar(int newHealth, int oldHealth, Entity dealer)
         {
             if (_barText != null) _barText.text = _damageComponent.CurrentHealth.ToString();
             _barValue.fillAmount = _damageComponent.CurrentHealth/ _maxHealthStat.GetValue();

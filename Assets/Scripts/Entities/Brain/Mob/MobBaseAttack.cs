@@ -55,6 +55,9 @@ namespace Assets.Scripts.Entities.Attack
                 var target = Navigator.GetTarget();
                 if (target != null && target is IDamageable && Movement.IsInsideSafeDistance(target.transform)) Attack(target);
             }
+            var curTarget = Navigator.GetTargetTransform();
+            StalkTarget(curTarget);
+            
             Movement.MoveToTarget(stopIfSafeDistance: true);
         }
         protected void Attack(Entity target)

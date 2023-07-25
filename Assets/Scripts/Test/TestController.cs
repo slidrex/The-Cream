@@ -21,6 +21,7 @@ namespace Assets.Scripts.Test
         private Player _player;
         private void Awake()
         {
+            Application.targetFrameRate = 60;
             _cont = FindObjectOfType<StageController>();
             _player = FindObjectOfType<Player>();
         }

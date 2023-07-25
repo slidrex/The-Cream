@@ -18,8 +18,10 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Dummy
 
         public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
 
-        public Action<int> OnHealthChanged { get; set; }
+        public Action<int, int, Entity> OnHealthChanged { get; set; }
 
         public override AttributeHolder Stats => new AttributeHolder(new SpeedStat(2), new MaxHealthStat(10), new DamageStat(1), new AttackSpeedStat(1));
+
+        public override int OnDieExp => 8;
     }
 }

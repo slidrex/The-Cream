@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Skills
 {
-    [CreateAssetMenu(menuName = "Cream/Database/Character/Skill/New Active")]
     internal class PlayerActiveSkill : PlayerSkill
     {
         public int BaseManacost;

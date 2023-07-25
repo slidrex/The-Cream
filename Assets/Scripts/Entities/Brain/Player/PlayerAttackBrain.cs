@@ -56,6 +56,7 @@ namespace Assets.Scripts.Entities.Brain.Player
                 var targetEntity = Navigator.GetTarget();
                 if (targetEntity != null && targetEntity is IDamageable && Movement.IsInsideSafeDistance(targetEntity.transform)) Attack(targetEntity);
             }
+            StalkTarget(Navigator.GetTargetTransform());
             Movement.MoveToTarget(stopIfSafeDistance: !_ignoreSafeDistance);
         }
 

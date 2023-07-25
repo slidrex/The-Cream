@@ -31,7 +31,7 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
         {
             if (entity is IDamageable damageHandler && entity is IHealthChangedHandler handler && _pullUtil.TryRegister(entity, register, out var e))
             {
-                handler.OnHealthChanged += (int newHealth) => OnTargetChangeHealth(e, newHealth);
+                handler.OnHealthChanged += (int newHealth, int oldHealth, Entity dealer) => OnTargetChangeHealth(e, newHealth);
             }
         }
         private void OnTargetChangeHealth(PullingUtil.PullableEntity entity, int newHealth)
