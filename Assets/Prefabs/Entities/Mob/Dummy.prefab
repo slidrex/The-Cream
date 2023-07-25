@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 309936496767485800}
   - component: {fileID: 309936496767485793}
   - component: {fileID: 309936496767485796}
-  - component: {fileID: 309936496767485792}
-  - component: {fileID: 309936496767485803}
-  - component: {fileID: 309936496767485799}
+  - component: {fileID: 7353359621352743833}
+  - component: {fileID: 1899349273012876766}
+  - component: {fileID: 5139069519955256664}
+  - component: {fileID: 6388336068608838081}
+  - component: {fileID: 8142806653055297119}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Untagged
@@ -149,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3411e19265dabc4e9eeb1c60b3790da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &309936496767485792
+--- !u!114 &7353359621352743833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,10 +160,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 309936496767485810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d6fd13119669a498ba75581e2edc42, type: 3}
+  m_Script: {fileID: 11500000, guid: fac7406a943da0e439c0a74a81927fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &309936496767485803
+  _agentColliderSize: 1
+  _radius: 1
+--- !u!114 &1899349273012876766
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,10 +174,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 309936496767485810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6374b0829daae4e91b7be6d8810d55, type: 3}
+  m_Script: {fileID: 11500000, guid: e8969ca9ebdec6e4499f04cc7eda5ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &309936496767485799
+  targetRechedThreshold: 2
+--- !u!114 &5139069519955256664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,7 +187,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 309936496767485810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1e4b045cb06c64ca157e186c341594, type: 3}
+  m_Script: {fileID: 11500000, guid: ae02eb337a8e8614fbb503ad1e3450ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 1
+  targets: []
+  obstacles: []
+  currentTarget: {fileID: 0}
+--- !u!114 &6388336068608838081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309936496767485810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3838a3d3c8fd3341bec78d367b2f605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 7
+  aiData: {fileID: 5139069519955256664}
+--- !u!114 &8142806653055297119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309936496767485810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea64c852bc7bd5347bbc5a14f4ad71f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

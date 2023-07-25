@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Brain
 {
-    [RequireComponent(typeof(Entity))]
     internal class EntityBrain : MonoBehaviour
     {
         public enum SightDirection

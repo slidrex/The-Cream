@@ -7,8 +7,8 @@ using Assets.Scripts.Entities.Stats.Strategies;
 
 namespace Assets.Scripts.Entities.Templates
 {
-    [UnityEngine.RequireComponent(typeof(MobBaseAttack))]
-    [UnityEngine.RequireComponent(typeof(EntityMovement))]
+    //[UnityEngine.RequireComponent(typeof(MobBaseAttack))]
+    //[UnityEngine.RequireComponent(typeof(EntityMovement))]
     internal abstract class ChaseMob : Mob, IBaseMobStatsProvider
     {
         public override EntityTypeBase ThisType => new EntityType<MobTag>(MobTag.AGGRESSIVE);
