@@ -9,13 +9,11 @@ internal abstract class PlacementSystem : MonoBehaviour
     protected GridData gridData = new();
     protected Grid grid;
     protected Tilemap limitingTilemap;
-    protected EntityHolder entityHolder;
     protected int selectedEntityIndex = -1;
     public Action OnPlace, OnDelete;
     protected Editor editor;
     protected virtual void Awake()
     {
-        entityHolder = Resources.Load<EntityHolder>("UI/EntityHolder");
         editor = Editor.Instance;
         grid = editor.GetGrid();
         limitingTilemap = editor.LimitingTileMap;
