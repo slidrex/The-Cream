@@ -820,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b9da272c4309f498c4f136dc95e312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpaceReqiured: 32
+  maxSpaceReqiured: 48
   spaceRequired: {fileID: 3652956625722863341}
 --- !u!1 &3652956624823960637
 GameObject:

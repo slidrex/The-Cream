@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   Size: 2
-  Entity: {fileID: 6504446304603074611, guid: 446977eaf2433154ea7c87404701a39b, type: 3}
+  Entity: {fileID: 4982231941307471787, guid: 3dc9ef6332f5a5b4bb89c24494225b09, type: 3}
   Description: {fileID: 11400000, guid: 77f5c087835ae014b805ed462ef5d631, type: 2}

@@ -4836,6 +4836,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigDummy
       objectReference: {fileID: 0}
+    - target: {fileID: 566162531183199609, guid: a2059c4518894364f94ef4313c0a553f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2059c4518894364f94ef4313c0a553f, type: 3}
 --- !u!4 &848267209 stripped

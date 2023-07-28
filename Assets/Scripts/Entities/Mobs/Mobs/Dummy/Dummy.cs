@@ -18,7 +18,7 @@ namespace Assets.Scripts.Entities.Movement.Mobs.Dummy
 {
     internal class Dummy : ChaseMob, IHealthChangedHandler
     {
-        public override byte SpaceRequired => 8;
+        public override byte SpaceRequired => 4;
         
         public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
 

@@ -7,7 +7,7 @@ using UnityEngine;
 
 internal class EditSystem : PlacementSystem
 {
-    private List<GameObject> placedEntities = new();
+    private List<BaseEntity> placedEntities = new();
     [SerializeField] private List<EditorEntityHolder> holders = new();
     private EditorEntityHolder entityHolder;
     private void Update()
@@ -54,8 +54,10 @@ internal class EditSystem : PlacementSystem
         var model = database.Entities[selectedEntityIndex].GetModel();
         var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
 
-        placedEntities.Add(entity.gameObject);
+        placedEntities.Add(entity);
+
         ((IPlaceable)entity).OnContruct();
+        editor._spaceController.ChangeSpace((entity as IEditorSpaceRequired).SpaceRequired);
 
         gridData.AddEntityAt(gridPos, model.Size,
             selectedEntityIndex, placedEntities.Count - 1);
@@ -75,12 +77,14 @@ internal class EditSystem : PlacementSystem
             if (id < 0) return;
             else
             {
-                if (placedEntities.Count <= id || placedEntities[id] == null) return;
+                var entity = placedEntities[id];
+                if (placedEntities.Count <= id || entity == null) return;
                 else
                 {
-                    placedEntities[id].GetComponent<IPlaceable>().OnDeconstruct();
+                    entity.GetComponent<IPlaceable>().OnDeconstruct();
+                    editor._spaceController.ChangeSpace(-(entity as IEditorSpaceRequired).SpaceRequired);
                     selectedData.RemoveObjectAt(gridPos);
-                    Destroy(placedEntities[id]);
+                    Destroy(entity.gameObject);
                     placedEntities[id] = null;
                 }
             }

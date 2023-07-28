@@ -7,8 +7,6 @@ using Assets.Scripts.Entities.Stats.Strategies;
 
 namespace Assets.Scripts.Entities.Templates
 {
-    //[UnityEngine.RequireComponent(typeof(MobBaseAttack))]
-    //[UnityEngine.RequireComponent(typeof(EntityMovement))]
     internal abstract class ChaseMob : Mob, IBaseMobStatsProvider
     {
         public override EntityTypeBase ThisType => new EntityType<MobTag>(MobTag.AGGRESSIVE);
@@ -22,17 +20,6 @@ namespace Assets.Scripts.Entities.Templates
         public void Heal(int heal)
         {
             EntityHealthStrategy.Heal(this, heal);
-        }
-        
-        public override void OnContruct()
-        {
-            base.OnContruct();
-            Editor.Editor.Instance._spaceController.ChangeSpace(SpaceRequired);
-        }
-
-        public override void OnDeconstruct()
-        {
-            Editor.Editor.Instance._spaceController.ChangeSpace(-SpaceRequired);
         }
 
         public virtual void OnDie()

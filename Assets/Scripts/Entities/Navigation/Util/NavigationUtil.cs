@@ -21,6 +21,10 @@ namespace Assets.Scripts.Entities.Navigation.Util
         {
             return GetEntitiesInRadius(x => x.HousingElement == origin.HousingElement, type, origin.transform, radius);
         }
+        public static Entity GetClosestEntityOfType(EntityTypeBase targetType, Transform origin)
+        {
+            return GetEntitiesInRadius(x => x != null, targetType, origin).OrderBy(x => Vector2.SqrMagnitude(x.transform.position - origin.position)).FirstOrDefault();
+        }
         private static List<Entity> GetEntitiesInRadius(Predicate<Entity> entities, EntityTypeBase type, Transform origin, float radius = NOT_ASSIGNED)
         {
             List<Entity> potentialEntities = new();

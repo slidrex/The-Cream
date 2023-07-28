@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.AI.ContextSteering;
 using Assets.Scripts.Entities.Attack;
 using Assets.Scripts.Entities.Movement.Interfaces;
 using Assets.Scripts.Entities.Navigation.Interfaces;
 using Assets.Scripts.Entities.Navigation.Pulling;
+using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using System;
 using System.Collections.Generic;
@@ -16,9 +18,13 @@ namespace Assets.Scripts.Entities.Brain.Player
     internal class PlayerAttackBrain : MobBaseAttack, IPullable
     {
         private PullInfoHolder _pullInfo;
+        private AIData _aiData;
+        private SteeringMovement _movePattern;
         protected override void Start()
         {
             base.Start();
+            _aiData = GetComponent<AIData>();
+            _movePattern = GetComponent<SteeringMovement>();
             _pullInfo = new PullInfoHolder(transform);
         }
         public void Pull(Transform pullZone)
@@ -38,12 +44,12 @@ namespace Assets.Scripts.Entities.Brain.Player
             if (_pullInfo.TryGetPullTarget(out target)) 
             {
                 _ignoreSafeDistance = true;
-                Navigator.SetTarget(target);
+                _aiData.SetTargetTransform(target);
             }
             else
             {
-                var targ = Navigator.GetNearestTargetEntity();
-                Navigator.SetTarget(targ);
+                if(_aiData.CurrentTargetEntity == null)
+                    _aiData.SetTarget(NavigationUtil.GetClosestEntityOfType(Entity.TargetType, transform));
             }
 
 
@@ -53,11 +59,13 @@ namespace Assets.Scripts.Entities.Brain.Player
             }
             else
             {
-                var targetEntity = Navigator.GetTarget();
-                if (targetEntity != null && targetEntity is IDamageable && Movement.IsInsideSafeDistance(targetEntity.transform)) Attack(targetEntity);
+                var targetEntity = _aiData.CurrentTargetEntity;
+                if (targetEntity != null && targetEntity is IDamageable && _aiData.IsReachedTarget) Attack(targetEntity);
             }
-            StalkTarget(Navigator.GetTargetTransform());
-            Movement.MoveToTarget(stopIfSafeDistance: !_ignoreSafeDistance);
+            StalkTarget(_aiData.CurrentTarget);
+            if (_ignoreSafeDistance == false)
+                Movement.SetMoveDirection(_movePattern.GetDirectionToMove());
+            else Movement.SetMoveDirection((_aiData.CurrentTarget.position - transform.position).normalized);
         }
 
     }

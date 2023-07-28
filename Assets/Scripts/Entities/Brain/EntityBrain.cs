@@ -31,7 +31,7 @@ namespace Assets.Scripts.Entities.Brain
             if(target != null)
             SetSightDirection(target.position.x < transform.position.x ? SightDirection.LEFT : SightDirection.RIGHT);
         }
-        private void Awake()
+        protected void Awake()
         {
             Entity = GetComponent<Entity>();
         }

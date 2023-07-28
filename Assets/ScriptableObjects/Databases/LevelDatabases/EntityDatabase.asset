@@ -15,4 +15,3 @@ MonoBehaviour:
   Entities:
   - {fileID: 11400000, guid: 2451c7ca99365f44d949fa053a4804ff, type: 2}
   - {fileID: 11400000, guid: fe967eca8b718fa4fb7e9fed5f48a2df, type: 2}
-  - {fileID: 11400000, guid: 846bcf5c9fef56a4da5827d0e3036bea, type: 2}
