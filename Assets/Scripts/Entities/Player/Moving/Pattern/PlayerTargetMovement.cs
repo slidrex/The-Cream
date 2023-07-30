@@ -25,21 +25,34 @@ namespace Assets.Scripts.Entities.Player.Moving
 			_safeDistance = safeDistance;
 			_target = entity.transform;
 		}
-		public Path GetPath(Seeker seeker)
+		public Path GetPath(Seeker seeker, bool isNull)
 		{
-			if (_target.hasChanged) return null;
-			return seeker.StartPath(transform.position, new Vector3(_target.position.x, _target.position.y, Camera.main.transform.position.z));
+			if (_target != null && !_target.transform.hasChanged && isNull == false) return null;
+			_target.transform.hasChanged = false;
+			return seeker.StartPath(transform.position, new Vector3(_target.position.x, _target.position.y, _target.position.z));
 
 		}
-		public void GetMoveVector(out Vector2 moveVector, int currentWaypoint, out int newWaypoint, Path path, out bool saved)
+		public void GetMoveVectorTarget(out Vector2 moveVector, int currentWaypoint, out int newWaypoint, Path path)
 		{
 			moveVector = Vector2.zero;
 			newWaypoint = currentWaypoint;
 
-			saved = false;
-			if(_isEnemy && IsWithinSafeDistance())
+
+			if (TryGetNextWaypoint(currentWaypoint, path, out int newWay))
 			{
-				saved = true;
+				moveVector = (path.vectorPath[newWay] - transform.position).normalized;
+				newWaypoint = newWay;
+			}
+		}
+		public void GetMoveVectorEnemy(out Vector2 moveVector, int currentWaypoint, out int newWaypoint, Path path, out bool reachedTreshold)
+		{
+			moveVector = Vector2.zero;
+			newWaypoint = currentWaypoint;
+			reachedTreshold = false;
+
+			if((_target.transform.position - transform.position).sqrMagnitude <= _safeDistance * _safeDistance)
+			{
+				reachedTreshold = true;
 				return;
 			}
 			if (TryGetNextWaypoint(currentWaypoint, path, out int newWay))

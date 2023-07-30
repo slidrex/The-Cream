@@ -8,10 +8,10 @@ internal class SkillSelectButton : MonoBehaviour
     private Button button;
     private PlayerSkill skill;
     private CharacterPodium podium;
-    private void Start()
+    private void Awake()
     {
         button = GetComponent<Button>();
-        this.icon = GetComponent<Image>();
+        icon = GetComponent<Image>();
         button.onClick.AddListener(UpdateSkillDescription);
     }
     private void UpdateSkillDescription()

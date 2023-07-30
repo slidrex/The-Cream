@@ -6,6 +6,7 @@ using Assets.Scripts.Level;
 using Assets.Scripts.Level.Stages;
 using Assets.Scripts.Level.Tilemap;
 using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
+using Assets.Scripts.LevelEditor.RuntimeSpace.PlayerUtil;
 using Assets.Scripts.LevelEntry;
 using Assets.Scripts.Stage;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Assets.Editor
     {
         [SerializeField] private GameObject runtime, editor;
         public static Editor Instance { get; private set; }
+        [field: SerializeField] public PlayerMarks PlayerMarks { get; private set; }
         [field: SerializeField] public Transform EditorHolderContainer { get; private set; }
         [field: SerializeField] public Transform RuntimeHolderContainer { get; private set; }
         [field: SerializeField] public Transform RuntimePlayerContainer { get; private set; }

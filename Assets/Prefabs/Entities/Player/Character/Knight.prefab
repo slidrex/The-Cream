@@ -244,9 +244,9 @@ GameObject:
   - component: {fileID: -261140643979669422}
   - component: {fileID: 4109530090424016207}
   - component: {fileID: 2522419810639249375}
-  - component: {fileID: 3325467953365418945}
-  - component: {fileID: 7907951015128216504}
-  - component: {fileID: 2991993951402659016}
+  - component: {fileID: 7519891544187190642}
+  - component: {fileID: 2268390383348490491}
+  - component: {fileID: 801206661037756170}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ea81f6b69b10041a94477e509d6f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3325467953365418945
+--- !u!114 &7519891544187190642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -442,10 +442,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4109530090424016220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78e5a7ddc9c0a3499d2bc8c2c03c362, type: 3}
+  m_Script: {fileID: 11500000, guid: eadf935fca86f9448a219e557bc2a328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7907951015128216504
+--- !u!114 &2268390383348490491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -454,10 +454,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4109530090424016220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b670e0b66369144e9fca49354666696, type: 3}
+  m_Script: {fileID: 11500000, guid: 1367e64b067ef9e438dc03a704fc7da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2991993951402659016
+--- !u!114 &801206661037756170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -466,10 +466,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4109530090424016220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe7566fb8110f3c489578f9819ff8b6a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e8e4a6c0e9ad424ba6b2b01a633035e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _safeDistance: 0.92
+  _safeDistance: 1.28
   _tilemapLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -21,20 +21,24 @@ namespace Assets.Scripts.Entities.Move
             _stats = AttachedEntity.Stats.GetAttribute<SpeedStat>();
             if (_stats == null) throw new Exception("Entity doesn't have IMoveable attribute");
         }
-        public void SetMoveDirection(Vector2 vector, bool workInEditMode = false)
+        public void SetMoveDirection(Vector2 vector)
         {
 
-            if (!workInEditMode && LevelCompositeRoot.Instance.Runner.IsLevelRunning == false)
+            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning == false)
             {
                 return;
             }
-            _rb.velocity = vector * _stats.GetValue();
-            if (vector == Vector2.zero) IsMoving = false;
+
+			_rb.velocity = vector * _stats.GetValue();
+            if (vector == Vector2.zero)
+            {
+                IsMoving = false;
+            }
         }
         public void Stop()
         {
             if (_rb.velocity != Vector2.zero) _rb.velocity = Vector2.zero;
-            IsMoving = false;
+			IsMoving = false;
         }
         public void OnLevelRun(bool run)
         {
