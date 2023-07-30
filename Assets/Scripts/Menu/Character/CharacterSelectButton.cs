@@ -8,10 +8,47 @@ namespace Assets.Scripts.Menu.Character
     [RequireComponent(typeof(Button))]
     internal class CharacterSelectButton : MonoBehaviour
     {
+        [SerializeField] private Image icon;
+        [SerializeField] private SkillSelectButton skillButton;
+        [field: SerializeField] public bool IsOpened { get; private set; } = true;
         public CharacterDatabaseModel.CharacterID CharacterID;
+        private CharacterDatabaseModel model;
+        private CharacterPodium podium;
+        private Button button;
         private void Awake()
         {
-            GetComponent<Button>().onClick.AddListener(() => CharacterPrefs.SelectPlayer(CharacterID));
+            button = GetComponentInParent<Button>();
+            if (IsOpened)
+            {
+                button.onClick.AddListener(() => CharacterPrefs.SelectPlayer(CharacterID));
+                button.onClick.AddListener(() => podium.InitPodium(icon.sprite, model.Character.Description.Name));
+                button.onClick.AddListener(InitSkills);
+            }
+
+        }
+
+        private void InitSkills()
+        {
+            podium.ClearSkillDescripion();
+            for (int i = 0; i < model.Character.GetSkills().Length; i++)
+            {
+                podium.GetSkillButtons()[i].Init(model.Character.GetSkills()[i], model.Character.GetSkills()[i].Icon, podium);
+            }
+            StartCoroutine(podium.LayoutUpdater());
+        }
+        public void SetPodium(CharacterPodium podium)
+        {
+            this.podium = podium;
+        }
+        public void SetCharacter(CharacterDatabaseModel.CharacterID id,
+                                          CharacterDatabaseModel model)
+        {
+            CharacterID = id;
+            this.model = model;
+        }
+        public void SetIcon(Sprite icon)
+        {
+            this.icon.sprite = icon;
         }
     }
 }

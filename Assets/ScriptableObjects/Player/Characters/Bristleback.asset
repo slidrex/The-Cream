@@ -16,3 +16,4 @@ MonoBehaviour:
   ManaPool: 50
   _skills:
   - {fileID: 11400000, guid: cd8679cbe06549a438caae1a869cbc66, type: 2}
+  <Description>k__BackingField: {fileID: 11400000, guid: c0cfe29a50902fe4eab451e9f76daa8b, type: 2}

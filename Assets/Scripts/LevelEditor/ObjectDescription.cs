@@ -2,7 +2,7 @@ using Assets.Scripts.Entities.Navigation.Pulling;
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Cream/Database/New entity description")]
+[CreateAssetMenu(menuName = "Cream/Database/Descriptions/New object description")]
 public class ObjectDescription : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }

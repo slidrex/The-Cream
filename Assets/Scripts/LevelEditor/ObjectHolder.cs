@@ -1,10 +1,9 @@
 ﻿using Assets.Editor;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Assets.Scripts.Databases.dto.Runtime;
+using System.Collections;
 
 internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -12,9 +11,9 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     [SerializeField] protected GameObject DescriptionObject;
     [SerializeField] protected TextMeshProUGUI Name, Description, Cost;
     [SerializeField] protected Transform CharacteristicsParent;
-    protected ObjectCharacteristic CharacteristicObject;
+    protected ObjectCharacteristic[] CharacteristicObjects;
     protected Button button;
-    private const float TIME_TO_APPEAR = 0.5f;
+    private const float TIME_TO_APPEAR = 0.4f;
     private float currentTime = 0;
     private bool isCursorInObject = false;
     public virtual void Init(int id, EntityDatabase data, PlacementSystem system)
@@ -32,14 +31,17 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     }
     protected virtual void ConfigureDescription(int id, EntityDatabase data)
     {
-        CharacteristicObject = Resources.Load<ObjectCharacteristic>("UI/ObjectCharacteristic");
+        CharacteristicObjects = CharacteristicsParent.GetComponentsInChildren<ObjectCharacteristic>();
+        for (int i = 0; i < CharacteristicObjects.Length; i++)
+            CharacteristicObjects[i].gameObject.SetActive(false);
+
         Name.text = data.Entities[id].Description.Name;
         Description.text = data.Entities[id].Description.Description;
         
         for (int i = 0; i < data.Entities[id].Description.Characteristics.Length; i++)
         {
-            var charac = Instantiate(CharacteristicObject, CharacteristicsParent);
-            charac.Init(GetIcon(data.Entities[id].Description.Characteristics[i].IconType, data, id, i), data.Entities[id].Description.Characteristics[i].Value);
+            CharacteristicObjects[i].gameObject.SetActive(true);
+            CharacteristicObjects[i].Init(GetIcon(data.Entities[id].Description.Characteristics[i].IconType, data, id, i), data.Entities[id].Description.Characteristics[i].Value);
         }
     }
     private Sprite GetIcon(ObjectDescription.IconType iconType, EntityDatabase data, int id, int i)
@@ -73,6 +75,7 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
             else if(currentTime > TIME_TO_APPEAR && DescriptionObject.activeSelf == false)
             {
                 DescriptionObject.SetActive(true);
+                StartCoroutine(LayoutUpdater());
             }
         }
     }
@@ -87,5 +90,10 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     {
         currentTime = 0;
         isCursorInObject = true;
+    }
+    public IEnumerator LayoutUpdater()
+    {
+        yield return new WaitForEndOfFrame();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(DescriptionObject.GetComponent<RectTransform>());
     }
 }

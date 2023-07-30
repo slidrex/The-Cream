@@ -4,8 +4,15 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public void LoadScene(int id)
+    private int selectedID = -1;
+ 
+    public void SceneID(int id)
     {
-        SceneManager.LoadScene(id);
+        selectedID = id;
+    }
+    public void LoadScene()
+    {
+        if(selectedID >= 0)
+            SceneManager.LoadScene(selectedID);
     }
 }

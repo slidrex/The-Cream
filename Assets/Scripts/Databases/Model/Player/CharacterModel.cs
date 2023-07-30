@@ -11,6 +11,7 @@ namespace Assets.Scripts.Databases.Model.Player
         public int ManaPool;
         private bool _configured;
         [SerializeField] private PlayerSkill[] _skills;
+        [field: SerializeField] public CharacterDescription Description { get; private set; } 
         public void ConfigureSkills()
         {
             if (_configured) return;
@@ -25,6 +26,7 @@ namespace Assets.Scripts.Databases.Model.Player
         {
             _configured = false;
         }
+        public PlayerSkill[] GetSkills() => _skills;
         public PlayerSkill[] Skills { get; set; }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using Assets.Scripts.Databases.Model.Character;
 using Assets.Scripts.Databases.Model.Player;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Databases.Character
@@ -21,5 +17,6 @@ namespace Assets.Scripts.Databases.Character
             }
             throw new NullReferenceException();
         }
+        public CharacterDatabaseModel[] GetModels() => _models;
     }
 }

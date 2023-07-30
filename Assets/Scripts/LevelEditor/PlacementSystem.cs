@@ -29,5 +29,7 @@ internal abstract class PlacementSystem : MonoBehaviour
     }
     public abstract void ClearContainer();
     public abstract void FillContainer();
+    public void SetNewEntityDatabase(EntityDatabase database) =>
+        this.database = database;
     public int GetSelectedEntityIndex() => selectedEntityIndex;
 }

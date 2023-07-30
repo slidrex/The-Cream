@@ -10,6 +10,7 @@ namespace Assets.Scripts.Entities.Player
     internal abstract class PlayerSkill : ScriptableObject
     {
         public Sprite Icon;
+        [field: SerializeField] public SkillDescription Description { get; private set; }
         public virtual void OnStart(Player player)
         {
             
