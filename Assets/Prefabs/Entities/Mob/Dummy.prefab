@@ -122,7 +122,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 309936496767485810}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 97cd563894fac8041b1e22d1504e85a3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -178,9 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showGizmos: 1
-  _radius: 2.4
-  <AgentColliderSize>k__BackingField: 0.51
-  SafeDistance: 0.97
+  _criticalObstacleDistance: 0.5
+  SafeDistance: 1
 --- !u!114 &3023007680116931206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0d076ebcf7e724ba6499c679ba124a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _angularSpeed: 0
+  MIN_afkTime: 0.3
+  MAX_afkTime: 4.6
 --- !u!114 &-7458515315267423035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,5 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1e4b045cb06c64ca157e186c341594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minSafe: 0.9
-  _maxSafe: 2
+  _showGizmos: 0
+  _minCircleDistance: 0
+  _maxCircleDistance: 0

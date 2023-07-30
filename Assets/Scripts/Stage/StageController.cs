@@ -1,7 +1,6 @@
 ﻿using Assets.Editor;
 using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities;
-using Assets.Scripts.Entities.Navigation.Navigator;
 using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Stats.Interfaces.States;
@@ -156,6 +155,7 @@ namespace Assets.Scripts.Stage
             _camera.transform.position = new Vector3(_currentElement.transform.position.x, _currentElement.transform.position.y, _camera.transform.position.z);
             _player.transform.position = _currentElement.PlayerPosition.position;
             _player.HousingElement = _currentElement;
+            Instance._spaceController.SetMaxSpaceReqiured(element.EditorSpaceRequired);
             _camera.orthographicSize = _currentElement.CameraSize;
             if (LevelCompositeRoot.Instance.Runner.IsLevelRunning) LevelCompositeRoot.Instance.Runner.StopLevel(true);
         }

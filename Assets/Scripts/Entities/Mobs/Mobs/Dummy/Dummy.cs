@@ -1,12 +1,8 @@
 ﻿using Assets.Scripts.Entities.Mobs;
 using Assets.Scripts.Entities.Navigation.EntityType;
-using Assets.Scripts.Entities.Stats;
 using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
-using Assets.Scripts.Entities.Stats.Interfaces.Stats;
-using Assets.Scripts.Entities.Stats.Interfaces.Templates;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
-using Assets.Scripts.Entities.Stats.Strategies;
 using Assets.Scripts.Entities.Templates;
 using System;
 using System.Collections.Generic;
@@ -14,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Entities.Movement.Mobs.Dummy
+namespace Assets.Scripts.Entities.Move.Mobs.Dummy
 {
     internal class Dummy : ChaseMob, IHealthChangedHandler
     {

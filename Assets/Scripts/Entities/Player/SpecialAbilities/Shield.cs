@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Brain;
+﻿using Assets.Scripts.Entities.AI.SightStalking;
+using Assets.Scripts.Entities.Brain;
 using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Environment;
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Entities.Player.SpecialAbilities
         public void Configure(Entity entity)
         {
             _issuer = entity;
-            transform.position = entity.transform.position + Vector3.right * entity.GetComponent<EntityBrain>().CurrentSight;
+            transform.position = entity.transform.position + Vector3.right * entity.GetComponent<Facing>().CurrentSight;
             Destroy(gameObject, lifetime);
             ParticlesUtil.SpawnParticles(_particles, transform);
         }

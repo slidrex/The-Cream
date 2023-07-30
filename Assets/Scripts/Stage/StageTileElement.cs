@@ -12,6 +12,7 @@ namespace Assets.Scripts.Stage
     internal class StageTileElement : MonoBehaviour
     {
         public Transform PlayerPosition;
+        [field:SerializeField] public int EditorSpaceRequired { get; set; } = 16;
         public int CameraSize = 5;
         public RelationElement[] Elements;
         [Serializable]

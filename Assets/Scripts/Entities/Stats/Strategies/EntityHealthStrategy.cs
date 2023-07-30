@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.EntityExperienceLevel;
 using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
+using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using UnityEngine;
@@ -13,11 +14,18 @@ namespace Assets.Scripts.Entities.Stats.Strategies
         {
             IDamageable damageable = entity as IDamageable;
             IHealthChangedHandler changeHealthHandler = entity as IHealthChangedHandler;
+            IInvulnerable invulnerable = entity as IInvulnerable;
+
+            if (invulnerable != null && invulnerable.IsInvulnerable) return;
+
             int maxHealth = entity.Stats.GetValueInt<MaxHealthStat>();
             int oldHealth = damageable.CurrentHealth;
-            damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth - damage, 0, maxHealth);
             
+            
+            damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth - damage, 0, maxHealth);
             changeHealthHandler?.OnHealthChanged?.Invoke(oldHealth, damageable.CurrentHealth, dealer);
+            
+            
             if(damageable.CurrentHealth == 0)
             {
                 LevelCompositeRoot.Instance.LevelInfo.OnEntityDie.Invoke(entity);

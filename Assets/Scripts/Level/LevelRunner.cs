@@ -18,7 +18,7 @@ namespace Assets.Scripts.Level
         public bool IsLevelRunning { get; private set; }
         internal void Configure()
         {
-            _resetHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.Select(x => x.GetComponent<IResettable>()).NotNull();
+            _resetHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<IResettable>()).NotNull();
             _runHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<ILevelRunHandler>()).NotNull();
         }
         public void RunLevel()
@@ -47,10 +47,11 @@ namespace Assets.Scripts.Level
         }
         private void TriggerResets(bool before)
         {
-            foreach(var obj in _resetHandlers)
-            {
-                obj.OnReset();
-            }
+            if(before)
+                foreach(var obj in _resetHandlers)
+                {
+                    obj.OnReset();
+                }
 
             foreach(var entity in LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities)
             {

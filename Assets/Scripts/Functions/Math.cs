@@ -24,5 +24,6 @@ namespace Assets.Scripts.Functions
             }
             return findIndex == -1 ? null : objects[findIndex];
         }
-    }
+        public static Vector2 Abs(Vector2 v) => new Vector2(Mathf.Abs(v.x), Mathf.Abs(v.y));
+	}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpaceController : MonoBehaviour
 {
-    [SerializeField] private int maxSpaceReqiured;
+    private int maxSpaceReqiured;
     [SerializeField] private TextMeshProUGUI spaceRequired;
     public Action<int> OnSpaceChanged { get; set; }
     public int CurrentSpaceReqiured { get; private set; }
