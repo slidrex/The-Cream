@@ -26,7 +26,8 @@ namespace Assets.Scripts.Stage
         {
             _staticEntities = GetComponentsInChildren<Entity>();
             ActivateStaticEntities();
-        }
+
+		}
         private void ActivateStaticEntities()
         {
             foreach (var e in _staticEntities) e.HousingElement = this;

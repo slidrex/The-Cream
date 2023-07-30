@@ -19,13 +19,13 @@ namespace Assets.Scripts.Entities.Brain.Player
     {
         private PullInfoHolder _pullInfo;
         private Facing _facing;
-        private AIData _aiData;
+        private EnvironmentData _aiData;
         private SteeringMovement _movePattern;
         protected override void Start()
         {
             base.Start();
             _facing = GetComponent<Facing>();
-            _aiData = GetComponent<AIData>();
+            _aiData = GetComponent<EnvironmentData>();
             _movePattern = GetComponent<SteeringMovement>();
             _pullInfo = new PullInfoHolder(transform);
         }

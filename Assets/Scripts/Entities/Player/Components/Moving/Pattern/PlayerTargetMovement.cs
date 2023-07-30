@@ -12,6 +12,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 	internal class PlayerTargetMovement : PlayerMovementPattern
 	{
 		private Transform _target;
+		public Entity Target { get; private set; }
 		private bool _isEnemy;
 		private float _safeDistance;
 		public void SetTarget(Transform target)
@@ -22,6 +23,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 		public void SetEnemy(Entity entity, float safeDistance)
 		{
 			_isEnemy = true;
+			Target = entity;
 			_safeDistance = safeDistance;
 			_target = entity.transform;
 		}

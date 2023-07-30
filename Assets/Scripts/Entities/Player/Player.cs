@@ -23,7 +23,7 @@ namespace Assets.Scripts.Entities.Player
         public byte CurrentLevel { get; set; }
         public int CurrentExp { get; set; }
 
-        public override AttributeHolder Stats { get; } = new AttributeHolder(new MaxHealthStat(100), new SpeedStat(2), new DamageStat(2), new AttackSpeedStat(1));
+        public override AttributeHolder Stats { get; } = new AttributeHolder(new MaxHealthStat(100), new SpeedStat(2), new DamageStat(5), new AttackSpeedStat(1));
         public int MaxHealth { get; }
         protected override void Awake()
         {

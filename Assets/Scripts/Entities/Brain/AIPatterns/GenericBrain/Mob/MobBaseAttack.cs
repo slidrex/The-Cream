@@ -24,7 +24,7 @@ namespace Assets.Scripts.Entities.Attack
         private AttackSpeedStat _attackSpeed;
         protected float _timeSinceAttack;
         protected float _timeToAttack;
-        protected AIData _data;
+        protected EnvironmentData _data;
         protected Movement Movement;
         private SteeringMovement _steeringBehaviour;
         private CircleMovement _circleMovement;
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Entities.Attack
             _facing = GetComponent<Facing>();
 			_circleMovement = GetComponent<CircleMovement>();
 			Movement = GetComponent<Movement>();
-            _data = GetComponent<AIData>();
+            _data = GetComponent<EnvironmentData>();
             _steeringBehaviour = GetComponent<SteeringMovement>();
             _steeringBehaviour.ConsiderSafeDistance = true;
             _attackComponent = Entity.Stats.GetAttribute<DamageStat>();

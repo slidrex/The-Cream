@@ -1,21 +1,17 @@
 ﻿using Assets.Scripts.Entities.AI.SightStalking;
 using Assets.Scripts.Entities.Brain;
 using Assets.Scripts.Entities.Move;
+using Assets.Scripts.Entities.Navigation.Util;
+using Assets.Scripts.Entities.Player.Components.Attacking;
 using Assets.Scripts.Entities.Util.UIPlayer;
 using Pathfinding;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Assets.Scripts.Entities.Player.Moving
 {
 	[RequireComponent(typeof(Movement), typeof(PlayerPointMovement), typeof(Facing))]
-	[RequireComponent (typeof(Seeker), typeof(PlayerTargetMovement))]
+	[RequireComponent (typeof(Seeker), typeof(PlayerTargetMovement), typeof(MeleeAttack))]
 	internal class PlayerMovement : EntityBrain<Player>
 	{
 		[SerializeField] private float _safeDistance;
@@ -27,6 +23,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 		private Movement _movement;
 		private bool _isMoving;
 		private PlayerTargetMovement _targetMovement;
+		private MeleeAttack _attack;
 		private Facing _facing;
 		private Entity _lastSelectedEntity;
 		public enum TargetType
@@ -44,6 +41,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 			_seeker = GetComponent<Seeker>();
 			_pointMovement = GetComponent<PlayerPointMovement>();
 			_movement = GetComponent<Movement>();
+			_attack = GetComponent<MeleeAttack>();
 		}
 		public override void OnReset()
 		{
@@ -78,6 +76,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 				_lastSelectedEntity = entity;
 				_lastSelectedEntity.SpriteRenderer.color = Color.magenta;
 			}
+			_path = null;
 		}
 		private void SetPoint()
 		{
@@ -106,14 +105,12 @@ namespace Assets.Scripts.Entities.Player.Moving
 				_targetMovement.SetTarget(entity.transform);
 				_targetType = TargetType.OBSTACLE;
 			}
-			_path = null;
 			SelectEntity(entity);
 			SetNewPath();
 		}
 		private void Stop()
 		{
 			_isMoving = false;
-			_path = null;
 			SelectEntity(null);
 			_movement.Stop();
 		}
@@ -129,7 +126,11 @@ namespace Assets.Scripts.Entities.Player.Moving
 		private void UpdatePlayerPosition()
 		{
 			Vector2 moveVector = Vector2.zero;
-
+			if(_targetMovement.Target == null && _targetType == TargetType.ENEMY)
+			{
+				FindNewEnemy();
+				return;
+			}
 
 			if (_targetType != TargetType.POINT && (_targetMovement.IsWithinSafeDistance() == false || _targetType == TargetType.OBSTACLE))
 			{
@@ -143,8 +144,14 @@ namespace Assets.Scripts.Entities.Player.Moving
 			}
 
 			if (_targetType == TargetType.POINT) _isMoving = _pointMovement.TryGetMoveVector(out moveVector, currentWaypoint, out currentWaypoint, _path);
-			else if(_targetType == TargetType.ENEMY) _targetMovement.GetMoveVectorEnemy(out moveVector, currentWaypoint, out currentWaypoint, _path, out bool insideRedZone);
-			else if(_targetType == TargetType.OBSTACLE) _targetMovement.GetMoveVectorTarget(out moveVector, currentWaypoint, out currentWaypoint, _path);
+			else if (_targetType == TargetType.ENEMY)
+			{
+				_targetMovement.GetMoveVectorEnemy(out moveVector, currentWaypoint, out currentWaypoint, _path, out bool insideRedZone);
+				if (insideRedZone) _attack.OnTargetInsideZone(_targetMovement.Target);
+				else _attack.OnTargetLeftZone();
+				
+			}
+			else if (_targetType == TargetType.OBSTACLE) _targetMovement.GetMoveVectorTarget(out moveVector, currentWaypoint, out currentWaypoint, _path);
 
 
 			if (moveVector != Vector2.zero)
@@ -153,6 +160,17 @@ namespace Assets.Scripts.Entities.Player.Moving
 				_facing.SetSightDirection(moveVector.x < 0 ? Facing.SightDirection.LEFT : Facing.SightDirection.RIGHT);
 			}
 			else _movement.Stop();
+		}
+		private void FindNewEnemy()
+		{
+			Stop();
+			var newEnemy = NavigationUtil.GetClosestEntityOfType(Entity.TargetType, Entity);
+			if (newEnemy != null)
+			{
+				_targetMovement.SetEnemy(newEnemy, _safeDistance);
+				SelectEntity(newEnemy);
+				SetNewPath();
+			}
 		}
 		private void OnDrawGizmos()
 		{

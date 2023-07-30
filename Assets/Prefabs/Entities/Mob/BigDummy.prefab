@@ -15,10 +15,11 @@ GameObject:
   - component: {fileID: 566162531183199596}
   - component: {fileID: 1944749432744087571}
   - component: {fileID: 629127131251959944}
-  - component: {fileID: 9051433171333655116}
   - component: {fileID: 2230067873381262464}
   - component: {fileID: 544788713806866892}
   - component: {fileID: 3505649805669349453}
+  - component: {fileID: 6552241843178092887}
+  - component: {fileID: 8144484098020790513}
   m_Layer: 0
   m_Name: BigDummy
   m_TagString: Untagged
@@ -168,18 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2571e43e8df426843b172d6b6f3bf050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9051433171333655116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566162531183199609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae02eb337a8e8614fbb503ad1e3450ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2230067873381262464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,3 +214,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6552241843178092887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566162531183199609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ea81f6b69b10041a94477e509d6f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8144484098020790513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566162531183199609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57abb633d6a1744a9dcc9bcec0a59cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

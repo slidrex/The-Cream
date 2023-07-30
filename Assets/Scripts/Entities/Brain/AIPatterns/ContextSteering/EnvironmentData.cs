@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.AI.ContextSteering
 {
-    internal sealed class AIData : MonoBehaviour, ILevelRunHandler
+    internal sealed class EnvironmentData : MonoBehaviour, ILevelRunHandler
     {
         public Collider2D[] Obstacles { get; private set; }
         public Transform CurrentTarget { get; private set; }

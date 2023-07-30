@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.AI.ContextSteering
 {
-    [RequireComponent(typeof(AIData))]
+    [RequireComponent(typeof(EnvironmentData))]
     internal class SteeringMovement : MonoBehaviour
     {
-        private AIData _aiData;
+        private EnvironmentData _aiData;
 		[SerializeField] private bool _showGizmos;
         [Header("Obstacle Movement")]
         [SerializeField] private float _criticalObstacleDistance = 0.5f;
@@ -16,7 +16,7 @@ namespace Assets.Scripts.Entities.AI.ContextSteering
         public bool ConsiderSafeDistance { get; set; }
         private void Awake()
         {
-            _aiData = GetComponent<AIData>();
+            _aiData = GetComponent<EnvironmentData>();
         }
         public Vector2 GetDirectionToMove()
         {
