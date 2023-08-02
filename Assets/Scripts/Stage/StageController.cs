@@ -152,6 +152,7 @@ namespace Assets.Scripts.Stage
         private void SetCurrentElement(StageTileElement element)
         {
             _currentElement = element;
+            element.EnableStaticEntities(true);
             _camera.transform.position = new Vector3(_currentElement.transform.position.x, _currentElement.transform.position.y, _camera.transform.position.z);
             _player.transform.position = _currentElement.PlayerPosition.position;
             _player.HousingElement = _currentElement;

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Stage
@@ -26,8 +27,13 @@ namespace Assets.Scripts.Stage
         {
             _staticEntities = GetComponentsInChildren<Entity>();
             ActivateStaticEntities();
+            EnableStaticEntities(false);
 
 		}
+        public void EnableStaticEntities(bool active)
+        {
+            foreach(var e in _staticEntities) e.gameObject.SetActive(active);
+        }
         private void ActivateStaticEntities()
         {
             foreach (var e in _staticEntities) e.HousingElement = this;

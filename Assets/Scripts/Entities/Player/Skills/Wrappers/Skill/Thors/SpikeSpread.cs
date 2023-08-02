@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Skills.Skill.Bristleback
 {
-    [CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Bristleback/Spike spread")]
+    [CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Thors/Spike spread")]
     internal class SpikeSpread : PlayerActiveSkill
     {
         [UnityEngine.SerializeField] private Bristlespike _spike;

@@ -20,7 +20,7 @@ namespace Assets.Scripts.Entities.Util.UIBars
         private IDamageable _damageComponent;
         private MaxHealthStat _maxHealthStat;
         private IHealthChangedHandler _changeHealthHandler;
-        private void Awake()
+        private void Start()
         {
             _changeHealthHandler = _entity as IHealthChangedHandler;
             _damageComponent = _entity as IDamageable;

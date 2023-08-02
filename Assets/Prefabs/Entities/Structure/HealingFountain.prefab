@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _activateInterval: 15
   _targetRadius: 0.78
+  <AlertSprite>k__BackingField: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
   _particles: {fileID: 9015309026733146343, guid: 6997884e8027d4649b6dfdaa031ed36e, type: 3}
   _damagePercentBeforePulling: 0.8
   _healingPercent: 0.3

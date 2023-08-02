@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.EntityExperienceLevel;
+using Assets.Scripts.Entities.Stats.Interfaces;
 using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
@@ -17,6 +18,19 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             IInvulnerable invulnerable = entity as IInvulnerable;
 
             if (invulnerable != null && invulnerable.IsInvulnerable) return;
+            if(entity is IDamageCorrector corrector)
+            {
+                if (corrector.Masks == null) corrector.Masks = new();
+                corrector.OnDamageIncomed?.Invoke(damage);
+                int additional = 0;
+                int multiplier = 1;
+                foreach(var layer in corrector.Masks)
+                {
+                    if (layer.Operation == AdjustmentOperation.ADD) additional += layer.Value;
+                    else multiplier *= layer.Value;
+                }
+                damage = (damage + additional) * multiplier;
+            }
 
             int maxHealth = entity.Stats.GetValueInt<MaxHealthStat>();
             int oldHealth = damageable.CurrentHealth;
