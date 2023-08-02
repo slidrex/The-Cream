@@ -22,6 +22,10 @@ namespace Assets.Scripts.Entities.Util.Config.Input
             [ActionKey.FIVETH_RUNTIME_ABILITY] = KeyCode.B,
             [ActionKey.SIXTH_RUNTIME_ABILITY] = KeyCode.N
     };
+        public static void SetKey(ActionKey key, KeyCode value)
+        {
+            Keys[key] = value;
+        }
         public enum ActionKey
         {
             FIRST_HERO_ABILITY,
