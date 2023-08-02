@@ -31,7 +31,7 @@ internal class EditSystem : PlacementSystem
         for (int i = 0; i < database.Entities.Count; i++)
         {
             EditorEntityHolder obj = Instantiate(entityHolder, editor.EditorHolderContainer);
-            obj.Init(i, database, this);
+            obj.Init(i, database, this, KeyCode.None);
             holders.Add(obj);
         }
     }

@@ -10,14 +10,16 @@ internal class SkillHolder : ObjectHolder
     private float cooldown = 0;
     private float timeToActivate = 0;
     private bool isCooldown = false;
-    public void Init(PlayerSkill skill, Player player)
+    public void Init(PlayerSkill skill, Player player, KeyCode bindedKey)
     {
+        SetBindedKey(bindedKey);
         EntityIcon.sprite = skill.Icon;
         button = GetComponent<Button>();
         skill.OnStart(player);
         if (skill is PlayerActiveSkill active)
         {
             button.onClick.AddListener(delegate { active.TryActivate(player); });
+            Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey, () => active.TryActivate(player));
             button.onClick.AddListener(OnActivate);
             Cost.text = active.BaseManacost.ToString();
             cooldown = active.BaseCooldown;

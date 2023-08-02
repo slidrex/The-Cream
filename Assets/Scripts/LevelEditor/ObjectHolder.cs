@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Scripts.Entities.Player;
+using System;
 
 internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -11,23 +13,43 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     [SerializeField] protected GameObject DescriptionObject;
     [SerializeField] protected TextMeshProUGUI Name, Description, Cost;
     [SerializeField] protected Transform CharacteristicsParent;
+    [SerializeField] private TextMeshProUGUI _bindedKey;
     protected ObjectCharacteristic[] CharacteristicObjects;
     protected Button button;
     private const float TIME_TO_APPEAR = 0.4f;
     private float currentTime = 0;
     private bool isCursorInObject = false;
-    public virtual void Init(int id, EntityDatabase data, PlacementSystem system)
+    public virtual void Init(int id, EntityDatabase data, PlacementSystem system, KeyCode bindedKey)
     {
         EntityIcon.sprite = data.Entities[id].Icon;
         button = GetComponent<Button>();
-        button.onClick.AddListener(delegate { system.SetCurrentEntityID(id); });
-        button.onClick.AddListener(delegate {
+        UnityEngine.Events.UnityAction firstAct = () => system.SetCurrentEntityID(id);
+        UnityEngine.Events.UnityAction secondAct = () =>
+        {
             Editor.Instance._inputManager._previewEntity.Init(
                 data.Entities[id].Entity.transform.localScale,
                 data.Entities[id].Icon,
                 data.Entities[id].GetModel());
-        });
+        };
+        button.onClick.AddListener(firstAct);
+        button.onClick.AddListener(secondAct);
+        SetBindedKey(bindedKey);
+        if(bindedKey != KeyCode.None)
+        Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey,() => InvokeActs(firstAct, secondAct));
         ConfigureDescription(id, data);
+    }
+    private void InvokeActs(UnityEngine.Events.UnityAction first, UnityEngine.Events.UnityAction second)
+    {
+        first.Invoke();
+        second.Invoke();
+    }
+    public void SetBindedKey(KeyCode key)
+    {
+        if (key == KeyCode.None)
+        {
+            if (_bindedKey != null) _bindedKey.text = "";
+        }
+        else _bindedKey.text = key.ToString();
     }
     protected virtual void ConfigureDescription(int id, EntityDatabase data)
     {

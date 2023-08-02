@@ -1,6 +1,7 @@
 using Assets.Editor;
 using Assets.Scripts.Databases.dto.Units;
 using Assets.Scripts.Entities.Player;
+using Assets.Scripts.Entities.Util.Config.Input;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +34,7 @@ internal class RuntimeSystem : PlacementSystem
         for (int i = 0; i < database.Entities.Count; i++)
         {
             RuntimeEntityHolder obj = Instantiate(entityHolder, editor.RuntimeHolderContainer);
-            obj.Init(i, database, this);
+            obj.Init(i, database, this, GetRuntimeAbilityKey(i));
             runtimeEntities.Add(obj);
         }
 
@@ -43,9 +44,32 @@ internal class RuntimeSystem : PlacementSystem
         for (int i = 0; i < list.Count; i++)
         {
             var obj = Instantiate(skillHolder, editor.RuntimePlayerContainer);
-            obj.Init(list[i].Skill, _player);
+            obj.Init(list[i].Skill, _player, GetHeroAbilityKey(i));
             skills.Add(obj);
         }
+    }
+    private KeyCode GetHeroAbilityKey(int i)
+    {
+        switch(i)
+        {
+            case 0: return InputConfig.Keys[InputConfig.ActionKey.FIRST_HERO_ABILITY];
+            case 1: return InputConfig.Keys[InputConfig.ActionKey.SECOND_HERO_ABILITY];
+            case 2: return InputConfig.Keys[InputConfig.ActionKey.THIRD_HERO_ABILITY];
+        }
+        return KeyCode.None;
+    }
+    private KeyCode GetRuntimeAbilityKey(int i)
+    {
+        switch (i)
+        {
+            case 0: return InputConfig.Keys[InputConfig.ActionKey.FIRST_RUNTIME_ABILITY];
+            case 1: return InputConfig.Keys[InputConfig.ActionKey.SECOND_RUNTIME_ABILITY];
+            case 2: return InputConfig.Keys[InputConfig.ActionKey.THIRD_RUNTIME_ABILITY];
+            case 3: return InputConfig.Keys[InputConfig.ActionKey.FOURTH_RUNTIME_ABILITY];
+            case 4: return InputConfig.Keys[InputConfig.ActionKey.FIVETH_RUNTIME_ABILITY];
+            case 5: return InputConfig.Keys[InputConfig.ActionKey.SIXTH_RUNTIME_ABILITY];
+        }
+        return KeyCode.None;
     }
     public override void ClearContainer()
     {
