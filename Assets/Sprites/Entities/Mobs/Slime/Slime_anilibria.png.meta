@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc4a709961021c343954e80596fbf46a
+guid: c708699d29bb1cf43a7b40e7e0141c4f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,23 +101,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cat_sheet_0
+      name: Slime_anilibria_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2190b20b758562d479730e09b46fc9a5
-      internalID: -67405699
+      spriteID: 2f787979f634c334b828f5bcafb9d0a4
+      internalID: 925791512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_1
+      name: Slime_anilibria_1
       rect:
         serializedVersion: 2
         x: 64
@@ -152,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef969321aacf5714d894132ad4e1da97
-      internalID: 617493968
+      spriteID: 1e593a682afe00c4c8db53a79e89345d
+      internalID: 1451078826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_2
+      name: Slime_anilibria_2
       rect:
         serializedVersion: 2
         x: 128
@@ -173,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6da647bd02e6d1848a149196b3c9a82a
-      internalID: 1715366349
+      spriteID: e7d4955c25d067e47a76dc49e19a15c5
+      internalID: -138739783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_3
+      name: Slime_anilibria_3
       rect:
         serializedVersion: 2
         x: 192
@@ -194,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 154df2a65bc592e49b87a94ba18bd73c
-      internalID: 639774055
+      spriteID: ab36a7689e034704189d2684c5d17f54
+      internalID: 1353461530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_4
+      name: Slime_anilibria_4
       rect:
         serializedVersion: 2
         x: 256
@@ -215,56 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ddeb1841724ac4428f037fdaca01da6
-      internalID: -1893858470
+      spriteID: 5946073e7f79f2d468c87ef6263f6a23
+      internalID: 190859626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e32793f08538f3745898bf42d631b3ea
-      internalID: 2053500522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_sheet_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 311c0dabff41b0b4b87f13ecb37e290e
-      internalID: -737117252
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_sheet_7
+      name: Slime_anilibria_5
       rect:
         serializedVersion: 2
         x: 0
@@ -278,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c6db9798d218294ca7be7c4e436fec1
-      internalID: 1265264385
+      spriteID: 93ca9833f36571f4095a52d708068078
+      internalID: -191945830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_8
+      name: Slime_anilibria_6
       rect:
         serializedVersion: 2
         x: 64
@@ -299,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29277d698c80bef4199d3d7b8ea51b1b
-      internalID: 819985863
+      spriteID: f7d33466b73decc49a6362f7bd5be913
+      internalID: 66666262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_9
+      name: Slime_anilibria_7
       rect:
         serializedVersion: 2
         x: 128
@@ -320,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb956dc293b66714cbc6926359613959
-      internalID: -1505996129
+      spriteID: a9cc34c0f88f79f42a519aa921282df3
+      internalID: 1646932301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_10
+      name: Slime_anilibria_8
       rect:
         serializedVersion: 2
         x: 192
@@ -341,35 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfa78862bb0f35a4fa86d1c48621d377
-      internalID: -1402630724
+      spriteID: 886dfee7eea10e54ca39ccb0cf518604
+      internalID: 1397629830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_11
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 530f1918dd0d38c46ba0d8849cb78e62
-      internalID: 570855435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_sheet_12
+      name: Slime_anilibria_9
       rect:
         serializedVersion: 2
         x: 0
@@ -383,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54dcb76f221dba94db9c315c3dce7559
-      internalID: 1351402849
+      spriteID: ee31bd80142b28a42819810c82ce0fb7
+      internalID: 1805712381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_13
+      name: Slime_anilibria_10
       rect:
         serializedVersion: 2
         x: 64
@@ -404,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bb9d0a957cbb2a44972e849b127243a
-      internalID: -1895199328
+      spriteID: 81b4769fe4587504d86a99808c5b206f
+      internalID: 2129966751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_14
+      name: Slime_anilibria_11
       rect:
         serializedVersion: 2
         x: 128
@@ -425,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ab8fbf3a43bfb3479a738e8e72e6872
-      internalID: 51214745
+      spriteID: 75a5ebe5d5144344bae5ed9242988748
+      internalID: -768066251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_15
+      name: Slime_anilibria_12
       rect:
         serializedVersion: 2
         x: 192
@@ -446,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a266398862351d04ebfb4f7222252868
-      internalID: -219394784
+      spriteID: c4d715056fbe1a542aafa993543edc53
+      internalID: -1806279227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_16
+      name: Slime_anilibria_13
       rect:
         serializedVersion: 2
         x: 256
@@ -467,14 +392,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42851ddfec68b6e43970e6fd21db86b0
-      internalID: 1655185503
+      spriteID: 2ba2d0c9b9548174baa8059d98b6b804
+      internalID: 2000462967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_17
+      name: Slime_anilibria_14
       rect:
         serializedVersion: 2
         x: 320
@@ -488,14 +413,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a0a2896a375eea42b1fbebbd82f7af2
-      internalID: 118300117
+      spriteID: bfe33d095c4290f48afb9d6a8cb11801
+      internalID: -2120067430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_18
+      name: Slime_anilibria_15
       rect:
         serializedVersion: 2
         x: 384
@@ -509,14 +434,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 350d219de92cfb7439b740a00ed4f2a0
-      internalID: -901890386
+      spriteID: 6cd06fc04a8250c42b51554975e9a359
+      internalID: -144809849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_sheet_19
+      name: Slime_anilibria_16
       rect:
         serializedVersion: 2
         x: 448
@@ -530,71 +455,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef793be6fd77e2f4d9ae2393be40c90f
-      internalID: 249648499
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_sheet_20
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5cee9e5eb4625645a6304adb08c7be1
-      internalID: -1529934258
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_sheet_21
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b747339c0b916841880d55a05e87c50
-      internalID: 846746425
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_sheet_22
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab983239d6615294b95bcb0b4c8ae4d2
-      internalID: 53863468
+      spriteID: e3b9f540a8a0ca34497115c86e5745fd
+      internalID: 2043121646
       vertices: []
       indices: 
       edges: []
@@ -610,29 +472,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cat_sheet_1: 617493968
-      cat_sheet_20: -1529934258
-      cat_sheet_18: -901890386
-      cat_sheet_15: -219394784
-      cat_sheet_19: 249648499
-      cat_sheet_6: -737117252
-      cat_sheet_9: -1505996129
-      cat_sheet_12: 1351402849
-      cat_sheet_4: -1893858470
-      cat_sheet_14: 51214745
-      cat_sheet_3: 639774055
-      cat_sheet_7: 1265264385
-      cat_sheet_16: 1655185503
-      cat_sheet_0: -67405699
-      cat_sheet_21: 846746425
-      cat_sheet_5: 2053500522
-      cat_sheet_17: 118300117
-      cat_sheet_10: -1402630724
-      cat_sheet_22: 53863468
-      cat_sheet_2: 1715366349
-      cat_sheet_11: 570855435
-      cat_sheet_8: 819985863
-      cat_sheet_13: -1895199328
+      Slime_anilibria_12: -1806279227
+      Slime_anilibria_6: 66666262
+      Slime_anilibria_2: -138739783
+      Slime_anilibria_3: 1353461530
+      Slime_anilibria_8: 1397629830
+      Slime_anilibria_11: -768066251
+      Slime_anilibria_14: -2120067430
+      Slime_anilibria_4: 190859626
+      Slime_anilibria_7: 1646932301
+      Slime_anilibria_9: 1805712381
+      Slime_anilibria_16: 2043121646
+      Slime_anilibria_0: 925791512
+      Slime_anilibria_5: -191945830
+      Slime_anilibria_1: 1451078826
+      Slime_anilibria_13: 2000462967
+      Slime_anilibria_10: 2129966751
+      Slime_anilibria_15: -144809849
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

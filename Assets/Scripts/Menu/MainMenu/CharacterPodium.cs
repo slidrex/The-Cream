@@ -25,7 +25,7 @@ public class CharacterPodium : MonoBehaviour
     [SerializeField] private Image characterIcon;
 
     private CharacterDatabaseModel[] models;
-    [SerializeField] private SkillSelectButton[] skillButtons;
+    private SkillSelectButton[] skillButtons;
 
     private void Start()
     {
@@ -57,7 +57,9 @@ public class CharacterPodium : MonoBehaviour
             skillButtons[i].gameObject.SetActive(false);
         }
         skillName.text = "...";
-        skillDescription.text = "...\n...\n...";
+        skillDescription.text = "...\n" +
+                                "...\n" +
+                                "...";
     }
     public void InitPodium(Sprite icon, string name)
     {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     private int selectedID = -1;
- 
+
     public void SceneID(int id)
     {
         selectedID = id;

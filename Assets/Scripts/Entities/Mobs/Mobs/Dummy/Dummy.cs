@@ -15,8 +15,8 @@ namespace Assets.Scripts.Entities.Move.Mobs.Dummy
     internal class Dummy : ChaseMob, IHealthChangedHandler
     {
         public override byte SpaceRequired => 4;
-        
-        public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
+
+        public override EntityTypeBase TargetType => new EntityType<PlayerTag>();
 
         public Action<int, int, Entity> OnHealthChanged { get; set; }
 
