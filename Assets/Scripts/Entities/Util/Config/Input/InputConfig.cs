@@ -24,6 +24,11 @@ namespace Assets.Scripts.Entities.Util.Config.Input
     };
         public static void SetKey(ActionKey key, KeyCode value)
         {
+            for(int i = 0; i < Keys.Count; i++)
+            {
+                var k = Keys.ElementAt(i);
+                if (k.Value == value) Keys[k.Key] = KeyCode.None;
+            }
             Keys[key] = value;
         }
         public enum ActionKey
