@@ -11,6 +11,7 @@ namespace Assets.Scripts.Entities.Move
     {
         private SpeedStat _stats;
         private Rigidbody2D _rb;
+        public Vector2 MoveVector { get; private set; }
         public Entity AttachedEntity { get; private set; }
         public bool IsMoving { get; private set; }
         private void Start()
@@ -30,6 +31,7 @@ namespace Assets.Scripts.Entities.Move
             }
 
 			_rb.velocity = vector * _stats.GetValue();
+            MoveVector = vector;
             if (vector == Vector2.zero)
             {
                 IsMoving = false;

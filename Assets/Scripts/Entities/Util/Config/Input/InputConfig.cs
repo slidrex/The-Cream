@@ -9,15 +9,31 @@ namespace Assets.Scripts.Entities.Util.Config.Input
 {
     internal static class InputConfig
     {
-        public static KeyCode FIRST_HERO_ABILITY { get; set; } = KeyCode.Q;
-        public static KeyCode SECOND_HERO_ABILITY { get; set; } = KeyCode.W;
-        public static KeyCode THIRD_HERO_ABILITY { get; set; } = KeyCode.E;
+        public static Dictionary<ActionKey, KeyCode> Keys = new Dictionary<ActionKey, KeyCode>()
+        {
+            [ActionKey.FIRST_HERO_ABILITY] = KeyCode.Q,
+            [ActionKey.SECOND_HERO_ABILITY] = KeyCode.W,
+            [ActionKey.THIRD_HERO_ABILITY] = KeyCode.E,
 
-        public static KeyCode FIRST_RUNTIME_ABILITY { get; set; } = KeyCode.Z;
-        public static KeyCode SECOND_RUNTIME_ABILITY { get; set; } = KeyCode.X;
-        public static KeyCode THIRD_RUNTIME_ABILITY { get; set; } = KeyCode.C;
-        public static KeyCode FOURTH_RUNTIME_ABILITY { get; set; } = KeyCode.V;
-        public static KeyCode FIVETH_RUNTIME_ABILITY { get; set; } = KeyCode.B;
-        public static KeyCode SIXTH_RUNTIME_ABILITY { get; set; } = KeyCode.N;
+            [ActionKey.FIRST_RUNTIME_ABILITY] = KeyCode.Z,
+            [ActionKey.SECOND_RUNTIME_ABILITY] = KeyCode.X,
+            [ActionKey.THIRD_RUNTIME_ABILITY] = KeyCode.C,
+            [ActionKey.FOURTH_RUNTIME_ABILITY] = KeyCode.V,
+            [ActionKey.FIVETH_RUNTIME_ABILITY] = KeyCode.B,
+            [ActionKey.SIXTH_RUNTIME_ABILITY] = KeyCode.N
+    };
+        public enum ActionKey
+        {
+            FIRST_HERO_ABILITY,
+            SECOND_HERO_ABILITY,
+            THIRD_HERO_ABILITY,
+
+            FIRST_RUNTIME_ABILITY,
+            SECOND_RUNTIME_ABILITY,
+            THIRD_RUNTIME_ABILITY,
+            FOURTH_RUNTIME_ABILITY,
+            FIVETH_RUNTIME_ABILITY,
+            SIXTH_RUNTIME_ABILITY
+        }
     }
 }

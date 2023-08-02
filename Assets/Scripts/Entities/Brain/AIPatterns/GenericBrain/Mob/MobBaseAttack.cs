@@ -14,25 +14,31 @@ namespace Assets.Scripts.Entities.Attack
     [RequireComponent(typeof (Movement))]
     [RequireComponent(typeof (SteeringMovement))]
     [RequireComponent(typeof(Facing))]
-    internal class MobBaseAttack : EntityBrain<Entity>
+    internal sealed class MobBaseAttack : EntityBrain<Entity>
     {
+        private Animator _animator;
+        [Header("Animator")]
+        [SerializeField] private string _moveXTrigger = "moveX";
+        [SerializeField] private string _attackTrigger = "Attack";
+        [Header("Behaviour settings")]
         [SerializeField] private bool _showGizmos;
         [SerializeField] private float _minCircleDistance;
         [SerializeField] private float _maxCircleDistance;
         private Facing _facing;
         private DamageStat _attackComponent;
         private AttackSpeedStat _attackSpeed;
-        protected float _timeSinceAttack;
-        protected float _timeToAttack;
-        protected EnvironmentData _data;
-        protected Movement Movement;
+        private float _timeSinceAttack;
+        private float _timeToAttack;
+        private EnvironmentData _data;
+        private Movement Movement;
         private SteeringMovement _steeringBehaviour;
         private CircleMovement _circleMovement;
         private const float BIND_TIME = 1.5f;
         private float _timeSinceBind;
         private bool _steeringBinded;
-        protected virtual void Start()
+        private void Start()
         {
+            _animator = GetComponent<Animator>();
             _facing = GetComponent<Facing>();
 			_circleMovement = GetComponent<CircleMovement>();
 			Movement = GetComponent<Movement>();
@@ -80,19 +86,21 @@ namespace Assets.Scripts.Entities.Attack
                 }
                 _timeSinceBind = BIND_TIME;
             }
-            Vector2 targetDir = circleDir;// _steeringBinded ? steeringDir;// : circleDir;
+            Vector2 targetDir = circleDir;
 
 
 			Movement.SetMoveDirection(targetDir);
+            if(string.IsNullOrEmpty(_moveXTrigger) == false)
+                _animator.SetInteger(_moveXTrigger, Mathf.RoundToInt(Movement.MoveVector.normalized.x));
         }
-        protected void Attack(Entity target)
+        private void Attack(Entity target)
         {
             ResetAttackTimer();
+            if (string.IsNullOrEmpty(_attackTrigger) == false)
+                _animator.SetTrigger(_attackTrigger);
             var damageable = target as IDamageable;
             damageable.Damage((int)_attackComponent.GetValue(), Entity);
-            OnAttack(target);
         }
-        protected virtual void OnAttack(Entity target) { }
         private void ResetAttackTimer()
         {
             _timeToAttack = 1 / _attackSpeed.GetValue();
