@@ -1,10 +1,6 @@
 ﻿using Assets.Scripts.Entities.Util.Config.Input;
 using Assets.Scripts.Entities.Util.Config.Menu;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Menu.MainMenu
@@ -17,16 +13,42 @@ namespace Assets.Scripts.Menu.MainMenu
     }
     internal class InputView : MonoBehaviour
     {
-        private InputListener _listener;
+        [SerializeField] private Transform сonfigurationContainer;
         [SerializeField] private InputAction[] _actions;
+        [SerializeField] private KeyConfiguration[] configurations;
+        private InputListener _listener;
         private InputConfig.ActionKey _currentKey;
+
         private void Start()
         {
+            configurations = сonfigurationContainer.GetComponentsInChildren<KeyConfiguration>();
             _listener = GetComponent<InputListener>();
+            for(int i = 0; i < configurations.Length; i++)
+            {
+                configurations[i].SetAbilityName(_actions[i].ActionName);
+                configurations[i].SetActionKey(_actions[i].ActionKey);
+                configurations[i].SetListener(_listener);
+                configurations[i].SetInputView(this);
+            }
+            
+            UpdateConfigurations();
         }
-        private void OnKeyPressed(KeyCode key)
+        public void UpdateConfigurations()
         {
-
+            foreach (var item in configurations)
+            {
+                UpdateKeys(item);
+            }
+        }
+        public void UpdateKeys(KeyConfiguration config)
+        {
+            foreach (var key in InputConfig.Keys)
+            {
+                if (key.Key == config.ActionKey && key.Value != config.KeyCode)
+                {
+                    config.SetKeyName(key.Value);
+                }
+            }
         }
     }
 }
