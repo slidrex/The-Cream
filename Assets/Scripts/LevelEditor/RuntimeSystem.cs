@@ -2,6 +2,7 @@ using Assets.Editor;
 using Assets.Scripts.Databases.dto.Units;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Util.Config.Input;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ internal class RuntimeSystem : PlacementSystem
     private List<RuntimeEntityHolder> runtimeEntities = new();
     private RuntimeEntityHolder entityHolder;
     private Player _player;
+    public Action OnSelect;
     
     protected override void Awake()
     {
@@ -111,6 +113,7 @@ internal class RuntimeSystem : PlacementSystem
     protected override void OnAfterSetCurrentEntityId()
     {
         Editor.Instance._inputManager.SetActivePreviewEntity(true);
+        OnSelect?.Invoke();
     }
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)
     {
