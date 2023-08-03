@@ -40,6 +40,10 @@ namespace Assets.Scripts.LevelEditor.RuntimeSpace.Player
             }
             return models;
         }
+        public bool IsEnoughMana(int mana)
+        {
+            return mana <= CurrentMana;
+        }
         public bool TrySpendMana(int mana)
         {
             if (mana > CurrentMana) return false;

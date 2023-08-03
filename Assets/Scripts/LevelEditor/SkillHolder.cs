@@ -7,40 +7,28 @@ using UnityEngine.UI;
 internal class SkillHolder : ObjectHolder
 {
     [SerializeField] private Image cooldownAnim;
-    private float cooldown = 0;
-    private float timeToActivate = 0;
-    private bool isCooldown = false;
+    private PlayerActiveSkill _skill;
     public void Init(PlayerSkill skill, Player player, KeyCode bindedKey)
     {
+        SetActiveSelectImage(false);
         SetBindedKey(bindedKey, skill is PlayerActiveSkill == true);
         EntityIcon.sprite = skill.Icon;
         button = GetComponent<Button>();
         skill.OnStart(player);
         if (skill is PlayerActiveSkill active)
         {
-            button.onClick.AddListener(delegate { active.TryActivate(player); });
-            Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey, () => active.TryActivate(player));
-            button.onClick.AddListener(OnActivate);
+            _skill = active;
+            button.onClick.AddListener(delegate { active.TryActivate(this, player); });
+            Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey, () => active.TryActivate(this, player));
             Cost.text = active.BaseManacost.ToString();
-            cooldown = active.BaseCooldown;
         }
-    }
-    private void OnActivate()
-    {
-        isCooldown = true;
+        else _skill = null;
     }
     private void Update()
     {
-        if(isCooldown == true && timeToActivate < cooldown)
+        if(_skill != null)
         {
-            timeToActivate += Time.deltaTime;
-            cooldownAnim.fillAmount = timeToActivate / cooldown;
-        }
-        else if(timeToActivate >= cooldown)
-        {
-            isCooldown = false;
-            timeToActivate = 0;
-            cooldownAnim.fillAmount = 0;
+            cooldownAnim.fillAmount = (float)(1 - _skill.TimeSinceActivation)/ _skill.BaseCooldown;
         }
     }
 

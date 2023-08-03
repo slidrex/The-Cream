@@ -11,12 +11,12 @@ using UnityEngine;
 namespace Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Test
 {
     [CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Test/Direct ability")]
-    internal class DirectAbility : PlayerActiveSkill
+    internal class DirectAbility : PlayerDirectSkill
     {
         [SerializeField] private Slime _slime;
-        protected override void OnActivate(Player player)
+        protected override void OnActivate(Vector2 mousePos, Player player)
         {
-
+            Instantiate(_slime, mousePos, Quaternion.identity);
         }
     }
 }

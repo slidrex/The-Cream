@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Projectiles.Character.Bristleback;
+﻿using Assets.Scripts.Entities.Player.Skills.Wrappers;
+using Assets.Scripts.Entities.Projectiles.Character.Bristleback;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using UnityEngine;
 namespace Assets.Scripts.Entities.Player.Skills.Skill.Bristleback
 {
     [CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Thors/Spike spread")]
-    internal class SpikeSpread : PlayerActiveSkill
+    internal class SpikeSpread : PlayerUndirectSkill
     {
         [UnityEngine.SerializeField] private Bristlespike _spike;
         [UnityEngine.SerializeField] private byte _spikeCount;

@@ -1,10 +1,11 @@
-﻿using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
+﻿using Assets.Scripts.Entities.Player.Skills.Wrappers;
+using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Skills.Skill
 {
     [CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Knight/Double Damage")]
-    internal class DoubleDamageSkill : PlayerActiveSkill
+    internal class DoubleDamageSkill : PlayerUndirectSkill
     {
         [UnityEngine.SerializeField] private float duration;
         protected override void OnActivate(Player player)

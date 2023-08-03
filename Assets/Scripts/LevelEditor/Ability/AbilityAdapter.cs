@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.LevelEditor.Ability
 {
@@ -13,6 +14,7 @@ namespace Assets.Scripts.LevelEditor.Ability
     {
         private Action<Vector2> _previewAction;
         public static AbilityAdapter Instance { get; private set; }
+        private bool _selectBlock;
         private void Start()
         {
             Instance = this;
@@ -20,12 +22,17 @@ namespace Assets.Scripts.LevelEditor.Ability
         }
         private void OnSelect()
         {
-            if(_previewAction != null)
-                EndAbilityPreview();
+            if(_selectBlock)
+            {
+                if(_previewAction != null)
+                    EndAbilityPreview();
+            }
+            _selectBlock = true;
         }
         public void StartAbilityPreview(Action<Vector2> onPreviewAction)
         {
             Editor.Editor.Instance._runtimeSystem.Deselect();
+            _selectBlock = false;
             _previewAction = onPreviewAction;
             Editor.Editor.Instance._inputManager.SetActivePreviewEntity(true);
         }
@@ -35,7 +42,7 @@ namespace Assets.Scripts.LevelEditor.Ability
         }
         public void Update()
         {
-            if(Input.GetKeyUp(KeyCode.Mouse0) && _previewAction != null)
+            if(Input.GetKeyDown(KeyCode.Mouse0) && _previewAction != null && EventSystem.current.IsPointerOverGameObject() == false)
             {
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 _previewAction.Invoke(mousePos);

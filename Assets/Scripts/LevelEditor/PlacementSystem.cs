@@ -18,7 +18,7 @@ internal abstract class PlacementSystem : MonoBehaviour
         grid = editor.GetGrid();
         limitingTilemap = editor.LimitingTileMap;
     }
-    public void SetCurrentEntityID(int id)
+    public void SetCurrentEntityID(ObjectHolder holder, int id)
     {
         selectedEntityIndex = id;
         if (selectedEntityIndex < 0)
@@ -26,6 +26,7 @@ internal abstract class PlacementSystem : MonoBehaviour
             Debug.LogError($"нет такого id: {id}");
             return;
         }
+        Editor.Instance._runtimeSystem.SelectHolder( holder );
         OnAfterSetCurrentEntityId();
     }
     protected virtual void OnAfterSetCurrentEntityId()

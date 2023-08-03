@@ -17,4 +17,5 @@ MonoBehaviour:
   _skills:
   - {fileID: 11400000, guid: 965fe3dcb07b4d949bd515d1031f3c5c, type: 2}
   - {fileID: 11400000, guid: 9fa1cc77c7991a44c9e52b4b3ed2ec2f, type: 2}
+  - {fileID: 11400000, guid: 91801afda51373f498e19c553efeb80a, type: 2}
   <Description>k__BackingField: {fileID: 11400000, guid: 727f2102e7a0fd1489d68f22ab71b2e4, type: 2}

@@ -7,31 +7,22 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Skills
 {
-    internal class PlayerActiveSkill : PlayerSkill
+    internal abstract class PlayerActiveSkill : PlayerSkill
     {
         public int BaseManacost;
         public float BaseCooldown;
-        private float _timeSinceActivation;
-        public bool TryActivate(Player player)
-        {
-            var playerSpace = Editor.Editor.Instance.PlayerSpace;
-
-            if (_timeSinceActivation < BaseCooldown || !playerSpace.TrySpendMana(BaseManacost)) return false;
-            OnActivate(player);
-
-            _timeSinceActivation = 0;
-            return true;
-        }
+        public float TimeSinceActivation { get; private set; }
+        public abstract bool TryActivate(SkillHolder holder, Player player);
         public override void Update()
         {
-            if (_timeSinceActivation < BaseCooldown)
+            if (TimeSinceActivation < BaseCooldown)
             {
-                _timeSinceActivation += Time.deltaTime;
+                TimeSinceActivation += Time.deltaTime;
             }
         }
-        protected virtual void OnActivate(Player player)
+        protected void ResetTimer()
         {
-
+            TimeSinceActivation = 0;
         }
     }
 }

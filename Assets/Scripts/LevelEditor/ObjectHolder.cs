@@ -9,6 +9,7 @@ using System;
 
 internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private Image _selectImage;
     [SerializeField] protected Image EntityIcon;
     [SerializeField] protected GameObject DescriptionObject;
     [SerializeField] protected TextMeshProUGUI Name, Description, Cost;
@@ -20,11 +21,16 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     private const float TIME_TO_APPEAR = 0.4f;
     private float currentTime = 0;
     private bool isCursorInObject = false;
+    public void SetActiveSelectImage(bool active)
+    {
+        _selectImage.gameObject.SetActive(active);
+    }
     public virtual void Init(int id, EntityDatabase data, PlacementSystem system, KeyCode bindedKey)
     {
+        SetActiveSelectImage(false);
         EntityIcon.sprite = data.Entities[id].Icon;
         button = GetComponent<Button>();
-        UnityEngine.Events.UnityAction firstAct = () => system.SetCurrentEntityID(id);
+        UnityEngine.Events.UnityAction firstAct = () => system.SetCurrentEntityID(this, id);
         UnityEngine.Events.UnityAction secondAct = () =>
         {
             Editor.Instance._inputManager._previewEntity.Init(

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Player.SpecialAbilities;
+﻿using Assets.Scripts.Entities.Player.Skills.Wrappers;
+using Assets.Scripts.Entities.Player.SpecialAbilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ using UnityEngine.UI;
 namespace Assets.Scripts.Entities.Player.Skills.Skill.Thors
 {
 	[CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Thors/Thors Shield")]
-	internal class ThorsShield : PlayerActiveSkill
-	{
+	internal class ThorsShield : PlayerUndirectSkill
+    {
 		[SerializeField] private int _maxDamageAbsorbtion;
 		[SerializeField, Range(0, 1.0f)] private float _additionalAttackSpeedWhileShieldActivated;
 		private Implementations.Thors.ThorsShield _shield;

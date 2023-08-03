@@ -27,10 +27,6 @@ internal class InputManager : MonoBehaviour
         lastPosition = gridPos;
         if(Editor.Instance.GameModeIs(Editor.GameMode.EDIT))
         {
-            if (_previewEntity.GetModel().Entity != null)
-            {
-                _previewEntity.transform.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 1)) + new Vector3(_previewEntity.GetModel().Size, _previewEntity.GetModel().Size)/2;
-            }
             if (Editor.Instance._editSystem.GetSelectedEntityIndex() < 0) return;
             bool placementValidity = Editor.Instance._editSystem.CheckPlacementValidity(gridPos, Editor.Instance._editSystem.GetSelectedEntityIndex());
             if (placementValidity == true)
@@ -42,16 +38,18 @@ internal class InputManager : MonoBehaviour
                 ColorIndicator(new Color32(255, 0, 0, 100));
             }
         }
+        UpdatePreviewEntityPosition();
+    }
+    private void UpdatePreviewEntityPosition()
+    {
         if (Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME))
         {
-            if (Editor.Instance._runtimeSystem.GetSelectedEntityIndex() < 0)
-            {
-                return;
-            }
-            if (_previewEntity.GetModel().Entity != null)
-            {
-                _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
-            }
+            _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
+        }
+        else
+        {
+            Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
+            _previewEntity.transform.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 1)) + new Vector3(_previewEntity.GetModel().Size, _previewEntity.GetModel().Size) / 2;
         }
     }
     public void SetActivePreviewEntity(bool active, Sprite sprite = null)
@@ -59,13 +57,10 @@ internal class InputManager : MonoBehaviour
         if (Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME))
         {
             _previewEntity.GetRenderer().sprite = sprite == null ? _runtimePreviewEntity : sprite;
-            _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         }
         else
         {
             _previewEntity.GetRenderer().sprite = sprite == null ? _previewEntity.GetModel().Icon : sprite;
-            Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
-            _previewEntity.transform.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 1)) + new Vector3(_previewEntity.GetModel().Size, _previewEntity.GetModel().Size) / 2;
         }
         _previewEntity.gameObject.SetActive(active);
     }

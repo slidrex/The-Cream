@@ -5,6 +5,7 @@ using Assets.Scripts.Entities.Util.Config.Input;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 internal class RuntimeSystem : PlacementSystem
 {
@@ -13,6 +14,7 @@ internal class RuntimeSystem : PlacementSystem
     private RuntimeEntityHolder entityHolder;
     private Player _player;
     public Action OnSelect;
+    private ObjectHolder _selectedHolder;
     
     protected override void Awake()
     {
@@ -25,7 +27,7 @@ internal class RuntimeSystem : PlacementSystem
         {
             skill.Skill.Update();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.RUNTIME))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.RUNTIME) && EventSystem.current.IsPointerOverGameObject() == false)
         {
             OnPlace?.Invoke();
         }
@@ -105,9 +107,20 @@ internal class RuntimeSystem : PlacementSystem
         }
         Deselect();
     }
+    public void SelectHolder(ObjectHolder holder)
+    {
+        if (_selectedHolder != null) _selectedHolder.SetActiveSelectImage(false);
+        if(holder != null) holder.SetActiveSelectImage(true);
+
+        Editor.Instance._inputManager.SetActivePreviewEntity(holder != null);
+        OnSelect.Invoke();
+        _selectedHolder = holder;
+    }
     public void Deselect()
     {
         selectedEntityIndex = -1;
+        OnSelect.Invoke();
+        SelectHolder(null);
         Editor.Instance._inputManager.SetActivePreviewEntity(false);
     }
     protected override void OnAfterSetCurrentEntityId()

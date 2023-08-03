@@ -1,10 +1,11 @@
-﻿using Assets.Scripts.Entities.Player.SpecialAbilities;
+﻿using Assets.Scripts.Entities.Player.Skills.Wrappers;
+using Assets.Scripts.Entities.Player.SpecialAbilities;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Skills.Skill.Knight
 {
     [CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Knight/Crush Shield")]
-    internal class KnightShield : PlayerActiveSkill
+    internal class KnightShield : PlayerUndirectSkill
     {
         [UnityEngine.SerializeField] private Shield _shield;
         protected override void OnActivate(Player player)
