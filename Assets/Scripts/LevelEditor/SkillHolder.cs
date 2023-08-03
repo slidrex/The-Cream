@@ -12,7 +12,7 @@ internal class SkillHolder : ObjectHolder
     private bool isCooldown = false;
     public void Init(PlayerSkill skill, Player player, KeyCode bindedKey)
     {
-        SetBindedKey(bindedKey);
+        SetBindedKey(bindedKey, skill is PlayerActiveSkill == true);
         EntityIcon.sprite = skill.Icon;
         button = GetComponent<Button>();
         skill.OnStart(player);

@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 
 internal class InputManager : MonoBehaviour
 {
+    [SerializeField] private Sprite _runtimePreviewEntity;
+    public bool EnableAlignment { get; set; }
     [field: SerializeField] public PreviewEntity _previewEntity { get; private set; }
     private SpriteRenderer indicatorRenderer;
     private const byte limitingLayer = 7;
@@ -21,7 +23,7 @@ internal class InputManager : MonoBehaviour
     private void UpdateCursorPosition()
     {
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
-        if (lastPosition == gridPos) return;
+        if (lastPosition == gridPos && Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME) == false) return;
         lastPosition = gridPos;
         if(Editor.Instance.GameModeIs(Editor.GameMode.EDIT))
         {
@@ -42,12 +44,30 @@ internal class InputManager : MonoBehaviour
         }
         if (Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME))
         {
-            if (Editor.Instance._runtimeSystem.GetSelectedEntityIndex() < 0) return;
+            if (Editor.Instance._runtimeSystem.GetSelectedEntityIndex() < 0)
+            {
+                return;
+            }
             if (_previewEntity.GetModel().Entity != null)
             {
                 _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
             }
         }
+    }
+    public void SetActivePreviewEntity(bool active, Sprite sprite = null)
+    {
+        if (Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME))
+        {
+            _previewEntity.GetRenderer().sprite = sprite == null ? _runtimePreviewEntity : sprite;
+            _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
+        }
+        else
+        {
+            _previewEntity.GetRenderer().sprite = sprite == null ? _previewEntity.GetModel().Icon : sprite;
+            Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
+            _previewEntity.transform.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 1)) + new Vector3(_previewEntity.GetModel().Size, _previewEntity.GetModel().Size) / 2;
+        }
+        _previewEntity.gameObject.SetActive(active);
     }
     public Vector2 GetCursorPosition()
     {

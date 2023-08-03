@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f2d2e3eeb0f494d8bee05ee3b6a05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellIndicator: {fileID: 3652956624111686306}
+  _runtimePreviewEntity: {fileID: 844220192, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
   <_previewEntity>k__BackingField: {fileID: 3652956625969419135}
 --- !u!1 &3652956624293930648
 GameObject:

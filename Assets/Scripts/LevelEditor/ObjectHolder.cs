@@ -13,6 +13,7 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     [SerializeField] protected GameObject DescriptionObject;
     [SerializeField] protected TextMeshProUGUI Name, Description, Cost;
     [SerializeField] protected Transform CharacteristicsParent;
+    [SerializeField] private GameObject _keyIcon;
     [SerializeField] private TextMeshProUGUI _bindedKey;
     protected ObjectCharacteristic[] CharacteristicObjects;
     protected Button button;
@@ -28,7 +29,6 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
         {
             Editor.Instance._inputManager._previewEntity.Init(
                 data.Entities[id].Entity.transform.localScale,
-                data.Entities[id].Icon,
                 data.Entities[id].GetModel());
         };
         button.onClick.AddListener(firstAct);
@@ -43,13 +43,12 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
         first.Invoke();
         second.Invoke();
     }
-    public void SetBindedKey(KeyCode key)
+    public void SetBindedKey(KeyCode key, bool showIcon = true)
     {
-        if (key == KeyCode.None)
-        {
-            if (_bindedKey != null) _bindedKey.text = "";
-        }
-        else _bindedKey.text = key.ToString();
+        if(_keyIcon != null)
+        _keyIcon.gameObject.SetActive(showIcon);
+        if(_bindedKey != null)
+        _bindedKey.text = Assets.Scripts.Entities.Util.Config.Input.InputManager.GetKeyName(key);
     }
     protected virtual void ConfigureDescription(int id, EntityDatabase data)
     {

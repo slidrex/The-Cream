@@ -21,6 +21,11 @@ internal class EditSystem : PlacementSystem
             OnDelete?.Invoke();
         }
     }
+    protected override void OnAfterSetCurrentEntityId()
+    {
+        
+        Editor.Instance._inputManager.SetActivePreviewEntity(true, database.Entities[selectedEntityIndex].GetModel().Icon);
+    }
     protected override void Awake()
     {
         entityHolder = Resources.Load<EditorEntityHolder>("UI/EditorEntityHolder");

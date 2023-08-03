@@ -26,6 +26,11 @@ internal abstract class PlacementSystem : MonoBehaviour
             Debug.LogError($"нет такого id: {id}");
             return;
         }
+        OnAfterSetCurrentEntityId();
+    }
+    protected virtual void OnAfterSetCurrentEntityId()
+    {
+
     }
     public abstract void ClearContainer();
     public abstract void FillContainer();

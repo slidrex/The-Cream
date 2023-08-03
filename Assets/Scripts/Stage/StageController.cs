@@ -99,6 +99,7 @@ namespace Assets.Scripts.Stage
         public void RestoreRuntime()
         {
             LevelCompositeRoot.Instance.Runner.RunLevel();
+            Instance._inputManager.SetActivePreviewEntity(false);
             Instance.SetGamemode(GameMode.RUNTIME);
             Instance._levelActions.ActivateButton(ButtonType.STOP_RUNTIME);
             _runtimeActivated = true;

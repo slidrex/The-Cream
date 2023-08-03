@@ -27,6 +27,10 @@ internal class RuntimeSystem : PlacementSystem
         {
             OnPlace?.Invoke();
         }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Deselect();
+        }
     }
     public override void FillContainer()
     {
@@ -97,6 +101,16 @@ internal class RuntimeSystem : PlacementSystem
         {
             var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
         }
+        Deselect();
+    }
+    public void Deselect()
+    {
+        selectedEntityIndex = -1;
+        Editor.Instance._inputManager.SetActivePreviewEntity(false);
+    }
+    protected override void OnAfterSetCurrentEntityId()
+    {
+        Editor.Instance._inputManager.SetActivePreviewEntity(true);
     }
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)
     {

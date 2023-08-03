@@ -139,6 +139,7 @@ MonoBehaviour:
   Description: {fileID: 3848555042237692065}
   Cost: {fileID: 8167914759392074061}
   CharacteristicsParent: {fileID: 0}
+  _keyIcon: {fileID: 5131100078605942647}
   _bindedKey: {fileID: 5094858363800537342}
   cooldownAnim: {fileID: 2941752818796638023}
 --- !u!222 &9144308079521191935

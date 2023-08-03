@@ -5,14 +5,13 @@ internal class PreviewEntity : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private EditorEntityModel.Model model;
-
+    public SpriteRenderer GetRenderer() { return spriteRenderer; }
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void Init(Vector2 size, Sprite sprite, EditorEntityModel.Model model)
+    public void Init(Vector2 size, EditorEntityModel.Model model)
     {
-        spriteRenderer.sprite = sprite;
         transform.localScale = size;
         this.model = model;
     }

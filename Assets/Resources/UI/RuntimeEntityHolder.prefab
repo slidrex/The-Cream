@@ -145,6 +145,7 @@ MonoBehaviour:
   Description: {fileID: 6785625892484337036}
   Cost: {fileID: 8217181452751265429}
   CharacteristicsParent: {fileID: 5529325029716311185}
+  _keyIcon: {fileID: 7674413959888941703}
   _bindedKey: {fileID: 1143871849773974431}
 --- !u!1 &3350662802571320868
 GameObject:

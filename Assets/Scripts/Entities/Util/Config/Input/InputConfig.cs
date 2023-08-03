@@ -20,7 +20,7 @@ namespace Assets.Scripts.Entities.Util.Config.Input
             [ActionKey.THIRD_RUNTIME_ABILITY] = KeyCode.C,
             [ActionKey.FOURTH_RUNTIME_ABILITY] = KeyCode.V,
             [ActionKey.FIVETH_RUNTIME_ABILITY] = KeyCode.B,
-            [ActionKey.SIXTH_RUNTIME_ABILITY] = KeyCode.N
+            [ActionKey.SIXTH_RUNTIME_ABILITY] = KeyCode.N,
     };
         public static void SetKey(ActionKey key, KeyCode value)
         {

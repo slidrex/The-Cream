@@ -50,9 +50,7 @@ public class KeyConfiguration : MonoBehaviour
     }
     public void SetKeyName(KeyCode key)
     {
-        keyName.text = key.ToString();
-        if (key == KeyCode.None)
-            keyName.text = "_";
+        keyName.text = Assets.Scripts.Entities.Util.Config.Input.InputManager.GetKeyName(key);
         KeyCode = key;
     }
 }
