@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class KeyConfiguration : MonoBehaviour
 {
     private TextMeshProUGUI keyName;
-    private Button key;
+    private Button button;
+    private Image buttonImage;
     private TextMeshProUGUI abilityName;
     internal InputConfig.ActionKey ActionKey;
     public KeyCode KeyCode;
@@ -17,8 +18,9 @@ public class KeyConfiguration : MonoBehaviour
 
     private void Awake()
     {
-        key = GetComponentInChildren<Button>();
-        keyName = key.GetComponentInChildren<TextMeshProUGUI>();
+        button = GetComponentInChildren<Button>();
+        buttonImage = button.GetComponent<Image>();
+        keyName = button.GetComponentInChildren<TextMeshProUGUI>();
         abilityName = GetComponentInChildren<TextMeshProUGUI>();
     }
     public void StartListenting()
@@ -28,9 +30,17 @@ public class KeyConfiguration : MonoBehaviour
     }
     private void OnKeyPressed(KeyCode key)
     {
-        SetKeyName(key);
-        InputConfig.SetKey(ActionKey, key);
-        inputView.UpdateConfigurations();
+        if (key == KeyCode.Backspace)
+        {
+            InputConfig.SetKey(ActionKey, KeyCode.None);
+            SetKeyName(KeyCode.None);
+        }
+        else
+        {
+            SetKeyName(key);
+            InputConfig.SetKey(ActionKey, key);
+            inputView.UpdateConfigurations();
+        }
     }
     internal void SetActionKey(InputConfig.ActionKey key)
     {
