@@ -36,6 +36,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 
 		private void Start()
 		{
+			_animator = GetComponent<Animator>();
 			_targetMovement = GetComponent<PlayerTargetMovement>();
 			_facing = GetComponent<Facing>();
 			_seeker = GetComponent<Seeker>();
@@ -160,6 +161,12 @@ namespace Assets.Scripts.Entities.Player.Moving
 				_facing.SetSightDirection(moveVector.x < 0 ? Facing.SightDirection.LEFT : Facing.SightDirection.RIGHT);
 			}
 			else _movement.Stop();
+
+			if (_animator != null)
+			{
+				_animator.SetInteger(MOVE_X_TRIGGER, Mathf.RoundToInt(moveVector.x));
+                _animator.SetInteger(MOVE_Y_TRIGGER, Mathf.RoundToInt(moveVector.y));
+            }
 		}
 		private void FindNewEnemy()
 		{

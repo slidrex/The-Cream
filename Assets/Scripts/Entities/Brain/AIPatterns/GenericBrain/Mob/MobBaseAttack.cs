@@ -16,10 +16,10 @@ namespace Assets.Scripts.Entities.Attack
     [RequireComponent(typeof(Facing))]
     internal sealed class MobBaseAttack : EntityBrain<Entity>
     {
-        private Animator _animator;
         [Header("Animator")]
         [SerializeField] private string _moveXTrigger = "moveX";
         [SerializeField] private string _attackTrigger = "Attack";
+
         [Header("Behaviour settings")]
         [SerializeField] private bool _showGizmos;
         [SerializeField] private float _minCircleDistance;

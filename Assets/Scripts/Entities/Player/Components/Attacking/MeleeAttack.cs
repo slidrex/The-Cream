@@ -25,6 +25,7 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 		{
 			_facing = GetComponent<Facing>();
 			_data = GetComponent<EnvironmentData>();
+			_animator = GetComponent<Animator>();
 		}
 		public void OnTargetInsideZone(Entity target)
 		{
@@ -50,7 +51,11 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 			ResetAttackTimer();
 			OnAttack();
 		}
-		protected virtual void OnAttack() { }
+		protected virtual void OnAttack()
+		{
+			if (_animator != null)
+				_animator.SetTrigger(ATTACK_TRIGGER);
+		}
 		private void UpdateTimer()
 		{
 			if (_timeSinceAttack < _timeToAttack)

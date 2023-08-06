@@ -16,6 +16,10 @@ namespace Assets.Scripts.Entities.Brain
     internal abstract class EntityBrain<EntityType> : MonoBehaviour, IResettable where EntityType : Entity
     {
         protected EntityType Entity { get; private set; }
+        protected Animator _animator;
+        protected const string MOVE_X_TRIGGER = "moveX";
+        protected const string MOVE_Y_TRIGGER = "moveY";
+        protected const string ATTACK_TRIGGER = "Attack";
         protected void Awake()
         {
             Entity = GetComponent<EntityType>();
