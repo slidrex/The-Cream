@@ -12,7 +12,7 @@ namespace Assets.Scripts.Level
 {
     internal class LevelRunner : MonoBehaviour
     {
-        private readonly Action<bool> OnLevelRun;
+        public Action<bool> OnLevelRun;
         private IEnumerable<ILevelRunHandler> _runHandlers;
         private IEnumerable<IResettable> _resetHandlers;
         public bool IsLevelRunning { get; private set; }

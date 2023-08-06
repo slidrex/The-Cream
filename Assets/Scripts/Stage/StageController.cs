@@ -6,6 +6,7 @@ using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Level.Stages;
+using Assets.Scripts.Sound.Soundtrack;
 using Assets.Scripts.Stage.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,10 @@ namespace Assets.Scripts.Stage
 {
     internal class StageController : MonoBehaviour, IStageController
     {
+        [SerializeField] private AudioClip _editorTheme;
         private Player _player;
         private Camera _camera;
-        public StageTileElement _currentElement;
+        public StageTileElement _currentElement { get; set; }
         private StageTileElement _endElement;
         public Action OnLastStageLeft;
         private StageTileElementHolder _currentStageLevel;
@@ -128,7 +130,7 @@ namespace Assets.Scripts.Stage
         {
             var temp = _currentElement;
 
-            
+            SoundtrackPlayer.Instance.Play(_editorTheme);
             Instance.Dockspace.DisableDockspace();
             for (int i = 0; i < temp.Elements.Length; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
             
