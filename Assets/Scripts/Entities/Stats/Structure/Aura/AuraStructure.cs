@@ -1,13 +1,9 @@
 ﻿using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Navigation.EntityType.Util;
-using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Level;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats.Structure.Aura
@@ -65,7 +61,7 @@ namespace Assets.Scripts.Entities.Stats.Structure.Aura
             {
                 _timeSinceActivate = 0;
                 IsReady = false;
-                OnActivate(Physics2D.OverlapCircleAll(transform.position, _targetRadius).Select(x => x.GetComponent<Entity>()).NotNull().ToArray());
+                OnActivate(Physics2D.OverlapCircleAll(transform.position, _targetRadius).Select(x => x.GetComponent<Entity>()).Where(x => x != null).ToArray());
                 return true;
             }
             return false;

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Navigation.EntityType.Util
@@ -23,7 +20,7 @@ namespace Assets.Scripts.Entities.Navigation.EntityType.Util
         {
             List<Entity> result = new();
 
-            var entities = Physics2D.OverlapCircleAll(origin, radius).Select(x => x.GetComponent<Entity>()).NotNull();
+            var entities = Physics2D.OverlapCircleAll(origin, radius).Select(x => x.GetComponent<Entity>()).Where(x => x != null);
             
             foreach ( var entity in entities)
             {

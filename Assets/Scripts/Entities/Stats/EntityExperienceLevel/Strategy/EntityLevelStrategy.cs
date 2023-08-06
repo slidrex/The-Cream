@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEditorInternal;
-
-namespace Assets.Scripts.Entities.EntityExperienceLevel.Strategy
+﻿namespace Assets.Scripts.Entities.EntityExperienceLevel.Strategy
 {
     internal class EntityLevelStrategy
     {

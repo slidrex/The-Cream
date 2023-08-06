@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Entities.Player;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Assets.Scripts.Databases.Model.Player

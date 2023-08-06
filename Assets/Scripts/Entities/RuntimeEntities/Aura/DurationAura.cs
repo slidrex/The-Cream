@@ -1,10 +1,5 @@
-﻿using Assets.Scripts.Entities.Navigation.EntityType;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.RuntimeEntities.Aura
@@ -34,7 +29,7 @@ namespace Assets.Scripts.Entities.RuntimeEntities.Aura
         }
         private void Update()
         {
-            var colliders = Physics2D.OverlapCircleAll(transform.position, Radius).Select(x => x.GetComponent<Entity>()).NotNull();
+            var colliders = Physics2D.OverlapCircleAll(transform.position, Radius).Select(x => x.GetComponent<Entity>()).Where(x => x != null);
             foreach (var entity in colliders) 
             {
                 if (TargetType.MatchesEntityType(entity))

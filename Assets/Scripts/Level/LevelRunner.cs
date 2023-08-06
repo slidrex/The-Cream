@@ -1,11 +1,8 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Reset;
-using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Level
@@ -18,8 +15,8 @@ namespace Assets.Scripts.Level
         public bool IsLevelRunning { get; private set; }
         internal void Configure()
         {
-            _resetHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<IResettable>()).NotNull();
-            _runHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<ILevelRunHandler>()).NotNull();
+            _resetHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<IResettable>()).Where(x => x != null);
+            _runHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<ILevelRunHandler>()).Where(x => x != null);
         }
         public void RunLevel()
         {

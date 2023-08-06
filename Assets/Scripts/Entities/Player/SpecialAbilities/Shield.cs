@@ -1,14 +1,5 @@
 ﻿using Assets.Scripts.Entities.AI.SightStalking;
-using Assets.Scripts.Entities.Brain;
-using Assets.Scripts.Entities.Navigation.Util;
-using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Environment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.SpecialAbilities

@@ -1,14 +1,6 @@
 ﻿using Assets.Scripts.Entities.Brain;
-using Assets.Scripts.Entities.Projectiles;
-using Assets.Scripts.Entities.Projectiles.Character.Bristleback;
 using Assets.Scripts.Entities.Projectiles.Mob.Boss;
 using Assets.Scripts.Entities.Stats.StatAttributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus

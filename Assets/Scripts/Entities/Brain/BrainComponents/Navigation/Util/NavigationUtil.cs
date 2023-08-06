@@ -3,9 +3,7 @@ using Assets.Scripts.Entities.Navigation.EntityType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 namespace Assets.Scripts.Entities.Navigation.Util
 {
@@ -27,7 +25,7 @@ namespace Assets.Scripts.Entities.Navigation.Util
         private static List<Entity> GetEntitiesInRadius(Predicate<Entity> entities, EntityTypeBase type, Transform origin, float radius = NOT_ASSIGNED)
         {
             List<Entity> potentialEntities = new();
-            var entitites = radius == 0 ? LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities : Physics2D.OverlapCircleAll(origin.transform.position, radius).Select(x => x.GetComponent<Entity>()).NotNull();
+            var entitites = radius == 0 ? LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities : Physics2D.OverlapCircleAll(origin.transform.position, radius).Select(x => x.GetComponent<Entity>()).Where(x => x != null);
 
             if (entitites != null)
                 foreach (var entity in entitites)
