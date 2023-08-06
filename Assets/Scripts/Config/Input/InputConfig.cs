@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Util.Config.Input
 {
-    internal static class InputConfig
+    internal class InputConfig
     {
-        public static Dictionary<ActionKey, KeyCode> Keys = new Dictionary<ActionKey, KeyCode>()
+        public Dictionary<ActionKey, KeyCode> Keys = new Dictionary<ActionKey, KeyCode>()
         {
             [ActionKey.FIRST_HERO_ABILITY] = KeyCode.Q,
             [ActionKey.SECOND_HERO_ABILITY] = KeyCode.W,
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Entities.Util.Config.Input
             [ActionKey.FIVETH_RUNTIME_ABILITY] = KeyCode.B,
             [ActionKey.SIXTH_RUNTIME_ABILITY] = KeyCode.N,
     };
-        public static void SetKey(ActionKey key, KeyCode value)
+        public void SetKey(ActionKey key, KeyCode value)
         {
             for(int i = 0; i < Keys.Count; i++)
             {

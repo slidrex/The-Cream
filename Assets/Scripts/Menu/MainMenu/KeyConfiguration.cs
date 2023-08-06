@@ -1,3 +1,4 @@
+using Assets.Scripts.Config;
 using Assets.Scripts.Entities.Util.Config.Input;
 using Assets.Scripts.Entities.Util.Config.Menu;
 using Assets.Scripts.Menu.MainMenu;
@@ -32,13 +33,13 @@ public class KeyConfiguration : MonoBehaviour
     {
         if (key == KeyCode.Backspace)
         {
-            InputConfig.SetKey(ActionKey, KeyCode.None);
+            ConfigManager.Instance.InputConfig.SetKey(ActionKey, KeyCode.None);
             SetKeyName(KeyCode.None);
         }
         else
         {
             SetKeyName(key);
-            InputConfig.SetKey(ActionKey, key);
+            ConfigManager.Instance.InputConfig.SetKey(ActionKey, key);
             inputView.UpdateConfigurations();
         }
     }

@@ -181,6 +181,8 @@ GameObject:
   - component: {fileID: 1075444378630322019}
   - component: {fileID: 6960555495164998478}
   - component: {fileID: 6380892703023602955}
+  - component: {fileID: 3600895935464057524}
+  - component: {fileID: 1367270856607376370}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -229,6 +231,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultRuntimeTheme: {fileID: 8300000, guid: f0fec4b6863ff3e43835bb81153a78a0, type: 3}
+--- !u!114 &3600895935464057524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581213824140577503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2241e004e1764ef45926ed9e328d4f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SoundPlayer>k__BackingField: {fileID: 1367270856607376370}
+  <SoundTrackPlayer>k__BackingField: {fileID: 6960555495164998478}
+--- !u!114 &1367270856607376370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581213824140577503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beaa84a6ce8cb249bf41fcbf0d74968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1976468893190196241
 GameObject:
   m_ObjectHideFlags: 0

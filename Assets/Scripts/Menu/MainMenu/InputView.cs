@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Util.Config.Input;
+﻿using Assets.Scripts.Config;
+using Assets.Scripts.Entities.Util.Config.Input;
 using Assets.Scripts.Entities.Util.Config.Menu;
 using System;
 using UnityEngine;
@@ -42,7 +43,7 @@ namespace Assets.Scripts.Menu.MainMenu
         }
         public void UpdateKeys(KeyConfiguration config)
         {
-            foreach (var key in InputConfig.Keys)
+            foreach (var key in ConfigManager.Instance.InputConfig.Keys)
             {
                 if (key.Key == config.ActionKey && key.Value != config.KeyCode)
                 {

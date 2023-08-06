@@ -1,4 +1,5 @@
 using Assets.Editor;
+using Assets.Scripts.Config;
 using Assets.Scripts.Databases.dto.Units;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Util.Config.Input;
@@ -60,9 +61,9 @@ internal class RuntimeSystem : PlacementSystem
     {
         switch(i)
         {
-            case 0: return InputConfig.Keys[InputConfig.ActionKey.FIRST_HERO_ABILITY];
-            case 1: return InputConfig.Keys[InputConfig.ActionKey.SECOND_HERO_ABILITY];
-            case 2: return InputConfig.Keys[InputConfig.ActionKey.THIRD_HERO_ABILITY];
+            case 0: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.FIRST_HERO_ABILITY];
+            case 1: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.SECOND_HERO_ABILITY];
+            case 2: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.THIRD_HERO_ABILITY];
         }
         return KeyCode.None;
     }
@@ -70,12 +71,12 @@ internal class RuntimeSystem : PlacementSystem
     {
         switch (i)
         {
-            case 0: return InputConfig.Keys[InputConfig.ActionKey.FIRST_RUNTIME_ABILITY];
-            case 1: return InputConfig.Keys[InputConfig.ActionKey.SECOND_RUNTIME_ABILITY];
-            case 2: return InputConfig.Keys[InputConfig.ActionKey.THIRD_RUNTIME_ABILITY];
-            case 3: return InputConfig.Keys[InputConfig.ActionKey.FOURTH_RUNTIME_ABILITY];
-            case 4: return InputConfig.Keys[InputConfig.ActionKey.FIVETH_RUNTIME_ABILITY];
-            case 5: return InputConfig.Keys[InputConfig.ActionKey.SIXTH_RUNTIME_ABILITY];
+            case 0: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.FIRST_RUNTIME_ABILITY];
+            case 1: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.SECOND_RUNTIME_ABILITY];
+            case 2: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.THIRD_RUNTIME_ABILITY];
+            case 3: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.FOURTH_RUNTIME_ABILITY];
+            case 4: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.FIVETH_RUNTIME_ABILITY];
+            case 5: return ConfigManager.Instance.InputConfig.Keys[InputConfig.ActionKey.SIXTH_RUNTIME_ABILITY];
         }
         return KeyCode.None;
     }

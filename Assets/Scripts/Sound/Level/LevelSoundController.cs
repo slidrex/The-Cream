@@ -21,7 +21,7 @@ namespace Assets.Scripts.Sound.Level
         {
             if (isTrue)
             {
-                SoundtrackPlayer.Instance.Play(RuntimeTheme == null ? _defaultRuntimeTheme : RuntimeTheme);
+                SoundCompositeRoot.Instance.SoundTrackPlayer.Play(RuntimeTheme == null ? _defaultRuntimeTheme : RuntimeTheme);
             }
         }
     }
