@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.CompositeRoots;
+﻿using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Reset;
 using System;
 using System.Collections.Generic;
@@ -9,42 +10,30 @@ namespace Assets.Scripts.Level
 {
     internal class LevelRunner : MonoBehaviour
     {
-        public Action<bool> OnLevelRun;
+        public Action<GameMode> OnLevelModeChanged { get; set; }
         private IEnumerable<ILevelRunHandler> _runHandlers;
         private IEnumerable<IResettable> _resetHandlers;
-        public bool IsLevelRunning { get; private set; }
+        public GameMode CurrentMode { get; private set; } = GameMode.UNASSIGNED;
         internal void Configure()
         {
             _resetHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<IResettable>()).Where(x => x != null);
             _runHandlers = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities.SelectMany(x => x.GetComponents<ILevelRunHandler>()).Where(x => x != null);
         }
-        public void RunLevel()
+        public void SetGameMode(GameMode mode)
         {
-            if (IsLevelRunning) throw new Exception("Level already run!");
-            IsLevelRunning = true;
-            TriggerResets(true);
+            if (mode == CurrentMode && mode != GameMode.UNASSIGNED) throw new Exception($"Level mode is already set to {mode}!!");
+            TriggerResets(mode);
             foreach (var obj in _runHandlers)
             {
                 obj.OnLevelRun(true);
             }
+            CurrentMode = mode;
 
-            OnLevelRun?.Invoke(true);
+            OnLevelModeChanged?.Invoke(mode);
         }
-        public void StopLevel(bool ignoreTriggers = false)
+        private void TriggerResets(GameMode mode)
         {
-            if (!IsLevelRunning) throw new Exception("Level hasn't been started!");
-            IsLevelRunning = false;
-            foreach (var obj in _runHandlers)
-            {
-                obj.OnLevelRun(false);
-            }
-            OnLevelRun?.Invoke(false);
-            if(ignoreTriggers == false)
-                TriggerResets(false);
-        }
-        private void TriggerResets(bool before)
-        {
-            if(before)
+            if(mode == GameMode.EDIT)
                 foreach(var obj in _resetHandlers)
                 {
                     obj.OnReset();
@@ -52,11 +41,11 @@ namespace Assets.Scripts.Level
 
             foreach(var entity in LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities)
             {
-                if (before)
+                if (mode == GameMode.RUNTIME)
                 {
                     entity.OnBeforeReset();
                 }
-                else entity.OnAfterReset();
+                else if(mode == GameMode.EDIT) entity.OnAfterReset();
             }
         }
     }

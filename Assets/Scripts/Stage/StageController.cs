@@ -7,6 +7,7 @@ using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Level.Stages;
 using Assets.Scripts.Sound;
+using Assets.Scripts.Sound.Level;
 using Assets.Scripts.Sound.Soundtrack;
 using Assets.Scripts.Stage.Interfaces;
 using System;
@@ -21,7 +22,6 @@ namespace Assets.Scripts.Stage
 {
     internal class StageController : MonoBehaviour, IStageController
     {
-        [SerializeField] private AudioClip _editorTheme;
         private Player _player;
         private Camera _camera;
         public StageTileElement _currentElement { get; set; }
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Stage
         private bool _runtimeActivated;
         private void Awake()
         {
-            
+
             Singleton = this;
         }
         public static StageController Singleton { get; private set; }
@@ -76,7 +76,7 @@ namespace Assets.Scripts.Stage
             var entities = NavigationUtil.GetEntitiesOfTypeInsideOriginTile(_player.TargetType, _player);
             if(entities == null || entities.Count == 0 || entities.Any(x => x is IDamageable d && d.CurrentHealth > 0) == false) 
             {
-                LevelCompositeRoot.Instance.Runner.StopLevel(true);
+                LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
 
                 if(_currentElement == _endElement)
                 {
@@ -84,7 +84,6 @@ namespace Assets.Scripts.Stage
                 }
                 else
                 {
-                    Instance.SetGamemode(GameMode.NONE);
                     Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
                     var ents = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities;
                     for(int i = 0; i < ents.Count; i++)
@@ -101,9 +100,8 @@ namespace Assets.Scripts.Stage
         }
         public void RestoreRuntime()
         {
-            LevelCompositeRoot.Instance.Runner.RunLevel();
+            LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.RUNTIME);
             Instance._inputManager.SetActivePreviewEntity(false);
-            Instance.SetGamemode(GameMode.RUNTIME);
             Instance._levelActions.ActivateButton(ButtonType.STOP_RUNTIME);
             _runtimeActivated = true;
         }
@@ -117,8 +115,7 @@ namespace Assets.Scripts.Stage
         }
         public void StopLevel()
         {
-            LevelCompositeRoot.Instance.Runner.StopLevel();
-            Instance.SetGamemode(GameMode.EDIT);
+            LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
             Instance._levelActions.ActivateButton(ButtonType.NONE);
             OnSpaceChanged(Instance._spaceController.CurrentSpaceReqiured);
         }
@@ -131,13 +128,9 @@ namespace Assets.Scripts.Stage
         {
             var temp = _currentElement;
 
-            SoundCompositeRoot.Instance.SoundTrackPlayer.Play(_editorTheme);
+            LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
             Instance.Dockspace.DisableDockspace();
             for (int i = 0; i < temp.Elements.Length; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
-            
-
-            
-            Instance.SetGamemode(GameMode.EDIT);
         }
         private void InitPlayer()
         {
@@ -150,19 +143,19 @@ namespace Assets.Scripts.Stage
             _endElement = currentStageLevel.EndElement;
             SetCurrentElement(currentStageLevel.InitialElement);
             Instance._levelActions.OnButtonSwitched = OnButtonSwitched;
-            Instance.SetGamemode(GameMode.NONE);
             Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
         }
         private void SetCurrentElement(StageTileElement element)
         {
             _currentElement = element;
+
             element.EnableStaticEntities(true);
             _camera.transform.position = new Vector3(_currentElement.transform.position.x, _currentElement.transform.position.y, _camera.transform.position.z);
             _player.transform.position = _currentElement.PlayerPosition.position;
             _player.HousingElement = _currentElement;
             Instance._spaceController.SetMaxSpaceReqiured(element.EditorSpaceRequired);
             _camera.orthographicSize = _currentElement.CameraSize;
-            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning) LevelCompositeRoot.Instance.Runner.StopLevel(true);
+            if (LevelCompositeRoot.Instance.Runner.CurrentMode == Editor.GameMode.RUNTIME) LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.RUNTIME);
         }
         private void EnableDockspace()
         {

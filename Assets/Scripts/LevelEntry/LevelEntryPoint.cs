@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Databases.Database_providers;
+﻿using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Databases.Database_providers;
 using Assets.Scripts.Databases.Model.Character;
 using Assets.Scripts.Databases.Model.Player;
 using Assets.Scripts.Entities.Strategies;
@@ -29,6 +31,7 @@ namespace Assets.Scripts.LevelEntry
             InitData();
             StartNextStageLevel();
             _stageController.OnLastStageLeft += StartNextStageLevel;
+            LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
         }
         private void OnDestroy()
         {
@@ -44,6 +47,7 @@ namespace Assets.Scripts.LevelEntry
             _stageController = FindObjectOfType<StageController>();
             _internalLevels = GetComponentsInChildren<StageTileElementHolder>(true);
         }
+
         public void StartNextStageLevel()
         {
             EntityBaseStrategy.OnGameStart();

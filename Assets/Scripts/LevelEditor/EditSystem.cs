@@ -12,11 +12,11 @@ internal class EditSystem : PlacementSystem
     private EditorEntityHolder entityHolder;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.EDIT))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.EDIT))
         {
             OnPlace?.Invoke();
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse1) && editor.GameModeIs(Editor.GameMode.EDIT))
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && Editor.Instance.GameModeIs(GameMode.EDIT))
         {
             OnDelete?.Invoke();
         }

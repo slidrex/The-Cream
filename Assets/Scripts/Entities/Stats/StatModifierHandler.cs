@@ -77,7 +77,7 @@ namespace Assets.Scripts.Entities.Stats
         }
         public void OnUpdate()
         {
-            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning) OnLevelUpdate();
+            if (LevelCompositeRoot.Instance.Runner.CurrentMode == Editor.GameMode.RUNTIME) OnLevelUpdate();
         }
         private void OnLevelUpdate()
         {

@@ -45,8 +45,16 @@ namespace Assets.Editor
             PlayerSpace.InitPlayer(GameLevelDatabaseProvider.Instance.CharacterDatabase.GetCharacter((CharacterDatabaseModel.CharacterID)selectedCharacterId));
             PlayerSpace.OnConfigure();
         }
+        private void OnEnable()
+        {
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += SetGamemode;
+        }
+        private void OnDisable()
+        {
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= SetGamemode;
+        }
         public bool GameModeIs(GameMode mode) => CurrentGamemode == mode;
-        public void SetGamemode(GameMode gamemode)
+        private void SetGamemode(GameMode gamemode)
         {
             CurrentGamemode = gamemode;
             SwitchScreen();
@@ -102,9 +110,9 @@ namespace Assets.Editor
 
         }
         public Grid GetGrid() => grid;
-        public enum GameMode
-        {
-            NONE, EDIT, RUNTIME
-        }
+    }
+    public enum GameMode
+    {
+        UNASSIGNED, NONE, EDIT, RUNTIME
     }
 }

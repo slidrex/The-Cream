@@ -26,14 +26,14 @@ namespace Assets.Scripts.Entities.Brain
         }
 		private void Update()
         {
-            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning)
+            if (LevelCompositeRoot.Instance.Runner.CurrentMode == Editor.GameMode.RUNTIME)
             {
                 RuntimeUpdate();
             }
         }
 		private void FixedUpdate()
 		{
-			if (LevelCompositeRoot.Instance.Runner.IsLevelRunning)
+			if (LevelCompositeRoot.Instance.Runner.CurrentMode == Editor.GameMode.RUNTIME)
 			{
 				RuntimeFixedUpdate();
 			}

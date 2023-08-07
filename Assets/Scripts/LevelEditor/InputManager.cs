@@ -23,9 +23,9 @@ internal class InputManager : MonoBehaviour
     private void UpdateCursorPosition()
     {
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
-        if (lastPosition == gridPos && Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME) == false) return;
+        if (lastPosition == gridPos && Editor.Instance.GameModeIs(GameMode.RUNTIME) == false) return;
         lastPosition = gridPos;
-        if(Editor.Instance.GameModeIs(Editor.GameMode.EDIT))
+        if(Editor.Instance.GameModeIs(GameMode.EDIT))
         {
             if (Editor.Instance._editSystem.GetSelectedEntityIndex() < 0) return;
             bool placementValidity = Editor.Instance._editSystem.CheckPlacementValidity(gridPos, Editor.Instance._editSystem.GetSelectedEntityIndex());
@@ -42,7 +42,7 @@ internal class InputManager : MonoBehaviour
     }
     private void UpdatePreviewEntityPosition()
     {
-        if (Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME))
+        if (Editor.Instance.GameModeIs(GameMode.RUNTIME))
         {
             _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         }
@@ -54,7 +54,7 @@ internal class InputManager : MonoBehaviour
     }
     public void SetActivePreviewEntity(bool active, Sprite sprite = null)
     {
-        if (Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME))
+        if (Editor.Instance.GameModeIs(GameMode.RUNTIME))
         {
             _previewEntity.GetRenderer().sprite = sprite == null ? _runtimePreviewEntity : sprite;
         }

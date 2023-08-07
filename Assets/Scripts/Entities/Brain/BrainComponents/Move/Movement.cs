@@ -25,7 +25,7 @@ namespace Assets.Scripts.Entities.Move
         public void SetMoveDirection(Vector2 vector)
         {
 
-            if (LevelCompositeRoot.Instance.Runner.IsLevelRunning == false)
+            if (LevelCompositeRoot.Instance.Runner.CurrentMode != Editor.GameMode.RUNTIME)
             {
                 return;
             }

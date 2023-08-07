@@ -230,7 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8532f9277a9e0a40829958a1e2745f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultNoneTheme: {fileID: 8300000, guid: 1660052ba3468e1479ef14d906e5b3eb, type: 3}
   _defaultRuntimeTheme: {fileID: 8300000, guid: f0fec4b6863ff3e43835bb81153a78a0, type: 3}
+  _defaultEditorTheme: {fileID: 8300000, guid: 5da72b06519877d4386b0f5e5f1cb41d, type: 3}
 --- !u!114 &3600895935464057524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,7 +2099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bda2b788b9e3b41b478848cfe6342e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _editorTheme: {fileID: 8300000, guid: 5da72b06519877d4386b0f5e5f1cb41d, type: 3}
 --- !u!1 &3652956625662276037
 GameObject:
   m_ObjectHideFlags: 0

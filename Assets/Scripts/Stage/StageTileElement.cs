@@ -9,6 +9,7 @@ namespace Assets.Scripts.Stage
     {
         public Transform PlayerPosition;
         [field:SerializeField] public int EditorSpaceRequired { get; set; } = 16;
+        public AudioSource SpecificSoundtrack;
         public int CameraSize = 5;
         public RelationElement[] Elements;
         [Serializable]

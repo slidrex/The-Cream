@@ -19,8 +19,8 @@ namespace Assets.Scripts.Menu.Audio
         [SerializeField] private Toggle _muteSound;
         private void Start()
         {
-            ConfigureServices();
             ConfigureInitialValues();
+            ConfigureServices();
         }
         private void ConfigureServices()
         {

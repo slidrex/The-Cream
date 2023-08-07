@@ -28,7 +28,7 @@ internal class RuntimeSystem : PlacementSystem
         {
             skill.Skill.Update();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && editor.GameModeIs(Editor.GameMode.RUNTIME) && EventSystem.current.IsPointerOverGameObject() == false)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.RUNTIME) && EventSystem.current.IsPointerOverGameObject() == false)
         {
             OnPlace?.Invoke();
         }
