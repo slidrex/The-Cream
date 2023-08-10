@@ -15,13 +15,18 @@ namespace Assets.Scripts.Sound.Level
         [SerializeField] private AudioClip _defaultNoneTheme;
         [SerializeField] private AudioClip _defaultRuntimeTheme;
         [SerializeField] private AudioClip _defaultEditorTheme;
-        public AudioClip RuntimeTheme { get; set; }
-        public AudioClip EditorTheme { get; set; }
+        public AudioClip RuntimeTheme { get; private set; }
+        public AudioClip EditorTheme { get; private set; }
         private void Awake()
         {
             RuntimeTheme = _defaultRuntimeTheme;
             EditorTheme = _defaultEditorTheme;
             LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnRuntimeRun;
+        }
+        public void SetRuntimeTheme(AudioClip clip)
+        {
+            if (clip == null) RuntimeTheme = _defaultRuntimeTheme;
+            else RuntimeTheme = clip;
         }
         private void OnRuntimeRun(GameMode mode)
         {

@@ -573,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 175524458}
   <EditorSpaceRequired>k__BackingField: 16
+  SpecificRuntimeSoundtrack: {fileID: 0}
   CameraSize: 5
   Elements:
   - Direction: 4
@@ -5012,6 +5013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 578045064}
   <EditorSpaceRequired>k__BackingField: 32
+  SpecificRuntimeSoundtrack: {fileID: 0}
   CameraSize: 8
   Elements: []
 --- !u!1 &911510550
@@ -5061,6 +5063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 1418162492}
   <EditorSpaceRequired>k__BackingField: 16
+  SpecificRuntimeSoundtrack: {fileID: 0}
   CameraSize: 8
   Elements: []
 --- !u!1 &963263717
@@ -5110,6 +5113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 734798263}
   <EditorSpaceRequired>k__BackingField: 16
+  SpecificRuntimeSoundtrack: {fileID: 0}
   CameraSize: 5
   Elements:
   - Direction: 4
@@ -5161,6 +5165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 1247266392}
   <EditorSpaceRequired>k__BackingField: 16
+  SpecificRuntimeSoundtrack: {fileID: 0}
   CameraSize: 5
   Elements:
   - Direction: 1
@@ -5327,6 +5332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 514083126}
   <EditorSpaceRequired>k__BackingField: 4
+  SpecificRuntimeSoundtrack: {fileID: 0}
   CameraSize: 5
   Elements:
   - Direction: 1

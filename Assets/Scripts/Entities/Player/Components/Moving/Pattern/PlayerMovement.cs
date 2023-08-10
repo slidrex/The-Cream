@@ -5,6 +5,7 @@ using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player.Components.Attacking;
 using Assets.Scripts.Entities.Util.UIPlayer;
 using Pathfinding;
+using System.Threading.Tasks;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -50,9 +51,10 @@ namespace Assets.Scripts.Entities.Player.Moving
 		}
 		protected override void RuntimeUpdate()
 		{
-			if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (_isMoving) UpdatePlayerPosition();
+            if (Input.GetKeyDown(KeyCode.Mouse1))
 			{
-				RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+				RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Vector2)Input.mousePosition), Vector2.zero);
 				if (hit.collider == null)
 				{
 					return;
@@ -67,7 +69,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 					SetTarget(entity);
 				}
 			}
-		}
+        }
 		private void SelectEntity(Entity entity)
 		{
 			if(_lastSelectedEntity != null)
@@ -82,9 +84,9 @@ namespace Assets.Scripts.Entities.Player.Moving
 		private void SetPoint()
 		{
 			SelectEntity(null);
-			Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			_path = _pointMovement.SetPoint(_seeker, pos);
-			Editor.Editor.Instance.PlayerMarks.SetMovePoint(pos);
+            Editor.Editor.Instance.PlayerMarks.SetMovePoint(pos);
 			SetNewPath();
 			_targetType = TargetType.POINT;
 		}
@@ -113,11 +115,8 @@ namespace Assets.Scripts.Entities.Player.Moving
 		{
 			_isMoving = false;
 			SelectEntity(null);
-			_movement.Stop();
-		}
-		protected override void RuntimeFixedUpdate()
-		{
-			if (_isMoving) UpdatePlayerPosition();
+
+            _movement.Stop();
 		}
 		private void SetNewPath()
 		{
@@ -126,7 +125,8 @@ namespace Assets.Scripts.Entities.Player.Moving
 		}
 		private void UpdatePlayerPosition()
 		{
-			Vector2 moveVector = Vector2.zero;
+			
+            Vector2 moveVector = Vector2.zero;
 			if(_targetMovement.Target == null && _targetType == TargetType.ENEMY)
 			{
 				FindNewEnemy();
@@ -150,11 +150,11 @@ namespace Assets.Scripts.Entities.Player.Moving
 				_targetMovement.GetMoveVectorEnemy(out moveVector, currentWaypoint, out currentWaypoint, _path, out bool insideRedZone);
 				if (insideRedZone) _attack.OnTargetInsideZone(_targetMovement.Target);
 				else _attack.OnTargetLeftZone();
-				
+
 			}
 			else if (_targetType == TargetType.OBSTACLE) _targetMovement.GetMoveVectorTarget(out moveVector, currentWaypoint, out currentWaypoint, _path);
 
-
+			_attack.UpdateAttackTarget(_targetType);
 			if (moveVector != Vector2.zero)
 			{
 				_movement.SetMoveDirection(moveVector);
@@ -162,7 +162,8 @@ namespace Assets.Scripts.Entities.Player.Moving
 			}
 			else _movement.Stop();
 
-			if (_animator != null)
+
+            if (_animator != null)
 			{
 				_animator.SetInteger(MOVE_X_TRIGGER, Mathf.RoundToInt(moveVector.x));
                 _animator.SetInteger(MOVE_Y_TRIGGER, Mathf.RoundToInt(moveVector.y));

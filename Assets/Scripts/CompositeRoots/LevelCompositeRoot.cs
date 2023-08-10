@@ -2,6 +2,7 @@
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Level;
 using Assets.Scripts.Level.InfoProviders;
+using Assets.Scripts.Sound.Level;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Assets.Scripts.CompositeRoots
     internal class LevelCompositeRoot : MonoBehaviour
     {
         public static LevelCompositeRoot Instance { get; private set; }
+        [field: SerializeField] public LevelSoundController LevelSoundController { get; private set; }
         public LevelRunner Runner;
         public LevelEntityInfo LevelInfo;
         private void Awake()

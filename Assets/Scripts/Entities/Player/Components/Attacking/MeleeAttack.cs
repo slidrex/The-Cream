@@ -27,6 +27,10 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 			_data = GetComponent<EnvironmentData>();
 			_animator = GetComponent<Animator>();
 		}
+		public void UpdateAttackTarget(Assets.Scripts.Entities.Player.Moving.PlayerMovement.TargetType type)
+		{
+			if (type != Moving.PlayerMovement.TargetType.ENEMY && _data.CurrentTarget != null) _data.SetTarget(null);
+		}
 		public void OnTargetInsideZone(Entity target)
 		{
 			_data.SetTarget(target);
@@ -34,8 +38,11 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 		}
 		public void OnTargetLeftZone()
 		{
-			ResetAttackTimer();
-			_data.SetTarget(null);
+			if(_data.CurrentTarget != null)
+			{
+				ResetAttackTimer();
+				_data.SetTarget(null);
+			}
 		}
 		protected override void RuntimeUpdate()
 		{

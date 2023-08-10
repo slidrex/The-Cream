@@ -10,7 +10,7 @@ namespace Assets.Scripts.Config.Audio
     internal class AudioConfig
     {
         public Action OnChange { get; set; } 
-        public float MasterVolume { get; private set; } = 1.0f;
+        public float MasterVolume { get; private set; } = 0.3f;
         public float MusicVolumne { get; private set; } = 0.8f;
         public float SoundEffectsVolume { get; private set; } = 1.0f;
         public bool MusicMuted { get; private set; } = false;
