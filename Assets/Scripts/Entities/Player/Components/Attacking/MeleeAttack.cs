@@ -15,13 +15,16 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 {
 	internal class MeleeAttack : EntityBrain<Player>
 	{
+		[SerializeField] private ParticleSystem attackParticles;
+		[SerializeField] private string[] ATTACK_TRIGGER = new string[2] { "Attack", "AlternativeAttack" };
 		private float AttackSpeed { get => Entity.Stats.GetValue<AttackSpeedStat>(); }
 		private int Damage { get => Entity.Stats.GetValueInt<DamageStat>(); }
 		private Facing _facing;
 		private EnvironmentData _data;
 		private float _timeToAttack;
 		private float _timeSinceAttack;
-		private void Start()
+		private Animator _animator;
+        private void Start()
 		{
 			_facing = GetComponent<Facing>();
 			_data = GetComponent<EnvironmentData>();
@@ -61,7 +64,15 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 		protected virtual void OnAttack()
 		{
 			if (_animator != null)
-				_animator.SetTrigger(ATTACK_TRIGGER);
+			{
+				_animator.SetTrigger(ATTACK_TRIGGER[UnityEngine.Random.Range(0, ATTACK_TRIGGER.Length)]);
+
+			}
+			if(attackParticles != null)
+			{
+				attackParticles.transform.position = _data.CurrentTarget.position;
+				attackParticles.Play();
+			}
 		}
 		private void UpdateTimer()
 		{

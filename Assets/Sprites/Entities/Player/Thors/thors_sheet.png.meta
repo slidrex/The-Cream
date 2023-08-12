@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 08f294b94060ebe4da7f9ecb23e8c9f7
+guid: 5763c3fb4c97aed45b212d300676b50a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -109,7 +109,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c8214f3ad9a5ec4ea5fe8cecd106633
-      internalID: -1596849507
+      spriteID: 9747bea42c52cfd40b37865475b75053
+      internalID: 2055303256
       vertices: []
       indices: 
       edges: []
@@ -130,7 +130,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcb0e0a5975ed4c4198d8e3702aa1aa8
-      internalID: -305434813
+      spriteID: 11cfc5e4269b69b42861c320009cf64b
+      internalID: -1040888579
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 466eeee4334a4e5418e0357a2e74691b
-      internalID: 491722064
+      spriteID: dd4ec3727381ce348b474fe09d0721c4
+      internalID: 272398063
       vertices: []
       indices: 
       edges: []
@@ -172,7 +172,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 525547dccd8cd9e41a79aaceec34c49e
-      internalID: 1720329878
+      spriteID: 80972e10dbf549248886f2bf1631b84f
+      internalID: -1728664604
       vertices: []
       indices: 
       edges: []
@@ -193,7 +193,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -203,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a7a23cf393223c48ac6621893441e9b
-      internalID: -8374994
+      spriteID: 82d960bca454da943a0c67b05fd68bb1
+      internalID: 935878608
       vertices: []
       indices: 
       edges: []
@@ -214,7 +214,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f688b8dcb198af0429e4f9a5feba433a
-      internalID: 1409766445
+      spriteID: b7e3c842674e58b45abfc8d62aac4ea8
+      internalID: -885342606
       vertices: []
       indices: 
       edges: []
@@ -235,6 +235,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d15a21f994980174e9be164aec803a87
+      internalID: -1905490600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 128
         width: 64
         height: 64
@@ -245,29 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06f22f036bbf3cf408f5d91edf67fa0d
-      internalID: 113264827
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thors_sheet_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bc7b703039d2cb46bbc9fcadf165924
-      internalID: 2038768130
+      spriteID: 87ba503939b86a04680237de8a837add
+      internalID: -2103971235
       vertices: []
       indices: 
       edges: []
@@ -277,6 +277,90 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca915aa14f9a8e340bdfa02c27a63d9f
+      internalID: 1428844362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5dd0d712af215741a6142aec6f564e5
+      internalID: 1567927946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a67c91ef45c44ab43b3342511e609a00
+      internalID: -1070571576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81439eb270298db46bbe1277ac4fd906
+      internalID: 1146946059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 64
         width: 64
         height: 64
@@ -287,14 +371,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab9fdf7b5bdfdf045bd8fe994a75aab0
-      internalID: -1593867278
+      spriteID: 407a2013e752e4e45ba0465300b1e552
+      internalID: -1285845109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_9
+      name: thors_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b224036d277d043bb47e8b1f58743c
+      internalID: 433910563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_14
       rect:
         serializedVersion: 2
         x: 128
@@ -308,14 +413,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46d69ceb337b42940a10b0dd3a366f70
-      internalID: -1669382596
+      spriteID: d7b757e36b3ee7349a41a229c91b6a21
+      internalID: 873062558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_10
+      name: thors_sheet_15
       rect:
         serializedVersion: 2
         x: 192
@@ -329,14 +434,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2676e3e207d96224dab665a604f74cf2
-      internalID: 233072163
+      spriteID: 75a7368afef44624f949bc52822d094d
+      internalID: -754739193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_11
+      name: thors_sheet_16
       rect:
         serializedVersion: 2
         x: 256
@@ -350,14 +455,161 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42bb275efddacda48bd73a295b476368
-      internalID: -1924517762
+      spriteID: e9052b80cfca1894aaca0207a9fdea5d
+      internalID: -781248862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_12
+      name: thors_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22be6f04e11d8204c8547ae8a76d325f
+      internalID: 1261707650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8947a5d636c6ea498b84fed5d281412
+      internalID: -301380985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754966857d57d794a8f7fb791ca5ec0b
+      internalID: -1352341489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01b0df203237ce49960876694db2c0d
+      internalID: 1435788962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a567b5eeb80614541928b49c096986fc
+      internalID: -1539493420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d6d13c333b1e524488a3a7c766e6e05
+      internalID: -1982007551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 192dbba7e663d1e4dbb180cc4655f4fa
+      internalID: -1779702202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thors_sheet_24
       rect:
         serializedVersion: 2
         x: 0
@@ -371,14 +623,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6ee5212d69da4848aed5c992c7afedb
-      internalID: -759474
+      spriteID: 42dce4e3c3fa1ce4680ed390bbce19a8
+      internalID: 1163089485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_13
+      name: thors_sheet_25
       rect:
         serializedVersion: 2
         x: 64
@@ -392,14 +644,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95a6a5d389ea9d3419fb53bcf86a90e6
-      internalID: -1423829177
+      spriteID: 2265d97b89d868e45bd8041896ac5d23
+      internalID: -831220950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_14
+      name: thors_sheet_26
       rect:
         serializedVersion: 2
         x: 128
@@ -413,14 +665,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19998096576e1b641b03cc759e6ee1dc
-      internalID: 820351372
+      spriteID: 2f1721201a63e354d866f7aabc7d0a3c
+      internalID: -1562973775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_15
+      name: thors_sheet_27
       rect:
         serializedVersion: 2
         x: 192
@@ -434,14 +686,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3031d16aa7a134b46acfd1cb3ffb4185
-      internalID: 1707498720
+      spriteID: a3dfb665a25925142843c0ff81b964ad
+      internalID: -675967702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_16
+      name: thors_sheet_28
       rect:
         serializedVersion: 2
         x: 256
@@ -455,14 +707,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2764e6833106f624f812846ef01ec6b2
-      internalID: -836977779
+      spriteID: 18ccf43c3080d5c41bcd97260fa16254
+      internalID: 451455275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_17
+      name: thors_sheet_29
       rect:
         serializedVersion: 2
         x: 320
@@ -476,14 +728,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f865d5b17f00b134a951885668ca9205
-      internalID: -1058742624
+      spriteID: bbad4780ccd59064cab8758969c95874
+      internalID: 1250110313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_18
+      name: thors_sheet_30
       rect:
         serializedVersion: 2
         x: 384
@@ -497,14 +749,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c9ae28db1b410a48a76b7ce066dcee1
-      internalID: -204686510
+      spriteID: 2f64c58c1a42d3841bc509938693d0f9
+      internalID: -1612128210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_19
+      name: thors_sheet_31
       rect:
         serializedVersion: 2
         x: 448
@@ -518,14 +770,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25c9ee86d55e6424dbf4c3c9f2aad101
-      internalID: 185445009
+      spriteID: 355790e3639422049a021b7acbf9e49e
+      internalID: -947559960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_20
+      name: thors_sheet_32
       rect:
         serializedVersion: 2
         x: 512
@@ -539,14 +791,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bdef37deb5f1554d9a6be55a1acbe09
-      internalID: 494553216
+      spriteID: b71699db13bc92a4bb03fb2e2c37a238
+      internalID: -176749205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_21
+      name: thors_sheet_33
       rect:
         serializedVersion: 2
         x: 576
@@ -560,14 +812,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fcbde0ae2ba7474daad8107dd232484
-      internalID: 81194063
+      spriteID: 34e689b92ea728b40a9d2aecc4a611a3
+      internalID: 1963523873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thors_sheet_22
+      name: thors_sheet_34
       rect:
         serializedVersion: 2
         x: 640
@@ -581,29 +833,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0478822435775144696da29d4ce47ffc
-      internalID: -1055138263
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thors_sheet_23
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89c11a01edeb28f43a53494b139b981a
-      internalID: 1427526040
+      spriteID: 2c7ca9130bc491e4bbb3d08a668c01b5
+      internalID: 500461795
       vertices: []
       indices: 
       edges: []
@@ -619,30 +850,41 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      thors_sheet_0: -1596849507
-      thors_sheet_8: -1593867278
-      thors_sheet_2: 491722064
-      thors_sheet_15: 1707498720
-      thors_sheet_23: 1427526040
-      thors_sheet_19: 185445009
-      thors_sheet_17: -1058742624
-      thors_sheet_11: -1924517762
-      thors_sheet_9: -1669382596
-      thors_sheet_22: -1055138263
-      thors_sheet_12: -759474
-      thors_sheet_7: 2038768130
-      thors_sheet_16: -836977779
-      thors_sheet_5: 1409766445
-      thors_sheet_20: 494553216
-      thors_sheet_14: 820351372
-      thors_sheet_13: -1423829177
-      thors_sheet_3: 1720329878
-      thors_sheet_4: -8374994
-      thors_sheet_6: 113264827
-      thors_sheet_10: 233072163
-      thors_sheet_21: 81194063
-      thors_sheet_1: -305434813
-      thors_sheet_18: -204686510
+      thors_sheet_0: 2055303256
+      thors_sheet_8: 1428844362
+      thors_sheet_28: 451455275
+      thors_sheet_2: 272398063
+      thors_sheet_24: 1163089485
+      thors_sheet_25: -831220950
+      thors_sheet_15: -754739193
+      thors_sheet_23: -1779702202
+      thors_sheet_30: -1612128210
+      thors_sheet_19: -1352341489
+      thors_sheet_26: -1562973775
+      thors_sheet_27: -675967702
+      thors_sheet_17: 1261707650
+      thors_sheet_11: 1146946059
+      thors_sheet_9: 1567927946
+      thors_sheet_34: 500461795
+      thors_sheet_29: 1250110313
+      thors_sheet_22: -1982007551
+      thors_sheet_12: -1285845109
+      thors_sheet_7: -2103971235
+      thors_sheet_16: -781248862
+      thors_sheet_32: -176749205
+      thors_sheet_5: -885342606
+      thors_sheet_20: 1435788962
+      thors_sheet_14: 873062558
+      thors_sheet_13: 433910563
+      thors_sheet_3: -1728664604
+      thors_sheet_31: -947559960
+      thors_sheet_33: 1963523873
+      thors_sheet_4: 935878608
+      thors_sheet_6: -1905490600
+      thors_sheet_10: -1070571576
+      thors_sheet_21: -1539493420
+      thors_sheet_1: -1040888579
+      thors_sheet_18: -301380985
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

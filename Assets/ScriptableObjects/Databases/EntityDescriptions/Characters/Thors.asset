@@ -18,5 +18,5 @@ MonoBehaviour:
   Skills:
   - {fileID: 11400000, guid: cd8679cbe06549a438caae1a869cbc66, type: 2}
   - {fileID: 11400000, guid: 75234aa371ec592429d8a1a4c08e27f9, type: 2}
-  <CharacterSprite>k__BackingField: {fileID: 1707498720, guid: 08f294b94060ebe4da7f9ecb23e8c9f7, type: 3}
+  <CharacterSprite>k__BackingField: {fileID: 2055303256, guid: 5763c3fb4c97aed45b212d300676b50a, type: 3}
   <CharacterButtonIcon>k__BackingField: {fileID: 1733200218, guid: 801d2445862719f4b83341a43c87c195, type: 3}

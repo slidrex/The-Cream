@@ -18,6 +18,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 	{
 		[SerializeField] private float _safeDistance;
 		[SerializeField] private LayerMask _tilemapLayer;
+		private Animator _animator;
 		private PlayerPointMovement _pointMovement;
 		private Seeker _seeker;
 		private Path _path;
@@ -28,7 +29,8 @@ namespace Assets.Scripts.Entities.Player.Moving
 		private MeleeAttack _attack;
 		private Facing _facing;
 		private Entity _lastSelectedEntity;
-		public enum TargetType
+        private const string MOVE_X_TRIGGER = "moveX";
+        public enum TargetType
 		{
 			POINT,
 			ENEMY,
@@ -129,7 +131,6 @@ namespace Assets.Scripts.Entities.Player.Moving
 
             _movement?.Stop();
             _animator?.SetInteger(MOVE_X_TRIGGER, 0);
-            _animator?.SetInteger(MOVE_Y_TRIGGER, 0);
         }
 		private void InterruptAnimation()
 		{
@@ -182,8 +183,8 @@ namespace Assets.Scripts.Entities.Player.Moving
 
             if (_animator != null)
 			{
-				_animator.SetInteger(MOVE_X_TRIGGER, Mathf.RoundToInt(moveVector.x));
-                _animator.SetInteger(MOVE_Y_TRIGGER, Mathf.RoundToInt(moveVector.y));
+                float resultVector = Mathf.Abs(moveVector.x) + Mathf.Abs(moveVector.y);
+                _animator.SetInteger(MOVE_X_TRIGGER, Mathf.RoundToInt(resultVector));
             }
 		}
 		private void FindNewEnemy()

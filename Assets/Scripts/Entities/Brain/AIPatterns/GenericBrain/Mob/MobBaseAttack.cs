@@ -32,6 +32,10 @@ namespace Assets.Scripts.Entities.Attack
         private const float BIND_TIME = 1.5f;
         private float _timeSinceBind;
         private bool _steeringBinded;
+        private Animator _animator;
+        private const string ATTACK_TRIGGER = "Attack";
+        private const string MOVE_X_TRIGGER = "moveX";
+
         private void Start()
         {
             _animator = GetComponent<Animator>();
