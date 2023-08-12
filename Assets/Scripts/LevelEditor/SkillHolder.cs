@@ -28,7 +28,7 @@ internal class SkillHolder : ObjectHolder
     {
         if(_skill != null)
         {
-            cooldownAnim.fillAmount = (float)(1 - _skill.TimeSinceActivation)/ _skill.BaseCooldown;
+            cooldownAnim.fillAmount = 1 - _skill.TimeSinceActivation/_skill.BaseCooldown;
         }
     }
 
