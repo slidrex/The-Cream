@@ -15,14 +15,15 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 
 		public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
 
-		public override AttributeHolder Stats => new(new MaxHealthStat(200), new AttackSpeedStat(1));
+		public override AttributeHolder Stats => new(new MaxHealthStat(50), new AttackSpeedStat(1));
 
 		public int CurrentHealth { get; set; }
 		public Action<int, int, Entity> OnHealthChanged { get; set; }
 
 		public bool IsInvulnerable { get; set; }
+        public bool IsDead { get; set; }
 
-		public void Damage(int damage, Entity dealer)
+        public void Damage(int damage, Entity dealer)
 		{
 			EntityHealthStrategy.Damage(this, damage, dealer);
 		}

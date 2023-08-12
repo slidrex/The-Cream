@@ -9,6 +9,7 @@ namespace Assets.Scripts.Entities.Templates
     {
         public override EntityTypeBase ThisType => new EntityType<MobTag>(MobTag.AGGRESSIVE);
         public int CurrentHealth { get; set; }
+        public bool IsDead { get; set; }
 
         public void Damage(int damage, Entity deler)
         {

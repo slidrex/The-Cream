@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
+﻿using Assets.Scripts.Entities.Reset;
+using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Stage;
@@ -12,19 +13,24 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Entities.Brain.Boss.Bossbar
 {
-    internal class BossbarController : MonoBehaviour
+    internal class BossbarController : MonoBehaviour, IResettable
     {
         [SerializeField] private GameObject _barObject;
         [SerializeField] private Image _barFill;
-        private Entity _entity;
         public void EnableBar(EntityBossbar bossbar, Entity entity)
         {
             if (entity.HousingElement != StageController.Singleton._currentElement) return;
             _barObject.gameObject.SetActive(true);
+
             var healthChangedHandler = entity as IHealthChangedHandler;
             _barFill.color = bossbar.BarColor;
+            var h = entity as IDamageable;
+            var maxHealthStat = entity.Stats.GetValueInt<MaxHealthStat>();
+
             if (healthChangedHandler == null) throw new NullReferenceException("Entity" + entity.name + " must have IHealthChangedHandler interface.");
-            healthChangedHandler.OnHealthChanged += (int oldHealth, int newHealth, Entity dealer) => OnHealthChanged(entity as IDamageable, entity.Stats.GetValueInt<MaxHealthStat>());
+            
+            _barFill.fillAmount = (float)h.CurrentHealth / maxHealthStat;
+            healthChangedHandler.OnHealthChanged += (int oldHealth, int newHealth, Entity dealer) => OnHealthChanged(h, maxHealthStat);
         }
         private void OnHealthChanged(IDamageable health, int maxHealth)
         {
@@ -34,6 +40,11 @@ namespace Assets.Scripts.Entities.Brain.Boss.Bossbar
         public void DisableBar()
         {
             _barObject.gameObject.SetActive(false);
+        }
+
+        public void OnReset()
+        {
+            DisableBar();
         }
     }
 }

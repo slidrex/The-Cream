@@ -14,21 +14,20 @@ namespace Assets.Scripts.Entities.Move
         public Vector2 MoveVector { get; private set; }
         public Entity AttachedEntity { get; private set; }
         public bool IsMoving { get; private set; }
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            
+        }
         private void Start()
         {
             AttachedEntity = GetComponent<Entity>();
-            _rb = GetComponent<Rigidbody2D>();
 
             _stats = AttachedEntity.Stats.GetAttribute<SpeedStat>();
             if (_stats == null) throw new Exception("Entity doesn't have IMoveable attribute");
         }
         public void SetMoveDirection(Vector2 vector)
         {
-
-            if (LevelCompositeRoot.Instance.Runner.CurrentMode != Editor.GameMode.RUNTIME)
-            {
-                return;
-            }
 
 			_rb.velocity = vector * _stats.GetValue();
             MoveVector = vector;

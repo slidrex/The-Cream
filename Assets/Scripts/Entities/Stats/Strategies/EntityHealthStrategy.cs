@@ -40,8 +40,9 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             changeHealthHandler?.OnHealthChanged?.Invoke(oldHealth, damageable.CurrentHealth, dealer);
             
             
-            if(damageable.CurrentHealth == 0)
+            if(damageable.CurrentHealth == 0 && damageable.IsDead == false)
             {
+                damageable.IsDead = true;
                 LevelCompositeRoot.Instance.LevelInfo.OnEntityDie.Invoke(entity);
                 if (entity is IExperienceGainer incomingGain && dealer is ILevelEntity exp) exp.AddExperience(incomingGain.OnDieExp); 
                 damageable.OnDie();

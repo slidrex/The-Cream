@@ -29,6 +29,7 @@ namespace Assets.Scripts.Entities.Player
         public int MaxHealth { get; }
         public List<AdjustmentMask> Masks { get; set; }
         public Action<int> OnDamageIncomed { get; set; }
+        public bool IsDead { get; set; }
 
         protected override void Awake()
         {

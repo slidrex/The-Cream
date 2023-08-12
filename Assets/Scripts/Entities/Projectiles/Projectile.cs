@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Navigation.EntityType;
+﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Navigation.EntityType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,14 @@ namespace Assets.Scripts.Entities.Projectiles
             rb = GetComponent<Rigidbody2D>();
             Destroy(gameObject, _lifetime);
         }
+        private void OnEnable()
+        {
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnGameModeChanged;
+        }
+        private void OnDisable()
+        {
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= OnGameModeChanged;
+        }
         public void SetMoveDirection(Vector2 direction)
         {
             rb.velocity = direction.normalized * Speed;
@@ -33,6 +42,14 @@ namespace Assets.Scripts.Entities.Projectiles
             {
                 OnTrigger(entity);
             }
+        }
+        private void OnGameModeChanged(Editor.GameMode mode)
+        {
+            if (mode != Editor.GameMode.RUNTIME && LevelCompositeRoot.Instance.Runner.PreviousGameMode == Editor.GameMode.RUNTIME) OnRuntimeRoundChanged(); 
+        }
+        protected virtual void OnRuntimeRoundChanged()
+        {
+
         }
         protected virtual void OnTrigger(Entity trigger)
         {

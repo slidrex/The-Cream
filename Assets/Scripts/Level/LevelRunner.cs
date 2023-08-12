@@ -1,6 +1,7 @@
 ﻿using Assets.Editor;
 using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Reset;
+using Assets.Scripts.Stage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Level
     internal class LevelRunner : MonoBehaviour
     {
         public Action<GameMode> OnLevelModeChanged { get; set; }
+        public Editor.GameMode PreviousGameMode { get; private set; }
         private IEnumerable<ILevelRunHandler> _runHandlers;
         private IEnumerable<IResettable> _resetHandlers;
         public GameMode CurrentMode { get; private set; } = GameMode.UNASSIGNED;
@@ -22,18 +24,19 @@ namespace Assets.Scripts.Level
         public void SetGameMode(GameMode mode)
         {
             if (mode == CurrentMode && mode != GameMode.UNASSIGNED) throw new Exception($"Level mode is already set to {mode}!!");
+            PreviousGameMode = CurrentMode;
+            CurrentMode = mode;
             TriggerResets(mode);
             foreach (var obj in _runHandlers)
             {
-                obj.OnLevelRun(true);
+                obj.OnLevelRun(mode == GameMode.RUNTIME? true : false);
             }
-            CurrentMode = mode;
 
             OnLevelModeChanged?.Invoke(mode);
         }
         private void TriggerResets(GameMode mode)
         {
-            if(mode == GameMode.EDIT)
+            if(mode == GameMode.EDIT || (mode == GameMode.NONE && PreviousGameMode == GameMode.UNASSIGNED))
                 foreach(var obj in _resetHandlers)
                 {
                     obj.OnReset();

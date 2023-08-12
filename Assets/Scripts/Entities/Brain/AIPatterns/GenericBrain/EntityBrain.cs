@@ -30,6 +30,7 @@ namespace Assets.Scripts.Entities.Brain
             {
                 RuntimeUpdate();
             }
+            OnUpdate();
         }
 		private void FixedUpdate()
 		{
@@ -38,6 +39,7 @@ namespace Assets.Scripts.Entities.Brain
 				RuntimeFixedUpdate();
 			}
 		}
+        protected virtual void OnUpdate() { }
 		protected virtual void RuntimeUpdate()
         {
 

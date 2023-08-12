@@ -76,7 +76,6 @@ namespace Assets.Scripts.Stage
             var entities = NavigationUtil.GetEntitiesOfTypeInsideOriginTile(_player.TargetType, _player);
             if(entities == null || entities.Count == 0 || entities.Any(x => x is IDamageable d && d.CurrentHealth > 0) == false) 
             {
-                LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
 
                 if(_currentElement == _endElement)
                 {
@@ -92,6 +91,7 @@ namespace Assets.Scripts.Stage
                             Destroy(ents[i].gameObject);
                     }
                 }
+                LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
             }
         }
         private void OnLastStageCompleted()

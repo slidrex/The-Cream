@@ -3,6 +3,7 @@ using Assets.Scripts.Entities.Brain;
 using Assets.Scripts.Entities.Move;
 using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player.Components.Attacking;
+using Assets.Scripts.Entities.Reset;
 using Assets.Scripts.Entities.Util.UIPlayer;
 using Pathfinding;
 using System.Threading.Tasks;
@@ -48,9 +49,19 @@ namespace Assets.Scripts.Entities.Player.Moving
 		public override void OnReset()
 		{
 			Stop();
-		}
-		protected override void RuntimeUpdate()
+			Debug.Log("On reset");
+			InterruptAnimation();
+        }
+        protected override void OnUpdate()
+        {
+			if(Editor.Editor.Instance.GameModeIs(Editor.GameMode.RUNTIME) || Editor.Editor.Instance.GameModeIs(Editor.GameMode.NONE))
+			{
+				UpdatePosition();
+			}
+        }
+		private void UpdatePosition()
 		{
+
             if (_isMoving) UpdatePlayerPosition();
             if (Input.GetKeyDown(KeyCode.Mouse1))
 			{
@@ -69,7 +80,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 					SetTarget(entity);
 				}
 			}
-        }
+		}
 		private void SelectEntity(Entity entity)
 		{
 			if(_lastSelectedEntity != null)
@@ -116,8 +127,14 @@ namespace Assets.Scripts.Entities.Player.Moving
 			_isMoving = false;
 			SelectEntity(null);
 
-            _movement.Stop();
-		}
+            _movement?.Stop();
+            _animator?.SetInteger(MOVE_X_TRIGGER, 0);
+            _animator?.SetInteger(MOVE_Y_TRIGGER, 0);
+        }
+		private void InterruptAnimation()
+		{
+            _facing?.SetSightDirection(Facing.SightDirection.RIGHT);
+        }
 		private void SetNewPath()
 		{
 			currentWaypoint = 0;

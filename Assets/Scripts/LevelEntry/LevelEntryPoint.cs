@@ -50,6 +50,7 @@ namespace Assets.Scripts.LevelEntry
 
         public void StartNextStageLevel()
         {
+            LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.UNASSIGNED);
             EntityBaseStrategy.OnGameStart();
             if(_currentStageLevel > 0) _internalLevels[_currentStageLevel - 1].gameObject.SetActive(false);
             if (_currentStageLevel >= _internalLevels.Length)

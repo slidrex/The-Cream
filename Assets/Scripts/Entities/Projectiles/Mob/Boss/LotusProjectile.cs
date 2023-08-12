@@ -15,5 +15,9 @@ namespace Assets.Scripts.Entities.Projectiles.Mob.Boss
 		{
 			Destroy(gameObject);
 		}
-	}
+        protected override void OnRuntimeRoundChanged()
+        {
+			Destroy(gameObject);
+        }
+    }
 }

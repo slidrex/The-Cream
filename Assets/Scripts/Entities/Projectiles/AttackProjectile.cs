@@ -24,7 +24,7 @@ namespace Assets.Scripts.Entities.Projectiles
 				OnTargetHit(trigger);
 			}
 		}
-		protected virtual void OnTargetHit(Entity hit) 
+        protected virtual void OnTargetHit(Entity hit) 
 		{
 
 		}
