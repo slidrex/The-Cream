@@ -47,7 +47,7 @@ public class CharacterPodium : MonoBehaviour
             var but = Instantiate(characterButton, characterContainer);
             but.SetPodium(this);
             but.SetCharacter(ids[i], models[i]);
-            but.SetIcon(models[i].Character.Description.CharacterIcon);
+            but.SetIcon(models[i].Character.Description.CharacterButtonIcon);
         }
     }
     public void ClearSkillDescripion()
