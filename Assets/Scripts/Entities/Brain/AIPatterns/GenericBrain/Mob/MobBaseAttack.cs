@@ -16,10 +16,6 @@ namespace Assets.Scripts.Entities.Attack
     [RequireComponent(typeof(Facing))]
     internal sealed class MobBaseAttack : EntityBrain<Entity>
     {
-        [Header("Animator")]
-        [SerializeField] private string _moveXTrigger = "moveX";
-        [SerializeField] private string _attackTrigger = "Attack";
-
         [Header("Behaviour settings")]
         [SerializeField] private bool _showGizmos;
         [SerializeField] private float _minCircleDistance;
@@ -90,14 +86,13 @@ namespace Assets.Scripts.Entities.Attack
 
 
 			Movement.SetMoveDirection(targetDir);
-            if(string.IsNullOrEmpty(_moveXTrigger) == false)
-                _animator.SetInteger(_moveXTrigger, Mathf.RoundToInt(Movement.MoveVector.normalized.x));
+            float resultVector = Mathf.Abs(Movement.MoveVector.x) + Mathf.Abs(Movement.MoveVector.y);
+            _animator.SetInteger(MOVE_X_TRIGGER, Mathf.RoundToInt(resultVector));
         }
         private void Attack(Entity target)
         {
             ResetAttackTimer();
-            if (string.IsNullOrEmpty(_attackTrigger) == false)
-                _animator.SetTrigger(_attackTrigger);
+            _animator.SetTrigger(ATTACK_TRIGGER);
             var damageable = target as IDamageable;
             damageable.Damage((int)_attackComponent.GetValue(), Entity);
         }

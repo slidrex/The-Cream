@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d8dd19174fcd74db4da30627b06dcb, type: 3}
   m_Name: ThorsShield
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1895199328, guid: dc4a709961021c343954e80596fbf46a, type: 3}
+  Icon: {fileID: -1019265857, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: a20d7122b8f4c794babc43b348aff81c, type: 2}
   BaseManacost: 50
   BaseCooldown: 12

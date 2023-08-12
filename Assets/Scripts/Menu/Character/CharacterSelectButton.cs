@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Databases.Model.Character;
 using Assets.Scripts.GameProgress.Character;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,23 +9,23 @@ namespace Assets.Scripts.Menu.Character
     [RequireComponent(typeof(Button))]
     internal class CharacterSelectButton : MonoBehaviour
     {
-        [SerializeField] private Image icon;
         [SerializeField] private SkillSelectButton skillButton;
         [field: SerializeField] public bool IsOpened { get; private set; } = true;
+        private Image icon;
         public CharacterDatabaseModel.CharacterID CharacterID;
         private CharacterDatabaseModel model;
         private CharacterPodium podium;
         private Button button;
         private void Awake()
         {
-            button = GetComponentInParent<Button>();
+            icon = GetComponent<Image>();
+            button = GetComponent<Button>();
             if (IsOpened)
             {
                 button.onClick.AddListener(() => CharacterPrefs.SelectPlayer(CharacterID));
-                button.onClick.AddListener(() => podium.InitPodium(icon.sprite, model.Character.Description.Name));
+                button.onClick.AddListener(() => podium.InitPodium(model.Character.Description.CharacterSprite, model.Character.Description.Name));
                 button.onClick.AddListener(InitSkills);
             }
-
         }
 
         private void InitSkills()
