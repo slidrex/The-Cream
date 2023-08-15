@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +8,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Skills
 {
-    internal abstract class PlayerActiveSkill : PlayerSkill
+    internal abstract class PlayerActiveSkill<T> : PlayerSkill, ICooldownable, IActivatable where T : Player
     {
-        public int BaseManacost;
-        public float BaseCooldown;
-        public float TimeSinceActivation { get; private set; }
+        [field: SerializeField] public int BaseManacost { get; set; }
+        [field: SerializeField] public float BaseCooldown { get; set; }
+        public float TimeSinceActivation { get; set; }
         public abstract bool TryActivate(SkillHolder holder, Player player);
         public override void Update()
         {

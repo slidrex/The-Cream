@@ -17,6 +17,7 @@ namespace Assets.Scripts.Entities.Projectiles
         private Collider2D _collider;
         private Rigidbody2D rb;
         public abstract EntityTypeBase TriggerEntityType { get; }
+        public Vector2 MoveVector { get; private set; }
         [field: SerializeField] public float Speed { get; private set; }
         private void Awake()
         {
@@ -34,7 +35,8 @@ namespace Assets.Scripts.Entities.Projectiles
         }
         public void SetMoveDirection(Vector2 direction)
         {
-            rb.velocity = direction.normalized * Speed;
+            MoveVector = direction.normalized;
+            rb.velocity = MoveVector* Speed;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

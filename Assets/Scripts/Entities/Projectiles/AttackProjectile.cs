@@ -11,16 +11,16 @@ namespace Assets.Scripts.Entities.Projectiles
 	internal abstract class AttackProjectile<Owner> : Projectile where Owner : Entity
 	{
 		[UnityEngine.SerializeField] private int damage;
-		private Owner _owner;
+		public Owner _Owner { get; private set; }
 		public void SetOwner(Owner owner)
 		{
-			_owner = owner;
+            _Owner = owner;
 		}
 		protected override void OnTrigger(Entity trigger)
 		{
 			if(trigger is IDamageable d)
 			{
-				d.Damage(damage, _owner);
+				d.Damage(damage, _Owner);
 				OnTargetHit(trigger);
 			}
 		}

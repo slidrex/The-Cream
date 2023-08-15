@@ -2,6 +2,7 @@ using Assets.Editor;
 using Assets.Scripts.Config;
 using Assets.Scripts.Databases.dto.Units;
 using Assets.Scripts.Entities.Player;
+using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
 using Assets.Scripts.Entities.Util.Config.Input;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ internal class RuntimeSystem : PlacementSystem
         for (int i = 0; i < list.Count; i++)
         {
             var obj = Instantiate(skillHolder, editor.RuntimePlayerContainer);
+
             obj.Init(list[i].Skill, _player, GetHeroAbilityKey(i));
             skills.Add(obj);
         }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 620306682, guid: 5907234d4f6deb449bb1d084bf488a7f, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: a20d7122b8f4c794babc43b348aff81c, type: 2}
-  BaseManacost: 1
-  BaseCooldown: 1
+  <BaseManacost>k__BackingField: 10
+  <BaseCooldown>k__BackingField: 3
   _spike: {fileID: 1556010451151384251, guid: 3b48e56c6d46a2d4d9e7d5cbf7d69005, type: 3}
   _spikeCount: 6

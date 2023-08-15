@@ -1,28 +1,31 @@
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Player.Skills;
+using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 internal class SkillHolder : ObjectHolder
 {
     [SerializeField] private Image cooldownAnim;
-    private PlayerActiveSkill _skill;
-    public void Init(PlayerSkill skill, Player player, KeyCode bindedKey)
+    private ICooldownable _skill;
+    public void Init<T>(PlayerSkill skill, T player, KeyCode bindedKey) where T : Player
     {
         SetActiveSelectImage(false);
-        SetBindedKey(bindedKey, skill is PlayerActiveSkill == true);
+        SetBindedKey(bindedKey, skill is IActivatable);
+
         EntityIcon.sprite = skill.Icon;
         button = GetComponent<Button>();
         skill.OnStart(player);
-        if (skill is PlayerActiveSkill active)
+        _skill = skill as ICooldownable;
+        if(skill is IActivatable active)
         {
-            _skill = active;
             button.onClick.AddListener(delegate { active.TryActivate(this, player); });
             Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey, () => active.TryActivate(this, player));
             Cost.text = active.BaseManacost.ToString();
         }
-        else _skill = null;
     }
     private void Update()
     {
@@ -31,5 +34,4 @@ internal class SkillHolder : ObjectHolder
             cooldownAnim.fillAmount = 1 - _skill.TimeSinceActivation/_skill.BaseCooldown;
         }
     }
-
 }

@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manaText: {fileID: 3652956625102738975}
-  _fill: {fileID: 3652956624920435022}
+  _fill: {fileID: 3652956625457149217}
 --- !u!1 &3652956624111686309
 GameObject:
   m_ObjectHideFlags: 0

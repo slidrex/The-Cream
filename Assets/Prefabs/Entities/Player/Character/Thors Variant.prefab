@@ -10222,6 +10222,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7178465695650615502, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
+      propertyPath: _manualAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178465695650615502, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
       propertyPath: attackParticles
       value: 
       objectReference: {fileID: 8871195715210756832}

@@ -80,7 +80,7 @@ namespace Assets.Scripts.Entities.AI.ContextSteering
 		}
 		private (float[] danger, float[] interest) GetChaseSteering(float[] danger, float[] interest)
 		{
-			if (_aiData.CurrentTarget == null) return (danger, interest);
+			if (_aiData.GetTarget() == null) return (danger, interest);
 			Vector2 targetPositionCached = _aiData.TargetCollider.ClosestPoint(transform.position);
 
 			if (ConsiderSafeDistance && Vector2.SqrMagnitude(targetPositionCached - (Vector2)transform.position) < SafeDistance * SafeDistance)
@@ -90,7 +90,7 @@ namespace Assets.Scripts.Entities.AI.ContextSteering
 			}
 			else _aiData.IsReachedTarget = false;
 
-			Vector2 directionToTarget = _aiData.CurrentTarget.position - transform.position;
+			Vector2 directionToTarget = _aiData.GetTarget().transform.position - transform.position;
 			for (int i = 0; i < interest.Length; i++)
 			{
 				float result = Vector2.Dot(directionToTarget.normalized, Directions.eightDirections[i]);

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Stats.Interfaces.Detect;
 using Assets.Scripts.Level;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Assets.Scripts.Entities.AI.ContextSteering
     {
         public Collider2D[] Obstacles { get; private set; }
         public Transform CurrentTarget { get; private set; }
-        public Entity CurrentTargetEntity { get; private set; }
+        private Entity _currentTargetEntity;
         public Collider2D TargetCollider { get; private set; }
         public bool IsReachedTarget { get; set; }
         private void OnEnable() => LevelCompositeRoot.Instance.LevelInfo.OnRegisterSubscribeAndCallOnExist(OnEntitySpawned);
@@ -22,20 +23,25 @@ namespace Assets.Scripts.Entities.AI.ContextSteering
         {
             Obstacles = FindObjectsOfType<Collider2D>().Where(x => x.GetInstanceID() != GetInstanceID()).ToArray();
         }
+        public Entity GetTarget()
+        {
+            if (_currentTargetEntity != null && _currentTargetEntity is IUndetectable d && d.IsUndetectable) SetTarget(null);
+            return _currentTargetEntity;
+        }
         public void SetTarget(Entity entity)
         {
-            CurrentTargetEntity = entity;
-			if (entity != null)
+            _currentTargetEntity = entity;
+            if (entity != null)
             {
                 CurrentTarget = entity.transform;
-			    TargetCollider = entity.GetComponent<Collider2D>();
+                TargetCollider = entity.GetComponent<Collider2D>();
             }
-        }
-        public void SetTargetTransform(Transform entity)
-        {
-            CurrentTargetEntity = null;
-			TargetCollider = entity.GetComponent<Collider2D>();
-			CurrentTarget = entity;
+            else
+            {
+                CurrentTarget = null;
+                TargetCollider = null;
+            }
+            
         }
         private void OnEntitySpawned(Entity entity, bool spawn) => LoadBasicData();
         public void OnLevelRun(bool run) => LoadBasicData();

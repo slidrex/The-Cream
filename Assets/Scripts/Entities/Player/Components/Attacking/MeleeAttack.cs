@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Entities.AI.ContextSteering;
 using Assets.Scripts.Entities.AI.SightStalking;
 using Assets.Scripts.Entities.Brain;
+using Assets.Scripts.Entities.Stats.Interfaces.Attack;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using System;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 {
 	internal class MeleeAttack : EntityBrain<Player>
 	{
+		[SerializeField] private bool _manualAttack = true;
 		[SerializeField] private ParticleSystem attackParticles;
 		[SerializeField] private string[] ATTACK_TRIGGER = new string[2] { "Attack", "AlternativeAttack" };
 		private float AttackSpeed { get => Entity.Stats.GetValue<AttackSpeedStat>(); }
@@ -24,6 +26,7 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 		private float _timeToAttack;
 		private float _timeSinceAttack;
 		private Animator _animator;
+		private bool _inAttackAnimation;
         private void Start()
 		{
 			_facing = GetComponent<Facing>();
@@ -49,25 +52,32 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 		}
 		protected override void RuntimeUpdate()
 		{
-			if(_data.CurrentTargetEntity != null)
+			if(_data.GetTarget() != null && _inAttackAnimation == false)
 			{
 				UpdateTimer();
 			}
 		}
-		private void Attack()
+		private void StartAttack()
 		{
-			if (_data.CurrentTargetEntity is IDamageable d) d.Damage(Damage, Entity);
+            if (_animator != null)
+            {
+                _animator.SetTrigger(ATTACK_TRIGGER[UnityEngine.Random.Range(0, ATTACK_TRIGGER.Length)]);
+            }
+			_inAttackAnimation = true;
+        }
+		public void PerformAttack()
+		{
+			if (_data.GetTarget() != null && _data.GetTarget() is IDamageable d)
+			{
+				d.Damage(Damage, Entity);
+				OnAttack();
+			}
 
-			ResetAttackTimer();
-			OnAttack();
+            _inAttackAnimation = false;
+            ResetAttackTimer();
 		}
 		protected virtual void OnAttack()
 		{
-			if (_animator != null)
-			{
-				_animator.SetTrigger(ATTACK_TRIGGER[UnityEngine.Random.Range(0, ATTACK_TRIGGER.Length)]);
-
-			}
 			if(attackParticles != null)
 			{
 				attackParticles.transform.position = _data.CurrentTarget.position;
@@ -80,7 +90,20 @@ namespace Assets.Scripts.Entities.Player.Components.Attacking
 			{
 				_timeSinceAttack += Time.deltaTime;
 			}
-			else Attack();
+			else
+			{
+				var m = Entity as IAttackMutable;
+
+				if (m == null || m.MutedAttack == false)
+				{
+					if (_manualAttack)
+					{
+						StartAttack();
+					}
+					else
+						PerformAttack();
+				}
+			}
 
 		}
 		private void ResetAttackTimer()

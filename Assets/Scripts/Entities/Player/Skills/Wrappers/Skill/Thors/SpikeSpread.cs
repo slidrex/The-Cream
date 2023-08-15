@@ -10,11 +10,11 @@ using UnityEngine;
 namespace Assets.Scripts.Entities.Player.Skills.Skill.Bristleback
 {
     [CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Thors/Spike spread")]
-    internal class SpikeSpread : PlayerUndirectSkill
+    internal class SpikeSpread : PlayerUndirectSkill<Characters.Thors>
     {
         [UnityEngine.SerializeField] private Bristlespike _spike;
         [UnityEngine.SerializeField] private byte _spikeCount;
-        protected override void OnActivate(Player player)
+        protected override void OnActivate(Characters.Thors player)
         {
             for(int i = 0; i < 360; i += 360 / _spikeCount) 
             {

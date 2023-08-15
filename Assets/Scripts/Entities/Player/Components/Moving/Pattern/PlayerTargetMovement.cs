@@ -13,16 +13,13 @@ namespace Assets.Scripts.Entities.Player.Moving
 	{
 		private Transform _target;
 		public Entity Target { get; private set; }
-		private bool _isEnemy;
 		private float _safeDistance;
 		public void SetTarget(Transform target)
 		{
-			_isEnemy = false;
 			_target = target;
 		}
 		public void SetEnemy(Entity entity, float safeDistance)
 		{
-			_isEnemy = true;
 			Target = entity;
 			_safeDistance = safeDistance;
 			_target = entity.transform;

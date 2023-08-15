@@ -17,6 +17,7 @@ namespace Assets.Scripts.Entities.Attack
     internal sealed class MobBaseAttack : EntityBrain<Entity>
     {
         [Header("Behaviour settings")]
+        [SerializeField] private bool _manualTrigger;
         [SerializeField] private bool _showGizmos;
         [SerializeField] private float _minCircleDistance;
         [SerializeField] private float _maxCircleDistance;
@@ -34,8 +35,7 @@ namespace Assets.Scripts.Entities.Attack
         private bool _steeringBinded;
         private Animator _animator;
         private const string ATTACK_TRIGGER = "Attack";
-        private const string MOVE_X_TRIGGER = "moveX";
-
+        private bool _inAttackAnimation;
         private void Start()
         {
             _animator = GetComponent<Animator>();
@@ -59,44 +59,66 @@ namespace Assets.Scripts.Entities.Attack
             if (_data.CurrentTarget == null) return;
             if (_timeSinceBind > 0) _timeSinceBind -= Time.deltaTime;
 
+            if(_inAttackAnimation == false)
+            {
+                UpdateAttackCooldown();
+            }
+            
+            var curTarget = _data.GetTarget();
+            if (curTarget != null)
+            {
+                _facing.StalkTarget(curTarget.transform);
+                Vector2 steeringDir = _steeringBehaviour.GetDirectionToMove();
+                float sqrDist = Vector2.SqrMagnitude(curTarget.transform.position - transform.position);
+                Vector2 circleDir = _circleMovement.GetMoveDirection(curTarget.transform, _minCircleDistance, _maxCircleDistance);
+                if (_timeSinceBind <= 0)
+                {
+                    if (sqrDist > _minCircleDistance * _minCircleDistance && sqrDist < _maxCircleDistance * _maxCircleDistance)
+                    {
+                        _steeringBinded = false;
+                    }
+                    else
+                    {
+                        _steeringBinded = true;
+                    }
+                    _timeSinceBind = BIND_TIME;
+                }
+                Vector2 targetDir = circleDir;
+
+
+                Movement.SetMoveDirection(targetDir);
+            }
+            else Movement.Stop();
+
+        }
+        private void UpdateAttackCooldown()
+        {
             if (_timeSinceAttack < _timeToAttack)
             {
                 _timeSinceAttack += Time.deltaTime;
             }
             else
             {
-                var target = _data.CurrentTargetEntity;
-                if (target != null && target is IDamageable && _data.IsReachedTarget) Attack(target);
-            }
-            var curTarget = _data.CurrentTarget;
-            _facing.StalkTarget(curTarget);
-            Vector2 steeringDir = _steeringBehaviour.GetDirectionToMove();
-            float sqrDist = Vector2.SqrMagnitude(curTarget.position - transform.position);
-            Vector2 circleDir = _circleMovement.GetMoveDirection(curTarget, _minCircleDistance, _maxCircleDistance);
-
-            if(_timeSinceBind <= 0)
-            {
-			    if (sqrDist > _minCircleDistance * _minCircleDistance && sqrDist < _maxCircleDistance * _maxCircleDistance)
+                var target = _data.GetTarget();
+                if (target != null && target is IDamageable && _data.IsReachedTarget)
                 {
-                    _steeringBinded = false;
+                    if (_manualTrigger)
+                    {
+                        StartAttack(target);
+                    }
+                    else PerformAttack(target);
                 }
-                else
-                {
-                    _steeringBinded = true;
-                }
-                _timeSinceBind = BIND_TIME;
             }
-            Vector2 targetDir = circleDir;
-
-
-			Movement.SetMoveDirection(targetDir);
-            float resultVector = Mathf.Abs(Movement.MoveVector.x) + Mathf.Abs(Movement.MoveVector.y);
-            _animator.SetInteger(MOVE_X_TRIGGER, Mathf.RoundToInt(resultVector));
         }
-        private void Attack(Entity target)
+        private void StartAttack(Entity target)
         {
-            ResetAttackTimer();
             _animator.SetTrigger(ATTACK_TRIGGER);
+            _inAttackAnimation = true;
+        }
+        private void PerformAttack(Entity target)
+        {
+            _inAttackAnimation = false;
+            ResetAttackTimer();
             var damageable = target as IDamageable;
             damageable.Damage((int)_attackComponent.GetValue(), Entity);
         }

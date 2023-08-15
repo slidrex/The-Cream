@@ -14,7 +14,8 @@ namespace Assets.Scripts.Databases.Model.Character
         public enum CharacterID
         {
             KNIGHT,
-            THORS
+            THORS,
+            LIGHT_EATER
         }
         [field: SerializeField] public CharacterID Id { get; set; }
         [field: SerializeField] public CharacterModel Character { get; set; }

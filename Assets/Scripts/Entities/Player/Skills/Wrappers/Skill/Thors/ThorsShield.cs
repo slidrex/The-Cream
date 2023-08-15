@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Scripts.Entities.Player.Skills.Skill.Thors
 {
 	[CreateAssetMenu(menuName = "Cream/Database/Character/Skill/Thors/Thors Shield")]
-	internal class ThorsShield : PlayerUndirectSkill
+	internal class ThorsShield : PlayerUndirectSkill<Characters.Thors>
     {
 		[SerializeField] private int _maxDamageAbsorbtion;
 		[SerializeField, Range(0, 1.0f)] private float _additionalAttackSpeedWhileShieldActivated;
@@ -13,7 +13,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Skill.Thors
 		{
 			_shield = player.GetComponent<Implementations.Thors.ThorsShield>();
 		}
-		protected override void OnActivate(Player player)
+		protected override void OnActivate(Characters.Thors player)
 		{
 			_shield.Activate(_maxDamageAbsorbtion, _additionalAttackSpeedWhileShieldActivated);
 		}

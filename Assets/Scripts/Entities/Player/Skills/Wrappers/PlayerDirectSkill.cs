@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Skills.Wrappers
 {
-    internal class PlayerDirectSkill : PlayerActiveSkill
+    internal class PlayerDirectSkill<T> : PlayerActiveSkill<T> where T : Player
     {
         public override bool TryActivate(SkillHolder holder, Player player)
         {
@@ -17,21 +17,21 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
             if (TimeSinceActivation < BaseCooldown || !playerSpace.IsEnoughMana(BaseManacost)) return false;
-            OnStartSelecting(holder, player);
+            OnStartSelecting(holder, player as T);
             return true;
         }
-        private void OnStartSelecting(SkillHolder holder, Player player)
+        private void OnStartSelecting(SkillHolder holder, T player)
         {
             AbilityAdapter.Instance.StartAbilityPreview((Vector2 mousePos) => OnAbilActivate(mousePos, player));
             Editor.Editor.Instance._runtimeSystem.SelectHolder(holder);
         }
-        protected virtual void OnAbilActivate(Vector2 mousePos, Player player)
+        protected virtual void OnAbilActivate(Vector2 mousePos, T player)
         {
             ResetTimer();
             Editor.Editor.Instance.PlayerSpace.TrySpendMana(BaseManacost);
             OnActivate(mousePos, player);
         }
-        protected virtual void OnActivate(Vector2 mousePos, Player player)
+        protected virtual void OnActivate(Vector2 mousePos, T player)
         {
 
         }

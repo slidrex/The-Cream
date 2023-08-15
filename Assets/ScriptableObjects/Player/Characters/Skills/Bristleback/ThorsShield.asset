@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: -1019265857, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: a20d7122b8f4c794babc43b348aff81c, type: 2}
-  BaseManacost: 50
-  BaseCooldown: 12
+  <BaseManacost>k__BackingField: 60
+  <BaseCooldown>k__BackingField: 10
   _maxDamageAbsorbtion: 20
   _additionalAttackSpeedWhileShieldActivated: 0.8
