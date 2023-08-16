@@ -4,6 +4,7 @@ using Assets.Scripts.Databases.dto.Units;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
 using Assets.Scripts.Entities.Util.Config.Input;
+using Assets.Scripts.LevelEditor;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +16,6 @@ internal class RuntimeSystem : PlacementSystem
     private List<RuntimeEntityHolder> runtimeEntities = new();
     private RuntimeEntityHolder entityHolder;
     private Player _player;
-    public Action OnSelect;
-    private ObjectHolder _selectedHolder;
     
     protected override void Awake()
     {
@@ -29,13 +28,16 @@ internal class RuntimeSystem : PlacementSystem
         {
             skill.Skill.Update();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.RUNTIME) && EventSystem.current.IsPointerOverGameObject() == false)
+        if(OnPlace != null)
         {
-            OnPlace?.Invoke();
+            if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.RUNTIME) && EventSystem.current.IsPointerOverGameObject() == false)
+            {
+                Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, selectedHolder) { Status = PreviewManager.PreviewStatus.DISABLED });
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Editor.Instance.GameModeIs(GameMode.RUNTIME) && Input.GetKeyDown(KeyCode.Mouse1))
         {
-            Deselect();
+            Editor.Instance.PreviewManager.Deselect();
         }
     }
     public override void FillContainer()
@@ -96,10 +98,10 @@ internal class RuntimeSystem : PlacementSystem
         }
         runtimeEntities.Clear();
     }
-    private void PlaceEntity()
+    private void PlaceEntity(Vector2 cursorPos)
     {
         if (editor._inputManager.IsPointerOverUI()) return;
-        Vector2Int gridPos = (Vector2Int)grid.WorldToCell(editor._inputManager.GetCursorPosition());
+        Vector2Int gridPos = (Vector2Int)grid.WorldToCell(cursorPos);
         bool validity = CheckPlacementValidity(gridPos, selectedEntityIndex);
         if (validity == false) return;
         var model = database.Entities[selectedEntityIndex].GetModel();
@@ -108,28 +110,7 @@ internal class RuntimeSystem : PlacementSystem
         {
             var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
         }
-        Deselect();
-    }
-    public void SelectHolder(ObjectHolder holder)
-    {
-        if (_selectedHolder != null) _selectedHolder.SetActiveSelectImage(false);
-        if(holder != null) holder.SetActiveSelectImage(true);
-
-        Editor.Instance._inputManager.SetActivePreviewEntity(holder != null);
-        OnSelect.Invoke();
-        _selectedHolder = holder;
-    }
-    public void Deselect()
-    {
         selectedEntityIndex = -1;
-        OnSelect.Invoke();
-        SelectHolder(null);
-        Editor.Instance._inputManager.SetActivePreviewEntity(false);
-    }
-    protected override void OnAfterSetCurrentEntityId()
-    {
-        Editor.Instance._inputManager.SetActivePreviewEntity(true);
-        OnSelect?.Invoke();
     }
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)
     {

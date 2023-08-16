@@ -1,4 +1,6 @@
 using Assets.Editor;
+using Assets.Scripts.Entities.Player;
+using Assets.Scripts.LevelEditor;
 using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,7 +12,9 @@ internal abstract class PlacementSystem : MonoBehaviour
     protected Grid grid;
     protected Tilemap limitingTilemap;
     protected int selectedEntityIndex = -1;
-    public Action OnPlace, OnDelete;
+    protected ObjectHolder selectedHolder;
+    public Action<Vector2> OnPlace;
+    public Action OnDelete;
     protected Editor editor;
     protected virtual void Awake()
     {
@@ -18,15 +22,16 @@ internal abstract class PlacementSystem : MonoBehaviour
         grid = editor.GetGrid();
         limitingTilemap = editor.LimitingTileMap;
     }
-    public void SetCurrentEntityID(ObjectHolder holder, int id)
+    public void SetCurrentEntityID(ObjectHolder holder, int id, bool clickedByIcon = false)
     {
+        selectedHolder = holder;
         selectedEntityIndex = id;
         if (selectedEntityIndex < 0)
         {
             Debug.LogError($"нет такого id: {id}");
             return;
         }
-        Editor.Instance._runtimeSystem.SelectHolder( holder );
+        Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, holder) { Status = clickedByIcon ? PreviewManager.PreviewStatus.ENABLED : PreviewManager.PreviewStatus.AUTO});
         OnAfterSetCurrentEntityId();
     }
     protected virtual void OnAfterSetCurrentEntityId()

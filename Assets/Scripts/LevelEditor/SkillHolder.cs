@@ -22,8 +22,8 @@ internal class SkillHolder : ObjectHolder
         _skill = skill as ICooldownable;
         if(skill is IActivatable active)
         {
-            button.onClick.AddListener(delegate { active.TryActivate(this, player); });
-            Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey, () => active.TryActivate(this, player));
+            button.onClick.AddListener(delegate { active.TryActivate(this, player, true); });
+            Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey, () => active.TryActivate(this, player, false));
             Cost.text = active.BaseManacost.ToString();
         }
     }

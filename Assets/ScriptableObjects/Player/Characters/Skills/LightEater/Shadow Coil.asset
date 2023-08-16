@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01a615d1f1186b4ca10f6a06374b6e0, type: 3}
+  m_Name: Shadow Coil
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 844220192, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+  <Description>k__BackingField: {fileID: 11400000, guid: a20d7122b8f4c794babc43b348aff81c, type: 2}
+  <BaseManacost>k__BackingField: 30
+  <BaseCooldown>k__BackingField: 8
+  _coil: {fileID: 0}

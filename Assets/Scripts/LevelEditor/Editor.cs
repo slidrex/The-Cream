@@ -5,6 +5,7 @@ using Assets.Scripts.GameProgress;
 using Assets.Scripts.Level;
 using Assets.Scripts.Level.Stages;
 using Assets.Scripts.Level.Tilemap;
+using Assets.Scripts.LevelEditor;
 using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using Assets.Scripts.LevelEditor.RuntimeSpace.PlayerUtil;
 using Assets.Scripts.LevelEntry;
@@ -26,6 +27,7 @@ namespace Assets.Editor
         [field: SerializeField] public Transform RuntimePlayerContainer { get; private set; }
         public Tilemap LimitingTileMap { get; private set; }
         public Tilemap PlacementTileMap { get; private set; }
+        public PreviewManager PreviewManager;
         [field: SerializeField] public EditSystem _editSystem { get; private set; }
         [field: SerializeField] public RuntimeSystem _runtimeSystem { get; private set; }
         [field: SerializeField] public InputManager _inputManager { get; private set; }

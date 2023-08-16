@@ -1,4 +1,5 @@
 using Assets.Editor;
+using Assets.Scripts.LevelEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,6 +11,7 @@ internal class InputManager : MonoBehaviour
     private SpriteRenderer indicatorRenderer;
     private const byte limitingLayer = 7;
     private Vector2Int lastPosition;
+    private PreviewManager.PreviewBoundSettings _boundSettings;
     private Grid grid;
     private void Start()
     {
@@ -40,11 +42,28 @@ internal class InputManager : MonoBehaviour
         }
         UpdatePreviewEntityPosition();
     }
+    private void UpdatePreviewEntityFree()
+    {
+        _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
+    }
+    private void UpdatePreviewEntityBound()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
+        Vector2 dist = mousePos - _boundSettings.BoundTransform.position;
+
+        if (dist.sqrMagnitude > _boundSettings.MaxReachDistance * _boundSettings.MaxReachDistance)
+        {
+            _previewEntity.transform.position = _boundSettings.BoundTransform.position + (Vector3)(_boundSettings.MaxReachDistance * dist.normalized);
+        }
+        else
+            _previewEntity.transform.position = mousePos;
+    }
     private void UpdatePreviewEntityPosition()
     {
         if (Editor.Instance.GameModeIs(GameMode.RUNTIME))
         {
-            _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
+            if (_boundSettings == null) UpdatePreviewEntityFree();
+            else UpdatePreviewEntityBound();
         }
         else
         {
@@ -52,8 +71,17 @@ internal class InputManager : MonoBehaviour
             _previewEntity.transform.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 1)) + new Vector3(_previewEntity.GetModel().Size, _previewEntity.GetModel().Size) / 2;
         }
     }
-    public void SetActivePreviewEntity(bool active, Sprite sprite = null)
+    public Vector3 GetPreviewEntityPosition()
     {
+        return _previewEntity.transform.position;
+    }
+    public void SetPreviewSprite(Sprite sprite)
+    {
+        _previewEntity.GetRenderer().sprite = sprite;
+    }
+    public void SetActivePreviewEntity(bool active, Sprite sprite = null, PreviewManager.PreviewBoundSettings settings = null)
+    {
+        _boundSettings = settings;
         if (Editor.Instance.GameModeIs(GameMode.RUNTIME))
         {
             _previewEntity.GetRenderer().sprite = sprite == null ? _runtimePreviewEntity : sprite;

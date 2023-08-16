@@ -30,18 +30,19 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
         SetActiveSelectImage(false);
         EntityIcon.sprite = data.Entities[id].Icon;
         button = GetComponent<Button>();
-        UnityEngine.Events.UnityAction firstAct = () => system.SetCurrentEntityID(this, id);
+        UnityEngine.Events.UnityAction firstActButton = () => system.SetCurrentEntityID(this, id, true);
+        UnityEngine.Events.UnityAction firstActHotkey = () => system.SetCurrentEntityID(this, id, false);
         UnityEngine.Events.UnityAction secondAct = () =>
         {
             Editor.Instance._inputManager._previewEntity.Init(
                 data.Entities[id].Entity.transform.localScale,
                 data.Entities[id].GetModel());
         };
-        button.onClick.AddListener(firstAct);
+        button.onClick.AddListener(firstActButton);
         button.onClick.AddListener(secondAct);
         SetBindedKey(bindedKey);
         if(bindedKey != KeyCode.None)
-        Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey,() => InvokeActs(firstAct, secondAct));
+        Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey,() => InvokeActs(firstActHotkey, secondAct));
         ConfigureDescription(id, data);
     }
     private void InvokeActs(UnityEngine.Events.UnityAction first, UnityEngine.Events.UnityAction second)

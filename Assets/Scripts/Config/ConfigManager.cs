@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Config.Audio;
+﻿using Assets.Scripts.Config.Advanced;
+using Assets.Scripts.Config.Audio;
 using Assets.Scripts.Entities.Util.Config.Input;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Config
     {
         public InputConfig InputConfig { get; set; }
         public AudioConfig AudioConfig { get; set; }
+        public AdvancedSettingsConfig SettingsConfig { get; set; }
         public static ConfigManager Instance { get; private set; }
         public ConfigManager()
         {
@@ -23,6 +25,7 @@ namespace Assets.Scripts.Config
         private void ConfigureServices()
         {
             InputConfig = new();
+            SettingsConfig = new();
             AudioConfig = new();
         }
         private void LoadConfig()

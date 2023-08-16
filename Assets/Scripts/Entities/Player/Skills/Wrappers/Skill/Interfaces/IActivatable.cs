@@ -9,6 +9,6 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces
     internal interface IActivatable
     {
         int BaseManacost { get; }
-        bool TryActivate(SkillHolder holder, Player player);
+        bool TryActivate(SkillHolder holder, Player player, bool clickedByIcon);
     }
 }

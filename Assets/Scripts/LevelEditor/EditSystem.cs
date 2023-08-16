@@ -2,6 +2,7 @@ using Assets.Editor;
 using Assets.Scripts.Databases.dto.Runtime;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Placeable;
+using Assets.Scripts.LevelEditor;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,19 +13,22 @@ internal class EditSystem : PlacementSystem
     private EditorEntityHolder entityHolder;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.EDIT))
+        if(OnPlace != null)
         {
-            OnPlace?.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.Mouse1) && Editor.Instance.GameModeIs(GameMode.EDIT))
-        {
-            OnDelete?.Invoke();
+            if (Input.GetKeyDown(KeyCode.Mouse0) && selectedEntityIndex != -1 && Editor.Instance.GameModeIs(GameMode.EDIT))
+            {
+                Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, selectedHolder) { NotDeselectOnChoose = true, Status = PreviewManager.PreviewStatus.DISABLED });
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse1) && Editor.Instance.GameModeIs(GameMode.EDIT))
+            {
+                OnDelete?.Invoke();
+            }
         }
     }
     protected override void OnAfterSetCurrentEntityId()
     {
         
-        Editor.Instance._inputManager.SetActivePreviewEntity(true, database.Entities[selectedEntityIndex].GetModel().Icon);
+        Editor.Instance._inputManager.SetPreviewSprite(database.Entities[selectedEntityIndex].GetModel().Icon);
     }
     protected override void Awake()
     {
@@ -48,7 +52,7 @@ internal class EditSystem : PlacementSystem
         }
         holders.Clear();
     }
-    private void PlaceEntity()
+    private void PlaceEntity(Vector2 cursorPos)
     {
         if (editor._inputManager.IsPointerOverUI()) return;
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(editor._inputManager.GetCursorPosition());
