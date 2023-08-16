@@ -1,11 +1,12 @@
 ﻿using Assets.Scripts.Entities.Mobs;
 using Assets.Scripts.Entities.Navigation.EntityType;
+using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.Interfaces.Templates;
 using Assets.Scripts.Entities.Stats.Strategies;
 
 namespace Assets.Scripts.Entities.Templates
 {
-    internal abstract class ChaseMob : Mob, IBaseMobStatsProvider
+    internal abstract class ChaseMob : Mob, IBaseMobStatsProvider, IDamageable
     {
         public override EntityTypeBase ThisType => new EntityType<MobTag>(MobTag.AGGRESSIVE);
         public int CurrentHealth { get; set; }

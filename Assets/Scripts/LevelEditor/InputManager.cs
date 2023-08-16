@@ -22,6 +22,10 @@ internal class InputManager : MonoBehaviour
     {
         UpdateCursorPosition();
     }
+    public void SetBound(PreviewManager.PreviewBoundSettings settings)
+    {
+        _boundSettings = settings;
+    }
     private void UpdateCursorPosition()
     {
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
@@ -46,17 +50,20 @@ internal class InputManager : MonoBehaviour
     {
         _previewEntity.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
     }
-    private void UpdatePreviewEntityBound()
+    private Vector2 UpdatePreviewEntityBound()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         Vector2 dist = mousePos - _boundSettings.BoundTransform.position;
+        Vector2 resultPos;
 
         if (dist.sqrMagnitude > _boundSettings.MaxReachDistance * _boundSettings.MaxReachDistance)
         {
-            _previewEntity.transform.position = _boundSettings.BoundTransform.position + (Vector3)(_boundSettings.MaxReachDistance * dist.normalized);
+            resultPos = _boundSettings.BoundTransform.position + (Vector3)(_boundSettings.MaxReachDistance * dist.normalized);
         }
         else
-            _previewEntity.transform.position = mousePos;
+            resultPos = mousePos;
+        _previewEntity.transform.position = resultPos;
+        return resultPos;
     }
     private void UpdatePreviewEntityPosition()
     {
@@ -73,6 +80,7 @@ internal class InputManager : MonoBehaviour
     }
     public Vector3 GetPreviewEntityPosition()
     {
+        if (Editor.Instance.GameModeIs(GameMode.RUNTIME)) return UpdatePreviewEntityBound();
         return _previewEntity.transform.position;
     }
     public void SetPreviewSprite(Sprite sprite)

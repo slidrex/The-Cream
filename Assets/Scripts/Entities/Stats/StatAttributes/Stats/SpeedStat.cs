@@ -8,7 +8,7 @@ namespace Assets.Scripts.Entities.Stats.StatAttributes
 {
     internal sealed class SpeedStat : Stat
     {
-        public SpeedStat(int baseValue) : base(baseValue)
+        public SpeedStat(float baseValue) : base(baseValue)
         {
         }
     }

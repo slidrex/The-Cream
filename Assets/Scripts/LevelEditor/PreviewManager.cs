@@ -32,7 +32,6 @@ namespace Assets.Scripts.LevelEditor
             internal PreparationStage Stage;
             public ObjectHolder Holder;
             public PreviewStatus Status;
-            public bool BlockOneUse;
             public Config(Action<Vector2> action, ObjectHolder holder)
             {
                 Stage = PreparationStage.NONE;
@@ -74,7 +73,7 @@ namespace Assets.Scripts.LevelEditor
         }
         private void HandleAction(Config action)
         {
-            if(_currentAction != null) _currentAction.Holder.SetActiveSelectImage(false);
+            if(_currentAction != null && _currentAction.Holder != null) _currentAction.Holder.SetActiveSelectImage(false);
             _currentAction = action;
             switch (action.Stage)
             {
@@ -82,6 +81,7 @@ namespace Assets.Scripts.LevelEditor
                     Editor.Editor.Instance._inputManager.SetActivePreviewEntity(true, null, _boundSettings);
                     break;
                 case PreparationStage.ACTION:
+                    Editor.Editor.Instance._inputManager.SetBound(_boundSettings);
                     action.Action.Invoke(GetCastPosition());
                     if(_currentAction.NotDeselectOnChoose == false)
                     {
