@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f82175ed8dbc84d963c31e50978af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database: {fileID: 11400000, guid: 225555902076506448094423086f7114, type: 2}
+  _runtimeDatabase: {fileID: 11400000, guid: 4ef33d4d7d58af341b226d32b5385090, type: 2}
 --- !u!1 &3652956624350465879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,7 +2198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b7d682b3c802344a4545442687a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database: {fileID: 11400000, guid: 225555902076506448094423086f7114, type: 2}
+  _editorDatabase: {fileID: 11400000, guid: a2669af8a0e91524fa4e8fe881b538a0, type: 2}
   holders: []
 --- !u!1 &3652956625710839207
 GameObject:

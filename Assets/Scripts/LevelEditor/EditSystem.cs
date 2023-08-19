@@ -1,5 +1,6 @@
 using Assets.Editor;
 using Assets.Scripts.Databases.dto.Runtime;
+using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Placeable;
 using Assets.Scripts.LevelEditor;
@@ -8,6 +9,7 @@ using UnityEngine;
 
 internal class EditSystem : PlacementSystem
 {
+    [SerializeField] private EditorEntityDatabase _editorDatabase;
     private List<BaseEntity> placedEntities = new();
     [SerializeField] private List<EditorEntityHolder> holders = new();
     private EditorEntityHolder entityHolder;
@@ -28,19 +30,23 @@ internal class EditSystem : PlacementSystem
     protected override void OnAfterSetCurrentEntityId()
     {
         
-        Editor.Instance._inputManager.SetPreviewSprite(database.Entities[selectedEntityIndex].GetModel().Icon);
+        Editor.Instance._inputManager.SetPreviewSprite(_editorDatabase.Entities[selectedEntityIndex].GetModel().Icon);
     }
     protected override void Awake()
     {
+        foreach(var e in _editorDatabase.Entities)
+        {
+            e.Configure();
+        }
         entityHolder = Resources.Load<EditorEntityHolder>("UI/EditorEntityHolder");
         base.Awake();
     }
     public override void FillContainer()
     {
-        for (int i = 0; i < database.Entities.Count; i++)
+        for (int i = 0; i < _editorDatabase.Entities.Count; i++)
         {
             EditorEntityHolder obj = Instantiate(entityHolder, editor.EditorHolderContainer);
-            obj.Init(i, database, this, KeyCode.None);
+            obj.Init(i, _editorDatabase, this, KeyCode.None);
             holders.Add(obj);
         }
     }
@@ -60,7 +66,7 @@ internal class EditSystem : PlacementSystem
         bool placementValidity = CheckPlacementValidity(gridPos, selectedEntityIndex);
         if (placementValidity == false) return;
 
-        var model = database.Entities[selectedEntityIndex].GetModel();
+        var model = (EditorEntityModel.EditorModel)_editorDatabase.Entities[selectedEntityIndex].GetModel();
         var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
 
         placedEntities.Add(entity);
@@ -103,7 +109,7 @@ internal class EditSystem : PlacementSystem
     {
         if (selectedEntityIndex < 0) return false;
         int count = 0;
-        var model = database.Entities[selectedEntityIndex].GetModel();
+        var model = (EditorEntityModel.EditorModel)_editorDatabase.Entities[selectedEntityIndex].GetModel();
         if (editor._spaceController.IsOverloaded(model.EditorSpaceRequired.SpaceRequired)) return false;
         Vector3Int[] posns = new Vector3Int[model.Size * model.Size];
 

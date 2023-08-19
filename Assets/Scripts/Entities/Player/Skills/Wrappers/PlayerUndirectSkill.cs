@@ -11,10 +11,10 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
     {
         public override bool TryActivate(SkillHolder holder, Player player, bool clickedByIcon)
         {
-            Editor.Editor.Instance.PreviewManager.PerformAction(new LevelEditor.PreviewManager.Config((Vector2 v) => OnActivate(player as T), holder) { Status = LevelEditor.PreviewManager.PreviewStatus.DISABLED});
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
             if (TimeSinceActivation < BaseCooldown || !playerSpace.TrySpendMana(BaseManacost)) return false;
+            Editor.Editor.Instance.PreviewManager.PerformAction(new LevelEditor.PreviewManager.Config((Vector2 v) => OnActivate(player as T), holder) { Status = LevelEditor.PreviewManager.PreviewStatus.DISABLED});
 
             ResetTimer();
             return true;

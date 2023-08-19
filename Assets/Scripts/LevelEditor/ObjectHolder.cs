@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using System.Collections;
 using Assets.Scripts.Entities.Player;
 using System;
+using Assets.Scripts.Databases.LevelDatabases;
+using Assets.Scripts.Databases.dto.Units;
 
 internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -25,17 +27,17 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     {
         _selectImage.gameObject.SetActive(active);
     }
-    public virtual void Init(int id, EntityDatabase data, PlacementSystem system, KeyCode bindedKey)
+    public virtual void Init<T>(int id, IEntityDatabase<T> data, PlacementSystem system, KeyCode bindedKey) where T : EntityModel
     {
         SetActiveSelectImage(false);
-        EntityIcon.sprite = data.Entities[id].Icon;
+        EntityIcon.sprite = data.Entities[id].GetModel().Icon;
         button = GetComponent<Button>();
         UnityEngine.Events.UnityAction firstActButton = () => system.SetCurrentEntityID(this, id, true);
         UnityEngine.Events.UnityAction firstActHotkey = () => system.SetCurrentEntityID(this, id, false);
         UnityEngine.Events.UnityAction secondAct = () =>
         {
             Editor.Instance._inputManager._previewEntity.Init(
-                data.Entities[id].Entity.transform.localScale,
+                data.Entities[id].GetModel().Entity.transform.localScale,
                 data.Entities[id].GetModel());
         };
         button.onClick.AddListener(firstActButton);
@@ -57,22 +59,22 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
         if(_bindedKey != null)
         _bindedKey.text = Assets.Scripts.Entities.Util.Config.Input.InputManager.GetKeyName(key);
     }
-    protected virtual void ConfigureDescription(int id, EntityDatabase data)
+    protected virtual void ConfigureDescription<T>(int id, IEntityDatabase<T> data) where T : EntityModel
     {
         CharacteristicObjects = CharacteristicsParent.GetComponentsInChildren<ObjectCharacteristic>();
         for (int i = 0; i < CharacteristicObjects.Length; i++)
             CharacteristicObjects[i].gameObject.SetActive(false);
 
-        Name.text = data.Entities[id].Description.Name;
-        Description.text = data.Entities[id].Description.Description;
+        Name.text = data.Entities[id].GetModel().Description.Name;
+        Description.text = data.Entities[id].GetModel().Description.Description;
         
-        for (int i = 0; i < data.Entities[id].Description.Characteristics.Length; i++)
+        for (int i = 0; i < data.Entities[id].GetModel().Description.Characteristics.Length; i++)
         {
             CharacteristicObjects[i].gameObject.SetActive(true);
-            CharacteristicObjects[i].Init(GetIcon(data.Entities[id].Description.Characteristics[i].IconType, data, id, i), data.Entities[id].Description.Characteristics[i].Value);
+            CharacteristicObjects[i].Init(GetIcon(data.Entities[id].GetModel().Description.Characteristics[i].IconType, data, id, i), data.Entities[id].GetModel().Description.Characteristics[i].Value);
         }
     }
-    private Sprite GetIcon(ObjectDescription.IconType iconType, EntityDatabase data, int id, int i)
+    private Sprite GetIcon<T>(ObjectDescription.IconType iconType, IEntityDatabase<T> data, int id, int i) where T : EntityModel
     {
         switch (iconType)
         {
@@ -86,7 +88,7 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
                 }
             case ObjectDescription.IconType.OTHER:
                 {
-                    return data.Entities[id].Description.Characteristics[i].CharacteristicIcon;
+                    return data.Entities[id].GetModel().Description.Characteristics[i].CharacteristicIcon;
                 }
             default: return null;
         }

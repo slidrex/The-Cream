@@ -1,4 +1,5 @@
 using Assets.Editor;
+using Assets.Scripts.Databases.dto.Runtime;
 using Assets.Scripts.LevelEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -75,7 +76,9 @@ internal class InputManager : MonoBehaviour
         else
         {
             Vector2Int gridPos = (Vector2Int)grid.WorldToCell(GetCursorPosition());
-            _previewEntity.transform.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 1)) + new Vector3(_previewEntity.GetModel().Size, _previewEntity.GetModel().Size) / 2;
+            var model = _previewEntity.GetModel() as EditorEntityModel.EditorModel;
+            Vector3 offset = model == null ? Vector2.zero : model.Size * Vector3.one / 2;
+            _previewEntity.transform.position = grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 1)) + offset;
         }
     }
     public Vector3 GetPreviewEntityPosition()
@@ -96,7 +99,7 @@ internal class InputManager : MonoBehaviour
         }
         else
         {
-            _previewEntity.GetRenderer().sprite = sprite == null ? _previewEntity.GetModel().Icon : sprite;
+            _previewEntity.GetRenderer().sprite = sprite == null ? _previewEntity.GetModel()?.Icon : sprite;
         }
         _previewEntity.gameObject.SetActive(active);
     }

@@ -1,34 +1,39 @@
-﻿using Assets.Scripts.Entities;
+﻿using Assets.Scripts.Databases.dto.Units;
+using Assets.Scripts.Entities;
+using Assets.Scripts.Entities.Placeable;
 using Assets.Scripts.Entities.Player;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static Assets.Scripts.Databases.dto.Runtime.EditorEntityModel;
 
 namespace Assets.Scripts.Databases.dto
 {
     [CreateAssetMenu(menuName = "Cream/Database/DTO/Runtime Entity")]
-    internal class RuntimeEntityModel : ScriptableObject
+    [Serializable]
+    internal class RuntimeEntityModel : EntityModel
     {
-        [SerializeField] private Sprite _icon;
-        [SerializeField] private BaseEntity _entity;
         [SerializeField] private int _baseManacost;
         [SerializeField] private float _cooldown;
-        public Model GetModel() => new(this);
-        public struct Model
+        private Model model;
+        public override Model GetModel() => model;
+        public override void Configure()
         {
-            public Sprite Icon;
-            public BaseEntity Entity;
+            model = new RuntimeModel(_baseManacost, _cooldown, this);
+        }
+        public class RuntimeModel : Model
+        {
             public int BaseManacost;
             public float Cooldown;
-            public Model(RuntimeEntityModel model)
+
+            public RuntimeModel(int manaCost, float cooldown, EntityModel model) : base(model)
             {
-                Icon = model._icon;
-                Entity = model._entity;
-                BaseManacost = model._baseManacost;
-                Cooldown = model._cooldown;
+                Cooldown = cooldown;
+                BaseManacost = manaCost;
             }
         }
     }

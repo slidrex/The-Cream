@@ -1,4 +1,5 @@
 using Assets.Editor;
+using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.LevelEditor;
 using System;
@@ -7,7 +8,6 @@ using UnityEngine.Tilemaps;
 
 internal abstract class PlacementSystem : MonoBehaviour
 {
-    [SerializeField] protected EntityDatabase database;
     protected GridData gridData = new();
     protected Grid grid;
     protected Tilemap limitingTilemap;
@@ -40,7 +40,5 @@ internal abstract class PlacementSystem : MonoBehaviour
     }
     public abstract void ClearContainer();
     public abstract void FillContainer();
-    public void SetNewEntityDatabase(EntityDatabase database) =>
-        this.database = database;
     public int GetSelectedEntityIndex() => selectedEntityIndex;
 }

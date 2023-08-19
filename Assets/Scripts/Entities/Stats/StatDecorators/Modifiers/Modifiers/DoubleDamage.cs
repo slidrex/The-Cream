@@ -12,15 +12,21 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
     internal class DoubleDamage : EntityStatModifier, IDurationable
     {
         private AttributeMask _damageMask = new AttributeMask() { BaseMultiplier = 2 };
+        private Action _onAbilityEnd;
 
-        public DoubleDamage(Entity statProvider, float duraton) : base(statProvider)
+        public DoubleDamage(Entity statProvider, float duraton, Action onAbilityEnd) : base(statProvider)
         {
+            _onAbilityEnd = onAbilityEnd;
             Duration = duraton;
         }
 
         public float Duration { get; set; }
 
-        public void OnEffectEnd() => StatsProvider.Stats.Unmodify<DamageStat>(_damageMask);
+        public void OnEffectEnd()
+        {
+            StatsProvider.Stats.Unmodify<DamageStat>(_damageMask);
+            _onAbilityEnd.Invoke();
+        }
 
         public override bool OnEffectStart() => StatsProvider.Stats.Modify<DamageStat>(_damageMask);
     }

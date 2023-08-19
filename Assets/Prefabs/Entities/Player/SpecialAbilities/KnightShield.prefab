@@ -147,5 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particles: {fileID: 6369743107456580948, guid: c6a3404f1c8193a48a8b8a5957b78f22, type: 3}
+  damage: 10
+  _stunTime: 2
   lifetime: 1
-  damage: 20
+  _radius: 0.56

@@ -2,39 +2,31 @@
 using Assets.Scripts.Entities;
 using System;
 using UnityEngine;
+using Assets.Scripts.Databases.dto.Units;
 
 namespace Assets.Scripts.Databases.dto.Runtime
 {
     [CreateAssetMenu(menuName = "Cream/Database/DTO/Editor Entity")]
-    internal class EditorEntityModel : ScriptableObject
+    [Serializable]
+    internal class EditorEntityModel : EntityModel
     {
-        public Sprite Icon;
         public byte Size;
-        public BaseEntity Entity;
-        public ObjectDescription Description;
-        
-        public Model GetModel()
+        private EntityModel.Model model;
+        public override EntityModel.Model GetModel() => model;
+        public override void Configure()
         {
-            IPlaceable place = Entity as IPlaceable;
-            IEditorSpaceRequired req = Entity as IEditorSpaceRequired;
-            if (place == null || req == null) throw new NullReferenceException();
-            return new Model(Entity, Size, place, req, Icon);
+            model = new EditorModel(Size, _entity, this);
         }
-        public struct Model
+
+        public class EditorModel : Model
         {
-            public Sprite Icon;
             public byte Size;
-            public BaseEntity Entity;
-            public IPlaceable Placeable;
             public IEditorSpaceRequired EditorSpaceRequired;
 
-            public Model(BaseEntity entity, byte size, IPlaceable placeable, IEditorSpaceRequired editorSpaceRequired, Sprite icon) : this()
+            public EditorModel(byte size, BaseEntity entity, EntityModel model) : base(model)
             {
-                Entity = entity;
                 Size = size;
-                Placeable = placeable;
-                EditorSpaceRequired = editorSpaceRequired;
-                Icon = icon;
+                EditorSpaceRequired = entity as IEditorSpaceRequired;
             }
         }
     }

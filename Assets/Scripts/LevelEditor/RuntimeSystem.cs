@@ -1,6 +1,8 @@
 using Assets.Editor;
 using Assets.Scripts.Config;
+using Assets.Scripts.Databases.dto;
 using Assets.Scripts.Databases.dto.Units;
+using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
 using Assets.Scripts.Entities.Util.Config.Input;
@@ -12,13 +14,17 @@ using UnityEngine.EventSystems;
 
 internal class RuntimeSystem : PlacementSystem
 {
+    [SerializeField] private RuntimeDatabase _runtimeDatabase;
     private List<SkillHolder> skills = new();
     private List<RuntimeEntityHolder> runtimeEntities = new();
     private RuntimeEntityHolder entityHolder;
     private Player _player;
-    
     protected override void Awake()
     {
+        foreach (var e in _runtimeDatabase.Entities)
+        {
+            e.Configure();
+        }
         entityHolder = Resources.Load<RuntimeEntityHolder>("UI/RuntimeEntityHolder");
         base.Awake();
     }
@@ -43,10 +49,10 @@ internal class RuntimeSystem : PlacementSystem
     public override void FillContainer()
     {
         SkillHolder skillHolder = Resources.Load<SkillHolder>("UI/SkillHolder");
-        for (int i = 0; i < database.Entities.Count; i++)
+        for (int i = 0; i < _runtimeDatabase.Entities.Count; i++)
         {
             RuntimeEntityHolder obj = Instantiate(entityHolder, editor.RuntimeHolderContainer);
-            obj.Init(i, database, this, GetRuntimeAbilityKey(i));
+            obj.Init(i, _runtimeDatabase, this, GetRuntimeAbilityKey(i));
             runtimeEntities.Add(obj);
         }
 
@@ -104,11 +110,11 @@ internal class RuntimeSystem : PlacementSystem
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(cursorPos);
         bool validity = CheckPlacementValidity(gridPos, selectedEntityIndex);
         if (validity == false) return;
-        var model = database.Entities[selectedEntityIndex].GetModel();
+        var model = _runtimeDatabase.Entities[selectedEntityIndex].GetModel();
 
         if (validity == true)
         {
-            var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
+            var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)), Quaternion.identity);
         }
         selectedEntityIndex = -1;
     }

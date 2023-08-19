@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats.StatAttributes
 {
@@ -23,13 +20,14 @@ namespace Assets.Scripts.Entities.Stats.StatAttributes
         private void ModifyAttrib(Stat attribute, AttributeMask mask)
         {
             attribute.MultiplierMask += mask.MaskMultiplier;
-            attribute.BaseMultiplier += mask.BaseMultiplier;
+            attribute.BaseMultiplier *= mask.BaseMultiplier;
             attribute.BaseValue += mask.BaseValue;
         }
         private void UnmodifyAttrib(Stat attribute, AttributeMask mask)
         {
             attribute.MultiplierMask -= mask.MaskMultiplier;
-            attribute.BaseMultiplier -= mask.BaseMultiplier;
+            if(mask.BaseMultiplier != 0)
+                attribute.BaseMultiplier /= mask.BaseMultiplier;
             attribute.BaseValue -= mask.BaseValue;
         }
         public float GetValue<T>() where T : Stat => GetAttribute<T>().GetValue();

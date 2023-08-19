@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Player.Skills.Wrappers;
+﻿using Assets.Scripts.Entities.Player.Skills.Implementations.Knight;
+using Assets.Scripts.Entities.Player.Skills.Wrappers;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
 using UnityEngine;
 
@@ -10,8 +11,9 @@ namespace Assets.Scripts.Entities.Player.Skills.Skill
         [SerializeField] private float duration;
         protected override void OnActivate(Characters.Knight player)
         {
-            player.Stats.ModifierHolder.AddModifier(new DoubleDamage(player, duration));
-            Debug.Log("Double damage!");
+            var ddParticles = player.GetComponent<ParticleGenerator>();
+            ddParticles.Enable(true);
+            player.Stats.ModifierHolder.AddModifier(new DoubleDamage(player, duration, () => ddParticles.Enable(false)));
         }
     }
 }

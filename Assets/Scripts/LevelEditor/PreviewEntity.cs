@@ -1,19 +1,20 @@
 using Assets.Scripts.Databases.dto.Runtime;
+using Assets.Scripts.Databases.dto.Units;
 using UnityEngine;
 
 internal class PreviewEntity : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private EditorEntityModel.Model model;
+    private EntityModel.Model model;
     public SpriteRenderer GetRenderer() { return spriteRenderer; }
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void Init(Vector2 size, EditorEntityModel.Model model)
+    public void Init(Vector2 size, EntityModel.Model model)
     {
         transform.localScale = size;
         this.model = model;
     }
-    public EditorEntityModel.Model GetModel() { return model; }
+    public EntityModel.Model GetModel() { return model; }
 }
