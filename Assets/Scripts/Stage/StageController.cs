@@ -136,8 +136,9 @@ namespace Assets.Scripts.Stage
         {
             _player = Instance.PlayerSpace.InitPlayer(_currentStageLevel.InitialElement.PlayerPosition.transform.position);
         }
-        public void StartStageLevel(StageTileElementHolder currentStageLevel, bool init = false)
+        public void StartStageLevel(int floor, StageTileElementHolder currentStageLevel, bool init = false)
         {
+            UIEventCompositeRoot.Instance.LevelTitle.EnableText($"Floor {floor}");
             _currentStageLevel = currentStageLevel;
             if (init) InitPlayer();
             _endElement = currentStageLevel.EndElement;

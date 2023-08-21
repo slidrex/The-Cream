@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.EntityExperienceLevel;
+﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.EntityExperienceLevel;
 using Assets.Scripts.Entities.EntityExperienceLevel.UI;
 using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Reset;
@@ -9,8 +10,10 @@ using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Entities.Stats.Strategies;
+using Assets.Scripts.UI.Runtime;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Entities.Player
@@ -52,7 +55,12 @@ namespace Assets.Scripts.Entities.Player
 
         public void Heal(int heal) => EntityHealthStrategy.Heal(this, heal);
 
-        public void OnDie() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        public void OnDie()
+        {
+            Time.timeScale = 0;
+            LevelCompositeRoot.Instance.Runner.SetGameMode(Editor.GameMode.NONE);
+            ScreenController.Instance.EnableScreen(ScreenController.Screen.DEATH);
+        }
 
         public virtual void OnLevelUp()
         {

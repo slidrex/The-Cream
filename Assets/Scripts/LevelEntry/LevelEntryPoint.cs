@@ -60,7 +60,7 @@ namespace Assets.Scripts.LevelEntry
             }
             _internalLevels[_currentStageLevel].gameObject.SetActive(true);
             _internalLevels[_currentStageLevel].Configure();
-            _stageController.StartStageLevel(_internalLevels[_currentStageLevel], _currentStageLevel == 0);
+            _stageController.StartStageLevel(_currentStageLevel + 1, _internalLevels[_currentStageLevel], _currentStageLevel == 0);
 
             OnHolderActivate.Invoke(_internalLevels[_currentStageLevel]);
             _currentStageLevel++;
