@@ -17,6 +17,7 @@ namespace Assets.Scripts.Stage
         public StageTileElement EndElement;
         public Tilemap PlacementTileMap { get; set; }
         public Tilemap LimitingTileMap { get; set; }
+        private StageTileElement[] _elements;
         public void Configure()
         {
             PlacementTileMap = GetComponentInChildren<BaseTilemap>(true).GetMap();

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Menu_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 8c94cdd67a11f3344842347ad669e360, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7942863706996605029
+  m_TableData:
+  - m_Id: 7135793152
+    m_Localized: Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127881416704
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 245011550208
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 336011169792
+    m_Localized: Mute music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 400108523520
+    m_Localized: Mute sound effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 486846730240
+    m_Localized: Enable Quickcast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5018347606016
+    m_Localized: Choose the level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8585791901696
+    m_Localized: Level {levelHolder.Level}
+    m_Metadata:
+      m_Items:
+      - rid: 7942863706996605029
+  references:
+    version: 2
+    RefIds:
+    - rid: 7942863706996605029
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00901309cf070000
