@@ -1,4 +1,7 @@
-﻿using Assets.Scripts.Level.Stages;
+﻿using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Functions;
+using Assets.Scripts.Level.Stages;
 using Assets.Scripts.Stage;
 using System;
 using System.Collections.Generic;
@@ -15,31 +18,56 @@ namespace Assets.Scripts.UI.MiniMap
         [SerializeField] private MiniMapElement _cell;
         [SerializeField] private Transform _cellContainer;
         [SerializeField] private Transform _initialCellPosition;
+        private List<MiniMapElement> _elements;
         private MiniMapElement _currentElement;
-        private void Awake()
+
+        public MiniMapElement GetCurrentMapElement() => _currentElement;
+        public void Configure()
         {
-            SpawnInitialCell();
-            SpawnNextCell(Vector2.up);
-            SetCurrentElement(SpawnNextCell(Vector2.right));
-            SpawnNextCell(Vector2.up);
-            SpawnNextCell(Vector2.right);
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnGameModeChanged;
+        }
+        public void Unconfigure()
+        {
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= OnGameModeChanged;
+        }
+        private void OnGameModeChanged(GameMode mode)
+        {
+            _cellContainer.gameObject.SetActive(mode == GameMode.EDIT || mode == GameMode.NONE);
         }
         private void SpawnInitialCell()
         {
-            _currentElement = SpawnElement(_initialCellPosition.position);
+            SetCurrentElement(SpawnElement(_initialCellPosition.position, false));
         }
         public void SetCurrentElement(MiniMapElement element)
         {
             _currentElement = element;
         }
-        public MiniMapElement SpawnNextCell(Vector2 direction)
+        public MiniMapElement SpawnNextCell(Direction direction)
         {
-            Vector2 newPosition = (Vector2)_currentElement.transform.position + direction * _cellDistance;
-            return SpawnElement(newPosition);
+            Vector2 newPosition = (Vector2)_currentElement.transform.position + CreamUtilities.GetDirectionVector(direction) * _cellDistance;
+            var element =  SpawnElement(newPosition);
+            _currentElement.AddRelative(new MiniMapElement.MiniMapRelativeObject(direction, element));
+            element.AddRelative(new MiniMapElement.MiniMapRelativeObject(CreamUtilities.GetOppositeDirection(direction), _currentElement));
+            return element;
         }
-        private MiniMapElement SpawnElement(Vector2 position)
+        private MiniMapElement SpawnElement(Vector2 position, bool hide = true)
         {
-            return Instantiate(_cell, position, Quaternion.identity);
+            var cell = Instantiate(_cell, position, Quaternion.identity, _cellContainer);
+            cell.Configure(this);
+            cell.transform.localPosition = new(cell.transform.localPosition.x, cell.transform.localPosition.y, 0);
+            _elements.Add(cell);
+            if (hide) cell.gameObject.SetActive(false);
+            return cell;
+        }
+        public void ResetMap()
+        {
+            if(_elements != null)
+                foreach(var el in _elements)
+                {
+                    Destroy(el);
+                }
+            _elements = new();
+            SpawnInitialCell();
         }
     }
 }

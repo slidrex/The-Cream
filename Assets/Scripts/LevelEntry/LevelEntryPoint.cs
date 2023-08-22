@@ -24,7 +24,6 @@ namespace Assets.Scripts.LevelEntry
         private StageTileElementHolder[] _internalLevels;
         private int _currentStageLevel;
         public Action<StageTileElementHolder> OnHolderActivate;
-        private PlayerRuntimeSpace _playerSpace;
         private void Start()
         {
             ConfigureServices();
@@ -39,11 +38,10 @@ namespace Assets.Scripts.LevelEntry
         }
         private void InitData()
         {
-            
+            LevelCompositeRoot.Instance.BootStrapper.StartGame();
         }
         private void ConfigureServices()
         {
-            _playerSpace = FindObjectOfType<PlayerRuntimeSpace>();
             _stageController = FindObjectOfType<StageController>();
             _internalLevels = GetComponentsInChildren<StageTileElementHolder>(true);
         }

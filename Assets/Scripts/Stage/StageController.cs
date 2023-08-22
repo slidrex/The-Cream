@@ -5,16 +5,11 @@ using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
-using Assets.Scripts.Level.Stages;
-using Assets.Scripts.Sound;
-using Assets.Scripts.Sound.Level;
-using Assets.Scripts.Sound.Soundtrack;
+using Assets.Scripts.Functions;
 using Assets.Scripts.Stage.Interfaces;
+using Assets.Scripts.UI.MiniMap;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using static Assets.Editor.Editor;
 
@@ -29,6 +24,7 @@ namespace Assets.Scripts.Stage
         public Action OnLastStageLeft;
         private StageTileElementHolder _currentStageLevel;
         private bool _runtimeActivated;
+        private MiniMapElement _playerMinimapElement;
         private void Awake()
         {
 
@@ -127,10 +123,22 @@ namespace Assets.Scripts.Stage
         public void Move(Direction direction)
         {
             var temp = _currentElement;
-
+            UpdateMinimap(direction);
             LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
             Instance.Dockspace.DisableDockspace();
             for (int i = 0; i < temp.Elements.Length; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
+        }
+        private void UpdateMinimap(Direction direction)
+        {
+            var map = LevelCompositeRoot.Instance.MiniMap;
+            var newElement = _playerMinimapElement.GetCellInDirection(direction);
+            newElement.SetState(MiniMapElement.State.PLAYER);
+            
+            if(_playerMinimapElement != null)
+                _playerMinimapElement.SetState(MiniMapElement.State.NONE);
+            map.SetCurrentElement(newElement);
+            newElement.RevealRelativeElements();
+            _playerMinimapElement = map.GetCurrentMapElement();
         }
         private void InitPlayer()
         {
@@ -138,6 +146,14 @@ namespace Assets.Scripts.Stage
         }
         public void StartStageLevel(int floor, StageTileElementHolder currentStageLevel, bool init = false)
         {
+            var map = LevelCompositeRoot.Instance.MiniMap;
+            map.ResetMap();
+            _playerMinimapElement = map.GetCurrentMapElement();
+            _playerMinimapElement.SetState(MiniMapElement.State.PLAYER);
+            currentStageLevel.FillMap();
+            _playerMinimapElement.RevealRelativeElements();
+
+
             UIEventCompositeRoot.Instance.LevelTitle.EnableText($"Floor {floor}");
             _currentStageLevel = currentStageLevel;
             if (init) InitPlayer();

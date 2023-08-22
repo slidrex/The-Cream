@@ -38,6 +38,8 @@ namespace Assets.Scripts.Sound.Level
                     SoundCompositeRoot.Instance.SoundTrackPlayer.Play(_defaultNoneTheme); return;
                 case GameMode.EDIT:
                     SoundCompositeRoot.Instance.SoundTrackPlayer.Play(EditorTheme); return;
+                case GameMode.UNASSIGNED:
+                    SoundCompositeRoot.Instance.SoundTrackPlayer.Stop(); return;
             }
         }
     }

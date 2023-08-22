@@ -1,18 +1,11 @@
-﻿using Assets.Scripts.Stage;
+﻿using Assets.Scripts.Functions;
+using Assets.Scripts.Stage;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Level.Stages
 {
-    public enum Direction
-    {
-        NONE,
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    }
     internal class Dockspace : MonoBehaviour
     {
         [SerializeField] private Image _cursorImage;

@@ -17,8 +17,18 @@ namespace Assets.Scripts.UI.Runtime.Screens
         private const int MENU_BUILD_INDEX = 0;
         private void Awake()
         {
-            _menuButton.onClick.AddListener(() => SceneManager.LoadScene(MENU_BUILD_INDEX));
-            _retryButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
+            _menuButton.onClick.AddListener(OnMenuButtonClicked);
+            _retryButton.onClick.AddListener(OnRetryButtonClicked);
+        }
+        private void OnMenuButtonClicked()
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(MENU_BUILD_INDEX);
+        }
+        private void OnRetryButtonClicked()
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

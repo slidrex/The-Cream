@@ -57,8 +57,13 @@ namespace Assets.Scripts.Entities.Player
 
         public void OnDie()
         {
+            OnPlayerDie();
+            LevelCompositeRoot.Instance.BootStrapper.EndGame();
+        }
+        private void OnPlayerDie()
+        {
             Time.timeScale = 0;
-            LevelCompositeRoot.Instance.Runner.SetGameMode(Editor.GameMode.NONE);
+            LevelCompositeRoot.Instance.Runner.SetGameMode(Editor.GameMode.UNASSIGNED);
             ScreenController.Instance.EnableScreen(ScreenController.Screen.DEATH);
         }
 

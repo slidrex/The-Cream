@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Level.Stages;
+﻿using Assets.Scripts.Functions;
+using Assets.Scripts.Level.Stages;
 using System;
 using System.Collections.Generic;
 using System.Linq;

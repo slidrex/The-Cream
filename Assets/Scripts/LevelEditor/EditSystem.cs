@@ -17,11 +17,11 @@ internal class EditSystem : PlacementSystem
     {
         if(OnPlace != null)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && selectedEntityIndex != -1 && Editor.Instance.GameModeIs(GameMode.EDIT))
+            if (Input.GetKey(KeyCode.Mouse0) && selectedEntityIndex != -1 && Editor.Instance.GameModeIs(GameMode.EDIT))
             {
                 Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, selectedHolder) { NotDeselectOnChoose = true, Status = PreviewManager.PreviewStatus.DISABLED });
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse1) && Editor.Instance.GameModeIs(GameMode.EDIT))
+            else if (Input.GetKey(KeyCode.Mouse1) && Editor.Instance.GameModeIs(GameMode.EDIT))
             {
                 OnDelete?.Invoke();
             }

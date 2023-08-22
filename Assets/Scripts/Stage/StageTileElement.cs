@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities;
+using Assets.Scripts.Functions;
 using Assets.Scripts.Level.Stages;
 using System;
 using UnityEngine;
