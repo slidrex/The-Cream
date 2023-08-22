@@ -9,13 +9,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Databases.dto.Units
 {
-    internal abstract class EntityModel
+    internal abstract class EntityModel : ScriptableObject
     {
         [SerializeField] protected BaseEntity _entity;
         [SerializeField] private Sprite _icon;
         [SerializeField] private ObjectDescription _description;
         public virtual void Configure() { }
         public abstract Model GetModel();
+
         public class Model
         {
             public Sprite Icon;

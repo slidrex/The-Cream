@@ -33,9 +33,8 @@ namespace Assets.Scripts.UI.Menu.MainMenu.Level
         public void OnButtonPress()
         {
             _levels.SetActive(false);
-            _characters.SetActive(false);
+            _characters.SetActive(true);
             _menu.SceneID(_sceneId);
-            _menu.LoadScene();
         }
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3205d74b671e9e24f8616e194248d6ef, type: 3}
+  m_Name: Dina
+  m_EditorClassIdentifier: 
+  _entity: {fileID: 521722513626504388, guid: c787cb6ac9f9f67448ace349e42ea8fe, type: 3}
+  _icon: {fileID: -1472079441, guid: 10b7eaa479df8734c88d20fc165740ef, type: 3}
+  _description: {fileID: 11400000, guid: a484336bb9cded94dbceaf249820a97e, type: 2}
+  Size: 1

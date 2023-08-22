@@ -17,7 +17,8 @@ namespace Menus
         private int selectedID = -1;
         public void SceneID(int id)
         {
-            selectedID = id;    }
+            selectedID = id;
+        }
 
         public void LoadScene()
         {

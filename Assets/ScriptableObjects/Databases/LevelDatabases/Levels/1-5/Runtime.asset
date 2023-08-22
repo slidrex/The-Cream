@@ -13,13 +13,5 @@ MonoBehaviour:
   m_Name: Runtime
   m_EditorClassIdentifier: 
   <Entities>k__BackingField:
-  - _entity: {fileID: 2402819204230275216, guid: 0b11b35da4fd4c04cb31da48645c7d3b, type: 3}
-    _icon: {fileID: 21300000, guid: 6e0a54826ffc3ee46b0aa3e1c1575a69, type: 3}
-    _description: {fileID: 11400000, guid: a20d7122b8f4c794babc43b348aff81c, type: 2}
-    _baseManacost: 10
-    _cooldown: 8
-  - _entity: {fileID: 4761289305778857496, guid: cf17e3ad8b759b14bb4a0b76978011ea, type: 3}
-    _icon: {fileID: 21300000, guid: 4a231ba0e81e63849a8f985c228e8acd, type: 3}
-    _description: {fileID: 11400000, guid: a20d7122b8f4c794babc43b348aff81c, type: 2}
-    _baseManacost: 10
-    _cooldown: 5
+  - {fileID: 11400000, guid: 919bb1374a13eee4ca03694109713226, type: 2}
+  - {fileID: 11400000, guid: 408d9812751d13c478d7f1c342c4b2d0, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3205d74b671e9e24f8616e194248d6ef, type: 3}
   m_Name: HammerHead
   m_EditorClassIdentifier: 
-  Icon: {fileID: -1407402352, guid: 1318cefb75b075d4e960966bc76d1a83, type: 3}
+  _entity: {fileID: 8960914611424588283, guid: e360fe60bc4985846a3514860bca8db9, type: 3}
+  _icon: {fileID: -1407402352, guid: 1318cefb75b075d4e960966bc76d1a83, type: 3}
+  _description: {fileID: 11400000, guid: f5c3f062e3a951042aa548d9d7a21b6b, type: 2}
   Size: 1
-  Entity: {fileID: 8960914611424588283, guid: e360fe60bc4985846a3514860bca8db9, type: 3}
-  Description: {fileID: 11400000, guid: f5c3f062e3a951042aa548d9d7a21b6b, type: 2}

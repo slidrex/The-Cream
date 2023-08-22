@@ -13,19 +13,8 @@ MonoBehaviour:
   m_Name: Editor
   m_EditorClassIdentifier: 
   <Entities>k__BackingField:
-  - _entity: {fileID: 8897829895851618643, guid: efd0e970e28e15c4aa8b598820d2e1d0, type: 3}
-    _icon: {fileID: 21300000, guid: 680c8a8645b048244bf94b0eab667de1, type: 3}
-    _description: {fileID: 11400000, guid: 3c2a5c6db15a2d944aeb676fa1703d2f, type: 2}
-    Size: 1
-  - _entity: {fileID: 8960914611424588283, guid: e360fe60bc4985846a3514860bca8db9, type: 3}
-    _icon: {fileID: -1407402352, guid: 1318cefb75b075d4e960966bc76d1a83, type: 3}
-    _description: {fileID: 11400000, guid: f5c3f062e3a951042aa548d9d7a21b6b, type: 2}
-    Size: 1
-  - _entity: {fileID: 1370187744916397811, guid: 228735f6789d5774cb699f4297fe3f70, type: 3}
-    _icon: {fileID: 925791512, guid: c708699d29bb1cf43a7b40e7e0141c4f, type: 3}
-    _description: {fileID: 11400000, guid: efbbf2fdd365339459f11627031bcc8f, type: 2}
-    Size: 1
-  - _entity: {fileID: 2115044993, guid: 0f392e37b93d7904e94774ceeab0fbbf, type: 3}
-    _icon: {fileID: 49781719, guid: 02b292bc17ebfdc4a8feb8c7bd07f406, type: 3}
-    _description: {fileID: 11400000, guid: 052cb432bd2e2e846957f3fb1b8210a2, type: 2}
-    Size: 1
+  - {fileID: 11400000, guid: cceb7a59f93d8a24cbb555753e2ef742, type: 2}
+  - {fileID: 11400000, guid: 89b5b6597213a7a499136005aef384bf, type: 2}
+  - {fileID: 11400000, guid: 4c7a4fa2f54a0e147b9f0efa15274092, type: 2}
+  - {fileID: 11400000, guid: c29473dad14f0c647811580273524337, type: 2}
+  - {fileID: 11400000, guid: 59ebba3f7bc2b7b4693eff5c49f89763, type: 2}

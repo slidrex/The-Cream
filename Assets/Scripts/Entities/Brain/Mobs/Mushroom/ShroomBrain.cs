@@ -18,11 +18,12 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
     {
         private Animator _animator;
         [SerializeField] private int _damage;
-        [SerializeField] private GameObject _explosionParticles;
+        [SerializeField] private ParticleSystem _explosionParticles;
         [SerializeField] private float _slowDuration;
         [SerializeField, Range(0, 1.0f)] private float _slowPercentage;
         [SerializeField] private string _explosionTrigger;
         [SerializeField] private float _radius;
+        private List<Entity> foundEntities = new List<Entity>();
         private EntityTypeBase _targetEntities = new EntityType<PlayerTag>().Any();
         [SerializeField] private float _explosionInterval;
         private float _timeSinceExplosion;
@@ -30,15 +31,17 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
         {
             _animator = GetComponent<Animator>();
         }
-        private void OnExplosion(List<Entity> entities)
+        public void OnExplosion()
         {
-            var obj = Instantiate(_explosionParticles, transform.position, Quaternion.identity);
-            Destroy(obj, 5f);
-            _animator.SetTrigger(_explosionTrigger);
-            foreach(var e in entities)
+            _explosionParticles.Play();
+
+            if(foundEntities.Count > 0)
             {
-                e.Stats.ModifierHolder.AddModifier(new SpeedBooster(e, -_slowPercentage) { Duration = _slowDuration });
-                (e as IDamageable).Damage(_damage, Entity);
+                foreach (var e in foundEntities)
+                {
+                    e.Stats.ModifierHolder.AddModifier(new SpeedBooster(e, -_slowPercentage) { Duration = _slowDuration });
+                    (e as IDamageable).Damage(_damage, Entity);
+                }
             }
         }
         protected override void RuntimeUpdate()
@@ -49,11 +52,11 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
             }
             else
             {
-                var entities = NavigationUtil.GetAllEntitiesOfType(_targetEntities, transform, _radius);
-                if(entities.Count > 0)
+                foundEntities = NavigationUtil.GetAllEntitiesOfType(_targetEntities, transform, _radius);
+                if(foundEntities.Count > 0)
                 {
                     _timeSinceExplosion = 0;
-                    OnExplosion(entities);
+                    _animator.SetTrigger(_explosionTrigger);
                 }
             }
         }

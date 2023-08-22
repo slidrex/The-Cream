@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3205d74b671e9e24f8616e194248d6ef, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  Icon: {fileID: 925791512, guid: c708699d29bb1cf43a7b40e7e0141c4f, type: 3}
+  _entity: {fileID: 1370187744916397811, guid: 228735f6789d5774cb699f4297fe3f70, type: 3}
+  _icon: {fileID: 925791512, guid: c708699d29bb1cf43a7b40e7e0141c4f, type: 3}
+  _description: {fileID: 11400000, guid: efbbf2fdd365339459f11627031bcc8f, type: 2}
   Size: 1
-  Entity: {fileID: 1370187744916397811, guid: 228735f6789d5774cb699f4297fe3f70, type: 3}
-  Description: {fileID: 11400000, guid: efbbf2fdd365339459f11627031bcc8f, type: 2}

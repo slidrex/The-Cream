@@ -15,7 +15,6 @@ internal class SkillHolder : ObjectHolder
     {
         SetActiveSelectImage(false);
         SetBindedKey(bindedKey, skill is IActivatable);
-
         EntityIcon.sprite = skill.Icon;
         button = GetComponent<Button>();
         skill.OnStart(player);
