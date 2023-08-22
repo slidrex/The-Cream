@@ -29,11 +29,10 @@ namespace Assets.Scripts.Entities.Player.Skills.Implementations.LightEater
             _entityMovement = GetComponent<Movement>();
             _animator = GetComponent<Animator>();
         }
-        public async void StartAbility()
+        public void StartAbility()
         {
+            _animator.SetTrigger(_abilityTrigger);
             _entityMovement.EnableMovement(false);
-            await Task.Delay(2000);
-            PerformAbility();
         }
         public void PerformAbility()
         {

@@ -25,3 +25,7 @@ MonoBehaviour:
     _icon: {fileID: 925791512, guid: c708699d29bb1cf43a7b40e7e0141c4f, type: 3}
     _description: {fileID: 11400000, guid: efbbf2fdd365339459f11627031bcc8f, type: 2}
     Size: 1
+  - _entity: {fileID: 2115044993, guid: 0f392e37b93d7904e94774ceeab0fbbf, type: 3}
+    _icon: {fileID: 49781719, guid: 02b292bc17ebfdc4a8feb8c7bd07f406, type: 3}
+    _description: {fileID: 11400000, guid: 052cb432bd2e2e846957f3fb1b8210a2, type: 2}
+    Size: 1

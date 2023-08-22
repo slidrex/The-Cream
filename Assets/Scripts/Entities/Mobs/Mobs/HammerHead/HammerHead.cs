@@ -4,7 +4,6 @@ using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Templates;
 using System;
-using UnityEngine;
 
 namespace Assets.Scripts.Entities.Mobs.Mobs.HammerHead
 {

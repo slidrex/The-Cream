@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3205d74b671e9e24f8616e194248d6ef, type: 3}
+  m_Name: Sunstriker
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 49781719, guid: 02b292bc17ebfdc4a8feb8c7bd07f406, type: 3}
+  Size: 1
+  Entity: {fileID: 2115044993, guid: 0f392e37b93d7904e94774ceeab0fbbf, type: 3}
+  Description: {fileID: 11400000, guid: 052cb432bd2e2e846957f3fb1b8210a2, type: 2}
