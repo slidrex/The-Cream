@@ -6,6 +6,7 @@ using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
 using Assets.Scripts.Entities.Util.Config.Input;
+using Assets.Scripts.Entities.Util.Cooldown;
 using Assets.Scripts.LevelEditor;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ using UnityEngine.EventSystems;
 
 internal class RuntimeSystem : PlacementSystem
 {
-    [SerializeField] private RuntimeDatabase _runtimeDatabase;
+    [SerializeField] private RuntimeDatabase _defaultRuntimeDatabase;
+    private RuntimeDatabase _currentRuntimeDatabase;
     private List<SkillHolder> skills = new();
     private List<RuntimeEntityModel> _entitiesDatabaseInstance = new();
     private List<RuntimeEntityHolder> runtimeEntities = new();
@@ -22,17 +24,28 @@ internal class RuntimeSystem : PlacementSystem
     private Player _player;
     protected override void Awake()
     {
-        foreach (var e in _runtimeDatabase.Entities)
+        _currentRuntimeDatabase = _defaultRuntimeDatabase;
+        ConfigureDatabase();
+        entityHolder = Resources.Load<RuntimeEntityHolder>("UI/RuntimeEntityHolder");
+        base.Awake();
+    }
+    private void ConfigureDatabase()
+    {
+        foreach (var e in _currentRuntimeDatabase.Entities)
         {
             e.Configure();
         }
-        entityHolder = Resources.Load<RuntimeEntityHolder>("UI/RuntimeEntityHolder");
-        base.Awake();
+    }
+    public void SetRuntimeDatabase(RuntimeDatabase database)
+    {
+        if (database == null) _currentRuntimeDatabase = _defaultRuntimeDatabase;
+        else _currentRuntimeDatabase = database;
+        ConfigureDatabase();
     }
     protected override bool AllowUsingEntityID(int id)
     {
         var model = _entitiesDatabaseInstance[id].GetRuntimeModel();
-        return model.IsCooldowned == true && Editor.Instance.PlayerSpace.IsEnoughMana(model.BaseManacost);
+        return CooldownStrategy.IsCooldownPassed(model) == true && Editor.Instance.PlayerSpace.IsEnoughMana(model.BaseManacost);
     }
     private void Update()
     {
@@ -59,7 +72,7 @@ internal class RuntimeSystem : PlacementSystem
         {
             var entity = _entitiesDatabaseInstance[i];
             var model = entity.GetRuntimeModel();
-            if (model.IsCooldowned == false)
+            if (CooldownStrategy.IsCooldownPassed(model, false) == false)
             {
                 model.TimeSinceActivation += Time.deltaTime;
                 runtimeEntities[i].UpdateCooldownValue();
@@ -69,15 +82,15 @@ internal class RuntimeSystem : PlacementSystem
     public override void FillContainer()
     {
         SkillHolder skillHolder = Resources.Load<SkillHolder>("UI/SkillHolder");
-        for (int i = 0; i < _runtimeDatabase.Entities.Count; i++)
+        for (int i = 0; i < _currentRuntimeDatabase.Entities.Count; i++)
         {
             RuntimeEntityHolder holder = Instantiate(entityHolder, editor.RuntimeHolderContainer);
 
-            var instanceModel = Instantiate(_runtimeDatabase.Entities[i]);
-            var model = _runtimeDatabase.Entities[i].GetRuntimeModel();
+            var instanceModel = Instantiate(_currentRuntimeDatabase.Entities[i]);
+            var model = _currentRuntimeDatabase.Entities[i].GetRuntimeModel();
             instanceModel.Configure();
 
-            holder.Init(i, _runtimeDatabase, this, GetRuntimeAbilityKey(i));
+            holder.Init(i, _currentRuntimeDatabase, this, GetRuntimeAbilityKey(i));
             holder.Configure(model.BaseManacost, instanceModel.GetRuntimeModel());
 
             _entitiesDatabaseInstance.Add(instanceModel);

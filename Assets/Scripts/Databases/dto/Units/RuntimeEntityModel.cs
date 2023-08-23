@@ -32,7 +32,6 @@ namespace Assets.Scripts.Databases.dto
             public int BaseManacost;
             public float BaseCooldown { get; set; }
             public float TimeSinceActivation { get; set; }
-            public bool IsCooldowned => TimeSinceActivation >= BaseCooldown;
 
             public RuntimeModel(int manaCost, float cooldown, EntityModel model) : base(model)
             {

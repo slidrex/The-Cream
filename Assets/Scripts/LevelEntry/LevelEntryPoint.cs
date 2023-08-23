@@ -1,22 +1,18 @@
 ﻿using Assets.Editor;
 using Assets.Scripts.CompositeRoots;
-using Assets.Scripts.Databases.Database_providers;
-using Assets.Scripts.Databases.Model.Character;
-using Assets.Scripts.Databases.Model.Player;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Strategies;
 using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.GameProgress;
 using Assets.Scripts.Level;
 using Assets.Scripts.Level.EntryPoint;
+using Assets.Scripts.Level.Interfaces;
 using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using Assets.Scripts.Stage;
 using Assets.Scripts.Stage.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,6 +25,7 @@ namespace Assets.Scripts.LevelEntry
         private StageTileElementHolder[] _internalLevels;
         private int _currentStageLevel;
         public Action<StageTileElementHolder> OnHolderActivate;
+        private IEnumerable<IStageBeginHandler> _stageBeginHandlers;
         private void Start()
         {
             _portal = FindObjectOfType<EntryPointData>().Portal;
@@ -48,6 +45,14 @@ namespace Assets.Scripts.LevelEntry
         private void InitData()
         {
             LevelCompositeRoot.Instance.BootStrapper.StartGame();
+            var entities = FindObjectsOfType<GameObject>();
+            foreach(var e in entities)
+            {
+                if(e.TryGetComponent<IStageBeginHandler>(out var handler))
+                {
+                    _stageBeginHandlers.Append(handler);
+                }
+            }
         }
         private void ConfigureServices()
         {
@@ -64,7 +69,15 @@ namespace Assets.Scripts.LevelEntry
             LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.UNASSIGNED);
             OnHolderActivate.Invoke(_internalLevels[_currentStageLevel]);
             EntityBaseStrategy.OnGameStart();
+            NotifyHandlers();
             _currentStageLevel++;
+        }
+        private void NotifyHandlers()
+        {
+            foreach(var handler in _stageBeginHandlers)
+            {
+                handler.OnStageBegin();
+            }
         }
         public void OnStageLevelOver()
         {

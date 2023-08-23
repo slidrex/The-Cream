@@ -25,16 +25,5 @@ namespace Assets.Scripts.Test
             _cont = FindObjectOfType<StageController>();
             _player = FindObjectOfType<Player>();
         }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Instantiate(_anim, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            }
-            if(Input.GetKeyDown(KeyCode.Space)) 
-            {
-                Editor.Editor.Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
-            }
-        }
     }
 }

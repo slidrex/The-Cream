@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Entities.Util.Cooldown;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
         {
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
-            if (TimeSinceActivation < BaseCooldown || !playerSpace.TrySpendMana(BaseManacost)) return false;
+            if (!CooldownStrategy.IsCooldownPassed(this) || !playerSpace.TrySpendMana(BaseManacost)) return false;
             Editor.Editor.Instance.PreviewManager.PerformAction(new LevelEditor.PreviewManager.Config((Vector2 v) => OnActivate(player as T), holder) { Status = LevelEditor.PreviewManager.PreviewStatus.DISABLED});
 
             ResetTimer();

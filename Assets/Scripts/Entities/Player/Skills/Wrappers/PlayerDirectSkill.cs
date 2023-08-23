@@ -1,4 +1,5 @@
 ﻿using Assets.Editor;
+using Assets.Scripts.Entities.Util.Cooldown;
 using Assets.Scripts.LevelEditor.Ability;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
         {
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
-            if (TimeSinceActivation < BaseCooldown || !playerSpace.IsEnoughMana(BaseManacost)) return false;
+            if (CooldownStrategy.IsCooldownPassed(this) == false || !playerSpace.IsEnoughMana(BaseManacost)) return false;
             OnStartSelecting(holder, player as T, clickedByIcon);
             return true;
         }

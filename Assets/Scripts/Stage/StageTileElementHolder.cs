@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities;
+﻿using Assets.Scripts.Databases.LevelDatabases;
+using Assets.Scripts.Entities;
 using Assets.Scripts.Level;
 using Assets.Scripts.Level.Tilemap;
 using Assets.Scripts.UI.MiniMap;
@@ -19,6 +20,9 @@ namespace Assets.Scripts.Stage
         public StageTileElement EndElement;
         public Tilemap PlacementTileMap { get; set; }
         public Tilemap LimitingTileMap { get; set; }
+        [Header("Element Specific Data")]
+        public EditorEntityDatabase SpecificEditorDatabase;
+        public RuntimeDatabase SpecificRuntimeDatabase;
         public void Configure()
         {
             PlacementTileMap = GetComponentInChildren<BaseTilemap>(true).GetMap();

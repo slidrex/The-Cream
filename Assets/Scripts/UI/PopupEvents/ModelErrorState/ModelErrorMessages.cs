@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.UI.PopupEvents
 {
-    internal class ModelErrorState
+    internal class ModelErrorMessages
     {
+        public static string NOT_ENOUGH_MANA = "Not enough mana";
+        public static string ON_COOLDOWN = "Option is on cooldown";
     }
 }

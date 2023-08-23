@@ -1,6 +1,8 @@
-﻿using Assets.Scripts.Databases.dto;
+﻿using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Databases.dto;
 using Assets.Scripts.Databases.dto.Units;
 using Assets.Scripts.Databases.Model.Player;
+using Assets.Scripts.UI.PopupEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,9 +42,11 @@ namespace Assets.Scripts.LevelEditor.RuntimeSpace.Player
             }
             return models;
         }
-        public bool IsEnoughMana(int mana)
+        public bool IsEnoughMana(int mana, bool addModelErrorOnFail = true)
         {
-            return mana <= CurrentMana;
+            bool isEnough = mana <= CurrentMana;
+            if (isEnough == false && addModelErrorOnFail) UIEventCompositeRoot.Instance.ErrorModel.AddError(ModelErrorMessages.NOT_ENOUGH_MANA);
+            return isEnough;
         }
         /// <summary>
         /// Throws exception if set mana is below zero.
@@ -52,9 +56,9 @@ namespace Assets.Scripts.LevelEditor.RuntimeSpace.Player
             if (mana > CurrentMana) throw new Exception("Mana set below zero.");
             else SetMana(CurrentMana - mana);
         }
-        public bool TrySpendMana(int mana)
+        public bool TrySpendMana(int mana, bool addModelErrorOnFail = true)
         {
-            if (mana > CurrentMana) return false;
+            if (IsEnoughMana(mana, addModelErrorOnFail) == false) return false;
             else SetMana(CurrentMana - mana);
             return true;
         }

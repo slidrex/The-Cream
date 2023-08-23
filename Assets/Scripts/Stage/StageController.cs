@@ -149,6 +149,9 @@ namespace Assets.Scripts.Stage
         {
             var map = LevelCompositeRoot.Instance.MiniMap;
             map.ResetMap();
+            Editor.Editor.Instance._runtimeSystem.SetRuntimeDatabase(currentStageLevel.SpecificRuntimeDatabase);
+            Editor.Editor.Instance._editSystem.SetEditorDatabase(currentStageLevel.SpecificEditorDatabase);
+
             _playerMinimapElement = map.GetCurrentMapElement();
             _playerMinimapElement.SetState(MiniMapElement.State.PLAYER);
             currentStageLevel.FillMap();

@@ -10,9 +10,10 @@ namespace Assets.Scripts.Stage
     {
         public Transform PlayerPosition;
         [field:SerializeField] public int EditorSpaceRequired { get; set; } = 16;
-        public AudioClip SpecificRuntimeSoundtrack;
         public int CameraSize = 5;
         public RelationElement[] Elements;
+        [Header("Element Specific Data")]
+        public AudioClip SpecificRuntimeSoundtrack;
         [Serializable]
         public struct RelationElement
         {

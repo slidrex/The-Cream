@@ -388,6 +388,69 @@ MonoBehaviour:
   _cell: {fileID: 8397544376492090228, guid: d8968cb1e81b0544aab9d143977da311, type: 3}
   _cellContainer: {fileID: 5164970006976601608}
   _initialCellPosition: {fileID: 4198683323361565040}
+--- !u!1 &1122968649912880226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3795912648851025069}
+  - component: {fileID: 5062994148055941109}
+  m_Layer: 0
+  m_Name: Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3795912648851025069
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122968649912880226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: -1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8704349894551093400}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5062994148055941109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122968649912880226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 1
 --- !u!1 &1159424889215170634
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelTitle: {fileID: 7598618044854755716}
+  ErrorModel: {fileID: 3996819471973149825}
 --- !u!1 &3368848979288667031
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,6 +945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8704349894551093400}
+  - component: {fileID: 3996819471973149825}
   m_Layer: 0
   m_Name: ModelErrorState
   m_TagString: Untagged
@@ -897,12 +962,28 @@ Transform:
   m_GameObject: {fileID: 3651811768560394061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3795912648851025069}
   m_Father: {fileID: 1861431488231989075}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3996819471973149825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651811768560394061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679383a237642cd47bbe421bbe8bae1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _errorText: {fileID: 9092133720193991570, guid: b95058688c8b910439b10c2272a7589f, type: 3}
+  _errorContainer: {fileID: 3795912648851025069}
+  _errorDisplayTime: 4
 --- !u!1 &3652956624042779735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f82175ed8dbc84d963c31e50978af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runtimeDatabase: {fileID: 11400000, guid: 4ef33d4d7d58af341b226d32b5385090, type: 2}
+  _defaultRuntimeDatabase: {fileID: 11400000, guid: 4ef33d4d7d58af341b226d32b5385090, type: 2}
 --- !u!1 &3652956624350465879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,7 +2731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b7d682b3c802344a4545442687a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _editorDatabase: {fileID: 11400000, guid: a2669af8a0e91524fa4e8fe881b538a0, type: 2}
+  _defaultEditorDatabase: {fileID: 11400000, guid: a2669af8a0e91524fa4e8fe881b538a0, type: 2}
   holders: []
 --- !u!1 &3652956625710839207
 GameObject:

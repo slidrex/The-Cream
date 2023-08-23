@@ -9,7 +9,8 @@ using UnityEngine;
 
 internal class EditSystem : PlacementSystem
 {
-    [SerializeField] private EditorEntityDatabase _editorDatabase;
+    [SerializeField] private EditorEntityDatabase _defaultEditorDatabase;
+    private EditorEntityDatabase _currentEditorDatabase;
     private List<BaseEntity> placedEntities = new();
     [SerializeField] private List<EditorEntityHolder> holders = new();
     private EditorEntityHolder entityHolder;
@@ -30,24 +31,35 @@ internal class EditSystem : PlacementSystem
     protected override void OnAfterSetCurrentEntityId()
     {
         
-        Editor.Instance._inputManager.SetPreviewSprite(_editorDatabase.Entities[selectedEntityIndex].GetModel().Icon);
+        Editor.Instance._inputManager.SetPreviewSprite(_currentEditorDatabase.Entities[selectedEntityIndex].GetModel().Icon);
     }
     protected override void Awake()
     {
-        foreach(var e in _editorDatabase.Entities)
-        {
-            e.Configure();
-        }
+        _currentEditorDatabase = _defaultEditorDatabase;
+        ConfigureDatabase();
         entityHolder = Resources.Load<EditorEntityHolder>("UI/EditorEntityHolder");
         base.Awake();
     }
+    private void ConfigureDatabase()
+    {
+        foreach (var e in _currentEditorDatabase.Entities)
+        {
+            e.Configure();
+        }
+    }
+    public void SetEditorDatabase(EditorEntityDatabase database)
+    {
+        if (database == null) _currentEditorDatabase = _defaultEditorDatabase;
+        else _currentEditorDatabase = database;
+        ConfigureDatabase();
+    }
     public override void FillContainer()
     {
-        for (int i = 0; i < _editorDatabase.Entities.Count; i++)
+        for (int i = 0; i < _currentEditorDatabase.Entities.Count; i++)
         {
             EditorEntityHolder obj = Instantiate(entityHolder, editor.EditorHolderContainer);
-            obj.Configure(_editorDatabase.Entities[i].GetModel().Entity as IEditorSpaceRequired);
-            obj.Init(i, _editorDatabase, this, KeyCode.None);
+            obj.Configure(_currentEditorDatabase.Entities[i].GetModel().Entity as IEditorSpaceRequired);
+            obj.Init(i, _currentEditorDatabase, this, KeyCode.None);
             holders.Add(obj);
         }
     }
@@ -67,7 +79,7 @@ internal class EditSystem : PlacementSystem
         bool placementValidity = CheckPlacementValidity(gridPos, selectedEntityIndex);
         if (placementValidity == false) return;
 
-        var model = (EditorEntityModel.EditorModel)_editorDatabase.Entities[selectedEntityIndex].GetModel();
+        var model = (EditorEntityModel.EditorModel)_currentEditorDatabase.Entities[selectedEntityIndex].GetModel();
         var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
 
         placedEntities.Add(entity);
@@ -110,7 +122,7 @@ internal class EditSystem : PlacementSystem
     {
         if (selectedEntityIndex < 0) return false;
         int count = 0;
-        var model = (EditorEntityModel.EditorModel)_editorDatabase.Entities[selectedEntityIndex].GetModel();
+        var model = (EditorEntityModel.EditorModel)_currentEditorDatabase.Entities[selectedEntityIndex].GetModel();
         if (editor._spaceController.IsOverloaded(model.EditorSpaceRequired.SpaceRequired)) return false;
         Vector3Int[] posns = new Vector3Int[model.Size * model.Size];
 
