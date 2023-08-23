@@ -31,8 +31,13 @@ internal abstract class PlacementSystem : MonoBehaviour
             Debug.LogError($"нет такого id: {id}");
             return;
         }
-        Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, holder) { Status = clickedByIcon ? PreviewManager.PreviewStatus.ENABLED : PreviewManager.PreviewStatus.AUTO});
+        if(OnPerformActionValidation())
+            Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, holder) { Status = clickedByIcon ? PreviewManager.PreviewStatus.ENABLED : PreviewManager.PreviewStatus.AUTO});
         OnAfterSetCurrentEntityId();
+    }
+    protected virtual bool OnPerformActionValidation()
+    {
+        return true;
     }
     protected virtual void OnAfterSetCurrentEntityId()
     {

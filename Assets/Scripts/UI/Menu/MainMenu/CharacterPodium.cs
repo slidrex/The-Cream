@@ -6,9 +6,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Scripts.GameProgress;
 
 public class CharacterPodium : MonoBehaviour
 {
+    [Header("Locked Podium")]
+    [SerializeField] private Sprite _lockedPodiumSprite;
+    [SerializeField] private string _lockedPodiumName;
     [Header("General")]
     [SerializeField] private CharacterSelectButton characterButton;
     [SerializeField] private CharacterDatabase database;
@@ -45,9 +49,12 @@ public class CharacterPodium : MonoBehaviour
         {
             models[i].Character.Description.Init(models[i].Character.GetSkills());
             var but = Instantiate(characterButton, characterContainer);
-            but.SetPodium(this);
-            but.SetCharacter(ids[i], models[i]);
-            but.SetIcon(models[i].Character.Description.CharacterButtonIcon);
+            
+            but.InitiateCharacter(this, ids[i], models[i], models[i].Character.Description.CharacterButtonIcon);
+            if (PersistentData.UnlockedCharacters.Contains(ids[i]) == false)
+            {
+                but.LockCharacter();
+            }
         }
     }
     public void ClearSkillDescripion()
@@ -65,6 +72,10 @@ public class CharacterPodium : MonoBehaviour
     {
         characterIcon.sprite = icon;
         characterName.text = name;
+    }
+    public void InitBlockedPodium()
+    {
+        InitPodium(_lockedPodiumSprite, _lockedPodiumName);
     }
     public Transform GetSkillContainer() => skillsContainer;
     public void SetSkillName(string name) => skillName.text = name;

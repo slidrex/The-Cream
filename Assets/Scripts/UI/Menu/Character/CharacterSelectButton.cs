@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Databases.Model.Character;
-using Assets.Scripts.GameProgress.Character;
+using Assets.Scripts.GameProgress;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +9,7 @@ namespace Assets.Scripts.Menu.Character
     [RequireComponent(typeof(Button))]
     internal class CharacterSelectButton : MonoBehaviour
     {
+        [SerializeField] private Sprite _lockedCharacterIcon;
         [SerializeField] private SkillSelectButton skillButton;
         [field: SerializeField] public bool IsOpened { get; private set; } = true;
         private Image icon;
@@ -20,12 +21,18 @@ namespace Assets.Scripts.Menu.Character
         {
             icon = GetComponent<Image>();
             button = GetComponent<Button>();
+
+            button.onClick.AddListener(OnSelectButtonClicked);
+        }
+        private void OnSelectButtonClicked()
+        {
             if (IsOpened)
             {
-                button.onClick.AddListener(() => CharacterPrefs.SelectPlayer(CharacterID));
-                button.onClick.AddListener(() => podium.InitPodium(model.Character.Description.CharacterSprite, model.Character.Description.Name));
-                button.onClick.AddListener(InitSkills);
+                Editor.Editor.SelectedCharacterId = CharacterID;
+                podium.InitPodium(model.Character.Description.CharacterSprite, model.Character.Description.Name);
             }
+            else podium.InitBlockedPodium();
+            InitSkills();
         }
 
         private void InitSkills()
@@ -33,21 +40,36 @@ namespace Assets.Scripts.Menu.Character
             podium.ClearSkillDescripion();
             for (int i = 0; i < model.Character.GetSkills().Length; i++)
             {
-                podium.GetSkillButtons()[i].Init(model.Character.GetSkills()[i], model.Character.GetSkills()[i].Icon, podium);
+                var button = podium.GetSkillButtons()[i];
+                button.InitSkill(model.Character.GetSkills()[i], podium);
+
+                button.SetSkillIcon(model.Character.GetSkills()[i].Icon);
             }
             StartCoroutine(podium.LayoutUpdater());
         }
-        public void SetPodium(CharacterPodium podium)
+        public void LockCharacter()
+        {
+            IsOpened = false;
+            SetIcon(_lockedCharacterIcon);
+        }
+        public void InitiateCharacter(CharacterPodium podium, CharacterDatabaseModel.CharacterID id,
+                                          CharacterDatabaseModel model, Sprite icon)
+        {
+            SetPodium(podium);
+            SetCharacter(id, model);
+            SetIcon(icon);
+        }
+        private void SetPodium(CharacterPodium podium)
         {
             this.podium = podium;
         }
-        public void SetCharacter(CharacterDatabaseModel.CharacterID id,
+        private void SetCharacter(CharacterDatabaseModel.CharacterID id,
                                           CharacterDatabaseModel model)
         {
             CharacterID = id;
             this.model = model;
         }
-        public void SetIcon(Sprite icon)
+        private void SetIcon(Sprite icon)
         {
             this.icon.sprite = icon;
         }

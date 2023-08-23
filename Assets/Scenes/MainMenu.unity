@@ -8984,6 +8984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4554d979aa07b364ca01d5e677950c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lockedPodiumSprite: {fileID: 21300000, guid: e6a6624ab013b8e44beddfa2668afb65, type: 3}
+  _lockedPodiumName: ???
   characterButton: {fileID: 8871811835762112585, guid: d1a18e4f66593d345b4e827ae81c4ade, type: 3}
   database: {fileID: 11400000, guid: 1bc72f5de025cd946961a4598154951f, type: 2}
   DescriptionObject: {fileID: 477391940}

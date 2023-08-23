@@ -4,6 +4,7 @@ using Assets.Scripts.Entities.Move;
 using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player.Components.Attacking;
 using Assets.Scripts.Entities.Reset;
+using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.Entities.Util.UIPlayer;
 using Pathfinding;
 using System.Threading.Tasks;
@@ -77,9 +78,11 @@ namespace Assets.Scripts.Entities.Player.Moving
 				{
 					SetPoint();
 				}
-				else if(hit.collider.gameObject.TryGetComponent<Entity>(out var entity))
+				else if(hit.collider.gameObject.TryGetComponent<BaseEntity>(out var entity))
 				{
-					SetTarget(entity);
+					if(entity is IPlayerSelectTrigger trigger) trigger.OnSelect();
+					if(entity is Entity e)
+						SetTarget(e);
 				}
 			}
 		}

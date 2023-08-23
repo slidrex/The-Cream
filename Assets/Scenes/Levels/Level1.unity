@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfd49c8cf467134792ea6acd10e0501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _displayName: Nachos
   <BarColor>k__BackingField:
     serializedVersion: 2
     rgba: 4289855474
@@ -5016,7 +5017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 578045064}
-  <EditorSpaceRequired>k__BackingField: 32
+  <EditorSpaceRequired>k__BackingField: 4
   SpecificRuntimeSoundtrack: {fileID: 0}
   CameraSize: 8
   Elements: []
@@ -5447,7 +5448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 514083126}
   <EditorSpaceRequired>k__BackingField: 4
-  SpecificRuntimeSoundtrack: {fileID: 0}
+  SpecificRuntimeSoundtrack: {fileID: 8300000, guid: 6e8a5720f51ecc346b2267ab2be4534b, type: 3}
   CameraSize: 5
   Elements:
   - Direction: 1
@@ -5531,6 +5532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beed024fe53a9314c99b9c7b761f0461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _portal: {fileID: 6532507641523019523, guid: 94605f53c0cf02640a92b8d2b546f74d, type: 3}
 --- !u!1 &1418162491
 GameObject:
   m_ObjectHideFlags: 0

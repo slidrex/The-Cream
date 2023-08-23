@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 internal class SkillSelectButton : MonoBehaviour
 {
+    [SerializeField] private Sprite _unknownSkillIcon;
     private Image icon;
     private Button button;
     private PlayerSkill skill;
@@ -20,11 +21,14 @@ internal class SkillSelectButton : MonoBehaviour
         podium.SetSkillDescription(skill.Description.Description);
         StartCoroutine(podium.LayoutUpdater());
     }
-    public void Init(PlayerSkill skill, Sprite icon, CharacterPodium podium)
+    public void InitSkill(PlayerSkill skill, CharacterPodium podium)
     {
         gameObject.SetActive(true);
         this.skill = skill;
-        this.icon.sprite = icon;
         if(this.podium == null) this.podium = podium;
+    }
+    public void SetSkillIcon(Sprite icon)
+    {
+        this.icon.sprite = icon;
     }
 }

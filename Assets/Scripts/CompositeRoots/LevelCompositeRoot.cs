@@ -20,6 +20,7 @@ namespace Assets.Scripts.CompositeRoots
         [field: SerializeField] public LevelSoundController LevelSoundController { get; private set; }
         public LevelRunner Runner;
         public LevelBootstrapper BootStrapper;
+        public LevelMetaInfo MetaInfo { get; set; }
         public LevelEntityInfo LevelInfo;
         private void Awake()
         {
@@ -35,6 +36,7 @@ namespace Assets.Scripts.CompositeRoots
             LevelInfo.ConfigureLevelInfo();
             Runner.Configure();
             MiniMap.Configure();
+            MetaInfo = new();
         }
         private void Unconfigure()
         {

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337f373fa3b62dc478a9d1f6e6b1cf33, type: 3}
+  m_Name: SpeedFountain
+  m_EditorClassIdentifier: 
+  _entity: {fileID: 644944963435008631, guid: f80e534eab948f8438eda94f89bae79d, type: 3}
+  _icon: {fileID: 1733200218, guid: 801d2445862719f4b83341a43c87c195, type: 3}
+  _description: {fileID: 11400000, guid: a20d7122b8f4c794babc43b348aff81c, type: 2}
+  _baseManacost: 4
+  _cooldown: 10

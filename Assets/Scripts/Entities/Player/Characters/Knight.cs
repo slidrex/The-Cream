@@ -10,6 +10,7 @@ namespace Assets.Scripts.Entities.Player.Characters
 {
     internal sealed class Knight : Player
     {
+        public override AttributeHolder Stats { get; } = new AttributeHolder(new MaxHealthStat(100), new SpeedStat(4), new DamageStat(10), new AttackSpeedStat(1));
         public override void OnLevelUp()
         {
             Stats.Modify<DamageStat>(new Entities.Stats.StatAttributes.AttributeMask() { BaseValue = 0.2f });

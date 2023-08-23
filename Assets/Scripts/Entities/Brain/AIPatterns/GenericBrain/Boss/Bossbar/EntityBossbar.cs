@@ -10,6 +10,7 @@ namespace Assets.Scripts.Entities.Brain.Boss.Bossbar
 {
     internal class EntityBossbar : MonoBehaviour, ILevelRunHandler
     {
+        [SerializeField] private string _displayName;
         private BossbarController _barContorller;
         [field: SerializeField] public Color32 BarColor { get; private set; }
         private void Awake()
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Entities.Brain.Boss.Bossbar
         {
             if (run)
             {
-                _barContorller.EnableBar(this, GetComponent<Entity>());
+                _barContorller.EnableBar(this, GetComponent<Entity>(), _displayName);
             }
             else _barContorller.DisableBar();
         }

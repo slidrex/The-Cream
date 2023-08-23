@@ -46,6 +46,7 @@ internal class EditSystem : PlacementSystem
         for (int i = 0; i < _editorDatabase.Entities.Count; i++)
         {
             EditorEntityHolder obj = Instantiate(entityHolder, editor.EditorHolderContainer);
+            obj.Configure(_editorDatabase.Entities[i].GetModel().Entity as IEditorSpaceRequired);
             obj.Init(i, _editorDatabase, this, KeyCode.None);
             holders.Add(obj);
         }

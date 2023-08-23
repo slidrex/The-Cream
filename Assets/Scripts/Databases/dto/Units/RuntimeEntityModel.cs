@@ -19,8 +19,9 @@ namespace Assets.Scripts.Databases.dto
     {
         [SerializeField] private int _baseManacost;
         [SerializeField] private float _cooldown;
-        private Model model;
+        private RuntimeModel model;
         public override Model GetModel() => model;
+        public RuntimeModel GetRuntimeModel() => model;
         public override void Configure()
         {
             model = new RuntimeModel(_baseManacost, _cooldown, this);

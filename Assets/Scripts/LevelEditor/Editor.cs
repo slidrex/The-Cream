@@ -37,14 +37,14 @@ namespace Assets.Editor
         [field: SerializeField] internal PlayerRuntimeSpace PlayerSpace { get; private set; }
         public GameMode CurrentGamemode { get; private set; } = GameMode.NONE;
         private Grid grid;
+        public static CharacterDatabaseModel.CharacterID SelectedCharacterId;
 
         private void Awake()
         {
             Instance = this;
             FindObjectOfType<LevelEntryPoint>().OnHolderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
             grid = FindObjectOfType<Grid>();
-            int selectedCharacterId = PlayerPrefs.GetInt(PrefsKey.SELECTED_CHARACTER, (int)CharacterDatabaseModel.CharacterID.KNIGHT);
-            PlayerSpace.InitPlayer(GameLevelDatabaseProvider.Instance.CharacterDatabase.GetCharacter((CharacterDatabaseModel.CharacterID)selectedCharacterId));
+            PlayerSpace.InitPlayer(GameLevelDatabaseProvider.Instance.CharacterDatabase.GetCharacter(SelectedCharacterId));
             PlayerSpace.OnConfigure();
         }
         private void OnEnable()

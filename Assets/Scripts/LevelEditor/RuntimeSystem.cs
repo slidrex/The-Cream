@@ -52,6 +52,7 @@ internal class RuntimeSystem : PlacementSystem
         for (int i = 0; i < _runtimeDatabase.Entities.Count; i++)
         {
             RuntimeEntityHolder obj = Instantiate(entityHolder, editor.RuntimeHolderContainer);
+            obj.Configure(_runtimeDatabase.Entities[i].GetRuntimeModel().BaseManacost);
             obj.Init(i, _runtimeDatabase, this, GetRuntimeAbilityKey(i));
             runtimeEntities.Add(obj);
         }

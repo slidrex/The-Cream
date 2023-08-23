@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,15 +16,18 @@ namespace Assets.Scripts.Entities.Brain.Boss.Bossbar
 {
     internal class BossbarController : MonoBehaviour, IResettable
     {
+        [SerializeField] private TextMeshProUGUI _displayName;
         [SerializeField] private GameObject _barObject;
         [SerializeField] private Image _barFill;
-        public void EnableBar(EntityBossbar bossbar, Entity entity)
+        public void EnableBar(EntityBossbar bossbar, Entity entity, string displayName)
         {
+            _displayName.text = displayName;
             if (entity.HousingElement != StageController.Singleton._currentElement) return;
             _barObject.gameObject.SetActive(true);
 
             var healthChangedHandler = entity as IHealthChangedHandler;
             _barFill.color = bossbar.BarColor;
+            _displayName.color = bossbar.BarColor;
             var h = entity as IDamageable;
             var maxHealthStat = entity.Stats.GetValueInt<MaxHealthStat>();
 

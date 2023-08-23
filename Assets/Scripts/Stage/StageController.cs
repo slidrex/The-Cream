@@ -5,6 +5,7 @@ using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
+using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.Functions;
 using Assets.Scripts.Stage.Interfaces;
 using Assets.Scripts.UI.MiniMap;

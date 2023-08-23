@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Level;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,12 +28,19 @@ namespace Assets.Scripts.UI.Menu.MainMenu.Level
         }
         private void Start()
         {
-            _button = GetComponent<Button>();
+            if(_button == null)
+                _button = GetComponent<Button>();
             _button.onClick.AddListener(OnButtonPress);
+        }
+        public void SetLockStatus(bool isLocked)
+        {
+            if(_button == null) _button = GetComponent<Button>();
+            _button.interactable = !isLocked;
         }
         public void OnButtonPress()
         {
             _levels.SetActive(false);
+            LevelMetaInfo.ActiveGameLevel = Level;
             _characters.SetActive(true);
             _menu.SceneID(_sceneId);
         }
