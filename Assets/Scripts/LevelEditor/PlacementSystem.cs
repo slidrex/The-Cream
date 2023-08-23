@@ -22,8 +22,17 @@ internal abstract class PlacementSystem : MonoBehaviour
         grid = editor.GetGrid();
         limitingTilemap = editor.LimitingTileMap;
     }
+    protected virtual bool AllowUsingEntityID(int id)
+    {
+        return true;
+    }
     public void SetCurrentEntityID(ObjectHolder holder, int id, bool clickedByIcon = false)
     {
+        if (!AllowUsingEntityID(id))
+        {
+            selectedEntityIndex = -1;
+            return;
+        }
         selectedHolder = holder;
         selectedEntityIndex = id;
         if (selectedEntityIndex < 0)

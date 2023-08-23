@@ -16,6 +16,7 @@ internal class RuntimeSystem : PlacementSystem
 {
     [SerializeField] private RuntimeDatabase _runtimeDatabase;
     private List<SkillHolder> skills = new();
+    private List<RuntimeEntityModel> _entitiesDatabaseInstance = new();
     private List<RuntimeEntityHolder> runtimeEntities = new();
     private RuntimeEntityHolder entityHolder;
     private Player _player;
@@ -28,6 +29,11 @@ internal class RuntimeSystem : PlacementSystem
         entityHolder = Resources.Load<RuntimeEntityHolder>("UI/RuntimeEntityHolder");
         base.Awake();
     }
+    protected override bool AllowUsingEntityID(int id)
+    {
+        var model = _entitiesDatabaseInstance[id].GetRuntimeModel();
+        return model.IsCooldowned == true && Editor.Instance.PlayerSpace.IsEnoughMana(model.BaseManacost);
+    }
     private void Update()
     {
         foreach(var skill in Editor.Instance.PlayerSpace.GetPlayerSkillModels())
@@ -36,7 +42,7 @@ internal class RuntimeSystem : PlacementSystem
         }
         if(OnPlace != null)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.RUNTIME) && EventSystem.current.IsPointerOverGameObject() == false)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.RUNTIME) && EventSystem.current.IsPointerOverGameObject() == false && selectedEntityIndex > 0)
             {
                 Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, selectedHolder) { Status = PreviewManager.PreviewStatus.DISABLED });
             }
@@ -45,16 +51,37 @@ internal class RuntimeSystem : PlacementSystem
         {
             Editor.Instance.PreviewManager.Deselect();
         }
+        if (_entitiesDatabaseInstance != null && runtimeEntities != null) UpdateRuntimeEntities();
+    }
+    private void UpdateRuntimeEntities()
+    {
+        for(int i = 0; i < _entitiesDatabaseInstance.Count; i++)
+        {
+            var entity = _entitiesDatabaseInstance[i];
+            var model = entity.GetRuntimeModel();
+            if (model.IsCooldowned == false)
+            {
+                model.TimeSinceActivation += Time.deltaTime;
+                runtimeEntities[i].UpdateCooldownValue();
+            }
+        }
     }
     public override void FillContainer()
     {
         SkillHolder skillHolder = Resources.Load<SkillHolder>("UI/SkillHolder");
         for (int i = 0; i < _runtimeDatabase.Entities.Count; i++)
         {
-            RuntimeEntityHolder obj = Instantiate(entityHolder, editor.RuntimeHolderContainer);
-            obj.Configure(_runtimeDatabase.Entities[i].GetRuntimeModel().BaseManacost);
-            obj.Init(i, _runtimeDatabase, this, GetRuntimeAbilityKey(i));
-            runtimeEntities.Add(obj);
+            RuntimeEntityHolder holder = Instantiate(entityHolder, editor.RuntimeHolderContainer);
+
+            var instanceModel = Instantiate(_runtimeDatabase.Entities[i]);
+            var model = _runtimeDatabase.Entities[i].GetRuntimeModel();
+            instanceModel.Configure();
+
+            holder.Init(i, _runtimeDatabase, this, GetRuntimeAbilityKey(i));
+            holder.Configure(model.BaseManacost, instanceModel.GetRuntimeModel());
+
+            _entitiesDatabaseInstance.Add(instanceModel);
+            runtimeEntities.Add(holder);
         }
 
         List <PlayerSkillModel.Model> list = Editor.Instance.PlayerSpace.GetPlayerSkillModels();
@@ -104,6 +131,11 @@ internal class RuntimeSystem : PlacementSystem
             Destroy(runtimeEntities[i].gameObject);
         }
         runtimeEntities.Clear();
+        for(int i = 0; i < _entitiesDatabaseInstance.Count; i++)
+        {
+            Destroy(_entitiesDatabaseInstance[i]);
+        }
+        _entitiesDatabaseInstance.Clear();
     }
     private void PlaceEntity(Vector2 cursorPos)
     {
@@ -111,7 +143,9 @@ internal class RuntimeSystem : PlacementSystem
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(cursorPos);
         bool validity = CheckPlacementValidity(gridPos, selectedEntityIndex);
         if (validity == false) return;
-        var model = _runtimeDatabase.Entities[selectedEntityIndex].GetModel();
+        var model = _entitiesDatabaseInstance[selectedEntityIndex].GetRuntimeModel();
+        Editor.Instance.PlayerSpace.SpendMana(model.BaseManacost);
+        model.TimeSinceActivation = 0;
 
         if (validity == true)
         {

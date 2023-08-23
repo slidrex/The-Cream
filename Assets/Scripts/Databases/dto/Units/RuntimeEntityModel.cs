@@ -2,6 +2,7 @@
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Placeable;
 using Assets.Scripts.Entities.Player;
+using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,14 +27,16 @@ namespace Assets.Scripts.Databases.dto
         {
             model = new RuntimeModel(_baseManacost, _cooldown, this);
         }
-        public class RuntimeModel : Model
+        public class RuntimeModel : Model, ICooldownable
         {
             public int BaseManacost;
-            public float Cooldown;
+            public float BaseCooldown { get; set; }
+            public float TimeSinceActivation { get; set; }
+            public bool IsCooldowned => TimeSinceActivation >= BaseCooldown;
 
             public RuntimeModel(int manaCost, float cooldown, EntityModel model) : base(model)
             {
-                Cooldown = cooldown;
+                BaseCooldown = cooldown;
                 BaseManacost = manaCost;
             }
         }

@@ -12,6 +12,7 @@ namespace Assets.Scripts.CompositeRoots
     {
         public static UIEventCompositeRoot Instance;
         public AlertText LevelTitle;
+        public ModelErrorState ErrorModel;
         private void Awake()
         {
             Instance = this;

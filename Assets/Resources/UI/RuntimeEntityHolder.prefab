@@ -225,6 +225,7 @@ MonoBehaviour:
   CharacteristicsParent: {fileID: 5529325029716311185}
   _keyIcon: {fileID: 7674413959888941703}
   _bindedKey: {fileID: 1143871849773974431}
+  _cooldownMask: {fileID: 1546864296495416177}
 --- !u!1 &3350662802571320868
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,22 @@
+using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Placeable;
+using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 internal class RuntimeEntityHolder : ObjectHolder
 {
-    public void Configure(int manacost)
+    [SerializeField] private Image _cooldownMask;
+    private ICooldownable _cooldownable;
+    public void Configure(int manacost, ICooldownable cooldownable)
     {
+        _cooldownable = cooldownable;
         Cost.text = manacost.ToString();
+    }
+    public void UpdateCooldownValue()
+    {
+        _cooldownMask.fillAmount = 1 - (_cooldownable.TimeSinceActivation / _cooldownable.BaseCooldown);
     }
 }

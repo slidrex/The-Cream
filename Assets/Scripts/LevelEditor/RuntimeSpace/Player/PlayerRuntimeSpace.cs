@@ -44,6 +44,14 @@ namespace Assets.Scripts.LevelEditor.RuntimeSpace.Player
         {
             return mana <= CurrentMana;
         }
+        /// <summary>
+        /// Throws exception if set mana is below zero.
+        /// </summary>
+        public void SpendMana(int mana)
+        {
+            if (mana > CurrentMana) throw new Exception("Mana set below zero.");
+            else SetMana(CurrentMana - mana);
+        }
         public bool TrySpendMana(int mana)
         {
             if (mana > CurrentMana) return false;
