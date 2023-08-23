@@ -93,7 +93,7 @@ namespace Assets.Scripts.Stage
         }
         private void OnLastStageCompleted()
         {
-            OnLastStageLeft.Invoke();
+            OnLastStageLeft?.Invoke();
         }
         public void RestoreRuntime()
         {

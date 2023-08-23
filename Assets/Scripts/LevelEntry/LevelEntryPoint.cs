@@ -46,7 +46,8 @@ namespace Assets.Scripts.LevelEntry
         {
             LevelCompositeRoot.Instance.BootStrapper.StartGame();
             var entities = FindObjectsOfType<GameObject>();
-            foreach(var e in entities)
+            _stageBeginHandlers = new List<IStageBeginHandler>();
+            foreach (var e in entities)
             {
                 if(e.TryGetComponent<IStageBeginHandler>(out var handler))
                 {

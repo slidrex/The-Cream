@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultNoneTheme: {fileID: 8300000, guid: 1660052ba3468e1479ef14d906e5b3eb, type: 3}
   _defaultRuntimeTheme: {fileID: 8300000, guid: 310bd4de8ceac8e469a0185896e54bb0, type: 3}
-  _defaultEditorTheme: {fileID: 8300000, guid: 5da72b06519877d4386b0f5e5f1cb41d, type: 3}
+  _defaultEditorTheme: {fileID: 8300000, guid: dd81c5176fb50744e8afddc61c7c451f, type: 3}
 --- !u!114 &3600895935464057524
 MonoBehaviour:
   m_ObjectHideFlags: 0
