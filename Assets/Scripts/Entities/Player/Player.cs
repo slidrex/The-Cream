@@ -18,7 +18,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Entities.Player
 {
-    internal class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IStatic, IDamageCorrector
+    internal class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IStatic, IDamageCorrector, IKillCatcher
     {
         private EntityLevelBar _levelBar;
         public override EntityTypeBase ThisType => new EntityType<PlayerTag>(PlayerTag.PLAYER);
@@ -33,13 +33,23 @@ namespace Assets.Scripts.Entities.Player
         public List<AdjustmentMask> Masks { get; set; }
         public Action<int> OnDamageIncomed { get; set; }
         public bool IsDead { get; set; }
+		public Action OnKillCallback { get; set; }
 
-        protected override void Awake()
+		protected override void Awake()
         {
             base.Awake();
             _levelBar = GetComponentInChildren<EntityLevelBar>();
         }
-        public void OnReset()
+		private void Start()
+		{
+            Editor.Editor.Instance.OnAfterPlayerInitialized?.Invoke();
+            OnStart();
+		}
+        protected virtual void OnStart()
+        {
+
+        }
+		public void OnReset()
         {
             EntityHealthStrategy.ResetHealth(this);
         }
@@ -72,5 +82,9 @@ namespace Assets.Scripts.Entities.Player
 
         }
 
-    }
+		public void OnKill()
+		{
+
+		}
+	}
 }

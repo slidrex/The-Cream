@@ -10,7 +10,9 @@ public class LevelActions : MonoBehaviour, IActivateButton
     public void ActivateButton(ButtonType type)
     {
         EnableButton(type);
-        OnButtonSwitched.Invoke(type);
+        print("Change activate button to " + type.ToString());
+
+		OnButtonSwitched.Invoke(type);
         switch (type)
         {
             case ButtonType.START_RUNTIME:

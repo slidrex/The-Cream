@@ -307,6 +307,7 @@ MonoBehaviour:
   _defaultNoneTheme: {fileID: 8300000, guid: 1660052ba3468e1479ef14d906e5b3eb, type: 3}
   _defaultRuntimeTheme: {fileID: 8300000, guid: 310bd4de8ceac8e469a0185896e54bb0, type: 3}
   _defaultEditorTheme: {fileID: 8300000, guid: dd81c5176fb50744e8afddc61c7c451f, type: 3}
+  ChangeStateThemes: 1
 --- !u!114 &3600895935464057524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2932,17 +2933,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 123
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7cc3b3f23403d204db917817e61b2be8, type: 2}
+  m_sharedMaterial: {fileID: -6254319046474199463, guid: 7cc3b3f23403d204db917817e61b2be8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286644211
+  m_fontColor: {r: 0.9534571, g: 1, b: 0.5, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3068,6 +3069,7 @@ MonoBehaviour:
   <_spaceController>k__BackingField: {fileID: 3652956624634157958}
   <Dockspace>k__BackingField: {fileID: 3652956625883908031}
   <PlayerSpace>k__BackingField: {fileID: 3652956624042779733}
+  _specificCharacterModel: {fileID: 0}
 --- !u!1 &3652956625739832235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4088,6 +4090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac789df8db51fb149995bec5530047cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _disableText: 0
   _alphaCurve:
     serializedVersion: 2
     m_Curve:

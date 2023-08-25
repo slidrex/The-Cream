@@ -4820,6 +4820,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2382909185937307980, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
+      propertyPath: attackParticles
+      value: 
+      objectReference: {fileID: 8553127623892333851}
+    - target: {fileID: 2382909185937307980, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
       propertyPath: ATTACK_TRIGGER.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4902,7 +4906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a79fad279d57a24ab06bd5a87a73151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particles: {fileID: 0}
+  _particles: {fileID: 8553127623892333851}
 --- !u!4 &1579376515385790006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6297669801857902516, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}

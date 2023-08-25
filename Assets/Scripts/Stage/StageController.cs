@@ -25,11 +25,14 @@ namespace Assets.Scripts.Stage
         public Action OnLastStageLeft;
         private StageTileElementHolder _currentStageLevel;
         private bool _runtimeActivated;
+        public Action OnDockspaceMoved;
         private MiniMapElement _playerMinimapElement;
+        public Action OnStageCleanedUp;
+        public Action OnAfterStageStarted;
         private void Awake()
         {
-
-            Singleton = this;
+			Instance._levelActions.OnButtonSwitched = OnButtonSwitched;
+			Singleton = this;
         }
         public static StageController Singleton { get; private set; }
         private void OnEnable()
@@ -88,7 +91,9 @@ namespace Assets.Scripts.Stage
                             Destroy(ents[i].gameObject);
                     }
                 }
-                LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
+                OnStageCleanedUp?.Invoke();
+
+				LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
             }
         }
         private void OnLastStageCompleted()
@@ -125,7 +130,9 @@ namespace Assets.Scripts.Stage
         {
             var temp = _currentElement;
             UpdateMinimap(direction);
-            LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
+            OnDockspaceMoved?.Invoke();
+
+			LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
             Instance.Dockspace.DisableDockspace();
             for (int i = 0; i < temp.Elements.Length; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
         }
@@ -163,9 +170,9 @@ namespace Assets.Scripts.Stage
             if (init) InitPlayer();
             _endElement = currentStageLevel.EndElement;
             SetCurrentElement(currentStageLevel.InitialElement);
-            Instance._levelActions.OnButtonSwitched = OnButtonSwitched;
             Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
-        }
+            OnAfterStageStarted?.Invoke();
+		}
         private void SetCurrentElement(StageTileElement element)
         {
             _currentElement = element;

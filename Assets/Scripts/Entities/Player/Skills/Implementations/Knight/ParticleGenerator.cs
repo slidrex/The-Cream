@@ -11,9 +11,12 @@ namespace Assets.Scripts.Entities.Player.Skills.Implementations.Knight
     internal class ParticleGenerator : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _particles;
+        public Action OnParticlesEnabled;
         public void Enable(bool active)
         {
-            _particles.gameObject.SetActive(active);
+            OnParticlesEnabled?.Invoke();
+
+			_particles.gameObject.SetActive(active);
             if (active) _particles.Play();
             else _particles.Stop();
         }

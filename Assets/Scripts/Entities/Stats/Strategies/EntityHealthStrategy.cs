@@ -43,6 +43,11 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             if(damageable.CurrentHealth == 0 && damageable.IsDead == false)
             {
                 damageable.IsDead = true;
+                if(dealer != null && dealer is IKillCatcher killCatcher) 
+                {
+                    killCatcher.OnKill();
+                    killCatcher.OnKillCallback?.Invoke();
+                }
                 LevelCompositeRoot.Instance.LevelInfo.OnEntityDie.Invoke(entity);
                 if (entity is IExperienceGainer incomingGain && dealer is ILevelEntity exp) exp.AddExperience(incomingGain.OnDieExp); 
                 damageable.OnDie();

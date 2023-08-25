@@ -50,7 +50,30 @@ namespace Assets.Scripts.Entities.Util.Config.Input
                 _keyBindings[keycode] = action;
             }
         }
-        private void Update()
+        public static bool IsActionKeyPressed(bool down, out Vector2 clickPosition) 
+        {
+            Vector2 rawPos = Vector2.zero;
+            bool isSuccess = false;
+            if(UnityEngine.Input.GetKeyDown(KeyCode.Mouse1) || UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
+            {
+				rawPos = UnityEngine.Input.mousePosition;
+                isSuccess = true;
+			}
+            else if(down == false && (UnityEngine.Input.GetKey(KeyCode.Mouse1) || UnityEngine.Input.GetKey(KeyCode.Mouse0)))
+            {
+                rawPos = UnityEngine.Input.mousePosition;
+                isSuccess = true;
+            }
+            else if (UnityEngine.Input.touchCount > 1)
+            {
+                rawPos = UnityEngine.Input.GetTouch(0).position;
+                isSuccess = true;
+			}
+			clickPosition = Camera.main.ScreenToWorldPoint(rawPos);
+            return isSuccess;
+        }
+
+		private void Update()
         {
             if (UnityEngine.Input.anyKey)
             {

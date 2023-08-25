@@ -16,4 +16,4 @@ MonoBehaviour:
   <Description>k__BackingField: {fileID: 11400000, guid: c8662a1e983768d448a10ea8899a9ad9, type: 2}
   <BaseManacost>k__BackingField: 80
   <BaseCooldown>k__BackingField: 12
-  duration: 4
+  duration: 6

@@ -1,6 +1,7 @@
 using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Databases.Database_providers;
 using Assets.Scripts.Databases.Model.Character;
+using Assets.Scripts.Databases.Model.Player;
 using Assets.Scripts.GameProgress;
 using Assets.Scripts.Level;
 using Assets.Scripts.Level.Stages;
@@ -11,6 +12,7 @@ using Assets.Scripts.LevelEditor.RuntimeSpace.PlayerUtil;
 using Assets.Scripts.LevelEntry;
 using Assets.Scripts.Sound.Soundtrack;
 using Assets.Scripts.Stage;
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -28,23 +30,27 @@ namespace Assets.Editor
         public Tilemap LimitingTileMap { get; private set; }
         public Tilemap PlacementTileMap { get; private set; }
         public PreviewManager PreviewManager;
+        public Action OnAfterPlayerInitialized;
         [field: SerializeField] public EditSystem _editSystem { get; private set; }
         [field: SerializeField] public RuntimeSystem _runtimeSystem { get; private set; }
         [field: SerializeField] public InputManager _inputManager { get; private set; }
         [field: SerializeField] public LevelActions _levelActions { get; private set; }
         [field: SerializeField] public SpaceController _spaceController { get; private set; }
         [field: SerializeField] internal Dockspace Dockspace { get; private set; }
-        [field: SerializeField] internal PlayerRuntimeSpace PlayerSpace { get; private set; }
+        [field: SerializeField] public PlayerRuntimeSpace PlayerSpace { get; private set; }
         public GameMode CurrentGamemode { get; private set; } = GameMode.NONE;
         private Grid grid;
         public static CharacterDatabaseModel.CharacterID SelectedCharacterId;
+        [SerializeField] private CharacterModel _specificCharacterModel;
 
-        private void Awake()
+		private void Awake()
         {
             Instance = this;
             FindObjectOfType<LevelEntryPoint>().OnHolderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
             grid = FindObjectOfType<Grid>();
-            PlayerSpace.InitPlayer(GameLevelDatabaseProvider.Instance.CharacterDatabase.GetCharacter(SelectedCharacterId));
+
+            PlayerSpace.InitPlayer(_specificCharacterModel == null ? GameLevelDatabaseProvider.Instance.CharacterDatabase.GetCharacter(SelectedCharacterId) : _specificCharacterModel);
+			
             PlayerSpace.OnConfigure();
         }
         private void OnEnable()

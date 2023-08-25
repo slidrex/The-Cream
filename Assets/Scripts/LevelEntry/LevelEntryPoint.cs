@@ -26,9 +26,9 @@ namespace Assets.Scripts.LevelEntry
         private int _currentStageLevel;
         public Action<StageTileElementHolder> OnHolderActivate;
         private IEnumerable<IStageBeginHandler> _stageBeginHandlers;
+        private GameMode _startingGamemode = GameMode.NONE;
         private void Start()
         {
-            _portal = FindObjectOfType<EntryPointData>().Portal;
             ConfigureServices();
             InitData();
             StartNextStageLevel();
@@ -36,7 +36,7 @@ namespace Assets.Scripts.LevelEntry
 
 
             _stageController.OnLastStageLeft += OnStageLevelOver;
-            LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
+            LevelCompositeRoot.Instance.Runner.SetGameMode(_startingGamemode);
         }
         private void OnDestroy()
         {
@@ -44,6 +44,7 @@ namespace Assets.Scripts.LevelEntry
         }
         private void InitData()
         {
+            _portal = FindObjectOfType<EntryPointData>().Portal;
             LevelCompositeRoot.Instance.BootStrapper.StartGame();
             var entities = FindObjectsOfType<GameObject>();
             _stageBeginHandlers = new List<IStageBeginHandler>();

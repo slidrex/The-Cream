@@ -17,6 +17,7 @@ namespace Assets.Scripts.Sound.Level
         [SerializeField] private AudioClip _defaultEditorTheme;
         public AudioClip RuntimeTheme { get; private set; }
         public AudioClip EditorTheme { get; private set; }
+        public bool ChangeStateThemes = true;
         private void Awake()
         {
             RuntimeTheme = _defaultRuntimeTheme;
@@ -30,6 +31,7 @@ namespace Assets.Scripts.Sound.Level
         }
         private void OnRuntimeRun(GameMode mode)
         {
+            if (ChangeStateThemes == false) return;
             switch (mode)
             {
                 case GameMode.RUNTIME:

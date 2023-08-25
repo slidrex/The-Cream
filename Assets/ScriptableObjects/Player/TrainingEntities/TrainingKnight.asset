@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed8f7c2e941c6d45be5cb0613f4d7c9, type: 3}
+  m_Name: TrainingKnight
+  m_EditorClassIdentifier: 
+  Player: {fileID: 5804247929875481407, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
+  ManaPool: 100
+  _skills:
+  - {fileID: 11400000, guid: 965fe3dcb07b4d949bd515d1031f3c5c, type: 2}
+  <Description>k__BackingField: {fileID: 11400000, guid: 727f2102e7a0fd1489d68f22ab71b2e4, type: 2}

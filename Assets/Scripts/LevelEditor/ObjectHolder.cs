@@ -27,6 +27,7 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     {
         _selectImage.gameObject.SetActive(active);
     }
+    public TextMeshProUGUI GetCost() => Cost;
     public virtual void Init<T>(int id, IEntityDatabase<T> data, PlacementSystem system, KeyCode bindedKey) where T : EntityModel
     {
         SetActiveSelectImage(false);

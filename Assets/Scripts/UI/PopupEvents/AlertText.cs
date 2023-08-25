@@ -10,6 +10,7 @@ namespace Assets.Scripts.UI.PopupEvents
 {
     internal class AlertText : MonoBehaviour
     {
+        [SerializeField] private bool _disableText;
         [SerializeField] private AnimationCurve _alphaCurve;
         [SerializeField] private float _size;
         [SerializeField] private float _duration;
@@ -23,6 +24,7 @@ namespace Assets.Scripts.UI.PopupEvents
         }
         public void EnableText(string text)
         {
+            if (_disableText) return;
             gameObject.SetActive(true);
             _isEnabled = true;
             _alertText.text = text;

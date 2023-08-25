@@ -7,6 +7,7 @@ using Assets.Scripts.Entities.Reset;
 using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.Entities.Util.UIPlayer;
 using Pathfinding;
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -17,6 +18,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 	[RequireComponent (typeof(Seeker), typeof(PlayerTargetMovement), typeof(MeleeAttack))]
 	internal class PlayerMovement : EntityBrain<Player>
 	{
+		public Action<TargetType> OnMoveTargetSelect;
 		[SerializeField] private float _safeDistance;
 		[SerializeField] private LayerMask _tilemapLayer;
 		private Animator _animator;
@@ -66,9 +68,9 @@ namespace Assets.Scripts.Entities.Player.Moving
 		{
 
             if (_isMoving) UpdatePlayerPosition();
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Util.Config.Input.InputManager.IsActionKeyPressed(true, out Vector2 worldMousePos))
 			{
-				RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint((Vector2)Input.mousePosition), Vector2.zero);
+				RaycastHit2D hit = Physics2D.Raycast(worldMousePos, Vector2.zero);
 				if (hit.collider == null)
 				{
 					return;
@@ -84,6 +86,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 					if(entity is Entity e)
 						SetTarget(e);
 				}
+				OnMoveTargetSelect?.Invoke(_targetType);
 			}
 		}
 		private void SelectEntity(Entity entity)

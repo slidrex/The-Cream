@@ -4,6 +4,7 @@ using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Placeable;
 using Assets.Scripts.LevelEditor;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,17 +15,23 @@ internal class EditSystem : PlacementSystem
     private List<BaseEntity> placedEntities = new();
     [SerializeField] private List<EditorEntityHolder> holders = new();
     private EditorEntityHolder entityHolder;
-    private void Update()
+	public Action OnEntityPlaced;
+	public Action OnEntityDeleted;
+    private bool _isDeleteMode;
+    public bool AllowPlacing { get; set; } = true;
+	private void Update()
     {
         if(OnPlace != null)
         {
-            if (Input.GetKey(KeyCode.Mouse0) && selectedEntityIndex != -1 && Editor.Instance.GameModeIs(GameMode.EDIT))
+            if (Assets.Scripts.Entities.Util.Config.Input.InputManager.IsActionKeyPressed(true, out Vector2 position) && selectedEntityIndex != -1 && Editor.Instance.GameModeIs(GameMode.EDIT))
             {
-                Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, selectedHolder) { NotDeselectOnChoose = true, Status = PreviewManager.PreviewStatus.DISABLED });
+                _isDeleteMode = onDelete.Invoke() || Editor.Instance._spaceController.CurrentSpaceReqiured == Editor.Instance._spaceController.GetMaxSpaceReqiured();
             }
-            else if (Input.GetKey(KeyCode.Mouse1) && Editor.Instance.GameModeIs(GameMode.EDIT))
+            if (Assets.Scripts.Entities.Util.Config.Input.InputManager.IsActionKeyPressed(false, out Vector2 pos))
             {
-                OnDelete?.Invoke();
+                if(_isDeleteMode) onDelete.Invoke();
+                else if(AllowPlacing)
+				    Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, selectedHolder) { NotDeselectOnChoose = true, Status = PreviewManager.PreviewStatus.DISABLED });
             }
         }
     }
@@ -89,8 +96,9 @@ internal class EditSystem : PlacementSystem
 
         gridData.AddEntityAt(gridPos, model.Size,
             selectedEntityIndex, placedEntities.Count - 1);
+        OnEntityPlaced?.Invoke();
     }
-    private void DeleteEntity()
+    private bool DeleteEntity()
     {
         GridData selectedData = null;
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(editor._inputManager.GetCursorPosition());
@@ -102,21 +110,24 @@ internal class EditSystem : PlacementSystem
         if (selectedData != null)
         {
             int id = selectedData.GetEntityIDAt(gridPos);
-            if (id < 0) return;
+            if (id < 0) return false;
             else
             {
                 var entity = placedEntities[id];
-                if (placedEntities.Count <= id || entity == null) return;
+                if (placedEntities.Count <= id || entity == null) return false;
                 else
                 {
+                    OnEntityDeleted?.Invoke();
                     entity.GetComponent<IPlaceable>().OnDeconstruct();
                     editor._spaceController.ChangeSpace(-(entity as IEditorSpaceRequired).SpaceRequired);
                     selectedData.RemoveObjectAt(gridPos);
                     Destroy(entity.gameObject);
                     placedEntities[id] = null;
+                    return true;
                 }
             }
         }
+        return false;
     }
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)
     {
@@ -149,17 +160,17 @@ internal class EditSystem : PlacementSystem
         if (active == true)
         {
             OnPlace += PlaceEntity;
-            OnDelete += DeleteEntity;
+            onDelete += DeleteEntity;
         }
         else
         {
             OnPlace -= PlaceEntity;
-            OnDelete -= DeleteEntity;
+			onDelete -= DeleteEntity;
         }
     }
     public void OnDisable()
     {
         OnPlace -= PlaceEntity;
-        OnDelete -= DeleteEntity;
+		onDelete -= DeleteEntity;
     }
 }

@@ -13,8 +13,9 @@ internal abstract class PlacementSystem : MonoBehaviour
     protected Tilemap limitingTilemap;
     protected int selectedEntityIndex = -1;
     protected ObjectHolder selectedHolder;
-    public Action<Vector2> OnPlace;
-    public Action OnDelete;
+    protected Action<Vector2> OnPlace;
+    protected delegate bool OnDelete();
+    protected OnDelete onDelete;
     protected Editor editor;
     protected virtual void Awake()
     {
