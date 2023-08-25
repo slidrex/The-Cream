@@ -1,3 +1,5 @@
+using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
 using System;
 using TMPro;
 using UnityEngine;
@@ -8,7 +10,19 @@ public class SpaceController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI spaceRequired;
     public Action<int> OnSpaceChanged { get; set; }
     public int CurrentSpaceReqiured { get; private set; }
-    public void SetMaxSpaceReqiured(int required)
+	private void Awake()
+	{
+        LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnModeChanged;
+	}
+    private void OnDestroy()
+    {
+		LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= OnModeChanged;
+	}
+    private void OnModeChanged(GameMode mode)
+    {
+        spaceRequired.gameObject.SetActive(mode == GameMode.EDIT);
+    }
+	public void SetMaxSpaceReqiured(int required)
     {
         maxSpaceReqiured = required;
     }

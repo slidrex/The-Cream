@@ -15,5 +15,5 @@ MonoBehaviour:
   Icon: {fileID: 547199261, guid: 5907234d4f6deb449bb1d084bf488a7f, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: c8662a1e983768d448a10ea8899a9ad9, type: 2}
   <BaseManacost>k__BackingField: 80
-  <BaseCooldown>k__BackingField: 12
+  <BaseCooldown>k__BackingField: 2
   duration: 6

@@ -57,7 +57,7 @@ namespace Assets.Scripts.Training.ActionChain
 		private void TryMoveNextChain()
 		{
 			if (_chainsQueue.Count > 0 || _isHoldingItem) MoveNextChain();
-			else UpdateHelpText("Вот те задание иди нахуй");
+			else UpdateHelpText("Иди нахуй пидорас");
 		}
 		private void InitChain(TrainingActionChain chain)
 		{

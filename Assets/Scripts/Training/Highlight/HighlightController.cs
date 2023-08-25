@@ -52,6 +52,7 @@ namespace Assets.Scripts.Training.Highlight
 		public void UnhighlightEntities()
 		{
 			_fade.gameObject.SetActive(false);
+			if(_highlightedEntities != null)
 			for (int i = 0; i < _highlightedEntities.Length; i++)
 			{
 				_highlightedEntities[i].Renderer.sortingOrder = _highlightedEntities[i].OrderInLayer;

@@ -12,6 +12,7 @@ namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 	{
 		protected override void OnConfigure(Player player)
 		{
+			StageController.Singleton.DisableAutoactivateWave = true;
 			StageController.Singleton.OnStageCleanedUp += OnCleaned;
 		}
 		private void OnCleaned()

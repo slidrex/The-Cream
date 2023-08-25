@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entities.Brain;
+using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Projectiles.Mob.Boss;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using UnityEngine;
@@ -43,8 +44,11 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 		}
 		protected override void RuntimeUpdate()
 		{
-			UpdateSelectTimer();
-			UpdateSinAttack();
+			if(NavigationUtil.GetClosestEntityOfType(Entity.TargetType, Entity)  != null)
+			{
+				UpdateSelectTimer();
+				UpdateSinAttack();
+			}
 		}
 		private void UpdateSelectTimer()
 		{

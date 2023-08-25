@@ -29,6 +29,7 @@ namespace Assets.Scripts.Stage
         private MiniMapElement _playerMinimapElement;
         public Action OnStageCleanedUp;
         public Action OnAfterStageStarted;
+        public bool DisableAutoactivateWave { get; set; }
         private void Awake()
         {
 			Instance._levelActions.OnButtonSwitched = OnButtonSwitched;
@@ -76,7 +77,13 @@ namespace Assets.Scripts.Stage
             var entities = NavigationUtil.GetEntitiesOfTypeInsideOriginTile(_player.TargetType, _player);
             if(entities == null || entities.Count == 0 || entities.Any(x => x is IDamageable d && d.CurrentHealth > 0) == false) 
             {
-
+				OnStageCleanedUp?.Invoke();
+				if (!DisableAutoactivateWave)
+                    ActivateWave();
+			}
+        }
+        public void ActivateWave()
+        {
                 if(_currentElement == _endElement)
                 {
                     OnLastStageCompleted();
@@ -91,10 +98,9 @@ namespace Assets.Scripts.Stage
                             Destroy(ents[i].gameObject);
                     }
                 }
-                OnStageCleanedUp?.Invoke();
 
 				LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
-            }
+
         }
         private void OnLastStageCompleted()
         {
@@ -132,9 +138,14 @@ namespace Assets.Scripts.Stage
             UpdateMinimap(direction);
             OnDockspaceMoved?.Invoke();
 
-			LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
-            Instance.Dockspace.DisableDockspace();
+			Instance.Dockspace.DisableDockspace();
             for (int i = 0; i < temp.Elements.Length; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
+            
+            if(_currentElement.EditorSpaceRequired > 0)
+            {
+			    LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
+            }
+            else LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
         }
         private void UpdateMinimap(Direction direction)
         {
@@ -183,7 +194,7 @@ namespace Assets.Scripts.Stage
             _player.HousingElement = _currentElement;
             Instance._spaceController.SetMaxSpaceReqiured(element.EditorSpaceRequired);
             _camera.orthographicSize = _currentElement.CameraSize;
-            if (LevelCompositeRoot.Instance.Runner.CurrentMode == Editor.GameMode.RUNTIME) LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.RUNTIME);
+            //if (LevelCompositeRoot.Instance.Runner.CurrentMode == Editor.GameMode.RUNTIME) LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.RUNTIME);
         }
         private void EnableDockspace()
         {

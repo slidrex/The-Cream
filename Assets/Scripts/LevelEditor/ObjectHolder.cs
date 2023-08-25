@@ -15,6 +15,7 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     [SerializeField] protected Image EntityIcon;
     [SerializeField] protected GameObject DescriptionObject;
     [SerializeField] protected TextMeshProUGUI Name, Description, Cost;
+    [SerializeField] private Image _costImage;
     [SerializeField] protected Transform CharacteristicsParent;
     [SerializeField] private GameObject _keyIcon;
     [SerializeField] private TextMeshProUGUI _bindedKey;
@@ -23,15 +24,25 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     private const float TIME_TO_APPEAR = 0.4f;
     private float currentTime = 0;
     private bool isCursorInObject = false;
+    public static Color DefaultSpawnColor = Color.white;
     public void SetActiveSelectImage(bool active)
     {
         _selectImage.gameObject.SetActive(active);
     }
-    public TextMeshProUGUI GetCost() => Cost;
+    public void SetCostColor(Color color)
+    {
+        Cost.color = color;
+        DefaultSpawnColor = Color.white;
+
+		_costImage.color = color;
+	}
     public virtual void Init<T>(int id, IEntityDatabase<T> data, PlacementSystem system, KeyCode bindedKey) where T : EntityModel
     {
         SetActiveSelectImage(false);
-        EntityIcon.sprite = data.Entities[id].GetModel().Icon;
+		Cost.color = DefaultSpawnColor;
+        if(_costImage != null)
+		_costImage.color = DefaultSpawnColor;
+		EntityIcon.sprite = data.Entities[id].GetModel().Icon;
         button = GetComponent<Button>();
         UnityEngine.Events.UnityAction firstActButton = () => system.SetCurrentEntityID(this, id, true);
         UnityEngine.Events.UnityAction firstActHotkey = () => system.SetCurrentEntityID(this, id, false);

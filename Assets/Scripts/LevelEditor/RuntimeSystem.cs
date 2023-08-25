@@ -22,6 +22,7 @@ internal class RuntimeSystem : PlacementSystem
     private List<RuntimeEntityHolder> runtimeEntities = new();
     private RuntimeEntityHolder entityHolder;
     private Player _player;
+    public bool CastThroughGameObjects { get; set; }
     protected override void Awake()
     {
         _currentRuntimeDatabase = _defaultRuntimeDatabase;
@@ -55,7 +56,7 @@ internal class RuntimeSystem : PlacementSystem
         }
         if(OnPlace != null)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.RUNTIME) && EventSystem.current.IsPointerOverGameObject() == false && selectedEntityIndex > 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && Editor.Instance.GameModeIs(GameMode.RUNTIME) && (EventSystem.current.IsPointerOverGameObject() == false || CastThroughGameObjects) && selectedEntityIndex >= 0)
             {
                 Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(OnPlace, selectedHolder) { Status = PreviewManager.PreviewStatus.DISABLED });
             }
@@ -152,7 +153,7 @@ internal class RuntimeSystem : PlacementSystem
     }
     private void PlaceEntity(Vector2 cursorPos)
     {
-        if (editor._inputManager.IsPointerOverUI()) return;
+        if (editor._inputManager.IsPointerOverUI() && CastThroughGameObjects == false) return;
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(cursorPos);
         bool validity = CheckPlacementValidity(gridPos, selectedEntityIndex);
         if (validity == false) return;
@@ -180,7 +181,7 @@ internal class RuntimeSystem : PlacementSystem
     {
         if (active == true)
         {
-            OnPlace += PlaceEntity;
+			OnPlace += PlaceEntity;
         }
         else
         {
