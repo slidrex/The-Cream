@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5bf60dba5d95d744c9c6b336830f417b
+guid: 57ac9a07b4d618e48a3237ee391ddb42
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttons_sheet_0
+      name: Entity_icons_anilibria_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 240
-        width: 16
-        height: 16
+        y: 480
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,41 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c91ebc5672394042ae57eb3bafeb0e6
-      internalID: -1019265857
+      spriteID: c8df4e30647b0f84e80321db2178c006
+      internalID: -1752469378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_sheet_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 240
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af2eb770fbdb6c2418c3a65698f69168
-      internalID: 1334190849
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buttons_sheet_2
+      name: Entity_icons_anilibria_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 240
-        width: 16
-        height: 16
+        y: 480
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,41 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52bf8391b63852e478122e5f43586988
-      internalID: -1475760139
+      spriteID: 898e1f4a1a156a34c93d026289e241ba
+      internalID: -1048064099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_sheet_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 240
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4356e997ceac8004390cf29f52aa4e3e
-      internalID: 1175788378
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buttons_sheet_4
+      name: Entity_icons_anilibria_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 240
-        width: 16
-        height: 16
+        y: 480
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,41 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e7d21818f3adf3449a20bb0f3e7eb52
-      internalID: 141151235
+      spriteID: 1cf5108416be7c84a9590a2c2925439f
+      internalID: -1250978820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_sheet_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 240
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfc7db496cc254f498cb52022757b182
-      internalID: 844220192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buttons_sheet_6
+      name: Entity_icons_anilibria_3
       rect:
         serializedVersion: 2
         x: 96
-        y: 240
-        width: 16
-        height: 16
+        y: 480
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,41 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1af6f70c811a19e45a67705dff2aa61f
-      internalID: 472422651
+      spriteID: 07c6ea0521a761249a10a6f0565c2202
+      internalID: 2013249426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_sheet_7
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 240
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 875bbade437ac0c479d4316194692714
-      internalID: -331021210
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buttons_sheet_8
+      name: Entity_icons_anilibria_4
       rect:
         serializedVersion: 2
         x: 128
-        y: 240
-        width: 16
-        height: 16
+        y: 480
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9ee4027aeaa94449baf0a0700e3a38b
-      internalID: -718119828
+      spriteID: e6db42e8a36752f49abd5e319eb831ab
+      internalID: -223966344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_sheet_9
+      name: Entity_icons_anilibria_5
       rect:
         serializedVersion: 2
-        x: 144
-        y: 240
-        width: 16
-        height: 16
+        x: 160
+        y: 480
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -308,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35811cdb9fa38984782beb980216aff0
-      internalID: 1561898525
+      spriteID: 9a705af546b77e642a1eac35f4d15c50
+      internalID: -620966948
       vertices: []
       indices: 
       edges: []
@@ -325,16 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      buttons_sheet_0: -1019265857
-      buttons_sheet_1: 1334190849
-      buttons_sheet_4: 141151235
-      buttons_sheet_6: 472422651
-      buttons_sheet_9: 1561898525
-      buttons_sheet_5: 844220192
-      buttons_sheet_7: -331021210
-      buttons_sheet_3: 1175788378
-      buttons_sheet_2: -1475760139
-      buttons_sheet_8: -718119828
+      Entity_icons_anilibria_5: -620966948
+      Entity_icons_anilibria_2: -1250978820
+      Entity_icons_anilibria_4: -223966344
+      Entity_icons_anilibria_3: 2013249426
+      Entity_icons_anilibria_1: -1048064099
+      Entity_icons_anilibria_0: -1752469378
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

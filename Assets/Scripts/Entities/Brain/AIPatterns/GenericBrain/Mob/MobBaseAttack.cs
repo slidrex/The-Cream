@@ -36,6 +36,7 @@ namespace Assets.Scripts.Entities.Attack
         private Animator _animator;
         private const string ATTACK_TRIGGER = "Attack";
         private bool _inAttackAnimation;
+        private Entity currentTarget;
         private void Start()
         {
             _animator = GetComponent<Animator>();
@@ -106,7 +107,11 @@ namespace Assets.Scripts.Entities.Attack
                     {
                         StartAttack(target);
                     }
-                    else PerformAttack(target);
+                    else
+                    {
+                        currentTarget = target;
+                        PerformAttack();
+                    }
                 }
             }
         }
@@ -114,12 +119,13 @@ namespace Assets.Scripts.Entities.Attack
         {
             _animator.SetTrigger(ATTACK_TRIGGER);
             _inAttackAnimation = true;
+            currentTarget = target;
         }
-        private void PerformAttack(Entity target)
+        private void PerformAttack()
         {
             _inAttackAnimation = false;
             ResetAttackTimer();
-            var damageable = target as IDamageable;
+            var damageable = currentTarget as IDamageable;
             damageable.Damage((int)_attackComponent.GetValue(), Entity);
         }
         private void ResetAttackTimer()

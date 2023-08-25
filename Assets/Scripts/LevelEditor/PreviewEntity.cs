@@ -11,9 +11,8 @@ internal class PreviewEntity : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void Init(Vector2 size, EntityModel.Model model)
+    public void Init(EntityModel.Model model)
     {
-        transform.localScale = size;
         this.model = model;
     }
     public EntityModel.Model GetModel() { return model; }

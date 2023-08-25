@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   _entity: {fileID: 8897829895851618643, guid: efd0e970e28e15c4aa8b598820d2e1d0, type: 3}
-  _icon: {fileID: -1042878940, guid: ba8e1892dd1c6374dac050c5c009bcea, type: 3}
+  _icon: {fileID: 2013249426, guid: 57ac9a07b4d618e48a3237ee391ddb42, type: 3}
   _description: {fileID: 11400000, guid: ed8720a4e3d49274c9705e36844fe29c, type: 2}
   Size: 1

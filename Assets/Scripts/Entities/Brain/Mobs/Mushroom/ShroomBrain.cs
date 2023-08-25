@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities.Navigation.EntityType;
+﻿using Assets.Scripts.Entities.Move;
+using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player.Characters;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
@@ -27,15 +28,16 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
         private EntityTypeBase _targetEntities = new EntityType<PlayerTag>().Any();
         [SerializeField] private float _explosionInterval;
         private float _timeSinceExplosion;
+        private Movement movement;
         private void Start()
         {
             _animator = GetComponent<Animator>();
+            movement = GetComponent<Movement>();
         }
         public void OnExplosion()
         {
             _explosionParticles.Play();
-
-            if(foundEntities.Count > 0)
+            if (foundEntities.Count > 0)
             {
                 foreach (var e in foundEntities)
                 {
@@ -43,6 +45,7 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
                     (e as IDamageable).Damage(_damage, Entity);
                 }
             }
+            movement.EnableMovement(true);
         }
         protected override void RuntimeUpdate()
         {
@@ -56,6 +59,7 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
                 if(foundEntities.Count > 0)
                 {
                     _timeSinceExplosion = 0;
+                    movement.EnableMovement(false);
                     _animator.SetTrigger(_explosionTrigger);
                 }
             }

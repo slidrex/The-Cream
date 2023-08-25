@@ -49,9 +49,9 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
         UnityEngine.Events.UnityAction secondAct = () =>
         {
             Editor.Instance._inputManager._previewEntity.Init(
-                data.Entities[id].GetModel().Entity.transform.localScale,
                 data.Entities[id].GetModel());
         };
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(firstActButton);
         button.onClick.AddListener(secondAct);
         SetBindedKey(bindedKey);
@@ -137,5 +137,9 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     {
         yield return new WaitForEndOfFrame();
         LayoutRebuilder.ForceRebuildLayoutImmediate(DescriptionObject.GetComponent<RectTransform>());
+    }
+    private void OnDisable()
+    {
+        button.onClick.RemoveAllListeners();
     }
 }

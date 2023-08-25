@@ -19,10 +19,10 @@ public class KeyConfiguration : MonoBehaviour
 
     private void Awake()
     {
+        abilityName = GetComponentInChildren<TextMeshProUGUI>();
         button = GetComponentInChildren<Button>();
         buttonImage = button.GetComponent<Image>();
         keyName = button.GetComponentInChildren<TextMeshProUGUI>();
-        abilityName = GetComponentInChildren<TextMeshProUGUI>();
     }
     public void StartListenting()
     {

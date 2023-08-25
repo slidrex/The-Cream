@@ -19,6 +19,6 @@ public class ObjectDescription : ScriptableObject
 
     public enum IconType
     {
-        DAMAGE, HEALTH, OTHER
+        DAMAGE, HEALTH, SPEED, ATTACK_SPEED, OTHER
     }
 }

@@ -25,6 +25,7 @@ public class SpaceController : MonoBehaviour
 	public void SetMaxSpaceReqiured(int required)
     {
         maxSpaceReqiured = required;
+        spaceRequired.text = CurrentSpaceReqiured.ToString() + "/" + maxSpaceReqiured;
     }
     public int GetMaxSpaceReqiured() => maxSpaceReqiured;
     public void ChangeSpace(int required)

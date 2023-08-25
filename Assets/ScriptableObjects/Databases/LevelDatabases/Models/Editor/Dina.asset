@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dina
   m_EditorClassIdentifier: 
   _entity: {fileID: 521722513626504388, guid: c787cb6ac9f9f67448ace349e42ea8fe, type: 3}
-  _icon: {fileID: -1472079441, guid: 10b7eaa479df8734c88d20fc165740ef, type: 3}
+  _icon: {fileID: -223966344, guid: 57ac9a07b4d618e48a3237ee391ddb42, type: 3}
   _description: {fileID: 11400000, guid: a484336bb9cded94dbceaf249820a97e, type: 2}
   Size: 1

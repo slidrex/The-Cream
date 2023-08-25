@@ -8,6 +8,6 @@ namespace Assets.Scripts.GameProgress
     internal static class PersistentData
     {
         public static int CurrentGameLevel = 1;
-        public static HashSet<CharacterDatabaseModel.CharacterID> UnlockedCharacters = new () { CharacterDatabaseModel.CharacterID.KNIGHT };
+        public static HashSet<CharacterDatabaseModel.CharacterID> UnlockedCharacters = new () { CharacterDatabaseModel.CharacterID.THORS };
     }
 }
