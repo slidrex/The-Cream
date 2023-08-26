@@ -18,7 +18,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
         {
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
-            if (CooldownStrategy.IsCooldownPassed(this) == false || !playerSpace.IsEnoughMana(BaseManacost)) return false;
+            if (CooldownStrategy.IsCooldownPassed(this) == false || !playerSpace.IsEnoughMana(BaseManacost) || DisableActivate) return false;
             OnStartSelecting(holder, player as T, clickedByIcon);
             return true;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.GameProgress;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace Assets.Scripts.UI.Menu.Localization
 		[SerializeField] private Button _flagButton;
 		[SerializeField] private Image _flagImage;
 		[SerializeField] private Language[] _availableLanguages;
-		private int _selectedLanguage;
 		[Serializable]
 		public struct Language
 		{
@@ -35,12 +35,12 @@ namespace Assets.Scripts.UI.Menu.Localization
 		}
 		private void SwitchLanguage()
 		{
-			_selectedLanguage = (int)Mathf.Repeat(_selectedLanguage + 1, _availableLanguages.Length);
+			PersistentData.SelectedLanguageIndex = (int)Mathf.Repeat(PersistentData.SelectedLanguageIndex + 1, _availableLanguages.Length);
 			ApplySelectedLanguage();
 		}
 		private void ApplySelectedLanguage()
 		{
-			var lang = _availableLanguages[_selectedLanguage];
+			var lang = _availableLanguages[PersistentData.SelectedLanguageIndex];
 			LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(new UnityEngine.Localization.LocaleIdentifier(lang.LanguageCode));
 			_flagImage.sprite = lang.CountryFlag;
 		}

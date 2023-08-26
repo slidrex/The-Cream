@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: model_error_state Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: model_error_state
+  m_TableCollectionNameGuidString: 17365e11eb132e342822dfc2ebcacb67
+  m_Entries:
+  - m_Id: 6351458304
+    m_Key: not_enough_mana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26375065600
+    m_Key: option_on_cooldown
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7942863800150261771
+  references:
+    version: 2
+    RefIds:
+    - rid: 7942863800150261771
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1693047443745

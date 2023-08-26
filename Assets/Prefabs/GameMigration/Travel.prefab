@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679383a237642cd47bbe421bbe8bae1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _errorText: {fileID: 9092133720193991570, guid: b95058688c8b910439b10c2272a7589f, type: 3}
+  _errorLocalizer: {fileID: 506894860990836965, guid: b95058688c8b910439b10c2272a7589f, type: 3}
   _errorContainer: {fileID: 3795912648851025069}
   _errorDisplayTime: 4
 --- !u!1 &3652956624042779735
@@ -1273,6 +1273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultRuntimeDatabase: {fileID: 11400000, guid: 4ef33d4d7d58af341b226d32b5385090, type: 2}
+  _entitiesDatabaseInstance: []
+  DisablePlacingEntities: 0
 --- !u!1 &3652956624350465879
 GameObject:
   m_ObjectHideFlags: 0

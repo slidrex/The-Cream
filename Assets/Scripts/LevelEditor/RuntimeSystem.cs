@@ -18,10 +18,11 @@ internal class RuntimeSystem : PlacementSystem
     [SerializeField] private RuntimeDatabase _defaultRuntimeDatabase;
     private RuntimeDatabase _currentRuntimeDatabase;
     private List<SkillHolder> skills = new();
-    private List<RuntimeEntityModel> _entitiesDatabaseInstance = new();
+    public List<RuntimeEntityModel> _entitiesDatabaseInstance = new();
     private List<RuntimeEntityHolder> runtimeEntities = new();
     private RuntimeEntityHolder entityHolder;
     private Player _player;
+    public bool DisablePlacingEntities;
     public bool CastThroughGameObjects { get; set; }
     protected override void Awake()
     {
@@ -153,7 +154,7 @@ internal class RuntimeSystem : PlacementSystem
     }
     private void PlaceEntity(Vector2 cursorPos)
     {
-        if (editor._inputManager.IsPointerOverUI() && CastThroughGameObjects == false) return;
+        if ((editor._inputManager.IsPointerOverUI() && CastThroughGameObjects == false) || DisablePlacingEntities) return;
         Vector2Int gridPos = (Vector2Int)grid.WorldToCell(cursorPos);
         bool validity = CheckPlacementValidity(gridPos, selectedEntityIndex);
         if (validity == false) return;

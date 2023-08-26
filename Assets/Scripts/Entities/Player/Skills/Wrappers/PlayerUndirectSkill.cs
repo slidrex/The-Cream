@@ -14,7 +14,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
         {
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
-            if (!CooldownStrategy.IsCooldownPassed(this) || !playerSpace.TrySpendMana(BaseManacost)) return false;
+            if (!CooldownStrategy.IsCooldownPassed(this) || DisableActivate || !playerSpace.TrySpendMana(BaseManacost)) return false;
             Editor.Editor.Instance.PreviewManager.PerformAction(new LevelEditor.PreviewManager.Config((Vector2 v) => OnActivate(player as T), holder) { Status = LevelEditor.PreviewManager.PreviewStatus.DISABLED});
 
             ResetTimer();

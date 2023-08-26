@@ -8,7 +8,7 @@ namespace Assets.Scripts.UI.PopupEvents
 {
     internal class ModelErrorMessages
     {
-        public static string NOT_ENOUGH_MANA = "Not enough mana";
-        public static string ON_COOLDOWN = "Option is on cooldown";
+        public static string NOT_ENOUGH_MANA = "not_enough_mana";
+        public static string ON_COOLDOWN = "option_on_cooldown";
     }
 }

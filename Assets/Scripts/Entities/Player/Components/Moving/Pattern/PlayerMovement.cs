@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Entities.AI.SightStalking;
+﻿using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.AI.SightStalking;
 using Assets.Scripts.Entities.Brain;
 using Assets.Scripts.Entities.Move;
 using Assets.Scripts.Entities.Navigation.Util;
@@ -50,6 +52,15 @@ namespace Assets.Scripts.Entities.Player.Moving
 			_pointMovement = GetComponent<PlayerPointMovement>();
 			_movement = GetComponent<Movement>();
 			_attack = GetComponent<MeleeAttack>();
+		}
+		private void OnEnable()
+		{
+
+			LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += (GameMode mode) => Stop();
+		}
+		private void OnDisable()
+		{
+			LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= (GameMode mode) => Stop();
 		}
 		public override void OnReset()
 		{

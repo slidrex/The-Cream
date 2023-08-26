@@ -44,6 +44,11 @@ MonoBehaviour:
     m_Address: Assets/Plugins/Localization/Tables/Game/InGame_messages Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: 17365e11eb132e342822dfc2ebcacb67
+    m_Address: Assets/Plugins/Localization/Tables/ModelErrorState/model_error_state
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 63964749f378e44409cae83064233d31, type: 2}
   m_SchemaSet:

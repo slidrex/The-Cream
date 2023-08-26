@@ -2,6 +2,9 @@
 using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Player;
+using Assets.Scripts.Entities.Player.Characters;
+using Assets.Scripts.Entities.Player.Skills;
+using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using Assets.Scripts.Stage;
 using System;
 using System.Collections.Generic;
@@ -39,6 +42,7 @@ namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 			{
 				obj.interactable = interactable;
 			}
+			Editor.Editor.Instance._runtimeSystem.DisablePlacingEntities = !interactable;
 		}
 		protected override void OnConfigure(Player player)
 		{

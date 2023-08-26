@@ -12,6 +12,7 @@ namespace Assets.Scripts.Entities.Player.Skills
     {
         [field: SerializeField] public int BaseManacost { get; set; }
         [field: SerializeField] public float BaseCooldown { get; set; }
+        public bool DisableActivate;
         public float TimeSinceActivation { get; set; }
         public abstract bool TryActivate(SkillHolder holder, Player player, bool clickedByIcon);
         public override void Update()

@@ -2,8 +2,10 @@
 using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Player.Characters;
+using Assets.Scripts.Entities.Player.Skills;
 using Assets.Scripts.Entities.Player.Skills.Implementations.Knight;
 using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
+using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +35,7 @@ namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 			{
 				item.interactable = active;
 			}
-
+			(FindObjectOfType<PlayerRuntimeSpace>().GetPlayerSkillModels()[0].Skill as PlayerActiveSkill<Knight>).DisableActivate = !active;
 		}
 		protected override void OnConfigure(Player player)
 		{
