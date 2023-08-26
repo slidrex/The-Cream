@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Menu_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 8c94cdd67a11f3344842347ad669e360, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7942863706996605030
+  m_TableData:
+  - m_Id: 7135793152
+    m_Localized: Maestro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127881416704
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 245011550208
+    m_Localized: Sonido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 336011169792
+    m_Localized: "Silenciar la m\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 400108523520
+    m_Localized: Silenciar efectos de sonido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 486846730240
+    m_Localized: Activar Quickcast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5018347606016
+    m_Localized: Elige el nivel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8585791901696
+    m_Localized: Nivel {levelHolder.Level}
+    m_Metadata:
+      m_Items:
+      - rid: 7942863706996605030
+  - m_Id: 1427048322273280
+    m_Localized: "Espa\xF1ol"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436325208363008
+    m_Localized: General
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436350068002816
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436366362873856
+    m_Localized: Sonidos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1438612303613952
+    m_Localized: "{holder.Index} habilidad del h\xE9roe"
+    m_Metadata:
+      m_Items:
+      - rid: 7942863706996605030
+  - m_Id: 1438936120659968
+    m_Localized: '{holder.Index} habilidad de combate'
+    m_Metadata:
+      m_Items:
+      - rid: 7942863706996605030
+  - m_Id: 1506187779739648
+    m_Localized: "\xBFQuieres empezar un tutorial?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506262690009088
+    m_Localized: "S\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506271334469632
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506664537886720
+    m_Localized: "A\xFAn puede probar el tutorial haciendo clic en este bot\xF3n"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7942863706996605030
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00901309cf07000000905307691c05000090536cb41c0500

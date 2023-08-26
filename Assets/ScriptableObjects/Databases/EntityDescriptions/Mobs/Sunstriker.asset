@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0411d6bd64051540b9716e6614afc44, type: 3}
   m_Name: Sunstriker
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u041B\u0443\u0447\u0435\u0437\u0430\u0440\u043D\u043E\u0441\u0442\u044C"
-  <Description>k__BackingField: "\u0412\u044B\u043F\u0443\u0441\u043A\u0430\u0435\u0442
-    \u043B\u0443\u0447\u0438 \u0432 \u0432\u0430\u0448 \u0440\u043E\u0442"
+  <Name>k__BackingField: sunflower
+  <DescriptionKey>k__BackingField: sunflower_desc
   <Characteristics>k__BackingField:
   - IconType: 1
     CharacteristicIcon: {fileID: 0}

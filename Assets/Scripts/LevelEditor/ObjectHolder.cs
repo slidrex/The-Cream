@@ -8,18 +8,24 @@ using Assets.Scripts.Entities.Player;
 using System;
 using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Databases.dto.Units;
+using UnityEngine.Localization.Components;
 
 internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image _selectImage;
     [SerializeField] protected Image EntityIcon;
     [SerializeField] protected GameObject DescriptionObject;
-    [SerializeField] protected TextMeshProUGUI Name, Description, Cost;
+    [SerializeField] protected TextMeshProUGUI Cost;
     [SerializeField] private Image _costImage;
     [SerializeField] protected Transform CharacteristicsParent;
     [SerializeField] private GameObject _keyIcon;
     [SerializeField] private TextMeshProUGUI _bindedKey;
-    protected ObjectCharacteristic[] CharacteristicObjects;
+    [Header("Localization")]
+    [SerializeField] private LocalizeStringEvent _nameLocalizator;
+    [SerializeField] private LocalizeStringEvent _descriptionLocalizator;
+
+
+	protected ObjectCharacteristic[] CharacteristicObjects;
     protected Button button;
     private const float TIME_TO_APPEAR = 0.4f;
     private float currentTime = 0;
@@ -76,11 +82,16 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
         CharacteristicObjects = CharacteristicsParent.GetComponentsInChildren<ObjectCharacteristic>();
         for (int i = 0; i < CharacteristicObjects.Length; i++)
             CharacteristicObjects[i].gameObject.SetActive(false);
+        var desc = data.Entities[id].GetModel().Description;
 
-        Name.text = data.Entities[id].GetModel().Description.Name;
-        Description.text = data.Entities[id].GetModel().Description.Description;
+        _nameLocalizator.SetEntry(desc.Name);
+        _descriptionLocalizator.SetEntry(desc.DescriptionKey);
         
-        for (int i = 0; i < data.Entities[id].GetModel().Description.Characteristics.Length; i++)
+        _nameLocalizator.RefreshString();
+        _descriptionLocalizator.RefreshString();
+
+
+		for (int i = 0; i < data.Entities[id].GetModel().Description.Characteristics.Length; i++)
         {
             CharacteristicObjects[i].gameObject.SetActive(true);
             CharacteristicObjects[i].Init(GetIcon(data.Entities[id].GetModel().Description.Characteristics[i].IconType, data, id, i), data.Entities[id].GetModel().Description.Characteristics[i].Value);

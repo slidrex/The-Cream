@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: tutorial Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: tutorial
+  m_TableCollectionNameGuidString: b967a68d650099d46bc08de9a9417aee
+  m_Entries:
+  - m_Id: 6091411456
+    m_Key: move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 304159625216
+    m_Key: move_dockspace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472372187136
+    m_Key: select_entity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 598645903360
+    m_Key: delete_entity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732804911104
+    m_Key: fill_map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815353008128
+    m_Key: start_battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966670913536
+    m_Key: select_mob
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1184980242432
+    m_Key: kill_mob
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1237966884864
+    m_Key: use_double_damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1423682277376
+    m_Key: clean_space
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1490694672384
+    m_Key: drop_heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1723147194368
+    m_Key: continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1872875458560
+    m_Key: enter_portal
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7942863795241615362
+  references:
+    version: 2
+    RefIds:
+    - rid: 7942863795241615362
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1693022931570

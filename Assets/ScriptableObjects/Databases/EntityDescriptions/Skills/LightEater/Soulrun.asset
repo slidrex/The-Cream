@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f62193a71aaae64e8301f702d733e0f, type: 3}
-  m_Name: SpikeSpread
+  m_Name: Soulrun
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0428\u0438\u043F\u044B"
-  <Description>k__BackingField: "\u0432\u044B\u043F\u0443\u0441\u043A\u0430\u0435\u0442
-    \u0448\u0438\u043F\u044B \u043E\u0441\u0442\u0440\u044B\u0435!!!"
+  <Name>k__BackingField: Soulrun
+  <DescriptionKey>k__BackingField: light_eater_escape
   <Characteristics>k__BackingField: []
-  <SkillIcon>k__BackingField: {fileID: 1647226091, guid: 5907234d4f6deb449bb1d084bf488a7f, type: 3}

@@ -52,10 +52,52 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 7942863706996605029
+  - m_Id: 1427048322273280
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436325208363008
+    m_Localized: General
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436350068002816
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436366362873856
+    m_Localized: Sounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1438612303613952
+    m_Localized: '{holder.Index} hero ability'
+    m_Metadata:
+      m_Items:
+      - rid: 7942863706996605029
+  - m_Id: 1438936120659968
+    m_Localized: '{holder.Index} runtime ability'
+    m_Metadata:
+      m_Items:
+      - rid: 7942863706996605029
+  - m_Id: 1506187779739648
+    m_Localized: Would you like to start a tutorial?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506262690009088
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506271334469632
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506664537886720
+    m_Localized: You still can try tutorial by clicking this button
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 7942863706996605029
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00901309cf070000
+        m_Entries: 00901309cf07000000905307691c05000090536cb41c0500

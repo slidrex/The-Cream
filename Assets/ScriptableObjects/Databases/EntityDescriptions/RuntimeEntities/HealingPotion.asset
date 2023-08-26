@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d5fe0c8d6eb164fbea8c74ef46e6c5, type: 3}
+  m_Name: HealingPotion
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: heal_potion
+  <DescriptionKey>k__BackingField: heal_potion_desc
+  <Characteristics>k__BackingField: []
+  Skills:
+  - {fileID: 11400000, guid: cd8679cbe06549a438caae1a869cbc66, type: 2}
+  - {fileID: 11400000, guid: 75234aa371ec592429d8a1a4c08e27f9, type: 2}
+  <CharacterSprite>k__BackingField: {fileID: 2055303256, guid: 5763c3fb4c97aed45b212d300676b50a, type: 3}
+  <CharacterButtonIcon>k__BackingField: {fileID: 1733200218, guid: 801d2445862719f4b83341a43c87c195, type: 3}

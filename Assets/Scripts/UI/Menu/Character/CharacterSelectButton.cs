@@ -24,7 +24,7 @@ namespace Assets.Scripts.Menu.Character
 
             button.onClick.AddListener(OnSelectButtonClicked);
         }
-        private void OnSelectButtonClicked()
+        public void OnSelectButtonClicked()
         {
             if (IsOpened)
             {
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Menu.Character
             InitSkills();
         }
 
-        private void InitSkills()
+        public void InitSkills()
         {
             podium.ClearSkillDescripion();
             for (int i = 0; i < model.Character.GetSkills().Length; i++)
@@ -44,6 +44,8 @@ namespace Assets.Scripts.Menu.Character
                 button.InitSkill(model.Character.GetSkills()[i], podium);
 
                 button.SetSkillIcon(model.Character.GetSkills()[i].Icon);
+                if (i == 0) button.UpdateSkillDescription();
+                
             }
             StartCoroutine(podium.LayoutUpdater());
         }

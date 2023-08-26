@@ -10,8 +10,8 @@ namespace Assets.Scripts.Training.ActionChain
 {
 	internal abstract class TrainingActionChain : MonoBehaviour
 	{
+		public string ActionDescriptionKey;
 		public Action OnChainCompleted;
-		public string ActionChainDescription;
 		protected ChainsHolder _holder;
 		protected void MoveToPreviousChain()
 		{

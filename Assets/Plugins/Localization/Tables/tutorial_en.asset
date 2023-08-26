@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: tutorial_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: b967a68d650099d46bc08de9a9417aee, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6091411456
+    m_Localized: Click the map to move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 304159625216
+    m_Localized: Hover the edge of the screen to move on
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472372187136
+    m_Localized: Select and place the entity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 598645903360
+    m_Localized: Click the placed entity to remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732804911104
+    m_Localized: Fill the map by placing entities
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815353008128
+    m_Localized: Start the battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966670913536
+    m_Localized: Click the mob to start killing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1184980242432
+    m_Localized: Kill the mob
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1237966884864
+    m_Localized: Use double damage ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1423682277376
+    m_Localized: Clean up the map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1490694672384
+    m_Localized: Select and drop healing potion onto the player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1723147194368
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1872875458560
+    m_Localized: Enter the portal
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

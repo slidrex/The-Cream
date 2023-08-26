@@ -3954,6 +3954,8 @@ GameObject:
   - component: {fileID: 330026352201005971}
   - component: {fileID: 8718971192740507546}
   - component: {fileID: 7598618044854755716}
+  - component: {fileID: 9211083620887286494}
+  - component: {fileID: 5416421108982221081}
   m_Layer: 0
   m_Name: LevelInfo
   m_TagString: Untagged
@@ -4144,6 +4146,66 @@ MonoBehaviour:
     m_RotationOrder: 4
   _size: 2
   _duration: 5
+  _localizator: {fileID: 0}
+--- !u!114 &9211083620887286494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952094401164356171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:1f064cbf778e19246a002965a1a753f9
+    m_TableEntryReference:
+      m_KeyId: 18179395584
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: holder
+      variable:
+        rid: 7942863800150261760
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8718971192740507546}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 7942863800150261760
+      type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: {fileID: 5416421108982221081}
+--- !u!114 &5416421108982221081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952094401164356171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91510e4cd2264064ca727885a49462a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3979776251440601493
 GameObject:
   m_ObjectHideFlags: 0

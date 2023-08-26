@@ -23,6 +23,36 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
+  - m_GUID: e2454aec1b4137445ae84d8bd32c8ac3
+    m_Address: tutorial_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: ca77981d529e04e4d8a67c11ca21fe27
+    m_Address: hero_descriptions_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: cdf5e9d852893bb4bbcd4d538c85cf0b
+    m_Address: editor_entity_description_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 5891c6f0cce45ad4787ac0da97680939
+    m_Address: runtime_entity_description_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: bdfb47e0338520547be8e47ff744496e
+    m_Address: InGame_messages_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 63964749f378e44409cae83064233d31, type: 2}
   m_SchemaSet:

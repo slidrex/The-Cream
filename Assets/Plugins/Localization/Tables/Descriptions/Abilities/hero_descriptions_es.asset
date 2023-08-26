@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: hero_descriptions_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 9b1134b0bb534734fb80c00c38c0e04b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16371650560
+    m_Localized: "Inflige da\xF1o y aturde"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 395255713792
+    m_Localized: "Duplica temporalmente el da\xF1o de ataque"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 765096857600
+    m_Localized: "Libera p\xFAas alrededor que da\xF1an a los enemigos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385874821120
+    m_Localized: "Invoca un escudo que absorbe parte del da\xF1o entrante y aumenta
+      la velocidad de ataque hasta que se rompa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2153935769600
+    m_Localized: Se vuelve invisible para los enemigos, aumenta la velocidad de movimiento
+      y no puede atacar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2705377693696
+    m_Localized: "Invoca un alma que da\xF1a y ralentiza a los enemigos cercanos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3090960060416
+    m_Localized: "Despu\xE9s de un breve retraso, invoca almas alrededor del h\xE9roe
+      que salen de \xE9l, se dispersan y causan da\xF1o"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

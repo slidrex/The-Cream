@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shadow Coil
   m_EditorClassIdentifier: 
   Icon: {fileID: 844220192, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
-  <Description>k__BackingField: {fileID: 11400000, guid: a20d7122b8f4c794babc43b348aff81c, type: 2}
+  <Description>k__BackingField: {fileID: 11400000, guid: ba72962e838037d43815395fd458683f, type: 2}
   <BaseManacost>k__BackingField: 30
   <BaseCooldown>k__BackingField: 3
   _coil: {fileID: 6108353271096853407, guid: 63154fbf87723b14e99db8aefb6eefee, type: 3}

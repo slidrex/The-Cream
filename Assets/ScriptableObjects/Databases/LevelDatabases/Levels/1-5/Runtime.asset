@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Runtime
   m_EditorClassIdentifier: 
   <Entities>k__BackingField:
-  - {fileID: 11400000, guid: 919bb1374a13eee4ca03694109713226, type: 2}
   - {fileID: 11400000, guid: 408d9812751d13c478d7f1c342c4b2d0, type: 2}
-  - {fileID: 11400000, guid: fda9bf35a7c1f894bb78f298c90aca10, type: 2}
-  - {fileID: 11400000, guid: 71f110ab7cbec4e4198a53b233c885fe, type: 2}
+  - {fileID: 11400000, guid: 919bb1374a13eee4ca03694109713226, type: 2}

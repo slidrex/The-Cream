@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 namespace Assets.Scripts.UI.PopupEvents
 {
@@ -14,22 +15,23 @@ namespace Assets.Scripts.UI.PopupEvents
         [SerializeField] private AnimationCurve _alphaCurve;
         [SerializeField] private float _size;
         [SerializeField] private float _duration;
+        [SerializeField] private LocalizeStringEvent _localizator;
         private TextMeshProUGUI _alertText;
         private float _timeSinceEnabling;
         private float _targetTime;
         private bool _isEnabled;
         private void Awake()
         {
-            _alertText = GetComponent<TextMeshProUGUI>();
+			_localizator = GetComponent<LocalizeStringEvent>();
+			_alertText = GetComponent<TextMeshProUGUI>();
         }
-        public void EnableText(string text)
+		public void EnableText()
         {
             if (_disableText) return;
             gameObject.SetActive(true);
             _isEnabled = true;
-            _alertText.text = text;
-
-            _targetTime = _duration;
+            _localizator.RefreshString();
+			_targetTime = _duration;
             _timeSinceEnabling = 0.0f;
         }
         private void DisableText()

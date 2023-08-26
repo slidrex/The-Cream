@@ -8,6 +8,7 @@ using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.Functions;
 using Assets.Scripts.Stage.Interfaces;
+using Assets.Scripts.UI.Menu.Advanced;
 using Assets.Scripts.UI.MiniMap;
 using System;
 using System.Linq;
@@ -175,15 +176,21 @@ namespace Assets.Scripts.Stage
             currentStageLevel.FillMap();
             _playerMinimapElement.RevealRelativeElements();
 
+            SetFloorTextIndex(floor);
 
-            UIEventCompositeRoot.Instance.LevelTitle.EnableText($"Floor {floor}");
-            _currentStageLevel = currentStageLevel;
+			_currentStageLevel = currentStageLevel;
             if (init) InitPlayer();
             _endElement = currentStageLevel.EndElement;
             SetCurrentElement(currentStageLevel.InitialElement);
             Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
             OnAfterStageStarted?.Invoke();
 		}
+        private void SetFloorTextIndex(int floor)
+        {
+            UIEventCompositeRoot.Instance.LevelTitle.gameObject.GetComponent<ListIndex>().Index = floor + 1;
+			UIEventCompositeRoot.Instance.LevelTitle.EnableText();
+
+        }
         private void SetCurrentElement(StageTileElement element)
         {
             _currentElement = element;

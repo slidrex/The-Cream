@@ -27,18 +27,18 @@ namespace Menus
 
         public void LoadScene()
         {
-            StartCoroutine(LoadSceneNumerator());
+            StartCoroutine(LoadSceneNumerator(selectedID));
         }
-        private IEnumerator LoadSceneNumerator()
+        public IEnumerator LoadSceneNumerator(int index)
         {
-            if (selectedID >= 0)
+            if (index >= 0)
             {
                 fadingScreen.FadeIn();
                 yield return new WaitForSeconds(fadingScreen._fadeInLength);
                 fadingScreen.FadeOut();
                 loadScreen.SetActive(true);
                 yield return new WaitForSeconds(задержка);
-                AsyncOperation loadScene = SceneManager.LoadSceneAsync(selectedID);
+                AsyncOperation loadScene = SceneManager.LoadSceneAsync(index);
                 while (!loadScene.isDone)
                 {
                     yield return null;

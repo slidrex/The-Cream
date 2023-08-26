@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0411d6bd64051540b9716e6614afc44, type: 3}
   m_Name: Dina
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0414\u0438\u0433\u043D\u043E\u0437\u0430\u0432\u0440"
-  <Description>k__BackingField: "\u0442\u0432\u0430\u0440\u044C \u043A\u0443\u0441\u0430\u0447\u0430\u044F"
+  <Name>k__BackingField: dinosaur
+  <DescriptionKey>k__BackingField: dinosaur_desc
   <Characteristics>k__BackingField:
   - IconType: 1
     CharacteristicIcon: {fileID: 0}

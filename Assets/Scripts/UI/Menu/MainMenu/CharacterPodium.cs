@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using Assets.Scripts.GameProgress;
+using UnityEngine.Localization.Components;
 
 public class CharacterPodium : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class CharacterPodium : MonoBehaviour
     [SerializeField] private RectTransform DescriptionObject;
 
     [Header("SkillDescription")]
-    [SerializeField] private TextMeshProUGUI skillName;
+    [SerializeField] private LocalizeStringEvent _descriptionLocalizer;
+	[SerializeField] private TextMeshProUGUI skillName;
     [SerializeField] private TextMeshProUGUI skillDescription;
     [SerializeField] private Transform skillsContainer;
 
@@ -44,7 +46,7 @@ public class CharacterPodium : MonoBehaviour
         models = database.GetModels();
         CharacterDatabaseModel.CharacterID[] ids =
             (CharacterDatabaseModel.CharacterID[])Enum.GetValues(typeof(CharacterDatabaseModel.CharacterID));
-
+        bool _initialCharacterFound = false;
         for (int i = 0; i < models.Length; i++)
         {
             models[i].Character.Description.Init(models[i].Character.GetSkills());
@@ -55,6 +57,14 @@ public class CharacterPodium : MonoBehaviour
             {
                 but.LockCharacter();
             }
+            else if(_initialCharacterFound == false)
+            {
+                var desc = models[i].Character.Description;
+
+                but.OnSelectButtonClicked();
+
+				_initialCharacterFound = true;
+			}
         }
     }
     public void ClearSkillDescripion()
@@ -78,8 +88,12 @@ public class CharacterPodium : MonoBehaviour
         InitPodium(_lockedPodiumSprite, _lockedPodiumName);
     }
     public Transform GetSkillContainer() => skillsContainer;
-    public void SetSkillName(string name) => skillName.text = name;
-    public void SetSkillDescription(string description) => skillDescription.text = description;
+    public void SetPodiumSkill(string name, string descriptionKey) 
+    {
+		skillName.text = name;
+        _descriptionLocalizer.SetEntry(descriptionKey);
+        _descriptionLocalizer.RefreshString();
+	}
     internal SkillSelectButton[] GetSkillButtons() => skillButtons;
     public IEnumerator LayoutUpdater()
     {

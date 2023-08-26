@@ -9,7 +9,6 @@ namespace Assets.Scripts.Menu.MainMenu
     [Serializable]
     internal struct InputAction
     {
-        public string ActionName;
         public InputConfig.ActionKey ActionKey;
     }
     internal class InputView : MonoBehaviour
@@ -26,7 +25,6 @@ namespace Assets.Scripts.Menu.MainMenu
             _listener = GetComponent<InputListener>();
             for(int i = 0; i < configurations.Length; i++)
             {
-                configurations[i].SetAbilityName(_actions[i].ActionName);
                 configurations[i].SetActionKey(_actions[i].ActionKey);
                 configurations[i].SetListener(_listener);
                 configurations[i].SetInputView(this);

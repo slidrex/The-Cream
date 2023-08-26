@@ -47,6 +47,46 @@ MonoBehaviour:
     m_Key: level
     m_Metadata:
       m_Items: []
+  - m_Id: 1427048322273280
+    m_Key: language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436325208363008
+    m_Key: general_settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436350068002816
+    m_Key: controls_settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1436366362873856
+    m_Key: sounds_settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1438612303613952
+    m_Key: hero_ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1438936120659968
+    m_Key: runtime_ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506187779739648
+    m_Key: start_tutorial_ask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506262690009088
+    m_Key: yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506271334469632
+    m_Key: no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506664537886720
+    m_Key: tutorial_remain
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

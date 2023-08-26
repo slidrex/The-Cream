@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0411d6bd64051540b9716e6614afc44, type: 3}
   m_Name: HammerHead
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u041C\u043E\u043B\u043E\u0442\u043E\u0433\u043E\u043B\u043E\u0432\u044B\u0439"
-  <Description>k__BackingField: "\u0431\u044C\u0451\u0442 \u0441\u0432\u043E\u0438\u043C
-    \u043C\u043E\u043B\u043E\u0442\u043E\u043C \u0432\u0441\u0435\u0445 \u0441\u0432\u043E\u0438\u0445
-    \u043D\u0435\u043D\u0430\u0432\u0438\u0441\u0442\u043D\u0438\u043A\u043E\u0432"
+  <Name>k__BackingField: hammer_head
+  <DescriptionKey>k__BackingField: hammer_head_desc
   <Characteristics>k__BackingField: []

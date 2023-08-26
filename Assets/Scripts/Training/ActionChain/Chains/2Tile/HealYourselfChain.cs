@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 

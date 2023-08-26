@@ -20,7 +20,7 @@ namespace Assets.Scripts.UI.Menu.MainMenu.Level
             {
                 var holder = _holders[i];
                 int displayLevel = i + 1;
-                holder.Configure(_levels, _characters, _menu, displayLevel, displayLevel);
+                holder.Configure(_levels, _characters, _menu, displayLevel, displayLevel + 1);
                 holder.SetLockStatus(PersistentData.CurrentGameLevel < displayLevel);
                 holder.GetComponent<LocalizeStringEvent>().RefreshString();
             }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entity: {fileID: 1229386082220787890, guid: 87592bfc65b5dd848b41f649e321cada, type: 3}
   _icon: {fileID: 1175788378, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
-  _description: {fileID: 11400000, guid: efbbf2fdd365339459f11627031bcc8f, type: 2}
+  _description: {fileID: 11400000, guid: 00b76c6f077ddf84f86dcafb0652a19f, type: 2}
   _baseManacost: 5
   _cooldown: 1

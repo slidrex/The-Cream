@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0411d6bd64051540b9716e6614afc44, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0421\u043B\u0438\u0437\u0435\u043D\u044C"
-  <Description>k__BackingField: "\u043F\u0440\u043E\u0441\u0442\u043E \u0441\u043B\u0438\u0437\u0435\u043D\u044C
-    \u0447\u0435 \u0434\u043E\u0435\u0431\u0430\u043B\u0438\u0441\u044C-\u0442\u043E"
+  <Name>k__BackingField: slime
+  <DescriptionKey>k__BackingField: slime_desc
   <Characteristics>k__BackingField:
   - IconType: 0
     CharacteristicIcon: {fileID: 0}

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f62193a71aaae64e8301f702d733e0f, type: 3}
   m_Name: ShieldAttack
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0410\u0442\u0430\u043A\u0430 \u0449\u0438\u0442\u043E\u043C"
-  <Description>k__BackingField: "\u0433\u043E\u0432\u043D\u043E\u043C)) (\u0449\u0438\u0442\u043E\u043C)
-    \u0433\u043E\u043C\u043D\u043E))"
+  <Name>k__BackingField: Shield Attack
+  <DescriptionKey>k__BackingField: knight_shield
   <Characteristics>k__BackingField: []
-  <SkillIcon>k__BackingField: {fileID: 98990503, guid: 5907234d4f6deb449bb1d084bf488a7f, type: 3}

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: tutorial_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: b967a68d650099d46bc08de9a9417aee, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6091411456
+    m_Localized: Haz clic en el mapa para moverte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 304159625216
+    m_Localized: "Pase el rat\xF3n por el borde de la pantalla para continuar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472372187136
+    m_Localized: Seleccionar y colocar la entidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 598645903360
+    m_Localized: Haga clic en la entidad colocada para eliminarla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732804911104
+    m_Localized: Rellena el mapa colocando entidades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815353008128
+    m_Localized: Inicia la batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966670913536
+    m_Localized: Haz clic en el enemigo para comenzar a atacar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1184980242432
+    m_Localized: Matar al enemigo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1237966884864
+    m_Localized: "Usar la habilidad de doble da\xF1o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1423682277376
+    m_Localized: Elimina a los enemigos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1490694672384
+    m_Localized: "Selecciona y suelta la poci\xF3n de curaci\xF3n sobre el jugador"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1723147194368
+    m_Localized: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1872875458560
+    m_Localized: Entra en el portal
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

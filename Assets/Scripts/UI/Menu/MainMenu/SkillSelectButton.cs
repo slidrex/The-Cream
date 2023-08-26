@@ -15,10 +15,10 @@ internal class SkillSelectButton : MonoBehaviour
         icon = GetComponent<Image>();
         button.onClick.AddListener(UpdateSkillDescription);
     }
-    private void UpdateSkillDescription()
+    public void UpdateSkillDescription()
     {
-        podium.SetSkillName(skill.Description.Name);
-        podium.SetSkillDescription(skill.Description.Description);
+        podium.SetPodiumSkill(skill.Description.Name, skill.Description.DescriptionKey);
+
         StartCoroutine(podium.LayoutUpdater());
     }
     public void InitSkill(PlayerSkill skill, CharacterPodium podium)

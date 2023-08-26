@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 namespace Assets.Scripts.Training.ActionChain
 {
 	internal class ChainsHolder : MonoBehaviour
 	{
+		[SerializeField] private LocalizeStringEvent _localizator; 
 		[SerializeField] private TextMeshProUGUI _helpText;
 		private Queue<TrainingActionChain> _chainsQueue;
 		private Player _player;
@@ -39,9 +41,10 @@ namespace Assets.Scripts.Training.ActionChain
 			_player = FindObjectOfType<Player>();
 			_chainsQueue = new Queue<TrainingActionChain>(_chains);
 		}
-		public void UpdateHelpText(string text)
+		public void UpdateHelpText(string key)
 		{
-			_helpText.text = text;
+			_localizator.SetEntry(key);
+			_localizator.RefreshString();
 		}
 		private void MoveNextChain()
 		{
@@ -62,7 +65,7 @@ namespace Assets.Scripts.Training.ActionChain
 		private void InitChain(TrainingActionChain chain)
 		{
 			chain.StartListening(_player, this, TryMoveNextChain);
-			UpdateHelpText(chain.ActionChainDescription);
+			UpdateHelpText(chain.ActionDescriptionKey);
 		}
 	}
 }
