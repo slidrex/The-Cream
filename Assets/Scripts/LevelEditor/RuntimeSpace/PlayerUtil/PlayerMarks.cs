@@ -24,6 +24,7 @@ namespace Assets.Scripts.LevelEditor.RuntimeSpace.PlayerUtil
 		{
 			_point.gameObject.SetActive(true);
 			_point.transform.position = position;
+			_point.GetAnimator().SetTrigger(_point.APPEAR_TRIGGER);
 			_timeSincePlace = 0.0f;
 		}
 		private void Update()

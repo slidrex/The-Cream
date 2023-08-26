@@ -4820,6 +4820,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2382909185937307980, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
+      propertyPath: _manualAttack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382909185937307980, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
       propertyPath: attackParticles
       value: 
       objectReference: {fileID: 8553127623892333851}

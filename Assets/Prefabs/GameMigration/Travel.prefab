@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAoIewGBEoPVQIAABUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3HEDeU3lpDSA8JTGgnF1+EtMYaZMmjjwDJ8N+7km3s0MkJ8fbt6r3dld+JULYG5rRZGsEfNQfyY0TCmXwZ9cEHONKdVhvxBh3nRXBXBhKNnGfqhEZ8HNKsrsAZwX6qnQzkBEGvRKFNteA7yLR1FuGCSgsYMtqFbIXQ+4gc8edmFlJOeJpMw+kNT7NkdMYjA+XA9NSO2NEalldM0qoGHiT35HHS0fEUiQrttJwgnWkphW21EHeqo9eM1tajEyRwQdFbFBD4JYhd6YLOYfKqKCy4VpShp7kw2KKmKvmlm75V1O4bZa9U+ihg8j1qaoo+/he/GcdwYXT10N3bOHKlYPtnemLUukFjh/D8o3CvDlTu6VbCSwnqSS+N9opj0BkfUr2Fybz/e7GWlcD2Pd5IvQJ9/fl4godzdH/MpKi2IfQ1bYCN1LHfcfhgcDK/UXBcDduWQDSo+GvhD90Nd6gN3AtjHYZalyrI22pvApUsYs+CG+8ybRSYYYUaFJXutMY67nqGV7HPs+5peC7t7W2sewVXKRHu+UlyFVrrw2VattSHR7DlyjspFPStDoEnbFSmlWpWbGipS9t4U1A2SNt5wT/uFuGTcXE3TZNkltKUp99ubjmb3EF6C9Mt37JkRuLyCYU+qVw3Qtv24NhUX1zhonVfkdHS0DquOzf0sBRvlbY9U6hCb5gBUKumwkU4GLwEnyVfcIEN2oBzQsWBk/ecSM32wPNLoTw6XRydoXlfJSe1eNUuIDnJ4mcjJwG+LPPawKuAQ7i8K3Ym539QSwMEFAAACAgAACgh7O3Uv3FtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFKKkWGambmJgYGlSaJJiomprnFKspFZqolxqnlSSlKygaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAACgh7AYESg9VAgAAFQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAACgh7O3Uv3FtAAAAeAAAAAkAJAAAAAAAAAAAAAAAogIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABaAwAAAAA=
+    dataString: UEsDBBQAAAgIAAAYIewGBEoPVQIAABUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3HEDeU3lpDSA8JTGgnF1+EtMYaZMmjjwDJ8N+7km3s0MkJ8fbt6r3dld+JULYG5rRZGsEfNQfyY0TCmXwZ9cEHONKdVhvxBh3nRXBXBhKNnGfqhEZ8HNKsrsAZwX6qnQzkBEGvRKFNteA7yLR1FuGCSgsYMtqFbIXQ+4gc8edmFlJOeJpMw+kNT7NkdMYjA+XA9NSO2NEalldM0qoGHiT35HHS0fEUiQrttJwgnWkphW21EHeqo9eM1tajEyRwQdFbFBD4JYhd6YLOYfKqKCy4VpShp7kw2KKmKvmlm75V1O4bZa9U+ihg8j1qaoo+/he/GcdwYXT10N3bOHKlYPtnemLUukFjh/D8o3CvDlTu6VbCSwnqSS+N9opj0BkfUr2Fybz/e7GWlcD2Pd5IvQJ9/fl4godzdH/MpKi2IfQ1bYCN1LHfcfhgcDK/UXBcDduWQDSo+GvhD90Nd6gN3AtjHYZalyrI22pvApUsYs+CG+8ybRSYYYUaFJXutMY67nqGV7HPs+5peC7t7W2sewVXKRHu+UlyFVrrw2VattSHR7DlyjspFPStDoEnbFSmlWpWbGipS9t4U1A2SNt5wT/uFuGTcXE3TZNkltKUp99ubjmb3EF6C9Mt37JkRuLyCYU+qVw3Qtv24NhUX1zhonVfkdHS0DquOzf0sBRvlbY9U6hCb5gBUKumwkU4GLwEnyVfcIEN2oBzQsWBk/ecSM32wPNLoTw6XRydoXlfJSe1eNUuIDnJ4mcjJwG+LPPawKuAQ7i8K3Ym539QSwMEFAAACAgAABgh7O3Uv3FtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFKKkWGambmJgYGlSaJJiomprnFKspFZqolxqnlSSlKygaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAABgh7AYESg9VAgAAFQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABgh7O3Uv3FtAAAAeAAAAAkAJAAAAAAAAAAAAAAAogIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABaAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -3835,7 +3835,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3652956626107999030
 Transform:
@@ -4840,7 +4840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 472422651, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+  m_Sprite: {fileID: -718119828, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5054,6 +5054,7 @@ GameObject:
   - component: {fileID: 4269349298415055564}
   - component: {fileID: 7961755206011024781}
   - component: {fileID: 3688305352699974960}
+  - component: {fileID: 2094493126765689609}
   m_Layer: 0
   m_Name: MovePoint
   m_TagString: Untagged
@@ -5122,8 +5123,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.16476387, g: 0.4433962, b: 0.10708439, a: 0.5529412}
+  m_Sprite: {fileID: 1397850301, guid: c8fc831200846944da84a1332ff8d1ef, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5145,6 +5146,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed478fb8120a3340848f71ee2b27a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2094493126765689609
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193918099568593055}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e9df4240d24ccf40a312d6bdbdcdd2a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8789118323839431102
 GameObject:
   m_ObjectHideFlags: 0
