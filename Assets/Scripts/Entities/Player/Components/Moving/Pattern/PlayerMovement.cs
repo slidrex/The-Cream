@@ -10,7 +10,10 @@ using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.Entities.Util.UIPlayer;
 using Pathfinding;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Unity.Burst.CompilerServices;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -67,7 +70,6 @@ namespace Assets.Scripts.Entities.Player.Moving
 		public override void OnReset()
 		{
 			Stop();
-			Debug.Log("On reset");
 			InterruptAnimation();
         }
         protected override void OnUpdate()
@@ -83,24 +85,48 @@ namespace Assets.Scripts.Entities.Player.Moving
             if (_isMoving) UpdatePlayerPosition();
             if (Util.Config.Input.InputManager.IsActionKeyPressed(true, out Vector2 worldMousePos))
 			{
-				RaycastHit2D hit = Physics2D.Raycast(worldMousePos, Vector2.zero);
-				if (hit.collider == null)
-				{
-					return;
-				}
+				RaycastHit2D[] hits = Physics2D.RaycastAll(worldMousePos, Vector2.zero);
 
-				if ((_tilemapLayer.value & (1 << hit.collider.gameObject.layer)) != 0)
-				{
-					SetPoint();
-				}
-				else if(hit.collider.gameObject.TryGetComponent<BaseEntity>(out var entity))
+				var result = GetHitType(hits, out var entity);
+
+				if(entity != null)
 				{
 					if(entity is IPlayerSelectTrigger trigger) trigger.OnSelect();
 					if(entity is Entity e)
 						SetTarget(e);
 				}
+				else if(result == TargetType.POINT)
+				{
+					foreach(var h in hits)
+					{
+						if((_tilemapLayer.value & (1 << h.collider.gameObject.layer)) != 0)
+						{
+							SetPoint();
+							break;
+						}
+					}
+				}
 				OnMoveTargetSelect?.Invoke(_targetType);
 			}
+		}
+		private TargetType GetHitType(RaycastHit2D[] hits,out BaseEntity entity)
+		{
+			bool isTilemap = false;
+			entity = null;
+
+			foreach (var collider in hits)
+			{
+				if(collider.collider.gameObject.TryGetComponent(out entity))
+				{
+					return TargetType.ENEMY;
+				}
+				if (isTilemap == false)
+				{
+					isTilemap = (_tilemapLayer.value & (1 << collider.collider.gameObject.layer)) != 0;
+				}
+			}
+			if (isTilemap) return TargetType.POINT;
+			return TargetType.OBSTACLE;
 		}
 		private void SelectEntity(Entity entity)
 		{

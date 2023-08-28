@@ -12,7 +12,7 @@ namespace Assets.Scripts.Entities.Util.UIPlayer
         public string APPEAR_TRIGGER { get; private set; } = "Appear";
 		private Animator animator;
 
-        private void Start()
+        private void Awake()
         {
             animator = GetComponent<Animator>();
         }

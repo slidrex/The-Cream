@@ -28,7 +28,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
         }
         protected virtual void OnAbilActivate(Vector2 castPos, T player)
         {
-            ResetTimer();
+            ResetCooldown();
             Editor.Editor.Instance.PlayerSpace.TrySpendMana(BaseManacost);
             OnActivate(castPos, player);
         }

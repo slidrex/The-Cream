@@ -11,4 +11,8 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces
         float TimeSinceActivation { get; }
         float BaseCooldown { get; }
     }
+    internal interface ICooldownResetter
+    {
+        void ResetCooldown();
+    }
 }

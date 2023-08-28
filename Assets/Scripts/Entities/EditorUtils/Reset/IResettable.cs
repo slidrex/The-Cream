@@ -3,7 +3,7 @@
     internal interface IResettable
     {
         /// <summary>
-        /// Start method for Entity.
+        /// Calls when player moves by tile element.
         /// </summary>
         void OnReset();
     }

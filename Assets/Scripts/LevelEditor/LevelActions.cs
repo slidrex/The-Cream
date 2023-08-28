@@ -10,7 +10,6 @@ public class LevelActions : MonoBehaviour, IActivateButton
     public void ActivateButton(ButtonType type)
     {
         EnableButton(type);
-        print("Change activate button to " + type.ToString());
 
 		OnButtonSwitched.Invoke(type);
         switch (type)

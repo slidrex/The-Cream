@@ -1,12 +1,16 @@
 using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Config;
 using Assets.Scripts.Databases.dto;
 using Assets.Scripts.Databases.dto.Units;
 using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Entities.Player;
+using Assets.Scripts.Entities.Player.Skills;
 using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
+using Assets.Scripts.Entities.Reset;
 using Assets.Scripts.Entities.Util.Config.Input;
 using Assets.Scripts.Entities.Util.Cooldown;
+using Assets.Scripts.Level;
 using Assets.Scripts.LevelEditor;
 using System;
 using System.Collections.Generic;
@@ -28,7 +32,8 @@ internal class RuntimeSystem : PlacementSystem
     {
         _currentRuntimeDatabase = _defaultRuntimeDatabase;
         ConfigureDatabase();
-        entityHolder = Resources.Load<RuntimeEntityHolder>("UI/RuntimeEntityHolder");
+		LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnLevelModeChanged;
+		entityHolder = Resources.Load<RuntimeEntityHolder>("UI/RuntimeEntityHolder");
         base.Awake();
     }
     private void ConfigureDatabase()
@@ -110,6 +115,14 @@ internal class RuntimeSystem : PlacementSystem
             skills.Add(obj);
         }
     }
+    private void ResetSkillsCooldown()
+    {
+        foreach(var skill in Editor.Instance.PlayerSpace.GetPlayerSkillModels())
+        {
+            var cooldownable = skill.Skill as ICooldownResetter;
+            cooldownable.ResetCooldown();
+        }
+    }
     private KeyCode GetHeroAbilityKey(int i)
     {
         switch(i)
@@ -189,8 +202,14 @@ internal class RuntimeSystem : PlacementSystem
             OnPlace -= PlaceEntity;
         }
     }
-    private void OnDisable()
+	private void OnDisable()
     {
-        OnPlace -= PlaceEntity;
+		OnPlace -= PlaceEntity;
     }
+
+	public void OnLevelModeChanged(GameMode mode)
+	{
+        print(mode);
+        if (mode == GameMode.RUNTIME) ResetSkillsCooldown();
+	}
 }

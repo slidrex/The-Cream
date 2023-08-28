@@ -36,6 +36,7 @@ namespace Assets.Scripts.Stage
         private void Awake()
         {
 			Instance._levelActions.OnButtonSwitched = OnButtonSwitched;
+			LevelCompositeRoot.Instance.Runner.TriggerResettableIterfaces();
 			Singleton = this;
         }
         public static StageController Singleton { get; private set; }
@@ -45,11 +46,12 @@ namespace Assets.Scripts.Stage
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged += OnEntityDamaged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie += OnEntityDie;
             _camera = Camera.main;
-            Editor.Editor.Instance._spaceController.OnSpaceChanged = OnSpaceChanged;
+            Editor.Editor.Instance._spaceController.OnSpaceChanged += OnSpaceChanged;
         }
         private void OnDisable()
         {
-            LevelCompositeRoot.Instance.LevelInfo.OnRegisterUnsubscribe(OnEntitySpawn);
+			Editor.Editor.Instance._spaceController.OnSpaceChanged -= OnSpaceChanged;
+			LevelCompositeRoot.Instance.LevelInfo.OnRegisterUnsubscribe(OnEntitySpawn);
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged -= OnEntityDamaged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie -= OnEntityDie;
         }
@@ -112,9 +114,19 @@ namespace Assets.Scripts.Stage
         public void RestoreRuntime()
         {
             LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.RUNTIME);
-            Instance._inputManager.SetActivePreviewEntity(false);
+            TriggerEntityResets(false);
+
+			Instance._inputManager.SetActivePreviewEntity(false);
             Instance._levelActions.ActivateButton(ButtonType.STOP_RUNTIME);
             _runtimeActivated = true;
+        }
+        private void TriggerEntityResets(bool onCancelled)
+        {
+            foreach(var entity in LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities)
+            {
+                if (onCancelled) entity.OnWaveCancelled();
+                else entity.OnWaveStarted();
+            }
         }
         private void OnEntityDamaged()
         {
@@ -126,7 +138,8 @@ namespace Assets.Scripts.Stage
         }
         public void StopLevel()
         {
-            LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
+			TriggerEntityResets(true);
+			LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
             Instance._levelActions.ActivateButton(ButtonType.NONE);
             OnSpaceChanged(Instance._spaceController.CurrentSpaceReqiured);
         }
@@ -138,6 +151,7 @@ namespace Assets.Scripts.Stage
         public void Move(Direction direction)
         {
             var temp = _currentElement;
+            LevelCompositeRoot.Instance.Runner.TriggerResettableIterfaces();
             UpdateMinimap(direction);
             OnDockspaceMoved?.Invoke();
 
@@ -189,7 +203,7 @@ namespace Assets.Scripts.Stage
 		}
         private void SetFloorTextIndex(int floor)
         {
-            UIEventCompositeRoot.Instance.LevelTitle.gameObject.GetComponent<ListIndex>().Index = floor + 1;
+            UIEventCompositeRoot.Instance.LevelTitle.gameObject.GetComponent<ListIndex>().Index = floor;
 			UIEventCompositeRoot.Instance.LevelTitle.EnableText();
 
         }
@@ -204,7 +218,6 @@ namespace Assets.Scripts.Stage
             _player.HousingElement = _currentElement;
             Instance._spaceController.SetMaxSpaceReqiured(element.EditorSpaceRequired);
             _camera.orthographicSize = _currentElement.CameraSize;
-            //if (LevelCompositeRoot.Instance.Runner.CurrentMode == Editor.GameMode.RUNTIME) LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.RUNTIME);
         }
         private void EnableDockspace()
         {

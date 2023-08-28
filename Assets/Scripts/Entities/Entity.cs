@@ -22,11 +22,11 @@ namespace Assets.Scripts.Entities
         {
             LevelCompositeRoot.Instance.LevelInfo.UnregisterEntity(this);
         }
-        public void OnBeforeReset()
+        public void OnWaveStarted()
         {
             EntityBaseStrategy.OnBeforeReset(this);
         }
-        public void OnAfterReset()
+        public void OnWaveCancelled()
         {
             EntityBaseStrategy.OnAfterReset(this);
         }

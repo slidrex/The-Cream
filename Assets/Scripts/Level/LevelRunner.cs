@@ -26,30 +26,17 @@ namespace Assets.Scripts.Level
             if (mode == CurrentMode && mode != GameMode.UNASSIGNED) throw new Exception($"Level mode is already set to {mode}!!");
             PreviousGameMode = CurrentMode;
             CurrentMode = mode;
-            TriggerResets(mode);
+
+            OnLevelModeChanged.Invoke(mode);
             foreach (var obj in _runHandlers)
             {
-                obj.OnLevelRun(mode == GameMode.RUNTIME? true : false);
+                obj.OnLevelRun(mode == GameMode.RUNTIME);
             }
 
-            OnLevelModeChanged?.Invoke(mode);
         }
-        private void TriggerResets(GameMode mode)
+        public void TriggerResettableIterfaces()
         {
-            if(mode == GameMode.EDIT || (mode == GameMode.NONE && PreviousGameMode == GameMode.UNASSIGNED))
-                foreach(var obj in _resetHandlers)
-                {
-                    obj.OnReset();
-                }
-
-            foreach(var entity in LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities)
-            {
-                if (mode == GameMode.RUNTIME)
-                {
-                    entity.OnBeforeReset();
-                }
-                else if(mode == GameMode.EDIT) entity.OnAfterReset();
-            }
+            foreach (var trigger in _resetHandlers) trigger.OnReset();
         }
     }
 }

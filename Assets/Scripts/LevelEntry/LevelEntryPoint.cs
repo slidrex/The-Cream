@@ -97,12 +97,8 @@ namespace Assets.Scripts.LevelEntry
         private void OnStageEnd()
         {
             var portal = Instantiate(_portal, FindObjectOfType<Player>().transform.position, Quaternion.identity);
-            print(_currentStageLevel + " " + _internalLevels.Length);
-            portal.OnActivateAction = _currentStageLevel >= _internalLevels.Length ? EndLevelPortalAction : NextLevelPortalAction;
-        }
-        private void NextLevelPortalAction()
-        {
-            StartNextStageLevel();
+            
+            portal.OnActivateAction = _currentStageLevel >= _internalLevels.Length ? EndLevelPortalAction : StartNextStageLevel;
         }
         private void EndLevelPortalAction()
         {

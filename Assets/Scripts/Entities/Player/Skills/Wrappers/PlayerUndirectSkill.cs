@@ -17,7 +17,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
             if (!CooldownStrategy.IsCooldownPassed(this) || DisableActivate || !playerSpace.TrySpendMana(BaseManacost)) return false;
             Editor.Editor.Instance.PreviewManager.PerformAction(new LevelEditor.PreviewManager.Config((Vector2 v) => OnActivate(player as T), holder) { Status = LevelEditor.PreviewManager.PreviewStatus.DISABLED});
 
-            ResetTimer();
+            ResetCooldown();
             return true;
         }
         protected virtual void OnActivate(T player)

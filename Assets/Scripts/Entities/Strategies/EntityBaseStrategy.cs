@@ -41,6 +41,7 @@ namespace Assets.Scripts.Entities.Strategies
         public static void OnAfterReset(Entity entity)
         {
             int instId = entity.GetInstanceID();
+
             if(_entities.TryGetValue(instId, out var stats))
             {
                 entity.transform.position = stats.AwakePosition;

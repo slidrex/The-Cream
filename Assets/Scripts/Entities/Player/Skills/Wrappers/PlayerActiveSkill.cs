@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Skills
 {
-    internal abstract class PlayerActiveSkill<T> : PlayerSkill, ICooldownable, IActivatable where T : Player
+    internal abstract class PlayerActiveSkill<T> : PlayerSkill, ICooldownResetter, ICooldownable, IActivatable where T : Player
     {
         [field: SerializeField] public int BaseManacost { get; set; }
         [field: SerializeField] public float BaseCooldown { get; set; }
@@ -22,9 +22,9 @@ namespace Assets.Scripts.Entities.Player.Skills
                 TimeSinceActivation += Time.deltaTime;
             }
         }
-        protected void ResetTimer()
-        {
+		public void ResetCooldown()
+		{
             TimeSinceActivation = 0;
-        }
-    }
+		}
+	}
 }
