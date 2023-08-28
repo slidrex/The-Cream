@@ -15,9 +15,12 @@ MonoBehaviour:
   <Name>k__BackingField: mushroom
   <DescriptionKey>k__BackingField: mushroom_desc
   <Characteristics>k__BackingField:
-  - IconType: 0
-    CharacteristicIcon: {fileID: 0}
-    Value: 1.45
   - IconType: 2
-    CharacteristicIcon: {fileID: -369068460, guid: 5907234d4f6deb449bb1d084bf488a7f, type: 3}
-    Value: 1.03
+    CharacteristicIcon: {fileID: 0}
+    Value: 
+  - IconType: 3
+    CharacteristicIcon: {fileID: 0}
+    Value: 
+  - IconType: 1
+    CharacteristicIcon: {fileID: 0}
+    Value: 

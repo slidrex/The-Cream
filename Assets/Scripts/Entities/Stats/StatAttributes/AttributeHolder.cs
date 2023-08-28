@@ -32,6 +32,7 @@ namespace Assets.Scripts.Entities.Stats.StatAttributes
         }
         public float GetValue<T>() where T : Stat => GetAttribute<T>().GetValue();
         public int GetValueInt<T>() where T : Stat => (int)GetAttribute<T>().GetValue();
+        public Stat[] GetStats() => _attributes;
         public T GetAttribute<T>() where T : Stat
         {
             if(TryGetAttribute<T>(out var attrib))

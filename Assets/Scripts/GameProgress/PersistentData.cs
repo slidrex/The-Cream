@@ -10,6 +10,6 @@ namespace Assets.Scripts.GameProgress
         public static int CurrentGameLevel = 1;
         public static int SelectedLanguageIndex;
         public static bool IsTutorialPassed;
-        public static HashSet<CharacterDatabaseModel.CharacterID> UnlockedCharacters = new () { CharacterDatabaseModel.CharacterID.THORS };
+        public static HashSet<CharacterDatabaseModel.CharacterID> UnlockedCharacters = new () { CharacterDatabaseModel.CharacterID.KNIGHT };
     }
 }

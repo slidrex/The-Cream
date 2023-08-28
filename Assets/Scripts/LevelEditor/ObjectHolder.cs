@@ -9,6 +9,9 @@ using System;
 using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Databases.dto.Units;
 using UnityEngine.Localization.Components;
+using Assets.Scripts.Entities.Stats.StatAttributes;
+using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
+using Assets.Scripts.Entities;
 
 internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -90,11 +93,12 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
         _nameLocalizator.RefreshString();
         _descriptionLocalizator.RefreshString();
 
-
 		for (int i = 0; i < data.Entities[id].GetModel().Description.Characteristics.Length; i++)
         {
+            ObjectDescription.IconType iconType = data.Entities[id].GetModel().Description.Characteristics[i].IconType;
             CharacteristicObjects[i].gameObject.SetActive(true);
-            CharacteristicObjects[i].Init(GetIcon(data.Entities[id].GetModel().Description.Characteristics[i].IconType, data, id, i), data.Entities[id].GetModel().Description.Characteristics[i].Value);
+            CharacteristicObjects[i].Init(GetIcon(iconType, data, id, i),
+               GetValue(iconType, data, id, i));
         }
     }
     private Sprite GetIcon<T>(ObjectDescription.IconType iconType, IEntityDatabase<T> data, int id, int i) where T : EntityModel
@@ -109,11 +113,47 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
                 {
                     return CharacteristicIcons.Instance._healthIcon;
                 }
+            case ObjectDescription.IconType.SPEED:
+                {
+                    return CharacteristicIcons.Instance._speedIcon;
+                }
+            case ObjectDescription.IconType.ATTACK_SPEED:
+                {
+                    return CharacteristicIcons.Instance._attackSpeedIcon;
+                }
             case ObjectDescription.IconType.OTHER:
                 {
                     return data.Entities[id].GetModel().Description.Characteristics[i].CharacteristicIcon;
                 }
             default: return null;
+        }
+    }
+    private string GetValue<T>(ObjectDescription.IconType iconType, IEntityDatabase<T> data, int id, int i) where T : EntityModel
+    {
+        AttributeHolder statHolder = data.Entities[id].GetModel().Entity.Stats;
+        switch (iconType)
+        {
+            case ObjectDescription.IconType.DAMAGE:
+                {
+                    return statHolder.GetValueInt<DamageStat>().ToString();
+                }
+            case ObjectDescription.IconType.HEALTH:
+                {
+                    return statHolder.GetValueInt<MaxHealthStat>().ToString();
+                }
+            case ObjectDescription.IconType.SPEED:
+                {
+                    return statHolder.GetValueInt<SpeedStat>().ToString();
+                }
+            case ObjectDescription.IconType.ATTACK_SPEED:
+                {
+                    return statHolder.GetValueInt<AttackSpeedStat>().ToString();
+                }
+            case ObjectDescription.IconType.OTHER:
+                {
+                    return data.Entities[id].GetModel().Description.Characteristics[i].Value;
+                }
+            default: return "...";
         }
     }
 

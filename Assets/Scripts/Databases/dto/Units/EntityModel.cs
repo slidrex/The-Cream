@@ -11,7 +11,7 @@ namespace Assets.Scripts.Databases.dto.Units
 {
     internal abstract class EntityModel : ScriptableObject
     {
-        [SerializeField] protected BaseEntity _entity;
+        [SerializeField] protected Entity _entity;
         [SerializeField] private Sprite _icon;
         [SerializeField] private ObjectDescription _description;
         public virtual void Configure() { }
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Databases.dto.Units
         public class Model
         {
             public Sprite Icon;
-            public BaseEntity Entity;
+            public Entity Entity;
             public ObjectDescription Description { get; private set; }
             public IPlaceable Placeable;
 

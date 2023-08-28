@@ -14,7 +14,7 @@ public class ObjectDescription : ScriptableObject
     {
         public IconType IconType;
         public Sprite CharacteristicIcon;
-        public float Value;
+        public string Value;
     }
 
     public enum IconType

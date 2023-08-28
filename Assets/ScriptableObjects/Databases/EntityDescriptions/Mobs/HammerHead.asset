@@ -14,4 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: hammer_head
   <DescriptionKey>k__BackingField: hammer_head_desc
-  <Characteristics>k__BackingField: []
+  <Characteristics>k__BackingField:
+  - IconType: 0
+    CharacteristicIcon: {fileID: 0}
+    Value: 
+  - IconType: 1
+    CharacteristicIcon: {fileID: 0}
+    Value: 
+  - IconType: 2
+    CharacteristicIcon: {fileID: 0}
+    Value: 
+  - IconType: 3
+    CharacteristicIcon: {fileID: 0}
+    Value: 

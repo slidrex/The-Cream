@@ -17,7 +17,13 @@ MonoBehaviour:
   <Characteristics>k__BackingField:
   - IconType: 0
     CharacteristicIcon: {fileID: 0}
-    Value: 0
+    Value: 
   - IconType: 1
     CharacteristicIcon: {fileID: 0}
-    Value: 0
+    Value: 
+  - IconType: 2
+    CharacteristicIcon: {fileID: 0}
+    Value: 
+  - IconType: 3
+    CharacteristicIcon: {fileID: 0}
+    Value: 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0b86eaab9d7094eb053dff1f6bca77, type: 3}
   m_Name: SpikeSpread
   m_EditorClassIdentifier: 
-  Icon: {fileID: 620306682, guid: 5907234d4f6deb449bb1d084bf488a7f, type: 3}
+  Icon: {fileID: -111298268, guid: 2953efbc13839354f938b7f0e2cc03ce, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: 5050cc7d62ee944459b98fa8ad8f1b45, type: 2}
   <BaseManacost>k__BackingField: 10
   <BaseCooldown>k__BackingField: 3

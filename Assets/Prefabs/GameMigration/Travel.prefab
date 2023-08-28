@@ -49,8 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165a1a19b953ad343879d634820f31bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_damageIcon>k__BackingField: {fileID: 822060104, guid: 7a592a92d0cb1b445b1171867a34f10b, type: 3}
-  <_healthIcon>k__BackingField: {fileID: 547199261, guid: 5907234d4f6deb449bb1d084bf488a7f, type: 3}
+  <_damageIcon>k__BackingField: {fileID: 1813776638, guid: 5443c9d577b63064899ee540bda514c9, type: 3}
+  <_healthIcon>k__BackingField: {fileID: 1191378003, guid: 5443c9d577b63064899ee540bda514c9, type: 3}
+  <_speedIcon>k__BackingField: {fileID: -1615577357, guid: 5443c9d577b63064899ee540bda514c9, type: 3}
+  <_attackSpeedIcon>k__BackingField: {fileID: -1720487456, guid: 5443c9d577b63064899ee540bda514c9, type: 3}
 --- !u!1 &2099020006
 GameObject:
   m_ObjectHideFlags: 0
