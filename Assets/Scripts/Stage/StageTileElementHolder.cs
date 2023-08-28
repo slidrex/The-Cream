@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Entities;
+using Assets.Scripts.Functions;
 using Assets.Scripts.Level;
 using Assets.Scripts.Level.Tilemap;
 using Assets.Scripts.UI.MiniMap;
@@ -25,9 +26,12 @@ namespace Assets.Scripts.Stage
         public RuntimeDatabase SpecificRuntimeDatabase;
         public void Configure()
         {
-            PlacementTileMap = GetComponentInChildren<BaseTilemap>(true).GetMap();
+            InitialElement.IsEmpty = true;
+			PlacementTileMap = GetComponentInChildren<BaseTilemap>(true).GetMap();
             LimitingTileMap = GetComponentInChildren<LimitingTilemap>(true).GetMap();
-        }
+            LinkReducants();
+
+		}
         private HashSet<int> _bannedIndeces = new();
         private MiniMapController _map;
         private Queue<ElementPojo> _elements = new();
@@ -65,5 +69,15 @@ namespace Assets.Scripts.Stage
             }
 
         }
-    }
+		private void LinkReducants()
+		{
+            foreach (var element in GetComponentsInChildren<StageTileElement>())
+            {
+                foreach(var nest in element.Elements)
+                {
+                    nest.Element.TryAddDirection(CreamUtilities.GetOppositeDirection(nest.Direction), element);
+                }
+            }
+		}
+	}
 }

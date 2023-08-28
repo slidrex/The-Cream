@@ -83,28 +83,29 @@ namespace Assets.Scripts.Stage
             if(entities == null || entities.Count == 0 || entities.Any(x => x is IDamageable d && d.CurrentHealth > 0) == false) 
             {
 				OnStageCleanedUp?.Invoke();
+                _currentElement.IsEmpty = true;
 				if (!DisableAutoactivateWave)
                     ActivateWave();
 			}
         }
         public void ActivateWave()
         {
-                if(_currentElement == _endElement)
+            if(_currentElement == _endElement)
+            {
+                OnLastStageCompleted();
+            }
+            else
+            {
+                Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
+                var ents = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities;
+                for(int i = 0; i < ents.Count; i++)
                 {
-                    OnLastStageCompleted();
+                    if (ents[i] is IStatic == false)
+                        Destroy(ents[i].gameObject);
                 }
-                else
-                {
-                    Instance._levelActions.ActivateButton(ButtonType.MOVE_NEXT_LEVEL);
-                    var ents = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities;
-                    for(int i = 0; i < ents.Count; i++)
-                    {
-                        if (ents[i] is IStatic == false)
-                            Destroy(ents[i].gameObject);
-                    }
-                }
+            }
 
-				LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
+			LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
 
         }
         private void OnLastStageCompleted()
@@ -155,15 +156,15 @@ namespace Assets.Scripts.Stage
             UpdateMinimap(direction);
             OnDockspaceMoved?.Invoke();
 
-			Instance.Dockspace.DisableDockspace();
-            for (int i = 0; i < temp.Elements.Length; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
-            
-            if(_currentElement.EditorSpaceRequired > 0)
+            for (int i = 0; i < temp.Elements.Count; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
+
+            if (_currentElement.IsEmpty == false)
             {
-			    LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
+                LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
+                Instance.Dockspace.DisableDockspace();
             }
-            else LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.NONE);
-        }
+            else EnableDockspace();
+		}
         private void UpdateMinimap(Direction direction)
         {
             var map = LevelCompositeRoot.Instance.MiniMap;
