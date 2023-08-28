@@ -11,6 +11,7 @@ namespace Assets.Scripts.Entities
     [RequireComponent(typeof(Collider2D))]
     internal abstract class Entity : BaseEntity
     {
+        public bool IsStatic { get; set; }
         public abstract EntityTypeBase ThisType { get; }
         public abstract EntityTypeBase TargetType { get; }
         public SpriteRenderer SpriteRenderer { get; private set; }

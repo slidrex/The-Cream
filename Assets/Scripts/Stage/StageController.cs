@@ -57,7 +57,7 @@ namespace Assets.Scripts.Stage
         }
         private void OnEntitySpawn(Entity entity, bool isSpawned)
         {
-            if (isSpawned && entity is IStatic == false) entity.HousingElement = _currentElement;
+            if (isSpawned && entity.IsStatic == false) entity.HousingElement = _currentElement;
         }
         private void OnEditorFullfilled()
         {
@@ -100,7 +100,7 @@ namespace Assets.Scripts.Stage
                 var ents = LevelCompositeRoot.Instance.LevelInfo.RuntimeEntities;
                 for(int i = 0; i < ents.Count; i++)
                 {
-                    if (ents[i] is IStatic == false)
+                    if (ents[i].IsStatic == false)
                         Destroy(ents[i].gameObject);
                 }
             }

@@ -18,7 +18,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Entities.Player
 {
-    internal class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IStatic, IDamageCorrector, IKillCatcher
+    internal class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IDamageCorrector, IKillCatcher
     {
         private EntityLevelBar _levelBar;
         public override EntityTypeBase ThisType => new EntityType<PlayerTag>(PlayerTag.PLAYER);

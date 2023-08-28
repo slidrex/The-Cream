@@ -1,5 +1,6 @@
 ﻿using Assets.Editor;
 using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Strategies;
 using Assets.Scripts.Entities.Structures.Portal;
@@ -35,8 +36,15 @@ namespace Assets.Scripts.LevelEntry
 
 
 
-            _stageController.OnLastStageLeft += OnStageLevelOver;
+			_stageController.OnLastStageLeft += OnStageLevelOver;
             LevelCompositeRoot.Instance.Runner.SetGameMode(_startingGamemode);
+        }
+        private void ConfigureStaticEntities()
+        {
+            foreach(var e in FindObjectsOfType<Entity>())
+            {
+                e.IsStatic = true;
+            }
         }
         private void OnDestroy()
         {
@@ -71,7 +79,9 @@ namespace Assets.Scripts.LevelEntry
             LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.UNASSIGNED);
             OnHolderActivate.Invoke(_internalLevels[_currentStageLevel]);
             EntityBaseStrategy.OnGameStart();
-            NotifyHandlers();
+            ConfigureStaticEntities();
+
+			NotifyHandlers();
             _currentStageLevel++;
         }
         private void NotifyHandlers()

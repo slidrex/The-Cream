@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Mobs.Mobs.Dummy
 {
-    internal class BigDummy : ChaseMob, IHealthChangedHandler, IStatic
+    internal class BigDummy : ChaseMob, IHealthChangedHandler
     {
         public override byte SpaceRequired => 8;
 

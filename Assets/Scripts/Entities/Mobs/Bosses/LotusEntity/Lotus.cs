@@ -9,7 +9,7 @@ using System;
 
 namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 {
-	internal class Lotus : Entity, IDamageable, IHealthChangedHandler, IInvulnerable, IStatic
+	internal class Lotus : Entity, IDamageable, IHealthChangedHandler, IInvulnerable
 	{
 		public override EntityTypeBase ThisType => new EntityType<MobTag>().Any();
 
