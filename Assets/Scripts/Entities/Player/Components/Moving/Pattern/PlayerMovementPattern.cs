@@ -14,7 +14,11 @@ namespace Assets.Scripts.Entities.Player.Moving
 		protected bool TryGetNextWaypoint(int currentWaypoint, Path path, out int newWaypoint)
 		{
 			newWaypoint = currentWaypoint;
-			if (path == null || path.vectorPath.Count <= currentWaypoint) return false;
+
+			if (path == null || path.vectorPath.Count <= currentWaypoint)
+			{
+				return false;
+			}
 			bool isInCurrentPoint = Vector2.SqrMagnitude(path.vectorPath[currentWaypoint] - transform.position) <= 0.2f;
 			if (isInCurrentPoint)
 			{

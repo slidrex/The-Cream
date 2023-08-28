@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1161882624473706107}
   - component: {fileID: 1161882624473706104}
-  - component: {fileID: 1161882624473706106}
   - component: {fileID: 1161882624473706101}
   - component: {fileID: 1161882624473706096}
   - component: {fileID: 1161882624473706102}
@@ -20,6 +19,7 @@ GameObject:
   - component: {fileID: 2858100222954377627}
   - component: {fileID: 8960914611424588283}
   - component: {fileID: 2624457855376518598}
+  - component: {fileID: 1077665625121417996}
   m_Layer: 0
   m_Name: HammerHead
   m_TagString: Untagged
@@ -95,22 +95,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1161882624473706106
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161882624473706105}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.35
 --- !u!50 &1161882624473706101
 Rigidbody2D:
   serializedVersion: 4
@@ -245,6 +229,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1077665625121417996
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161882624473706105}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.011345178, y: 0.079416394}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.6666667, y: 2.6666667}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7379841, y: 1.1917918}
+  m_EdgeRadius: 0
 --- !u!1 &3826398659402593719
 GameObject:
   m_ObjectHideFlags: 0

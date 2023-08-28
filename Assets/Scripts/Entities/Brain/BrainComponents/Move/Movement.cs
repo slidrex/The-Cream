@@ -24,6 +24,7 @@ namespace Assets.Scripts.Entities.Move
         {
             _animator = GetComponent<Animator>();
             _rb = GetComponent<Rigidbody2D>();
+            _rb.freezeRotation = true;
         }
 
         public void EnableMovement(bool enable, float disableTime = -10)

@@ -87,7 +87,7 @@ internal class EditSystem : PlacementSystem
         if (placementValidity == false) return;
 
         var model = (EditorEntityModel.EditorModel)_currentEditorDatabase.Entities[selectedEntityIndex].GetModel();
-        var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
+        var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 0)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
 
         placedEntities.Add(entity);
 

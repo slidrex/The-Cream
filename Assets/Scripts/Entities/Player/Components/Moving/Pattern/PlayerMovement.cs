@@ -35,6 +35,8 @@ namespace Assets.Scripts.Entities.Player.Moving
 		private Facing _facing;
 		private Entity _lastSelectedEntity;
         private const string MOVE_X_TRIGGER = "moveX";
+		private const float _timeToRefindEmeny = 1.0f;
+		private float _timeSinceToRefind;
         public enum TargetType
 		{
 			POINT,
@@ -138,6 +140,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 				_targetMovement.SetTarget(entity.transform);
 				_targetType = TargetType.OBSTACLE;
 			}
+			_timeSinceToRefind = 0;
 			SelectEntity(entity);
 			SetNewPath();
 		}
@@ -168,16 +171,11 @@ namespace Assets.Scripts.Entities.Player.Moving
 				return;
 			}
 
-			if (_targetType != TargetType.POINT && (_targetMovement.IsWithinSafeDistance() == false || _targetType == TargetType.OBSTACLE))
+			if (_targetType != TargetType.POINT && (_targetMovement.IsWithinSafeDistance() == false || _targetType == TargetType.OBSTACLE) && _timeSinceToRefind <= 0)
 			{
-				var tempPath = _targetMovement.GetPath(_seeker, _path == null);
-
-				if(tempPath != null)
-				{
-					_path = tempPath;
-					SetNewPath();
-				}
+				RefindEnemyTarget();
 			}
+			else if(_timeSinceToRefind > 0) _timeSinceToRefind -= Time.deltaTime;
 
 			if (_targetType == TargetType.POINT) _isMoving = _pointMovement.TryGetMoveVector(out moveVector, currentWaypoint, out currentWaypoint, _path);
 			else if (_targetType == TargetType.ENEMY)
@@ -203,6 +201,17 @@ namespace Assets.Scripts.Entities.Player.Moving
                 float resultVector = Mathf.Abs(moveVector.x) + Mathf.Abs(moveVector.y);
                 _animator.SetInteger(MOVE_X_TRIGGER, Mathf.RoundToInt(resultVector));
             }
+		}
+		private void RefindEnemyTarget()
+		{
+			print("refind");
+			var tempPath = _targetMovement.GetPath(_seeker, _path == null);
+			_timeSinceToRefind = _timeToRefindEmeny;
+			if (tempPath != null)
+			{
+				_path = tempPath;
+				SetNewPath();
+			}
 		}
 		private void FindNewEnemy()
 		{
