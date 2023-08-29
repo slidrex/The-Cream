@@ -3857,7 +3857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11178b06c32200549b2cfaaea79e2347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMenuMusic: {fileID: 8300000, guid: 616d3ed2a94bc05439e83ec7cf016973, type: 3}
+  _mainMenuMusic: {fileID: 8300000, guid: b3e146e80ac9e2944a1710f4f28aa702, type: 3}
   loadScreen: {fileID: 556295332}
   fadingScreen: {fileID: 911166052}
 --- !u!1 &475759714
@@ -12892,7 +12892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 61.320007, y: 86.110016}
+  m_AnchoredPosition: {x: 61.32007, y: 86.109985}
   m_SizeDelta: {x: 122.65, y: 25.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2024964261

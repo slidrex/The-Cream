@@ -4975,6 +4975,7 @@ GameObject:
   - component: {fileID: 3384965362358742479}
   - component: {fileID: 8897829895851618643}
   - component: {fileID: 5689828172576758456}
+  - component: {fileID: 6866234388039988322}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -5220,3 +5221,20 @@ MonoBehaviour:
   _explosionTrigger: Explosion
   _radius: 1.23
   _explosionInterval: 5
+--- !u!114 &6866234388039988322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822837471830463021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11df300cc60e9f34190a1affedf7a325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - _dropChance: 1
+    _object: {fileID: 1181620242806315016, guid: 8fd96134306fc714c9bce4cb3c53a6b9, type: 3}
+  - _dropChance: 1
+    _object: {fileID: 5711933942300849607, guid: 1018bd8fa5a03a84f82096eb1867900a, type: 3}

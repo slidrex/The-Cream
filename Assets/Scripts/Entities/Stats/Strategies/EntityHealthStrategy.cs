@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.EntityExperienceLevel;
+using Assets.Scripts.Entities.Mobs.Loot;
 using Assets.Scripts.Entities.Stats.Interfaces;
 using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.States;
@@ -51,6 +52,10 @@ namespace Assets.Scripts.Entities.Stats.Strategies
                 LevelCompositeRoot.Instance.LevelInfo.OnEntityDie.Invoke(entity);
                 if (entity is IExperienceGainer incomingGain && dealer is ILevelEntity exp) exp.AddExperience(incomingGain.OnDieExp); 
                 damageable.OnDie();
+                if(entity.TryGetComponent<LootTable>(out var table))
+                {
+                    table.DropLoot();
+                }
             }
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged.Invoke();
         }

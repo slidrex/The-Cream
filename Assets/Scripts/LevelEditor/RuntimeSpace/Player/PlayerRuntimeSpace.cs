@@ -56,7 +56,11 @@ namespace Assets.Scripts.LevelEditor.RuntimeSpace.Player
             if (mana > CurrentMana) throw new Exception("Mana set below zero.");
             else SetMana(CurrentMana - mana);
         }
-        public bool TrySpendMana(int mana, bool addModelErrorOnFail = true)
+		public void HealMana(int mana)
+		{
+			SetMana(Mathf.Clamp(CurrentMana + mana, 0, _character.ManaPool));
+		}
+		public bool TrySpendMana(int mana, bool addModelErrorOnFail = true)
         {
             if (IsEnoughMana(mana, addModelErrorOnFail) == false) return false;
             else SetMana(CurrentMana - mana);
