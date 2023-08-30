@@ -11,8 +11,8 @@ namespace Assets.Scripts.Entities.EntityExperienceLevel.UI
 {
     internal class EntityLevelBar : MonoBehaviour
     {
-        [UnityEngine.SerializeField] private Image _expValue;
-        [UnityEngine.SerializeField] private TextMeshProUGUI _level;
+        [SerializeField] private Image _expValue;
+        [SerializeField] private TextMeshProUGUI _level;
         public void UpdateBar(ILevelEntity levelEntity)
         {
             _level.text = levelEntity.CurrentLevel.ToString();

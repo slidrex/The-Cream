@@ -9,8 +9,9 @@ namespace Assets.Scripts.Entities.AI.SightStalking
 {
 	internal sealed class Facing : MonoBehaviour
 	{
-		public const int RIGHT = 1;
-		public const int LEFT = -1;
+		public readonly int RIGHT = 1;
+		public readonly int LEFT = -1;
+
 		public enum SightDirection
 		{
 			RIGHT,
