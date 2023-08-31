@@ -10133,6 +10133,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1579376515382835491, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 54.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1579376515382835492, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
       propertyPath: _entity
       value: 
@@ -10225,9 +10229,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3638468183144377123, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 54.000042
+      objectReference: {fileID: 0}
     - target: {fileID: 5141464745620436078, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7178465695650615502, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
       propertyPath: _manualAttack
@@ -10248,6 +10256,10 @@ PrefabInstance:
     - target: {fileID: 7178465695650615502, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
       propertyPath: ATTACK_TRIGGER.Array.data[1]
       value: AlternativeAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972367019775745310, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5804247929875481407, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}

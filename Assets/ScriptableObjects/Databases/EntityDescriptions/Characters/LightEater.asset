@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: LightEater
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Light Eater
-  <Description>k__BackingField: "\u0435\u0441\u0442 \u0441\u0432\u0435\u0442"
+  <DescriptionKey>k__BackingField: 
   <Characteristics>k__BackingField: []
-  Skills: []
-  <CharacterSprite>k__BackingField: {fileID: 21300000, guid: 2e9487968582d7c43a20570c7d12a5ae, type: 3}
-  <CharacterButtonIcon>k__BackingField: {fileID: 21300000, guid: 2e9487968582d7c43a20570c7d12a5ae, type: 3}
+  Skills:
+  - {fileID: 11400000, guid: cfa0eef4ee94da24fb2e65f525ee24e4, type: 2}
+  - {fileID: 11400000, guid: 980c586a74b8cfe419ee3a545a045171, type: 2}
+  - {fileID: 11400000, guid: 7a3420c71f682c341bcc13ea52d767d0, type: 2}
+  <CharacterSprite>k__BackingField: {fileID: 931886081, guid: ae58ec5ff96fee545b50dc619e068116, type: 3}
+  <CharacterButtonIcon>k__BackingField: {fileID: 1810601177, guid: ae58ec5ff96fee545b50dc619e068116, type: 3}
