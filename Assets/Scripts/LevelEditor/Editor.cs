@@ -14,6 +14,7 @@ using Assets.Scripts.Sound.Soundtrack;
 using Assets.Scripts.Stage;
 using System;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.Tilemaps;
 
 namespace Assets.Editor
@@ -48,7 +49,7 @@ namespace Assets.Editor
             Instance = this;
             FindObjectOfType<LevelEntryPoint>().OnHolderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
             grid = FindObjectOfType<Grid>();
-
+            Analytics.SendEvent("character_chosen", SelectedCharacterId.ToString());
             PlayerSpace.InitPlayer(_specificCharacterModel == null ? GameLevelDatabaseProvider.Instance.CharacterDatabase.GetCharacter(SelectedCharacterId) : _specificCharacterModel);
 			
             PlayerSpace.OnConfigure();

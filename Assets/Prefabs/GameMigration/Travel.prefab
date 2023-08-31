@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 6380892703023602955}
   - component: {fileID: 3600895935464057524}
   - component: {fileID: 1367270856607376370}
+  - component: {fileID: 1124516129044301420}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -324,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SoundPlayer>k__BackingField: {fileID: 1367270856607376370}
   <SoundTrackPlayer>k__BackingField: {fileID: 6960555495164998478}
+  <SoundEffectStorage>k__BackingField: {fileID: 1124516129044301420}
 --- !u!114 &1367270856607376370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +338,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4beaa84a6ce8cb249bf41fcbf0d74968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1124516129044301420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581213824140577503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a32d7b7565733e44978ff33e4955275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonClickSound: {fileID: 0}
 --- !u!1 &1121216953115956106
 GameObject:
   m_ObjectHideFlags: 0
