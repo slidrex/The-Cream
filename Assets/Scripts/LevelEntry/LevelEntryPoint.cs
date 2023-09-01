@@ -14,7 +14,10 @@ using Assets.Scripts.Stage.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.LevelEntry
@@ -34,14 +37,22 @@ namespace Assets.Scripts.LevelEntry
             InitData();
             StartNextStageLevel();
 
-
-
-			_stageController.OnLastStageLeft += OnStageLevelOver;
+            Analytics.CustomEvent("game_started", new Dictionary<string, object>()
+            {
+                ["master_volume"] = Config.ConfigManager.Instance.AudioConfig.MasterVolume,
+                ["music_volume"] = Config.ConfigManager.Instance.AudioConfig.MusicVolumne,
+                ["soundeffect_volume"] = Config.ConfigManager.Instance.AudioConfig.SoundEffectsVolume,
+                ["music_muted"] = Config.ConfigManager.Instance.AudioConfig.MusicMuted,
+                ["soundeffect_muted"] = Config.ConfigManager.Instance.AudioConfig.SoundMuted,
+                ["selected_language"] = LocalizationSettings.SelectedLocale.LocaleName
+            });
+            _stageController.OnLastStageLeft += OnStageLevelOver;
             LevelCompositeRoot.Instance.Runner.SetGameMode(_startingGamemode);
         }
+        
         private void ConfigureStaticEntities()
         {
-            foreach(var e in FindObjectsOfType<Entity>())
+            foreach (var e in FindObjectsOfType<Entity>())
             {
                 e.IsStatic = true;
             }
@@ -58,7 +69,7 @@ namespace Assets.Scripts.LevelEntry
             _stageBeginHandlers = new List<IStageBeginHandler>();
             foreach (var e in entities)
             {
-                if(e.TryGetComponent<IStageBeginHandler>(out var handler))
+                if (e.TryGetComponent<IStageBeginHandler>(out var handler))
                 {
                     _stageBeginHandlers.Append(handler);
                 }
@@ -71,7 +82,7 @@ namespace Assets.Scripts.LevelEntry
         }
         private void StartNextStageLevel()
         {
-            if(_currentStageLevel > 0)
+            if (_currentStageLevel > 0)
                 DisablePreviousStageLevel();
             _stageController.StartStageLevel(_currentStageLevel + 1, _internalLevels[_currentStageLevel], _currentStageLevel == 0);
             _internalLevels[_currentStageLevel].gameObject.SetActive(true);
@@ -81,12 +92,12 @@ namespace Assets.Scripts.LevelEntry
             EntityBaseStrategy.OnGameStart();
             ConfigureStaticEntities();
 
-			NotifyHandlers();
+            NotifyHandlers();
             _currentStageLevel++;
         }
         private void NotifyHandlers()
         {
-            foreach(var handler in _stageBeginHandlers)
+            foreach (var handler in _stageBeginHandlers)
             {
                 handler.OnStageBegin();
             }
@@ -107,7 +118,7 @@ namespace Assets.Scripts.LevelEntry
         private void OnStageEnd()
         {
             var portal = Instantiate(_portal, FindObjectOfType<Player>().transform.position, Quaternion.identity);
-            
+
             portal.OnActivateAction = _currentStageLevel >= _internalLevels.Length ? EndLevelPortalAction : StartNextStageLevel;
         }
         private void EndLevelPortalAction()

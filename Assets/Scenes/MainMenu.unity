@@ -7580,6 +7580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SoundPlayer>k__BackingField: {fileID: 1157644817}
   <SoundTrackPlayer>k__BackingField: {fileID: 1157644815}
+  <SoundEffectStorage>k__BackingField: {fileID: 0}
 --- !u!114 &1157644820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14342,7 +14343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3283176791411002598, guid: e08045ce2a513d4429f814ada4b9b635, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 9.415894
       objectReference: {fileID: 0}
     - target: {fileID: 3283176791411002598, guid: e08045ce2a513d4429f814ada4b9b635, type: 3}
       propertyPath: m_AnchoredPosition.y

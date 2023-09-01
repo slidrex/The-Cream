@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
@@ -35,6 +37,7 @@ namespace Assets.Scripts.UI.Menu.Localization
 		}
 		private void SwitchLanguage()
 		{
+			Analytics.CustomEvent("language_switched");
 			PersistentData.SelectedLanguageIndex = (int)Mathf.Repeat(PersistentData.SelectedLanguageIndex + 1, _availableLanguages.Length);
 			ApplySelectedLanguage();
 		}

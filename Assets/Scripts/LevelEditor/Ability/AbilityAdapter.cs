@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.WSA;
 
 namespace Assets.Scripts.LevelEditor.Ability
 {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.UI.Menu.MainMenu.ActionButtons
@@ -50,6 +51,11 @@ namespace Assets.Scripts.UI.Menu.MainMenu.ActionButtons
 		public void ShowTutorialScreen(bool show)
 		{
 			_tutorialScreen.SetActive(show);
+			
+			if(show)
+				Analytics.CustomEvent("training_started", new Dictionary<string, object> { ["showed_by_start_game"] = ShowedByStartButton });
+			else if(show == false && ShowedByStartButton) Analytics.CustomEvent("training_rejected_showed_by_start_game");
+			
 			if (!PersistentData.IsTutorialPassed && ShowedByStartButton && show == false)
 			{
 				PersistentData.IsTutorialPassed = true;

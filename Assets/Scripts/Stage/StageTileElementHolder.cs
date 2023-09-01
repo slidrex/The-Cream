@@ -6,10 +6,6 @@ using Assets.Scripts.Level.Tilemap;
 using Assets.Scripts.UI.MiniMap;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

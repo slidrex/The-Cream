@@ -7,6 +7,7 @@ namespace Assets.Scripts.GameProgress
 {
     internal static class PersistentData
     {
+        public static bool IsNewbie = true;
         public static int CurrentGameLevel = 1;
         public static int SelectedLanguageIndex;
         public static bool IsTutorialPassed;

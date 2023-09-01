@@ -2,9 +2,6 @@
 using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Player;
-using Assets.Scripts.Entities.Player.Characters;
-using Assets.Scripts.Entities.Player.Skills;
-using Assets.Scripts.LevelEditor.RuntimeSpace.Player;
 using Assets.Scripts.Stage;
 using System;
 using System.Collections.Generic;
@@ -14,7 +11,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 {

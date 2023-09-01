@@ -1,12 +1,6 @@
 ﻿using Assets.Scripts.CompositeRoots;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Stage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 {

@@ -8,6 +8,6 @@ namespace Assets.Scripts.Level
 {
     internal class LevelMetaInfo
     {
-        public static int ActiveGameLevel { get; set; }
+        public static int ActiveGameLevel { get; set; } = -1;
     }
 }

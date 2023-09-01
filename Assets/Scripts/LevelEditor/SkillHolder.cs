@@ -1,9 +1,11 @@
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Entities.Player.Skills;
 using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
@@ -22,7 +24,10 @@ internal class SkillHolder : ObjectHolder
         if(skill is IActivatable active)
         {
             button.onClick.AddListener(delegate { active.TryActivate(this, player, true); });
-            Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey, () => active.TryActivate(this, player, false));
+			
+            Analytics.CustomEvent("ability_used", new Dictionary<string, object> { ["ability_name_key"] = skill.Description.Name });
+
+			Assets.Scripts.Entities.Util.Config.Input.InputManager.Bind(bindedKey, () => active.TryActivate(this, player, false));
             Cost.text = active.BaseManacost.ToString();
         }
     }

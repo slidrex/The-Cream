@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine.Analytics;
 
 namespace Assets.Scripts.GameProgress
 {
@@ -32,7 +33,8 @@ namespace Assets.Scripts.GameProgress
                         break;
                     }
             }
-            PersistentData.CurrentGameLevel = level + 1;
+			Analytics.CustomEvent("level_passed", new Dictionary<string, object>() { ["level_index"] = level});
+			PersistentData.CurrentGameLevel = level + 1;
         }
     }
 }

@@ -10,10 +10,12 @@ using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Entities.Stats.Strategies;
+using Assets.Scripts.Level;
 using Assets.Scripts.UI.Runtime;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Entities.Player
@@ -68,7 +70,8 @@ namespace Assets.Scripts.Entities.Player
         public void OnDie()
         {
             OnPlayerDie();
-            LevelCompositeRoot.Instance.BootStrapper.EndGame();
+			Analytics.CustomEvent("player_die", new Dictionary<string, object> { ["died_on_level"] = LevelMetaInfo.ActiveGameLevel });
+			LevelCompositeRoot.Instance.BootStrapper.EndGame();
         }
         private void OnPlayerDie()
         {

@@ -10,12 +10,7 @@ using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.Entities.Util.UIPlayer;
 using Pathfinding;
 using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Unity.Burst.CompilerServices;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Assets.Scripts.Entities.Player.Moving
 {

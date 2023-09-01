@@ -3,7 +3,6 @@ using Assets.Scripts.Entities.Util.Config.Menu;
 using Assets.Scripts.Sound;
 using Assets.Scripts.Sound.Soundtrack;
 using System.Collections;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
