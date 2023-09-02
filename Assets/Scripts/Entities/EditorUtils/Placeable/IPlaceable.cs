@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Entities.Placeable
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Entities.Placeable
 {
     internal interface IPlaceable
     {

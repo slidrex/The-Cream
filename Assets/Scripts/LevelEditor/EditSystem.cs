@@ -4,12 +4,14 @@ using Assets.Scripts.Databases.LevelDatabases;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Placeable;
 using Assets.Scripts.LevelEditor;
+using Assets.Scripts.Sound;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 internal class EditSystem : PlacementSystem
 {
+    [SerializeField] private AudioClip _deleteEntitySound;
     [SerializeField] private EditorEntityDatabase _defaultEditorDatabase;
     private EditorEntityDatabase _currentEditorDatabase;
     private List<BaseEntity> placedEntities = new();
@@ -65,8 +67,10 @@ internal class EditSystem : PlacementSystem
         for (int i = 0; i < _currentEditorDatabase.Entities.Count; i++)
         {
             EditorEntityHolder obj = Instantiate(entityHolder, editor.EditorHolderContainer);
-            obj.Configure(_currentEditorDatabase.Entities[i].GetModel().Entity as IEditorSpaceRequired);
+            var model = _currentEditorDatabase.Entities[i].GetModel();
+
             obj.Init(i, _currentEditorDatabase, this, KeyCode.None);
+			obj.Configure(model.Entity as IEditorSpaceRequired, (model as EditorEntityModel.EditorModel).UISelectClip);
             holders.Add(obj);
         }
     }
@@ -90,8 +94,10 @@ internal class EditSystem : PlacementSystem
         var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, 0)) + new Vector3(model.Size, model.Size) / 2, Quaternion.identity);
 
         placedEntities.Add(entity);
+        var placeable = ((IPlaceable)entity);
+		placeable.OnContruct();
 
-        ((IPlaceable)entity).OnContruct();
+
         editor._spaceController.ChangeSpace((entity as IEditorSpaceRequired).SpaceRequired);
 
         gridData.AddEntityAt(gridPos, model.Size,
@@ -119,6 +125,7 @@ internal class EditSystem : PlacementSystem
                 {
                     OnEntityDeleted?.Invoke();
                     entity.GetComponent<IPlaceable>().OnDeconstruct();
+                    SoundCompositeRoot.Instance.SoundPlayer.Play(_deleteEntitySound);
                     editor._spaceController.ChangeSpace(-(entity as IEditorSpaceRequired).SpaceRequired);
                     selectedData.RemoveObjectAt(gridPos);
                     Destroy(entity.gameObject);

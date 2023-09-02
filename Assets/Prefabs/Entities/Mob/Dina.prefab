@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f5fbb0e0aceb84c99636af20e5647d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <OnDieSound>k__BackingField: {fileID: 8300000, guid: 3c815e80dfb66e647b10ee69bdcfbc5a, type: 3}
 --- !u!114 &5763579491535241898
 MonoBehaviour:
   m_ObjectHideFlags: 0

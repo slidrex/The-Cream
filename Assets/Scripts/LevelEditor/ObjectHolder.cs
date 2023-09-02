@@ -12,6 +12,7 @@ using UnityEngine.Localization.Components;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Entities;
+using Assets.Scripts.Sound;
 
 internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -26,7 +27,7 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     [Header("Localization")]
     [SerializeField] private LocalizeStringEvent _nameLocalizator;
     [SerializeField] private LocalizeStringEvent _descriptionLocalizator;
-
+    protected AudioClip OnSelectClip;
 
 	protected ObjectCharacteristic[] CharacteristicObjects;
     protected Button button;
@@ -60,7 +61,9 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
             Editor.Instance._inputManager._previewEntity.Init(
                 data.Entities[id].GetModel());
         };
-        button.onClick.RemoveAllListeners();
+		OnSelectClip = SoundCompositeRoot.Instance.SoundEffectStorage.ButtonClickSound;
+		button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => SoundCompositeRoot.Instance.SoundPlayer.Play(OnSelectClip));
         button.onClick.AddListener(firstActButton);
         button.onClick.AddListener(secondAct);
         SetBindedKey(bindedKey);

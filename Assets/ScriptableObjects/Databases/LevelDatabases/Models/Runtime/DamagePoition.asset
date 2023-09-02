@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337f373fa3b62dc478a9d1f6e6b1cf33, type: 3}
   m_Name: DamagePoition
   m_EditorClassIdentifier: 
-  _entity: {fileID: 1229386082220787890, guid: 87592bfc65b5dd848b41f649e321cada, type: 3}
+  _entity: {fileID: 0}
   _icon: {fileID: 1175788378, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
   _description: {fileID: 11400000, guid: 00b76c6f077ddf84f86dcafb0652a19f, type: 2}
   _baseManacost: 5

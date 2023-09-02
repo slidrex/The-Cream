@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3747908340741074670}
   - component: {fileID: 3747908340741074671}
   - component: {fileID: 3747908340741074656}
+  - component: {fileID: 1613861215007775326}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -37,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.1680145, y: -1.1680145}
+  m_AnchoredPosition: {x: -1.1680298, y: -1.1680145}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3747908340741074657
@@ -148,3 +149,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeState: {fileID: 844220192, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
   passiveState: {fileID: 141151235, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+--- !u!114 &1613861215007775326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3747908340741074669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6260d039c0c1b4fb9d4c7ee61ff12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

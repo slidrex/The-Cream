@@ -350,7 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a32d7b7565733e44978ff33e4955275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonClickSound: {fileID: 0}
+  ButtonClickSound: {fileID: 8300000, guid: 44b59b89197db354f9377362b03d6f28, type: 3}
+  EntityHitSound: {fileID: 8300000, guid: 4e73d669ee9ee48499405dfa4bce3061, type: 3}
 --- !u!1 &1121216953115956106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1303,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3652956624350465876}
   - component: {fileID: 3652956624350465877}
-  - component: {fileID: 3652956624350465875}
   - component: {fileID: 3652956624350465874}
   - component: {fileID: 5820354374900018928}
   m_Layer: 0
@@ -1372,14 +1372,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3652956624350465875
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3652956624350465879}
-  m_Enabled: 1
 --- !u!114 &3652956624350465874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,6 +2694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bda2b788b9e3b41b478848cfe6342e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transitionSound: {fileID: 8300000, guid: 7617ec82bc2f18c47a2e362774fb5432, type: 3}
 --- !u!1 &3652956625662276037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,6 +2744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b7d682b3c802344a4545442687a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deleteEntitySound: {fileID: 8300000, guid: cf3f2ceef6a4ee042a1f3f16f09acf25, type: 3}
   _defaultEditorDatabase: {fileID: 11400000, guid: a2669af8a0e91524fa4e8fe881b538a0, type: 2}
   holders: []
 --- !u!1 &3652956625710839207

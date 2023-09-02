@@ -4,6 +4,7 @@ using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.Strategies;
 using Assets.Scripts.Entities.Strategies;
+using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Entities
         public abstract byte SpaceRequired { get; }
         public override AttributeHolder Stats => new(new MaxHealthStat(100));
 
-        public virtual void OnContruct() { }
+		public virtual void OnContruct() { }
 
         public virtual void OnDeconstruct() { }
         protected virtual void OnEntityReset() { }

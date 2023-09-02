@@ -4,8 +4,11 @@ using Assets.Scripts.Entities.Placeable;
 
 internal class EditorEntityHolder : ObjectHolder
 {
-    public void Configure(IEditorSpaceRequired spaceRequired)
+    public void Configure(IEditorSpaceRequired spaceRequired, AudioClip UISelectClip)
     {
-        Cost.text = spaceRequired.SpaceRequired.ToString();
+        if(UISelectClip != null) 
+        OnSelectClip = UISelectClip;
+
+		Cost.text = spaceRequired.SpaceRequired.ToString();
     }
 }

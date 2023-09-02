@@ -579,6 +579,9 @@ GameObject:
   - component: {fileID: 2382909185937307980}
   - component: {fileID: 7312825173099705829}
   - component: {fileID: 4006417751304841592}
+  - component: {fileID: 3570946803193862967}
+  - component: {fileID: 7690180176504389776}
+  - component: {fileID: 8470488856488799856}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -801,6 +804,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f03dee558df955478ae5a4cd41b9693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _manualAttack: 1
+  attackParticles: {fileID: 0}
+  ATTACK_TRIGGER:
+  - Attack
+  - AlternativeAttack
 --- !u!114 &7312825173099705829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +837,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57abb633d6a1744a9dcc9bcec0a59cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &3570946803193862967
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297669801857902515}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!81 &7690180176504389776
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297669801857902515}
+  m_Enabled: 1
+--- !u!114 &8470488856488799856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297669801857902515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff475c8d513aa5479feba126bd7d910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stepSound: {fileID: 8300000, guid: 8963673b95395ff4e9ce6fb585c135f4, type: 3}
 --- !u!1 &6297669801911718048
 GameObject:
   m_ObjectHideFlags: 0

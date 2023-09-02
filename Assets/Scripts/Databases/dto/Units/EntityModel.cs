@@ -14,7 +14,7 @@ namespace Assets.Scripts.Databases.dto.Units
         [SerializeField] protected Entity _entity;
         [SerializeField] private Sprite _icon;
         [SerializeField] private ObjectDescription _description;
-        public virtual void Configure() { }
+		public virtual void Configure() { }
         public abstract Model GetModel();
 
         public class Model
@@ -23,7 +23,6 @@ namespace Assets.Scripts.Databases.dto.Units
             public Entity Entity;
             public ObjectDescription Description { get; private set; }
             public IPlaceable Placeable;
-
             public Model(EntityModel model) 
             {
                 Entity = model._entity;

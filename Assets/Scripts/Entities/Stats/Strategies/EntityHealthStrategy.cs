@@ -6,6 +6,9 @@ using Assets.Scripts.Entities.Stats.Interfaces.StatCatchers;
 using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
+using Assets.Scripts.Sound;
+using Assets.Scripts.Sound.Entity;
+using Assets.Scripts.Sound.Soundtrack;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats.Strategies
@@ -39,7 +42,9 @@ namespace Assets.Scripts.Entities.Stats.Strategies
             
             damageable.CurrentHealth = Mathf.Clamp(damageable.CurrentHealth - damage, 0, maxHealth);
             changeHealthHandler?.OnHealthChanged?.Invoke(oldHealth, damageable.CurrentHealth, dealer);
-            
+            if(entity as Assets.Scripts.Entities.Player.Player == null)
+            SoundCompositeRoot.Instance.SoundPlayer.Play(entity.transform.position, SoundCompositeRoot.Instance.SoundEffectStorage.EntityHitSound);
+
             
             if(damageable.CurrentHealth == 0 && damageable.IsDead == false)
             {
@@ -50,7 +55,8 @@ namespace Assets.Scripts.Entities.Stats.Strategies
                     killCatcher.OnKillCallback?.Invoke();
                 }
                 LevelCompositeRoot.Instance.LevelInfo.OnEntityDie.Invoke(entity);
-                if (entity is IExperienceGainer incomingGain && dealer is ILevelEntity exp) exp.AddExperience(incomingGain.OnDieExp); 
+                if (entity is IExperienceGainer incomingGain && dealer is ILevelEntity exp) exp.AddExperience(incomingGain.OnDieExp);
+                if (entity is IDieSoundPlayer soundPlayer && soundPlayer.OnDieSound != null) SoundCompositeRoot.Instance.SoundPlayer.Play(entity.transform.position, soundPlayer.OnDieSound);
                 damageable.OnDie();
                 if(entity.TryGetComponent<LootTable>(out var table))
                 {

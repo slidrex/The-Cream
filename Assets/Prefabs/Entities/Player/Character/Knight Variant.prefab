@@ -5195,6 +5195,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 89.20002
       objectReference: {fileID: 0}
+    - target: {fileID: 8470488856488799856, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
+      propertyPath: _attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ddc0377e2fc516042bc296a7e78a4382, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
 --- !u!1 &1579376515385790001 stripped

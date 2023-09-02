@@ -16,3 +16,4 @@ MonoBehaviour:
   _icon: {fileID: -223966344, guid: 57ac9a07b4d618e48a3237ee391ddb42, type: 3}
   _description: {fileID: 11400000, guid: a484336bb9cded94dbceaf249820a97e, type: 2}
   Size: 1
+  _selectClip: {fileID: 8300000, guid: 3a049f69073a6104496ca5a6de7236a4, type: 3}

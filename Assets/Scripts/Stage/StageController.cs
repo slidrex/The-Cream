@@ -9,6 +9,7 @@ using Assets.Scripts.Entities.Stats.Interfaces.States;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.Functions;
+using Assets.Scripts.Sound;
 using Assets.Scripts.Stage.Interfaces;
 using Assets.Scripts.UI.Menu.Advanced;
 using Assets.Scripts.UI.MiniMap;
@@ -23,7 +24,8 @@ namespace Assets.Scripts.Stage
     {
         private Player _player;
         private Camera _camera;
-        public StageTileElement _currentElement { get; set; }
+		[SerializeField] private AudioClip _transitionSound;
+		public StageTileElement _currentElement { get; set; }
         private StageTileElement _endElement;
         public Action OnLastStageLeft;
         private StageTileElementHolder _currentStageLevel;
@@ -35,6 +37,7 @@ namespace Assets.Scripts.Stage
         public bool DisableAutoactivateWave { get; set; }
         private void Awake()
         {
+			OnDockspaceMoved += () => SoundCompositeRoot.Instance.SoundPlayer.Play(_transitionSound);
 			Instance._levelActions.OnButtonSwitched = OnButtonSwitched;
 			LevelCompositeRoot.Instance.Runner.TriggerResettableIterfaces();
 			Singleton = this;
@@ -154,9 +157,9 @@ namespace Assets.Scripts.Stage
             var temp = _currentElement;
             LevelCompositeRoot.Instance.Runner.TriggerResettableIterfaces();
             UpdateMinimap(direction);
-            OnDockspaceMoved?.Invoke();
 
             for (int i = 0; i < temp.Elements.Count; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
+            OnDockspaceMoved?.Invoke();
 
             if (_currentElement.IsEmpty == false)
             {

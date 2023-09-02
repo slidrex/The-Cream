@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48482a4c909c0c40b1d7f7a43026a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onConstructSound: {fileID: 8300000, guid: d8e8db94d4a5d624a9b03c8cdfffda3b, type: 3}
 --- !u!114 &6932580637241050273
 MonoBehaviour:
   m_ObjectHideFlags: 0

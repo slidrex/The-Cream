@@ -10233,9 +10233,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 54.000042
       objectReference: {fileID: 0}
+    - target: {fileID: 3964288621484214258, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
+      propertyPath: _attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ddc0377e2fc516042bc296a7e78a4382, type: 3}
     - target: {fileID: 5141464745620436078, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7178465695650615502, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
       propertyPath: _manualAttack
@@ -10259,7 +10263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8972367019775745310, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5804247929875481407, guid: 6382ecdba40fea04fb5e0e0dd394f97b, type: 3}

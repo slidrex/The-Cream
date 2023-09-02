@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9090485310956300293}
   - component: {fileID: 7037005451122031143}
   - component: {fileID: 6185490083011645414}
+  - component: {fileID: 8159299228457563194}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -136,7 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789ee1dd0fed3fa4780eae16cef7f5d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 0
 --- !u!114 &6185490083011645414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +184,18 @@ MonoBehaviour:
       type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
       data:
         m_Value: {fileID: 7037005451122031143}
+--- !u!114 &8159299228457563194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090485310956300347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6260d039c0c1b4fb9d4c7ee61ff12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9090485311231767268
 GameObject:
   m_ObjectHideFlags: 0

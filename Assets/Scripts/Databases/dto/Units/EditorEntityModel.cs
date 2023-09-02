@@ -11,22 +11,24 @@ namespace Assets.Scripts.Databases.dto.Runtime
     internal class EditorEntityModel : EntityModel
     {
         public byte Size;
+        [SerializeField] private AudioClip _selectClip;
         private EntityModel.Model model;
         public override EntityModel.Model GetModel() => model;
         public override void Configure()
         {
-            model = new EditorModel(Size, _entity, this);
+            model = new EditorModel(Size, _entity, _selectClip, this);
         }
 
         public class EditorModel : Model
         {
             public byte Size;
             public IEditorSpaceRequired EditorSpaceRequired;
-
-            public EditorModel(byte size, BaseEntity entity, EntityModel model) : base(model)
+            public AudioClip UISelectClip;
+            public EditorModel(byte size, BaseEntity entity, AudioClip selectClip, EntityModel model) : base(model)
             {
                 Size = size;
-                EditorSpaceRequired = entity as IEditorSpaceRequired;
+                UISelectClip = selectClip;
+				EditorSpaceRequired = entity as IEditorSpaceRequired;
             }
         }
     }

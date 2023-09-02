@@ -53,8 +53,6 @@ namespace Assets.Editor
             if (PersistentData.IsNewbie)
             {
                 Analytics.CustomEvent("time_in_menu_before_start_first_game_in_seconds", new Dictionary<string, object>() { ["time"] = Time.realtimeSinceStartup });
-
-
             }
 			PersistentData.IsNewbie = false;
 			Analytics.CustomEvent("character_pick", new Dictionary<string, object>() { ["character_name"] = SelectedCharacterId.ToString() });
