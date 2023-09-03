@@ -7675,6 +7675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonClickSound: {fileID: 8300000, guid: 44b59b89197db354f9377362b03d6f28, type: 3}
+  EntityHitSound: {fileID: 0}
 --- !u!224 &1159135617 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 714112406932344259, guid: a5be6821f249cb746b786fe3f26a79b8, type: 3}
