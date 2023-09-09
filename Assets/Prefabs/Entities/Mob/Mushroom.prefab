@@ -5186,7 +5186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1e4b045cb06c64ca157e186c341594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _manualTrigger: 0
+  _manualTrigger: 1
   _showGizmos: 0
   _minCircleDistance: 0
   _maxCircleDistance: 0
@@ -5202,6 +5202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c832d88d0f097a84994c9d64f54ae655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <OnDieSound>k__BackingField: {fileID: 0}
 --- !u!114 &5689828172576758456
 MonoBehaviour:
   m_ObjectHideFlags: 0

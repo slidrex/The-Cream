@@ -839,6 +839,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Mountains_35
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d54a2d8cd1f4bf2409aa8aa192dfe07e
+      internalID: 2055878749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mountains_36
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a6035885735da4fb6ccda763b7f61d
+      internalID: 1256933360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mountains_37
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05614dd0e57b4134dac63961f0a6c205
+      internalID: -4113392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mountains_38
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64b4d6a5a9139446ae933a623d1fcb4
+      internalID: -1215694001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -859,6 +943,7 @@ TextureImporter:
       Mountains_7: -1089905279
       Mountains_30: -701672461
       Mountains_5: -104780217
+      Mountains_38: -1215694001
       Mountains_18: -761023249
       Mountains_26: 831919944
       Mountains_20: -1982514750
@@ -871,13 +956,16 @@ TextureImporter:
       Mountains_13: 1391705252
       Mountains_1: -391288724
       Mountains_34: -320332574
+      Mountains_37: -4113392
       Mountains_2: -395475596
       Mountains_32: 135853116
+      Mountains_35: 2055878749
       Mountains_12: 2070788189
       Mountains_21: 1331329744
       Mountains_22: -866676605
       Mountains_31: -635243971
       Mountains_28: 537314981
+      Mountains_36: 1256933360
       Mountains_4: -815096366
       Mountains_16: 1272840051
       Mountains_6: -873737930
