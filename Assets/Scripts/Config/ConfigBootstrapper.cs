@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Services.Analytics;
+using Unity.Services.Core;
 using UnityEngine;
 
 namespace Assets.Scripts.Config
@@ -11,7 +13,13 @@ namespace Assets.Scripts.Config
     {
         private void Awake()
         {
-            new ConfigManager();
+			UnityServices.InitializeAsync();
+			new ConfigManager();
         }
-    }
+		private void Start()
+		{
+			AnalyticsService.Instance.StartDataCollection();
+			
+		}
+	}
 }

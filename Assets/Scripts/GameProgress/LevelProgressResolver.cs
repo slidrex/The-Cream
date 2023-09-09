@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.PlatformConfig;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,12 +28,14 @@ namespace Assets.Scripts.GameProgress
                         PersistentData.UnlockedCharacters.Add(Databases.Model.Character.CharacterDatabaseModel.CharacterID.THORS);
                         break;
                     }
-                    case 2:
+                    case 3:
                     {
+                        Yandex.RateGame();
                         PersistentData.UnlockedCharacters.Add(Databases.Model.Character.CharacterDatabaseModel.CharacterID.LIGHT_EATER);
                         break;
                     }
             }
+            Yandex.ShowAdv();
 			Analytics.CustomEvent("level_passed", new Dictionary<string, object>() { ["level_index"] = level});
 			PersistentData.CurrentGameLevel = level + 1;
         }
