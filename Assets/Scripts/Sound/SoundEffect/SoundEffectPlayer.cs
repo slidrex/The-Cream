@@ -17,7 +17,7 @@ namespace Assets.Scripts.Sound.Soundtrack
 		}
 		private void Update()
 		{
-			if(_listenerTransform == null) _listenerTransform = FindObjectOfType<AudioListener>().transform;
+			if(_listenerTransform == null) _listenerTransform = FindObjectOfType<AudioListener>()?.transform;
 		}
 		private Transform _listenerTransform;
         public void Play(AudioClip clip)

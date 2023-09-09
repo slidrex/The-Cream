@@ -10,11 +10,11 @@ namespace Assets.Scripts.PlatformConfig
 {
 	public class Yandex : MonoBehaviour
 	{
-		[DllImport("__Internal")]
-		public static extern void ShowAdv();
-		[DllImport("__Internal")]
-		public static extern void RateGame();
-		[DllImport("__Internal")]
-		public static extern void Hello();
+		//[DllImport("__Internal")]
+		public static void ShowAdv() { }
+		//[DllImport("__Internal")]
+		public static void RateGame() { }
+		//[DllImport("__Internal")]
+		public static void Hello() { }
 	}
 }

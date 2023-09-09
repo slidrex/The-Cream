@@ -35,7 +35,8 @@ namespace Assets.Scripts.Level.Stages
         }
         public void Move()
         {
-            _stageController.Move(_currentDirection);
+			print("dockspace move");
+			_stageController.Move(_currentDirection);
         }
         public void DisableDockspace()
         {

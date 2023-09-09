@@ -16,6 +16,7 @@ using Assets.Scripts.UI.MiniMap;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static Assets.Editor.Editor;
 
 namespace Assets.Scripts.Stage
@@ -157,8 +158,11 @@ namespace Assets.Scripts.Stage
             var temp = _currentElement;
             LevelCompositeRoot.Instance.Runner.TriggerResettableIterfaces();
             UpdateMinimap(direction);
+            for (int i = 0; i < temp.Elements.Count; i++) if (temp.Elements[i].Direction == direction)
+                {
+                    SetCurrentElement(temp.Elements[i].Element);
+                }
 
-            for (int i = 0; i < temp.Elements.Count; i++) if (temp.Elements[i].Direction == direction) SetCurrentElement(temp.Elements[i].Element);
             OnDockspaceMoved?.Invoke();
 
             if (_currentElement.IsEmpty == false)
