@@ -44,9 +44,6 @@ TagManager:
   - name: Projectile
     uniqueID: 3076924931
     locked: 0
-  - name: Mob
-    uniqueID: 1510694825
-    locked: 0
   - name: Player
     uniqueID: 2173890423
     locked: 0

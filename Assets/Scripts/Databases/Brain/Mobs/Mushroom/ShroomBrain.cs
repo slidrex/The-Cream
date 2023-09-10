@@ -4,6 +4,7 @@ using Assets.Scripts.Entities.Navigation.Util;
 using Assets.Scripts.Entities.Player.Characters;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
+using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
 using System;
@@ -18,7 +19,6 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
     internal class ShroomBrain : EntityBrain<Player.Characters.Mushroom>
     {
         private Animator _animator;
-        [SerializeField] private int _damage;
         [SerializeField] private ParticleSystem _explosionParticles;
         [SerializeField] private float _slowDuration;
         [SerializeField, Range(0, 1.0f)] private float _slowPercentage;
@@ -42,7 +42,7 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
                 foreach (var e in foundEntities)
                 {
                     e.Stats.ModifierHolder.AddModifier(new SpeedBooster(e, -_slowPercentage) { Duration = _slowDuration });
-                    (e as IDamageable).Damage(_damage, Entity);
+                    (e as IDamageable).Damage((int)Entity.Stats.GetValue<DamageStat>(), Entity);
                 }
             }
             movement.EnableMovement(true);

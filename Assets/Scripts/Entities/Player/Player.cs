@@ -22,6 +22,7 @@ namespace Assets.Scripts.Entities.Player
 {
     internal class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IDamageCorrector, IKillCatcher
     {
+        [SerializeField] private ParticleSystem onDamageParticles;
         private EntityLevelBar _levelBar;
         public override EntityTypeBase ThisType => new EntityType<PlayerTag>(PlayerTag.PLAYER);
         public override EntityTypeBase TargetType => new EntityType<MobTag>().Any();
@@ -61,7 +62,15 @@ namespace Assets.Scripts.Entities.Player
             _levelBar.UpdateBar(this);
         }
 
-        public void Damage(int damage, Entity dealer) => EntityHealthStrategy.Damage(this, damage, dealer);
+        public void Damage(int damage, Entity dealer)
+        { 
+            EntityHealthStrategy.Damage(this, damage, dealer);
+            OnDamage();
+        }
+        public virtual void OnDamage()
+        {
+            onDamageParticles.Play();
+        }
 
         public int GetLevelExperienceCost(int level) => 3 * (level + 1);
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Environment
 {
@@ -11,8 +6,8 @@ namespace Assets.Scripts.Environment
     {
         public static GameObject SpawnParticles(GameObject particles, Transform origin)
         {
-            var obj = UnityEngine.Object.Instantiate(particles, origin.position, Quaternion.identity);
-            UnityEngine.Object.Destroy(obj, 5.0f);
+            var obj = Object.Instantiate(particles, origin.position, Quaternion.identity);
+            Object.Destroy(obj, 5.0f);
             return obj;
         }
     }
