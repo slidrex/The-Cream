@@ -49,7 +49,9 @@ namespace Assets.Editor
 		private void Awake()
         {
             Instance = this;
-            Yandex.Hello();
+            #if !UNITY_EDITOR && UNITY_WEBGL
+            FindObjectOfType<Yandex>().HelloButton();
+#endif
             FindObjectOfType<LevelEntryPoint>().OnHolderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
             grid = FindObjectOfType<Grid>();
             if (PersistentData.IsNewbie)

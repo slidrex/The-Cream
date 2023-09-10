@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Unity.Services.Analytics
 {
@@ -7,6 +8,7 @@ namespace Unity.Services.Analytics
     {
         public static void RecordCustomEventWithNoParameters()
         {
+            var color = new Color(23, 34, 4, 100);
             // NOTE: this will show up on the dashboard as an invalid event, unless
             // you have created a schema that matches it.
             AnalyticsService.Instance.CustomData("myEvent");

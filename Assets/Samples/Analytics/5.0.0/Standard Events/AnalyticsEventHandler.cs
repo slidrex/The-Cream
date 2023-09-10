@@ -10,8 +10,8 @@ namespace Unity.Services.Analytics
         // Console Log visualiser, not required
         [SerializeField] Text consoleOutput;
         [SerializeField] ScrollRect consoleScrollRect;
-
-        void Awake()
+        
+        private void Awake()
         {
             Application.logMessageReceived += OnLogMessageReceived;
         }

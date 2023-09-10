@@ -18,11 +18,7 @@ mergeInto(LibraryManager.library, {
                 console.log(reason)
             }
         })
-  	},
+  	}
 
-        ShowAdv : function(){
-        ysdk.adv.showFullscreenAdv();
-		}
-    
-}
-)
+
+  });
