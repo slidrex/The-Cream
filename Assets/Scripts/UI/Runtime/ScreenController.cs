@@ -28,7 +28,8 @@ namespace Assets.Scripts.UI.Runtime
         public enum Screen
         {
             NONE,
-            DEATH
+            DEATH,
+            PAUSE
         }
         private void Start()
         {

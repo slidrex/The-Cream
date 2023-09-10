@@ -21,6 +21,16 @@ namespace Assets.Scripts.Sound.Soundtrack
             _source.clip = clip;
             _source.Play();
         }
+
+        public void Pause()
+        {
+            _source.Pause();
+        }
+
+        public void Unpause()
+        {
+            _source.UnPause();
+        }
         private void UpdateSourceVolume()
         {
             _source.volume = ConfigManager.Instance.AudioConfig.MasterVolume * ConfigManager.Instance.AudioConfig.MusicVolumne * (ConfigManager.Instance.AudioConfig.MusicMuted ? 0 : 1);
