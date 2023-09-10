@@ -16,6 +16,6 @@ namespace Assets.Scripts.Entities.Player.Characters
     {
         public bool IsUndetectable { get; set; }
         public bool MutedAttack { get; set; }
-        public override AttributeHolder Stats { get; } = new AttributeHolder(new MaxHealthStat(60), new SpeedStat(2.5f), new DamageStat(8), new AttackSpeedStat(1));
+        public override AttributeHolder Stats { get; } = new AttributeHolder(new MaxHealthStat(40), new SpeedStat(4.5f), new DamageStat(8), new AttackSpeedStat(3));
     }
 }
