@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01a615d1f1186b4ca10f6a06374b6e0, type: 3}
   m_Name: Shadow Coil
   m_EditorClassIdentifier: 
-  Icon: {fileID: 844220192, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+  Icon: {fileID: -2100273217, guid: 2953efbc13839354f938b7f0e2cc03ce, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: ba72962e838037d43815395fd458683f, type: 2}
   <BaseManacost>k__BackingField: 30
   <BaseCooldown>k__BackingField: 3
+  DisableActivate: 0
   _coil: {fileID: 6108353271096853407, guid: 63154fbf87723b14e99db8aefb6eefee, type: 3}
   _castDistance: 3

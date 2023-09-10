@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbc22a26b8c66c4ea4e1fbe42ae4a9e, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 881798b77426a8f47b533dcc4767e9e5, type: 3}
+  Icon: {fileID: -1890811637, guid: 2953efbc13839354f938b7f0e2cc03ce, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: 3c2a5c6db15a2d944aeb676fa1703d2f, type: 2}
   <BaseManacost>k__BackingField: 40
   <BaseCooldown>k__BackingField: 8
+  DisableActivate: 0
   _shield: {fileID: 6620055461848063661, guid: 938ec069c846b004899856084f151bfe, type: 3}

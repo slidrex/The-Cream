@@ -14,7 +14,7 @@ namespace Assets.Scripts.Entities.Player.Characters
         public override byte SpaceRequired => 1;
 
         public override EntityTypeBase TargetType => new EntityType<PlayerTag>(PlayerTag.PLAYER);
-        public override AttributeHolder Stats => new AttributeHolder(new SpeedStat(2), new MaxHealthStat(30), new AttackSpeedStat(2));
+        public override AttributeHolder Stats => new AttributeHolder(new DamageStat(15), new SpeedStat(2), new MaxHealthStat(30), new AttackSpeedStat(2));
 
         public Action<int, int, Entity> OnHealthChanged { get; set; }
     }

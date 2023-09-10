@@ -46,5 +46,5 @@ public class SpaceController : MonoBehaviour
         CurrentSpaceReqiured = 0;
         spaceRequired.text = CurrentSpaceReqiured.ToString() + "/" + maxSpaceReqiured;
     }
-    public bool IsOverloaded(int space) => CurrentSpaceReqiured + space > maxSpaceReqiured;
+    public bool IsOverloaded(int space) => CurrentSpaceReqiured + space > maxSpaceReqiured + 1;
 }
