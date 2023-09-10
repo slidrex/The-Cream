@@ -10,12 +10,13 @@ using Assets.Scripts.Entities.Structures.Portal;
 using Assets.Scripts.Entities.Util.UIPlayer;
 using Pathfinding;
 using System;
+using Entities.Player.Components.Attacking;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player.Moving
 {
 	[RequireComponent(typeof(Movement), typeof(PlayerPointMovement), typeof(Facing))]
-	[RequireComponent (typeof(Seeker), typeof(PlayerTargetMovement), typeof(MeleeAttack))]
+	[RequireComponent (typeof(Seeker), typeof(PlayerTargetMovement), typeof(PlayerAttack))]
 	internal class PlayerMovement : EntityBrain<Player>
 	{
 		public Action<TargetType> OnMoveTargetSelect;
@@ -29,7 +30,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 		private Movement _movement;
 		private bool _isMoving;
 		private PlayerTargetMovement _targetMovement;
-		private MeleeAttack _attack;
+		private PlayerAttack _attack;
 		private Facing _facing;
 		private Entity _lastSelectedEntity;
         private const string MOVE_X_TRIGGER = "moveX";
@@ -51,7 +52,7 @@ namespace Assets.Scripts.Entities.Player.Moving
 			_seeker = GetComponent<Seeker>();
 			_pointMovement = GetComponent<PlayerPointMovement>();
 			_movement = GetComponent<Movement>();
-			_attack = GetComponent<MeleeAttack>();
+			_attack = GetComponent<PlayerAttack>();
 		}
 		private void OnEnable()
 		{
