@@ -17,5 +17,5 @@ MonoBehaviour:
   <BaseManacost>k__BackingField: 30
   <BaseCooldown>k__BackingField: 3
   DisableActivate: 0
-  _coil: {fileID: 6108353271096853407, guid: 63154fbf87723b14e99db8aefb6eefee, type: 3}
+  _coil: {fileID: -5645938762471218729, guid: d1ab62d4179eb904fa4c81084d213c39, type: 3}
   _castDistance: 3

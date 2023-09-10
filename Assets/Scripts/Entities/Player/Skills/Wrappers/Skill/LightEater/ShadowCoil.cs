@@ -16,9 +16,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.LightEater
         protected override float MaxCastDistance { get => _castDistance; }
         protected override void OnActivate(Vector2 mousePos, Characters.LightEater player)
         {
-            var coil = Instantiate(_coil, mousePos, Quaternion.identity);
-            coil.SetOwner(player);
-            Destroy(coil, 3.0f);
+            player.GetComponent<ShadowCoilActivate>().CoilStart(mousePos, _coil);
         }
     }
 }
