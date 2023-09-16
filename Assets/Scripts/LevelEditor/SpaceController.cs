@@ -25,7 +25,7 @@ public class SpaceController : MonoBehaviour
 	public void SetMaxSpaceReqiured(int required)
     {
         maxSpaceReqiured = required;
-        spaceRequired.text = CurrentSpaceReqiured.ToString() + "/" + maxSpaceReqiured;
+        spaceRequired.text = CurrentSpaceReqiured.ToString() + "/" + maxSpaceReqiured ;
     }
     public int GetMaxSpaceReqiured() => maxSpaceReqiured;
     public void ChangeSpace(int required)
@@ -38,13 +38,18 @@ public class SpaceController : MonoBehaviour
         else
         {
             spaceRequired.text = CurrentSpaceReqiured.ToString() + "/" + maxSpaceReqiured;
-        }
         OnSpaceChanged?.Invoke(CurrentSpaceReqiured);
+        }
     }
     public void ClearSpace()
     {
         CurrentSpaceReqiured = 0;
         spaceRequired.text = CurrentSpaceReqiured.ToString() + "/" + maxSpaceReqiured;
     }
-    public bool IsOverloaded(int space) => CurrentSpaceReqiured + space > maxSpaceReqiured + 1;
+
+    public bool IsOverloaded(int space)
+    {
+        return CurrentSpaceReqiured + space > GetMaxSpaceReqiured() + 1;
+        
+    } 
 }

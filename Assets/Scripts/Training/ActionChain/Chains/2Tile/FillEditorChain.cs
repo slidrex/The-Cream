@@ -30,7 +30,7 @@ namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 		}
 		private void OnSpaceChanged(int space)
 		{
-			if (Editor.Editor.Instance._spaceController.GetMaxSpaceReqiured() >= space) OnEditorFilled();
+			if (Editor.Editor.Instance._spaceController.GetMaxSpaceReqiured() <= space) OnEditorFilled();
 		}
 		private void OnEditorFilled()
 		{
