@@ -134,7 +134,7 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     }
     private string GetValue<T>(ObjectDescription.IconType iconType, IEntityDatabase<T> data, int id, int i) where T : EntityModel
     {
-        AttributeHolder statHolder = data.Entities[id].GetModel().Entity.Stats;
+        AttributeHolder statHolder = ((Entity)data.Entities[id].GetModel().Entity).Stats;
         switch (iconType)
         {
             case ObjectDescription.IconType.DAMAGE:
