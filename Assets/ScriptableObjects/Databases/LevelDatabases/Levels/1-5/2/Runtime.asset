@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48f835b2e04082d45bece4aa954ac8b4, type: 3}
-  m_Name: Editor
+  m_Script: {fileID: 11500000, guid: a81c3f8390d15514ca4409924c226bef, type: 3}
+  m_Name: Runtime
   m_EditorClassIdentifier: 
   <Entities>k__BackingField:
-  - {fileID: 11400000, guid: cceb7a59f93d8a24cbb555753e2ef742, type: 2}
-  - {fileID: 11400000, guid: 4c7a4fa2f54a0e147b9f0efa15274092, type: 2}
+  - {fileID: 11400000, guid: 408d9812751d13c478d7f1c342c4b2d0, type: 2}
