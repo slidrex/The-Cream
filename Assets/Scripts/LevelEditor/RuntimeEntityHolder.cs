@@ -1,8 +1,4 @@
-using Assets.Scripts.Entities;
-using Assets.Scripts.Entities.Placeable;
 using Assets.Scripts.Entities.Player.Skills.Wrappers.Skill.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

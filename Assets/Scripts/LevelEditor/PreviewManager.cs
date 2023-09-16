@@ -51,7 +51,7 @@ namespace Assets.Scripts.LevelEditor
             public float MaxReachDistance { get; private set; }
             
         }
-        public PreparationStage PerformAction(Config action, PreviewBoundSettings boundSettings = null)
+        public PreparationStage PerformAction(Config action, Action onActivate = null, PreviewBoundSettings boundSettings = null)
         {
             _boundSettings = boundSettings;
             bool enablePreview = !ConfigManager.Instance.SettingsConfig.IsQuickcastEnabled;
@@ -68,10 +68,10 @@ namespace Assets.Scripts.LevelEditor
             }
             else action.Stage = PreparationStage.ACTION;
 
-            HandleAction(action);
+            HandleAction(action, onActivate);
             return action.Stage;
         }
-        private void HandleAction(Config action)
+        private void HandleAction(Config action, Action onActivate)
         {
             if(_currentAction != null && _currentAction.Holder != null) _currentAction.Holder.SetActiveSelectImage(false);
             _currentAction = action;
@@ -83,6 +83,7 @@ namespace Assets.Scripts.LevelEditor
                 case PreparationStage.ACTION:
                     Editor.Editor.Instance._inputManager.SetBound(_boundSettings);
                     action.Action.Invoke(GetCastPosition());
+                    onActivate?.Invoke();
                     if(_currentAction.NotDeselectOnChoose == false)
                     {
                         Editor.Editor.Instance._inputManager.SetActivePreviewEntity(false, null, _boundSettings);

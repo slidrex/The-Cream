@@ -86,8 +86,9 @@ internal abstract class ObjectHolder : MonoBehaviour, IPointerEnterHandler, IPoi
     protected virtual void ConfigureDescription<T>(int id, IEntityDatabase<T> data) where T : EntityModel
     {
         CharacteristicObjects = CharacteristicsParent.GetComponentsInChildren<ObjectCharacteristic>();
-        for (int i = 0; i < CharacteristicObjects.Length; i++)
-            CharacteristicObjects[i].gameObject.SetActive(false);
+        foreach (var t in CharacteristicObjects)
+            t.gameObject.SetActive(false);
+
         var desc = data.Entities[id].GetModel().Description;
 
         _nameLocalizator.SetEntry(desc.Name);

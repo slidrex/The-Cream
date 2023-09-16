@@ -13,13 +13,16 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
     internal class PlayerDirectSkill<T> : PlayerActiveSkill<T> where T : Player
     {
         private const float INFINITE = -1;
+        private Action OnAbilityActivate;
         protected virtual float MaxCastDistance { get; } = INFINITE; 
         public override bool TryActivate(SkillHolder holder, Player player, bool clickedByIcon)
         {
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
             if (CooldownStrategy.IsCooldownPassed(this) == false || !playerSpace.IsEnoughMana(BaseManacost) || DisableActivate) return false;
+            
             OnStartSelecting(holder, player as T, clickedByIcon);
+            
             return true;
         }
         private void OnStartSelecting(SkillHolder holder, T player, bool clickedByIcon)
@@ -31,6 +34,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
             ResetCooldown();
             Editor.Editor.Instance.PlayerSpace.TrySpendMana(BaseManacost);
             OnActivate(castPos, player);
+            OnAbilityActivate?.Invoke();
         }
         protected virtual void OnActivate(Vector2 castPos, T player)
         {

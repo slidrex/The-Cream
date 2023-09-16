@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Entities.Player.Skills.Wrappers;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,10 +22,15 @@ namespace Assets.Scripts.LevelEditor.Ability
         {
             _previewAction = onPreviewAction;
             _boundSettings = boundSettings;
-
-            var status = clickedByIcon == false ? Editor.Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(onPreviewAction, holder) { Status = PreviewManager.PreviewStatus.AUTO }, boundSettings) : Editor.Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(onPreviewAction, holder) { Status = PreviewManager.PreviewStatus.ENABLED }, boundSettings);
+            
+            var status = clickedByIcon == false ? Editor.Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(onPreviewAction, holder) { Status = PreviewManager.PreviewStatus.AUTO }, OnAbilityUse, boundSettings) : Editor.Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(onPreviewAction, holder) { Status = PreviewManager.PreviewStatus.ENABLED }, OnAbilityUse, boundSettings);
 
             return status;
+        }
+
+        private void OnAbilityUse()
+        {
+            _previewAction = null;
         }
         private void Start()
         {
@@ -31,19 +38,18 @@ namespace Assets.Scripts.LevelEditor.Ability
         }
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Mouse0) && _previewAction != null && EventSystem.current.IsPointerOverGameObject() == false)
+            if (!Input.GetKeyDown(KeyCode.Mouse0) || _previewAction == null ||
+                EventSystem.current.IsPointerOverGameObject() != false) return;
+            if (_selectBlock)
             {
-                if (_selectBlock)
-                {
-                    _selectBlock = false;
-                    Editor.Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(_previewAction, null) { Status = PreviewManager.PreviewStatus.ENABLED }, _boundSettings);
-                }
-                else
-                {
-                    Editor.Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(_previewAction, null) { Status = PreviewManager.PreviewStatus.DISABLED }, _boundSettings);
-                    _previewAction = null;
-                    _boundSettings = null;
-                }
+                _selectBlock = false;
+                Editor.Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(_previewAction, null) { Status = PreviewManager.PreviewStatus.ENABLED }, OnAbilityUse, _boundSettings);
+            }
+            else
+            {
+                Editor.Editor.Instance.PreviewManager.PerformAction(new PreviewManager.Config(_previewAction, null) { Status = PreviewManager.PreviewStatus.DISABLED }, OnAbilityUse, _boundSettings);
+                _previewAction = null;
+                _boundSettings = null;
             }
         }
     }

@@ -19,6 +19,4 @@ mergeInto(LibraryManager.library, {
             }
         })
   	}
-
-
-  });
+});

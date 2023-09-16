@@ -5,7 +5,6 @@ using Assets.Scripts.Entities.Stats.Interfaces.Templates;
 using Assets.Scripts.Entities.Stats.Strategies;
 using Assets.Scripts.Environment;
 using System.Collections;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Assets.Scripts.Entities.Templates
