@@ -5011,11 +5011,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5016853135224723962, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
       propertyPath: m_Size.x
-      value: 1.05
+      value: 0.75956064
       objectReference: {fileID: 0}
     - target: {fileID: 5016853135224723962, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
       propertyPath: m_Size.y
-      value: 1.79
+      value: 0.97023576
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016853135224723962, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.1484147
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016853135224723962, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.30378118
       objectReference: {fileID: 0}
     - target: {fileID: 5016853135224723962, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -5259,7 +5267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad578f5e011b1fe4d84d7a07f62e3be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coil: {fileID: 1493443201555164307, guid: 2d8c14cb68c0e7d498d624133170d63f, type: 3}
   animationTrigger: CoilAttack
 --- !u!114 &1126156351890141564
 MonoBehaviour:

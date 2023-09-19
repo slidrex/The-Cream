@@ -32339,11 +32339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465876, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465877, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: near clip plane
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465877, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: orthographic size
@@ -32360,6 +32360,10 @@ PrefabInstance:
     - target: {fileID: 3652956624350465877, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0.34117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652956624823960634, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624829658446, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_Name
@@ -32409,6 +32413,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3652956625102738974, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3652956625639578607, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -32417,9 +32425,17 @@ PrefabInstance:
       propertyPath: _defaultEditorDatabase
       value: 
       objectReference: {fileID: 11400000, guid: 5c88009663aa64747896639ade544501, type: 2}
+    - target: {fileID: 3652956625722863340, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3652956625883908030, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652956626008754359, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981010416166976256, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_StaticEditorFlags

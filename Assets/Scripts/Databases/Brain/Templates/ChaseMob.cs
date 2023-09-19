@@ -1,11 +1,15 @@
-﻿using Assets.Scripts.Entities.Mobs;
+﻿using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Mobs;
 using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.Interfaces.Templates;
 using Assets.Scripts.Entities.Stats.Strategies;
 using Assets.Scripts.Environment;
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Assets.Scripts.Entities.Templates
 {
@@ -25,7 +29,9 @@ namespace Assets.Scripts.Entities.Templates
         public virtual void OnDamage(Entity deler)
         {
             if(onDamageParticles != null)
+            {
                 onDamageParticles.Play();
+            }
 
             StartCoroutine(ChangeColor());
         }
@@ -64,5 +70,6 @@ namespace Assets.Scripts.Entities.Templates
             EntityHealthStrategy.ResetHealth(this);
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
+        
     }
 }

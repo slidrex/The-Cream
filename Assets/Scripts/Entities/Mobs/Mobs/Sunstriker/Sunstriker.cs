@@ -15,7 +15,7 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Sunstriker
         public override byte SpaceRequired => 6;
 
         public override EntityTypeBase TargetType => new EntityType<PlayerTag>(PlayerTag.PLAYER);
-        public override AttributeHolder Stats => new AttributeHolder(new MaxHealthStat(20));
+        public override AttributeHolder Stats => new AttributeHolder(new MaxHealthStat(20), new DamageStat(1));
 
         Action<int, int, Entity> IHealthChangedHandler.OnHealthChanged { get; set; }
     }

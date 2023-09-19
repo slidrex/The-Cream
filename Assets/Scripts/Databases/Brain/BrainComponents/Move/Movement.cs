@@ -62,7 +62,8 @@ namespace Assets.Scripts.Entities.Move
         }
         private void UpdateMovementSpeed()
         {
-            _rb.velocity = MoveVector * _stats.GetValue();
+            if(_rb.bodyType != RigidbodyType2D.Static)
+                _rb.velocity = MoveVector * _stats.GetValue();
         }
         public void Stop()
         {
