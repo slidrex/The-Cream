@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cfa0eef4ee94da24fb2e65f525ee24e4, type: 2}
   - {fileID: 11400000, guid: 980c586a74b8cfe419ee3a545a045171, type: 2}
   - {fileID: 11400000, guid: 7a3420c71f682c341bcc13ea52d767d0, type: 2}
-  <CharacterSprite>k__BackingField: {fileID: 931886081, guid: ae58ec5ff96fee545b50dc619e068116, type: 3}
-  <CharacterButtonIcon>k__BackingField: {fileID: 1810601177, guid: ae58ec5ff96fee545b50dc619e068116, type: 3}
+  <CharacterSprite>k__BackingField: {fileID: 272325204, guid: ae58ec5ff96fee545b50dc619e068116, type: 3}
+  <CharacterButtonIcon>k__BackingField: {fileID: 1060424053, guid: 801d2445862719f4b83341a43c87c195, type: 3}

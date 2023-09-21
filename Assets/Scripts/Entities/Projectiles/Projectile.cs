@@ -57,5 +57,8 @@ namespace Assets.Scripts.Entities.Projectiles
         {
 
         }
+
+        public Collider2D GetCollider() => _collider;
+        public float GetLifeTime() => _lifetime;
     }
 }

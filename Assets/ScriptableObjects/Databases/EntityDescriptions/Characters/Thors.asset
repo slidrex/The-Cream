@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Thors
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Thors
-  <Description>k__BackingField: "\u0442\u043E\u0440\u0441 \u0441\u044B\u043D \u0442\u043E\u0440\u0444\u0438\u043D\u043D\u0430"
+  <DescriptionKey>k__BackingField: 
   <Characteristics>k__BackingField: []
   Skills:
   - {fileID: 11400000, guid: cd8679cbe06549a438caae1a869cbc66, type: 2}
   - {fileID: 11400000, guid: 75234aa371ec592429d8a1a4c08e27f9, type: 2}
-  <CharacterSprite>k__BackingField: {fileID: 2055303256, guid: 5763c3fb4c97aed45b212d300676b50a, type: 3}
+  <CharacterSprite>k__BackingField: {fileID: -781248862, guid: 5763c3fb4c97aed45b212d300676b50a, type: 3}
   <CharacterButtonIcon>k__BackingField: {fileID: 1733200218, guid: 801d2445862719f4b83341a43c87c195, type: 3}

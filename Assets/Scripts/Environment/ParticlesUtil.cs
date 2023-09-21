@@ -7,7 +7,7 @@ namespace Assets.Scripts.Environment
         public static GameObject SpawnParticles(GameObject particles, Transform origin)
         {
             var obj = Object.Instantiate(particles, origin.position, Quaternion.identity);
-            Object.Destroy(obj, 5.0f);
+            Object.Destroy(obj, obj.GetComponent<ParticleSystem>().main.startLifetime.constantMax);
             return obj;
         }
     }
