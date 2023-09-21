@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entities;
+﻿using System;
+using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.AI.ContextSteering;
 using Assets.Scripts.Entities.AI.SightStalking;
 using Assets.Scripts.Entities.Brain;
@@ -7,6 +8,7 @@ using Assets.Scripts.Entities.Stats.Interfaces.Attack;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Entities.Player.Components.Attacking
 {
@@ -23,6 +25,8 @@ namespace Entities.Player.Components.Attacking
 		private float _timeSinceAttack;
 		private Animator _animator;
 		private bool _inAttackAnimation;
+		private float _timeToAttackAnimationEnd;
+		private string _setStateInfoHash;
         private void Start()
 		{
 			_facing = GetComponent<Facing>();
@@ -50,14 +54,45 @@ namespace Entities.Player.Components.Attacking
 		{
 			if(Data.GetTarget() != null && _inAttackAnimation == false)
 			{
+				
 				UpdateTimer();
 			}
+
+			if (_timeToAttackAnimationEnd > 0)
+			{
+				_timeToAttackAnimationEnd -= Time.deltaTime;
+				//if (_setStateInfoHash != _animator.GetCurrentAnimatorStateInfo(0).GetHashCode())
+				{
+					OnAttackAnimationInterrupt();
+					_timeToAttackAnimationEnd = 0;
+					return;
+				}
+				if (_timeToAttackAnimationEnd <= 0)
+				{
+					OnAttackAnimationEnd();
+				}
+			}
+		}
+		private void OnAttackAnimationEnd()
+		{
+			
+		}
+
+		private void OnAttackAnimationInterrupt()
+		{
+			_inAttackAnimation = false;
+			Debug.LogWarning("Attack interrupt");
 		}
 		private void StartAttack()
 		{
             if (_animator != null)
             {
                 _animator.SetTrigger(ATTACK_TRIGGER[Random.Range(0, ATTACK_TRIGGER.Length)]);
+                if (_animator.layerCount > 1) throw new Exception("Animator has more that one animation layer");
+                var state = _animator.GetCurrentAnimatorStateInfo(0);
+                
+                _timeToAttackAnimationEnd = state.length;
+                
             }
 			_inAttackAnimation = true;
 			OnStartAttack(Data.CurrentTarget);
@@ -67,6 +102,8 @@ namespace Entities.Player.Components.Attacking
 		{
 			
 		}
+
+		
 
 		protected virtual void OnPerformAttack(Transform target)
 		{
@@ -90,6 +127,7 @@ namespace Entities.Player.Components.Attacking
 		}
 		private void UpdateTimer()
 		{
+				
 			if (_timeSinceAttack < _timeToAttack)
 			{
 				_timeSinceAttack += Time.deltaTime;
@@ -97,7 +135,6 @@ namespace Entities.Player.Components.Attacking
 			else
 			{
 				var m = Entity as IAttackMutable;
-
 				if (m == null || m.MutedAttack == false)
 				{
 					if (_manualAttack)
