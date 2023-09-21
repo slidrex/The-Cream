@@ -26,7 +26,8 @@ namespace Entities.Player.Components.Attacking
 		private Animator _animator;
 		private bool _inAttackAnimation;
 		private float _timeToAttackAnimationEnd;
-		private string _setStateInfoHash;
+		private int _currentAttackTriggerHash;
+		
         private void Start()
 		{
 			_facing = GetComponent<Facing>();
@@ -61,9 +62,11 @@ namespace Entities.Player.Components.Attacking
 			if (_timeToAttackAnimationEnd > 0)
 			{
 				_timeToAttackAnimationEnd -= Time.deltaTime;
-				//if (_setStateInfoHash != _animator.GetCurrentAnimatorStateInfo(0).GetHashCode())
+				
+				if (_animator.GetCurrentAnimatorStateInfo(0).shortNameHash != _currentAttackTriggerHash)
 				{
 					OnAttackAnimationInterrupt();
+					
 					_timeToAttackAnimationEnd = 0;
 					return;
 				}
@@ -87,9 +90,13 @@ namespace Entities.Player.Components.Attacking
 		{
             if (_animator != null)
             {
-                _animator.SetTrigger(ATTACK_TRIGGER[Random.Range(0, ATTACK_TRIGGER.Length)]);
+	            string triggerName = ATTACK_TRIGGER[Random.Range(0, ATTACK_TRIGGER.Length)];
+                _animator.SetTrigger(triggerName);
+                
                 if (_animator.layerCount > 1) throw new Exception("Animator has more that one animation layer");
                 var state = _animator.GetCurrentAnimatorStateInfo(0);
+
+                _currentAttackTriggerHash = state.shortNameHash;
                 
                 _timeToAttackAnimationEnd = state.length;
                 
@@ -112,8 +119,8 @@ namespace Entities.Player.Components.Attacking
 		public void PerformAttack()
 		{
 			OnPerformAttack(Data.CurrentTarget);
-			
 
+			_timeToAttackAnimationEnd = 0;
             _inAttackAnimation = false;
             ResetAttackTimer();
 		}

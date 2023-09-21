@@ -10,6 +10,7 @@ namespace Entities.Player.Components.Attacking
         protected override void OnPerformAttack(Transform target)
         {
             if(target == null) return;
+            
             var obj = Instantiate(_projectile, _shootPoint.position, Quaternion.identity);
             obj.SetMoveDirection((target.transform.position - transform.position).normalized);
             
