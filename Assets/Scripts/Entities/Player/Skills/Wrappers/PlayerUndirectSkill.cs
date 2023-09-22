@@ -12,6 +12,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
     {
         public override bool TryActivate(SkillHolder holder, Player player, bool clickedByIcon)
         {
+            if (player.IsMuted) return false;
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
             if (!CooldownStrategy.IsCooldownPassed(this) || DisableActivate || !playerSpace.TrySpendMana(BaseManacost)) return false;

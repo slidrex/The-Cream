@@ -20,7 +20,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Entities.Player
 {
-    internal class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IDamageCorrector, IKillCatcher
+    internal class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IDamageCorrector, IKillCatcher, IMutable
     {
         [SerializeField] private ParticleSystem onDamageParticles;
         private EntityLevelBar _levelBar;
@@ -37,6 +37,8 @@ namespace Assets.Scripts.Entities.Player
         public Action<int> OnDamageIncomed { get; set; }
         public bool IsDead { get; set; }
 		public Action OnKillCallback { get; set; }
+        public bool IsMuted { get; set; }
+
 
 		protected override void Awake()
         {
@@ -98,5 +100,6 @@ namespace Assets.Scripts.Entities.Player
 		{
 
 		}
-	}
+
+    }
 }

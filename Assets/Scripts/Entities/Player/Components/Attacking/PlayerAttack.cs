@@ -142,7 +142,7 @@ namespace Entities.Player.Components.Attacking
 			else
 			{
 				var m = Entity as IAttackMutable;
-				if (m == null || m.MutedAttack == false)
+				if ((m == null || m.MutedAttack == false)  && Entity.IsMuted == false)
 				{
 					if (_manualAttack)
 					{

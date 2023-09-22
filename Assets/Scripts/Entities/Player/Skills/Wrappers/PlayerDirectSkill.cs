@@ -17,6 +17,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Wrappers
         protected virtual float MaxCastDistance { get; } = INFINITE; 
         public override bool TryActivate(SkillHolder holder, Player player, bool clickedByIcon)
         {
+            if (player.IsMuted) return false;
             var playerSpace = Editor.Editor.Instance.PlayerSpace;
 
             if (CooldownStrategy.IsCooldownPassed(this) == false || !playerSpace.IsEnoughMana(BaseManacost) || DisableActivate) return false;
