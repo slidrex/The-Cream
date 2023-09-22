@@ -15,6 +15,7 @@ using Assets.Scripts.UI.Menu.Advanced;
 using Assets.Scripts.UI.MiniMap;
 using System;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static Assets.Editor.Editor;
@@ -24,7 +25,7 @@ namespace Assets.Scripts.Stage
     internal class StageController : MonoBehaviour, IStageController
     {
         private Player _player;
-        private Camera _camera;
+        private CinemachineVirtualCamera _camera;
 		[SerializeField] private AudioClip _transitionSound;
 		public StageTileElement _currentElement { get; set; }
         private StageTileElement _endElement;
@@ -49,7 +50,7 @@ namespace Assets.Scripts.Stage
             LevelCompositeRoot.Instance.LevelInfo.OnRegisterSubscribeAndCallOnExist(OnEntitySpawn);
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged += OnEntityDamaged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie += OnEntityDie;
-            _camera = Camera.main;
+            _camera = FindObjectOfType<CinemachineVirtualCamera>();
             Editor.Editor.Instance._spaceController.OnSpaceChanged += OnSpaceChanged;
         }
         private void OnDisable()
@@ -187,6 +188,8 @@ namespace Assets.Scripts.Stage
         private void InitPlayer()
         {
             _player = Instance.PlayerSpace.InitPlayer(_currentStageLevel.InitialElement.PlayerPosition.transform.position);
+            var camera = FindObjectOfType<CinemachineVirtualCamera>();
+            camera.m_Follow = _player.transform;
         }
         public void StartStageLevel(int floor, StageTileElementHolder currentStageLevel, bool init = false)
         {
@@ -225,7 +228,7 @@ namespace Assets.Scripts.Stage
             
             _player.HousingElement = _currentElement;
             Instance._spaceController.SetMaxSpaceReqiured(element.EditorSpaceRequired);
-            _camera.orthographicSize = _currentElement.CameraSize;
+            _camera.m_Lens.OrthographicSize = _currentElement.CameraSize;
         }
         private void EnableDockspace()
         {

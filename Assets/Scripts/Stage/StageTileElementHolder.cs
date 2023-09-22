@@ -13,6 +13,7 @@ namespace Assets.Scripts.Stage
 {
     internal class StageTileElementHolder : MonoBehaviour
     {
+        
         public StageTileElement InitialElement;
         public StageTileElement EndElement;
         public Tilemap PlacementTileMap { get; set; }
