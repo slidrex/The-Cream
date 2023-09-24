@@ -18,7 +18,6 @@ namespace Assets.Scripts.Entities.Player.Skills.Implementations.Thors
 	{
 		[SerializeField] private GameObject _shieldObject;
 		[SerializeField] private GameObject _shieldUI;
-		[SerializeField] private Image _damageIndicator;
 		[SerializeField] private TextMeshProUGUI _capacity;
 		private AttributeMask _shieldMask;
 		private Characters.Thors _entity;
@@ -57,7 +56,6 @@ namespace Assets.Scripts.Entities.Player.Skills.Implementations.Thors
 		}
 		private void UpdateIndicator()
 		{
-			_damageIndicator.fillAmount = (float)_capacityRemain / _maxCapacity;
 			_capacity.text = $"{_capacityRemain}/{_maxCapacity}";
 		}
 	}

@@ -15,7 +15,6 @@ namespace Assets.Scripts.Entities.Util.UIBars
     internal class Healthbar : MonoBehaviour
     {
         [SerializeField] private Image _barValue;
-        [SerializeField] private TextMeshProUGUI _barText;
         [SerializeField] private Entity _entity;
         private IDamageable _damageComponent;
         private MaxHealthStat _maxHealthStat;
@@ -30,7 +29,6 @@ namespace Assets.Scripts.Entities.Util.UIBars
         }
         private void UpdateBar(int newHealth, int oldHealth, Entity dealer)
         {
-            if (_barText != null) _barText.text = _damageComponent.CurrentHealth.ToString();
             _barValue.fillAmount = _damageComponent.CurrentHealth/ _maxHealthStat.GetValue();
         }
     }
