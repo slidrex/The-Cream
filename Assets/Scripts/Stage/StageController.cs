@@ -44,9 +44,25 @@ namespace Assets.Scripts.Stage
 			LevelCompositeRoot.Instance.Runner.TriggerResettableIterfaces();
 			Singleton = this;
         }
+
+        private void OnGameModeChanged(GameMode mode)
+        {
+            if (mode == GameMode.EDIT)
+            {
+                _camera.Follow = null;
+                Vector3 pos = _currentElement.transform.position;
+                _camera.ForceCameraPosition(new Vector3(pos.x, pos.y, _camera.transform.position.z), Quaternion.identity);
+            }
+            else
+            {
+                _camera.Follow = _player.transform;
+            }
+        }
         public static StageController Singleton { get; private set; }
         private void OnEnable()
         {
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnGameModeChanged;
+
             LevelCompositeRoot.Instance.LevelInfo.OnRegisterSubscribeAndCallOnExist(OnEntitySpawn);
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged += OnEntityDamaged;
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDie += OnEntityDie;
@@ -55,6 +71,7 @@ namespace Assets.Scripts.Stage
         }
         private void OnDisable()
         {
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= OnGameModeChanged;
 			Editor.Editor.Instance._spaceController.OnSpaceChanged -= OnSpaceChanged;
 			LevelCompositeRoot.Instance.LevelInfo.OnRegisterUnsubscribe(OnEntitySpawn);
             LevelCompositeRoot.Instance.LevelInfo.OnEntityDamaged -= OnEntityDamaged;
