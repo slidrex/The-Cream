@@ -30,6 +30,7 @@ namespace Assets.Scripts.LevelEntry
         public Action<StageTileElementHolder> OnHolderActivate;
         private IEnumerable<IStageBeginHandler> _stageBeginHandlers;
         private GameMode _startingGamemode = GameMode.NONE;
+        private AstarPath _pathFinder;
         private void Start()
         {
             ConfigureServices();
@@ -77,6 +78,7 @@ namespace Assets.Scripts.LevelEntry
         private void ConfigureServices()
         {
             _stageController = FindObjectOfType<StageController>();
+            _pathFinder = FindObjectOfType<AstarPath>();
             _internalLevels = GetComponentsInChildren<StageTileElementHolder>(true);
         }
         private void StartNextStageLevel()
@@ -93,6 +95,7 @@ namespace Assets.Scripts.LevelEntry
 
             NotifyHandlers();
             _currentStageLevel++;
+            _pathFinder.Scan();
         }
         private void NotifyHandlers()
         {
