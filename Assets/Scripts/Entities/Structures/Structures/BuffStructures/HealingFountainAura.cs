@@ -12,6 +12,7 @@ using Assets.Scripts.Entities.Util.Events.EventAlert;
 using Assets.Scripts.Environment;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,17 +26,19 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
     internal class HealingFountainAura : AuraStructure<PlayerTag>
     {
 		[field: SerializeField] public Sprite AlertSprite { get; set; }
+        private Animator animator;
 
 		private AlertUtil _alertUtil;
 
-        [SerializeField] private GameObject _particles;
+        [SerializeField] private ParticleSystem _particles;
         [UnityEngine.SerializeField, Range(0, 1f)] private float _damagePercentBeforePulling;
         [UnityEngine.SerializeField, Range(0, 1f)] private float _healingPercent;
 
 
 		private void Start()
 		{
-            _alertUtil = new(AlertSprite, transform, 1, 0.5f);
+            _alertUtil = new(AlertSprite, transform, 1, 0.4f);
+            animator = GetComponent<Animator>();
 		}
 		private void OnTargetChangeHealth(PullingUtil.PullableEntity entity, int newHealth)
         {
@@ -46,14 +49,22 @@ namespace Assets.Scripts.Entities.Structures.Structures.BuffStructures
         }
         protected override void OnActivate(Entity[] entitiesInRadius)
         {
+            StartCoroutine(ActivateAnimation(entitiesInRadius));
+		}
+        private IEnumerator ActivateAnimation(Entity[] entitiesInRadius)
+        {
+            animator.SetTrigger("Activate");
+            yield return new WaitForSeconds(0.1f);
+
+            _particles.Play();
+			_alertUtil.EnableMark(false);
+
             foreach(var entity in entitiesInRadius)
             {
                 if(entity.ThisType is EntityType<PlayerTag>)
                     entity.Stats.ModifierHolder.AddModifier(new InstantHeal(entity, _healingPercent));
             }
-            ParticlesUtil.SpawnParticles(_particles, transform);
-			_alertUtil.EnableMark(false);
-		}
+        }
         protected override void OnAuraBecomeReady()
         {
 			_alertUtil.EnableMark(true);

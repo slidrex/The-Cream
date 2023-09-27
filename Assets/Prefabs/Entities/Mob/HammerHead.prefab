@@ -272,9 +272,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _items:
-  - _dropChance: 1
+  - _dropChance: 0.35
     _object: {fileID: 5711933942300849607, guid: 1018bd8fa5a03a84f82096eb1867900a, type: 3}
-  - _dropChance: 1
+  - _dropChance: 0.35
     _object: {fileID: 1181620242806315016, guid: 8fd96134306fc714c9bce4cb3c53a6b9, type: 3}
 --- !u!1 &3826398659402593719
 GameObject:

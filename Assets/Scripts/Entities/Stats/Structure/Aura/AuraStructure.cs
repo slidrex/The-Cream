@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Entities.Navigation.EntityType;
+﻿using Assets.Editor;
+using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Navigation.EntityType.Util;
 using Assets.Scripts.Level;
 using System;
@@ -8,17 +10,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats.Structure.Aura
 {
-    internal abstract class AuraStructure<TargetEntityType> : MonoBehaviour, ILevelRunHandler where TargetEntityType : Enum
+    internal abstract class AuraStructure<TargetEntityType> : MonoBehaviour where TargetEntityType : Enum
     {
         [SerializeField] private float _activateInterval;
         private float _timeSinceActivate;
         protected bool IsReady { get; private set; }
         protected bool _isRunning;
         [SerializeField] private float _targetRadius;
-        public void OnLevelRun(bool run)
-        {
-            _isRunning = run;
-        }
         protected virtual void OnActivateEntityTypeInsideAuraAndReady(List<Entity> entitiesOfActivateType)
         {
 
@@ -73,6 +71,20 @@ namespace Assets.Scripts.Entities.Stats.Structure.Aura
         private void OnDrawGizmos()
         {
             Gizmos.DrawWireSphere(transform.position, _targetRadius);
+        }
+        private void OnLevelModChanged(GameMode gameMode)
+        {
+            _isRunning = gameMode == GameMode.RUNTIME;
+        }
+
+        private void OnEnable()
+        {
+            _isRunning = Editor.Editor.Instance.CurrentGamemode == GameMode.RUNTIME;
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnLevelModChanged;
+        }
+        private void OnDisable()
+        {
+            LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= OnLevelModChanged;
         }
     }
 }

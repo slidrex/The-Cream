@@ -15,6 +15,8 @@ namespace Assets.Scripts.Entities.Util.Events.EventAlert
         {
             _alertImage = new GameObject().AddComponent<Image>();
 			var canvas = new GameObject().AddComponent<Canvas>();
+            canvas.sortingLayerID = SortingLayer.NameToID("Player");
+            canvas.sortingOrder = 1;
             canvas.transform.parent = container.transform;
             _alertImage.transform.parent = canvas.transform;
             canvas.transform.localScale = 0.02f * Vector2.one;

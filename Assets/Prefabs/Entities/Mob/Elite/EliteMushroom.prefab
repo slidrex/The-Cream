@@ -100,7 +100,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2994796262219444529
 Transform:
@@ -4975,6 +4975,7 @@ GameObject:
   - component: {fileID: 1003328856147952360}
   - component: {fileID: 7918188809061103007}
   - component: {fileID: -2779096747256800238}
+  - component: {fileID: 4200079935769202224}
   m_Layer: 0
   m_Name: EliteMushroom
   m_TagString: Untagged
@@ -5222,6 +5223,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <OnDieSound>k__BackingField: {fileID: 0}
   onDamageParticles: {fileID: 4344145096803021934}
+--- !u!114 &4200079935769202224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4204496535473634570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11df300cc60e9f34190a1affedf7a325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - _dropChance: 0.5
+    _object: {fileID: 5711933942300849607, guid: 1018bd8fa5a03a84f82096eb1867900a, type: 3}
+  - _dropChance: 0.5
+    _object: {fileID: 5711933942300849607, guid: 1018bd8fa5a03a84f82096eb1867900a, type: 3}
+  - _dropChance: 0.35
+    _object: {fileID: 1181620242806315016, guid: 8fd96134306fc714c9bce4cb3c53a6b9, type: 3}
 --- !u!1 &8878094905738379059
 GameObject:
   m_ObjectHideFlags: 0

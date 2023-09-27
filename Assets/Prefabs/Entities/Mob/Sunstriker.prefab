@@ -511,6 +511,7 @@ GameObject:
   - component: {fileID: 3437305737057223605}
   - component: {fileID: 2115044993}
   - component: {fileID: 2115044992}
+  - component: {fileID: 805172739104747782}
   m_Layer: 0
   m_Name: Sunstriker
   m_TagString: Untagged
@@ -685,6 +686,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sunstrike: {fileID: 8158618181007959874, guid: 5ad0fd0c519484c43a4f660ae1398936, type: 3}
   attackRadius: 10
+--- !u!114 &805172739104747782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023895698004160069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11df300cc60e9f34190a1affedf7a325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - _dropChance: 0.7
+    _object: {fileID: 5711933942300849607, guid: 1018bd8fa5a03a84f82096eb1867900a, type: 3}
+  - _dropChance: 0.15
+    _object: {fileID: 1181620242806315016, guid: 8fd96134306fc714c9bce4cb3c53a6b9, type: 3}
 --- !u!1 &2100002087996283181
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts.Entities.Structures.Portal
 {
@@ -17,12 +18,17 @@ namespace Assets.Scripts.Entities.Structures.Portal
 	internal class EndLevelPortal : BaseEntity, IPlayerSelectTrigger
     {
 		[SerializeField] private bool _activeByCollision;
+		private float rotationSpeed = 35;
 		public Action OnActivateAction;
 		private void Awake()
 		{
 			GetComponent<BoxCollider2D>().isTrigger = true;
 		}
-		public void OnSelect()
+        private void Update()
+        {
+			transform.localEulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - Time.deltaTime * rotationSpeed);
+        }
+        public void OnSelect()
         {
 			if (_activeByCollision) return;
 			Activate();
