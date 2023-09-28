@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd3201ef1acad144abbd6957f1bc2d5, type: 3}
   m_Name: DemoDoubleDamage
   m_EditorClassIdentifier: 
-  Icon: {fileID: 547199261, guid: 5907234d4f6deb449bb1d084bf488a7f, type: 3}
+  Icon: {fileID: 41452847, guid: 2953efbc13839354f938b7f0e2cc03ce, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: c8662a1e983768d448a10ea8899a9ad9, type: 2}
   <BaseManacost>k__BackingField: 80
   <BaseCooldown>k__BackingField: 2
+  DisableActivate: 0
   duration: 6

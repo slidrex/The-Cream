@@ -9,9 +9,9 @@ namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 	internal class StartBattleChain : TrainingActionChain
 	{
 		[UnityEngine.SerializeField] private GameObject _buttonObject;
+		[SerializeField] private GameObject editorContainer;
 		protected override void OnConfigure(Player player)
 		{
-
 			LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnLevelModeChanged;
 			Editor.Editor.Instance._spaceController.OnSpaceChanged += OnSpaceChanged;
 		}
@@ -25,6 +25,7 @@ namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 		private void OnLevelModeChanged(GameMode mode)
 		{
 			if (mode != GameMode.RUNTIME) throw new Exception("Unknown behaviour");
+			editorContainer.SetActive(false);
 			LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= OnLevelModeChanged;
 			Editor.Editor.Instance._spaceController.OnSpaceChanged -= OnSpaceChanged;
 			ConfirmChain();

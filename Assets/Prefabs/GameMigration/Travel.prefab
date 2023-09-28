@@ -2675,12 +2675,13 @@ GameObject:
   - component: {fileID: 3652956625064108468}
   - component: {fileID: 3652956625064108471}
   - component: {fileID: 3652956625064108470}
+  - component: {fileID: 6206398767255064145}
   m_Layer: 0
   m_Name: StartLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!224 &3652956625064108473
 RectTransform:
@@ -2723,15 +2724,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.023584902, g: 1, b: 0.18315667, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 472422651, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2796,6 +2797,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6206398767255064145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652956625064108472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acbe65f962cf06408b181ebcaa60dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeState: {fileID: -331021210, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+  passiveState: {fileID: 472422651, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
 --- !u!1 &3652956625102738977
 GameObject:
   m_ObjectHideFlags: 0
@@ -3326,12 +3341,13 @@ GameObject:
   - component: {fileID: 3652956625710839203}
   - component: {fileID: 3652956625710839202}
   - component: {fileID: 3652956625710839205}
+  - component: {fileID: 5973172029759206853}
   m_Layer: 0
   m_Name: RestartLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!224 &3652956625710839204
 RectTransform:
@@ -3381,8 +3397,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -718119828, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3447,6 +3463,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5973172029759206853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652956625710839207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acbe65f962cf06408b181ebcaa60dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeState: {fileID: 1561898525, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+  passiveState: {fileID: -718119828, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
 --- !u!1 &3652956625722863343
 GameObject:
   m_ObjectHideFlags: 0
@@ -4314,7 +4344,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &3652956626068502949
 RectTransform:

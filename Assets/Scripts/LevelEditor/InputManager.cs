@@ -113,7 +113,7 @@ internal class InputManager : MonoBehaviour
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         else
-            return new Vector2(-10, 20);
+            return new Vector2(1000, 1000);
     }
     private void ColorIndicator(Color32 color)
     {

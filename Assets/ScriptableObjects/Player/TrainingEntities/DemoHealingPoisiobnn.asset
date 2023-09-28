@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337f373fa3b62dc478a9d1f6e6b1cf33, type: 3}
   m_Name: DemoHealingPoisiobnn
   m_EditorClassIdentifier: 
-  _entity: {fileID: 0}
-  _icon: {fileID: 844220192, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
+  _entity: {fileID: 2402819204230275216, guid: 0b11b35da4fd4c04cb31da48645c7d3b, type: 3}
+  _icon: {fileID: 21300000, guid: 812953e5ddb634749b46252a30e41d4b, type: 3}
   _description: {fileID: 11400000, guid: 33007956e094d934bae599a455513d8c, type: 2}
-  _baseManacost: 0
+  _baseManacost: 1
   _cooldown: 3

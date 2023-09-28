@@ -5855,7 +5855,7 @@ PrefabInstance:
       objectReference: {fileID: 5461958696704698235}
     - target: {fileID: 7312825173099705829, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
       propertyPath: _safeDistance
-      value: 6
+      value: 6.2
       objectReference: {fileID: 0}
     - target: {fileID: 7975677934195105614, guid: 8b01cb9202296ce489182b0f20e34db4, type: 3}
       propertyPath: m_Sprite

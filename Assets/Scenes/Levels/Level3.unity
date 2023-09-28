@@ -5325,17 +5325,29 @@ PrefabInstance:
       propertyPath: data.dataString
       value: UEsDBBQAAAgIAAAYIexkj4f5WwIAABcFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3HfDSU3lqHkB4ITEgnF1+EtMYaZMmjDz6S4b93JdvYodMT4u3b1Xu7K38QoWwFzGmzMIIvNQfyY0DCmXwZdMEnONGdVhvxDi3nTXBXBBKNnBfqhEZ8GNKsLsEZwX6qnQzkBEGvRK5NOec7SLV1FuGcSgsYMtqFbIXQx4Cc8OduFlLOeBpNw+kdT7NkcMEjA+XAdNRxyxy3xJrnFZO0rIAH0R19mLR8PEWiQkMNJ4hnWkphGzXEnavoNqWV9egFCVxQdBclBH4BYle4oLSfvMpzC66xbuj5QRhsUl2V/NJ150pq97WyA5U+Chh9j5rqost/4nfDGM6NLp/ae2tHrhBs/0LPjFrXa20ffvgs3KsjlXu6lfBWgHrWC6O94hh0xodUb2H00P29WksLYPsOr6XegL7qOt72ux1P8HCJ7k+pFOU2hL5OamAjdex3HD8YnMxvFByXwzYlEA0q/lh4pbv+FjWBR2Gsw1DjUgV5W+1NoJJ57Flw412qjQLTr1CBotKd11jH3c7wJvb/rEcaHkxzexNr38FNSoQ7fpLchNb6eJ2WLfRxCbZYeSeFgq7VIfCMjUq1UvWK9S21aRtvcsp6aTsv+OfdInw0zO+nkySZTeiET77djTkb3cNkDNMt37JkRuLyCYU+qVzXQpv24NhUV1zhorXfkcHC0CquOzf0uBDvpbYdU6hcb5gBUKu6wlU4GLwEnyWfc4EN2oBzQsWBk4+MSM32wLNroSw6nZ+coVlXJSOVOGgXkIyk8cORkQBfl3lt4CDgGC5vi13I5S9QSwMEFAAACAgAABgh7O3Uv3FtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFKKkWGambmJgYGlSaJJiomprnFKspFZqolxqnlSSlKygaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAABgh7GSPh/lbAgAAFwUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABgh7O3Uv3FtAAAAeAAAAAkAJAAAAAAAAAAAAAAAqAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABgAwAAAAA=
       objectReference: {fileID: 0}
+    - target: {fileID: 3652956624111686306, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652956624111686306, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652956624111686306, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3652956624293930646, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: _defaultRuntimeDatabase
       value: 
       objectReference: {fileID: 11400000, guid: b0dc0aa7a50289042ba214b7c5ecc27c, type: 2}
     - target: {fileID: 3652956624350465876, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465876, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465876, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5347,7 +5359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465877, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: orthographic size
-      value: 12
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465877, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -5417,6 +5429,14 @@ PrefabInstance:
       propertyPath: _defaultEditorDatabase
       value: 
       objectReference: {fileID: 11400000, guid: 9521139fb178c954baf9a6759622226f, type: 2}
+    - target: {fileID: 3652956625969419133, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652956625969419133, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3652956626008754359, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

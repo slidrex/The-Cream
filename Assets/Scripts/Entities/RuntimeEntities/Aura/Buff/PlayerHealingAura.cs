@@ -18,7 +18,7 @@ namespace Assets.Scripts.Entities.RuntimeEntities.Aura.Buff
         {
             var heal = new InstantHeal(entity, _percentHealing);
             entity.Stats.ModifierHolder.AddModifier(heal);
-            entity.SpriteRenderer.color = Color.green;
+            entity.SpriteRenderer.color = Color.red;
             blockTime = _healingInterval;
         }
     }

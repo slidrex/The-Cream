@@ -10,6 +10,7 @@ namespace Assets.Scripts.Entities.RuntimeEntities.Animations
     internal class DropAnimation : MonoBehaviour
     {
         [SerializeField] private GameObject _onDestroyInstantiate;
+        [SerializeField] private GameObject destroyParticles;
         [SerializeField] private AnimationCurve _sizeCurve;
         [SerializeField] private float _speed;
         [SerializeField] private float _acceleration;
@@ -40,6 +41,8 @@ namespace Assets.Scripts.Entities.RuntimeEntities.Animations
         }
         private void OnDestroy()
         {
+            if(destroyParticles != null)
+                Destroy(Instantiate(destroyParticles, transform.position, Quaternion.identity), 1);
             Instantiate(_onDestroyInstantiate, transform.position, Quaternion.identity);
         }
     }
