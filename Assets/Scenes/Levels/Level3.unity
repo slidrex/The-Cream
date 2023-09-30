@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83972183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.8, y: 24.5, z: 0}
+  m_LocalPosition: {x: 40.8, y: 24.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -173,7 +173,9 @@ MonoBehaviour:
   PlayerPosition: {fileID: 765325749}
   IsEmpty: 0
   <EditorSpaceRequired>k__BackingField: 16
-  CameraSize: 11
+  EditCameraSize: 11
+  useRuntimeSize: 1
+  RuntimeCameraSize: 7
   Elements:
   - Direction: 1
     Element: {fileID: 1172860518}
@@ -5347,19 +5349,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465876, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465876, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465877, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: near clip plane
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465877, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3652956624350465877, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -5425,10 +5427,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3652956625004798270, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 29.744324
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652956625102738974, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3652956625662276035, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: _defaultEditorDatabase
       value: 
       objectReference: {fileID: 11400000, guid: 9521139fb178c954baf9a6759622226f, type: 2}
+    - target: {fileID: 3652956625722863340, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3652956625969419133, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5439,6 +5453,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3652956626008754359, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504442304094113682, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504442304094113682, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378941094566724010, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378941094566724010, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378941094566724010, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5592,7 +5626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927052490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: -0.12, z: 0}
+  m_LocalPosition: {x: 1, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5613,9 +5647,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 1383810193}
-  IsEmpty: 0
+  IsEmpty: 1
   <EditorSpaceRequired>k__BackingField: 16
-  CameraSize: 8
+  EditCameraSize: 8
+  useRuntimeSize: 0
+  RuntimeCameraSize: 0
   Elements:
   - Direction: 1
     Element: {fileID: 1107940212}
@@ -10960,7 +10996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094342888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.22, y: 1.45, z: 0}
+  m_LocalPosition: {x: -9.21, y: 2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11017,7 +11053,9 @@ MonoBehaviour:
   PlayerPosition: {fileID: 2013545992}
   IsEmpty: 0
   <EditorSpaceRequired>k__BackingField: 16
-  CameraSize: 8
+  EditCameraSize: 8
+  useRuntimeSize: 1
+  RuntimeCameraSize: 6
   Elements:
   - Direction: 4
     Element: {fileID: 83972185}
@@ -11047,7 +11085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172860516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 41.46, y: 56.2, z: 0}
+  m_LocalPosition: {x: 41.46, y: 56.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11073,7 +11111,9 @@ MonoBehaviour:
   PlayerPosition: {fileID: 1258956903}
   IsEmpty: 0
   <EditorSpaceRequired>k__BackingField: 16
-  CameraSize: 14
+  EditCameraSize: 14
+  useRuntimeSize: 1
+  RuntimeCameraSize: 7
   Elements: []
   SpecificRuntimeSoundtrack: {fileID: 0}
 --- !u!1 &1258956902
@@ -19238,7 +19278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383810192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.13, y: 0.94, z: 0}
+  m_LocalPosition: {x: -8.2, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19270,7 +19310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534280883}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35, y: -0.5, z: 0}
+  m_LocalPosition: {x: 1.35, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19291,9 +19331,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 231170094}
-  IsEmpty: 0
+  IsEmpty: 1
   <EditorSpaceRequired>k__BackingField: 16
-  CameraSize: 8
+  EditCameraSize: 8
+  useRuntimeSize: 0
+  RuntimeCameraSize: 7
   Elements:
   - Direction: 4
     Element: {fileID: 1869806813}
@@ -22383,7 +22425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869806811}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.5, y: -1, z: 0}
+  m_LocalPosition: {x: 31.5, y: -1.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22407,7 +22449,9 @@ MonoBehaviour:
   PlayerPosition: {fileID: 1094342889}
   IsEmpty: 0
   <EditorSpaceRequired>k__BackingField: 16
-  CameraSize: 8
+  EditCameraSize: 8
+  useRuntimeSize: 1
+  RuntimeCameraSize: 7
   Elements:
   - Direction: 1
     Element: {fileID: 2015250729}
@@ -22614,7 +22658,7 @@ GameObject:
   m_Layer: 0
   m_Name: Tile1 (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -22626,7 +22670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015250727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.1, y: 31.4, z: 0}
+  m_LocalPosition: {x: 33.1, y: 32.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22652,7 +22696,9 @@ MonoBehaviour:
   PlayerPosition: {fileID: 811785476}
   IsEmpty: 0
   <EditorSpaceRequired>k__BackingField: 16
-  CameraSize: 12
+  EditCameraSize: 11
+  useRuntimeSize: 1
+  RuntimeCameraSize: 7
   Elements: []
   SpecificRuntimeSoundtrack: {fileID: 8300000, guid: 163b39974e21815478a269ef58ea7f2c, type: 3}
 --- !u!1001 &2061813902

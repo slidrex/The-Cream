@@ -12,7 +12,9 @@ namespace Assets.Scripts.Stage
         public Transform PlayerPosition;
         public bool IsEmpty;
         [field:SerializeField] public int EditorSpaceRequired { get; set; } = 16;
-        public int CameraSize = 5;
+        public int EditCameraSize = 5;
+        [SerializeField] private bool useRuntimeSize = false;
+        public int RuntimeCameraSize;
         public List<RelationElement> Elements;
         [Header("Element Specific Data")]
         public AudioClip SpecificRuntimeSoundtrack;
@@ -27,6 +29,8 @@ namespace Assets.Scripts.Stage
         {
             _staticEntities = GetComponentsInChildren<Entity>();
             ActivateStaticEntities();
+            if (useRuntimeSize == false)
+                RuntimeCameraSize = EditCameraSize;
 		}
         private void ActivateStaticEntities()
         {
