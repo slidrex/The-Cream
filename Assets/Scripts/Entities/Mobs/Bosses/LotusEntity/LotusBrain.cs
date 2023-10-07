@@ -9,6 +9,7 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 	internal sealed class LotusBrain : EntityBrain<Lotus>
 	{
 		private float _nextSpecialTreshold;
+		private Animator animator;
 		[Header("Attack")]
 		[SerializeField] private float _minAttackBreak;
 		[SerializeField] private float _maxAttackBreak;
@@ -28,6 +29,7 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 		private void Start()
 		{
 			_timeToSinShoot = 1 / _bulletPerSecond;
+			animator = GetComponent<Animator>();
 		}
 		public override void OnReset()
 		{
@@ -71,6 +73,7 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 		#region Attacks
 		private void StartSinAttack()
 		{
+			animator.SetTrigger("SinAttack");
 			_sinTime = 0.0f;
 			_timeSinceCircleStrikeCast = 0.0f;
 		}
@@ -104,6 +107,7 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 		}
 		private void ShootCircleImmediately()
 		{
+			animator.SetTrigger("CircleAttack");
 			for(int i = 0; i < 360; i += 360/_bulletCount)
 			{
 				var projectile = Instantiate(_bullet, transform.position, Quaternion.Euler(0, 0, i));
