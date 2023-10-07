@@ -115,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destroyOnCollect: 1
-  _minHealHealth: 10
-  _maxHealHealth: 20
+  _minHealHealth: 5
+  _maxHealHealth: 7

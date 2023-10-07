@@ -10,6 +10,6 @@ namespace Assets.Scripts.Entities.Player.Characters
 {
 	internal class Thors : Player
 	{
-        public override AttributeHolder Stats { get; } = new AttributeHolder(new MaxHealthStat(100), new SpeedStat(3), new DamageStat(5), new AttackSpeedStat(1));
+        public override AttributeHolder Stats { get; } = new AttributeHolder(new MaxHealthStat(50), new SpeedStat(5), new DamageStat(8), new AttackSpeedStat(1));
     }
 }

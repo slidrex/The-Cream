@@ -115,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destroyOnCollect: 1
-  _minHealMana: 15
-  _maxHealMana: 30
+  _minHealMana: 10
+  _maxHealMana: 20

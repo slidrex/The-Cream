@@ -4990,4 +4990,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 1.2
-  damage: 15
+  damage: 6
