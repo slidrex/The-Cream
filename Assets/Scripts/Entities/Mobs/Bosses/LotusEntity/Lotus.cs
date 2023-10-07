@@ -18,7 +18,7 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 
 		public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
 
-		public override AttributeHolder Stats => new(new MaxHealthStat(30), new AttackSpeedStat(1), new DamageStat(1));
+		public override AttributeHolder Stats => new(new MaxHealthStat(70), new AttackSpeedStat(1), new DamageStat(1));
 
 		public int CurrentHealth { get; set; }
 		public Action<int, int, Entity> OnHealthChanged { get; set; }

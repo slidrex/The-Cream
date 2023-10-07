@@ -13,8 +13,7 @@ public class Sunstrike : MonoBehaviour
 {
     [SerializeField] private float radius;
     [SerializeField] private GameObject damageParticles;
-    private int mobDamage = 5;
-    private int playerDamage = 25;
+    private int playerDamage = 13;
     private ChaseMob owner;
     
     internal void Init(ChaseMob owner)
@@ -38,11 +37,16 @@ public class Sunstrike : MonoBehaviour
         {
             foreach (Entity entity in entities)
             {
-                Destroy(Instantiate(damageParticles, entity.transform.position, Quaternion.identity), 2);
-                if(entity is Player player)
+                if (entity is Player player)
+                {
+                    Destroy(Instantiate(damageParticles, entity.transform.position, Quaternion.identity), 2);
                     (player as IDamageable).Damage(playerDamage, owner);
-                else
-                    (entity as IDamageable).Damage(mobDamage, owner);
+                }
+                else if (owner.GetInstanceID() == entity.GetInstanceID())
+                {
+                    Destroy(Instantiate(damageParticles, entity.transform.position, Quaternion.identity), 2);
+                    (owner as IDamageable).Damage(4, owner);
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Sunstriker
 {
     internal class Sunstriker : ChaseMob, IHealthChangedHandler
     {
-        public override int OnDieExp => 10;
+        public override int OnDieExp => 12;
 
         public override byte SpaceRequired => 5;
 

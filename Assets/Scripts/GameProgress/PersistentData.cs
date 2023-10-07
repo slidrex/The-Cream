@@ -8,9 +8,9 @@ namespace Assets.Scripts.GameProgress
     internal static class PersistentData
     {
         public static bool IsNewbie = true;
-        public static int CurrentGameLevel = 1;
+        public static int CurrentGameLevel = 5;
         public static int SelectedLanguageIndex;
         public static bool IsTutorialPassed;
-        public static HashSet<CharacterDatabaseModel.CharacterID> UnlockedCharacters = new () { CharacterDatabaseModel.CharacterID.KNIGHT };
+        public static HashSet<CharacterDatabaseModel.CharacterID> UnlockedCharacters = new () { CharacterDatabaseModel.CharacterID.KNIGHT, CharacterDatabaseModel.CharacterID.THORS, CharacterDatabaseModel.CharacterID.LIGHT_EATER };
     }
 }

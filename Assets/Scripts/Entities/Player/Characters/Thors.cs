@@ -1,10 +1,5 @@
 ﻿using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Entities.Stats.StatAttributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Player.Characters
 {
