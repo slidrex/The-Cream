@@ -34,6 +34,14 @@ MonoBehaviour:
     m_Localized: "Da\xF1os enemigos"
     m_Metadata:
       m_Items: []
+  - m_Id: 15266482960547840
+    m_Localized: Fuente curativa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15266703157313536
+    m_Localized: "Te cura instant\xE1neamente cuando seas el pr\xF3ximo"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -34,6 +34,14 @@ MonoBehaviour:
     m_Localized: Damages enemies
     m_Metadata:
       m_Items: []
+  - m_Id: 15266482960547840
+    m_Localized: Healing fountain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15266703157313536
+    m_Localized: Instantly heals you when you are next
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
