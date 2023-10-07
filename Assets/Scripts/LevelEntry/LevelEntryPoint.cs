@@ -52,7 +52,7 @@ namespace Assets.Scripts.LevelEntry
         
         private void ConfigureStaticEntities()
         {
-            foreach (var e in FindObjectsOfType<Entity>())
+            foreach (var e in FindObjectsOfType<Entity>(true))
             {
                 e.IsStatic = true;
             }
