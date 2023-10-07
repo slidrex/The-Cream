@@ -9,7 +9,7 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.HammerHead
 {
     internal class HammerHead : ChaseMob, IHealthChangedHandler
     {
-        public override int OnDieExp => 8;
+        public override int OnDieExp => 6;
 
         public override byte SpaceRequired => 4;
 
