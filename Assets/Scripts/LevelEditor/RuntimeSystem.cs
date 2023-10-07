@@ -27,6 +27,7 @@ internal class RuntimeSystem : PlacementSystem
     private RuntimeEntityHolder entityHolder;
     private Player _player;
     public bool DisablePlacingEntities;
+    public Action OnEntityPlaced;
     public bool CastThroughGameObjects { get; set; }
     protected override void Awake()
     {
@@ -179,6 +180,7 @@ internal class RuntimeSystem : PlacementSystem
         {
             var entity = Instantiate(model.Entity, grid.CellToWorld(new Vector3Int(gridPos.x, gridPos.y)), Quaternion.identity);
         }
+        OnEntityPlaced?.Invoke();
         selectedEntityIndex = -1;
     }
     public bool CheckPlacementValidity(Vector2Int gridPosition, int selectedEntityIndex)

@@ -25,7 +25,6 @@ namespace Assets.Scripts.Entities.Mobs.Loot
 
                 if (rand < item._dropChance)
 				{
-					print(rand);
 					Instantiate(item._object, transform.position, Quaternion.identity);
 				}
 			}
