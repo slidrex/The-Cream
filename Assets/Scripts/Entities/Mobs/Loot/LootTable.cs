@@ -21,8 +21,11 @@ namespace Assets.Scripts.Entities.Mobs.Loot
 		{
 			foreach(var item in _items)
 			{
-				if(UnityEngine.Random.Range(0, 1) < item._dropChance)
+				float rand = UnityEngine.Random.Range(0f, 1f);
+
+                if (rand < item._dropChance)
 				{
+					print(rand);
 					Instantiate(item._object, transform.position, Quaternion.identity);
 				}
 			}

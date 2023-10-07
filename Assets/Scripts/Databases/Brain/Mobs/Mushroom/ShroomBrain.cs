@@ -41,7 +41,7 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
             {
                 foreach (var e in foundEntities)
                 {
-                    e.Stats.ModifierHolder.AddModifier(new SpeedBooster(e, -_slowPercentage) { Duration = _slowDuration });
+                    e.Stats.ModifierHolder.AddModifier(new SpeedBooster(e, _slowPercentage) { Duration = _slowDuration });
                     (e as IDamageable).Damage((int)Entity.Stats.GetValue<DamageStat>(), Entity);
                 }
             }

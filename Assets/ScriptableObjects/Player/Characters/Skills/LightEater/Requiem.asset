@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 614618238, guid: 2953efbc13839354f938b7f0e2cc03ce, type: 3}
   <Description>k__BackingField: {fileID: 11400000, guid: 7b04ef945adc3304993048a240705f99, type: 2}
-  <BaseManacost>k__BackingField: 10
-  <BaseCooldown>k__BackingField: 4
+  <BaseManacost>k__BackingField: 50
+  <BaseCooldown>k__BackingField: 13
   DisableActivate: 0
