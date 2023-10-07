@@ -166,6 +166,7 @@ namespace Assets.Scripts.Stage
 			LevelCompositeRoot.Instance.Runner.SetGameMode(GameMode.EDIT);
             Instance._levelActions.ActivateButton(ButtonType.NONE);
             OnSpaceChanged(Instance._spaceController.CurrentSpaceReqiured);
+            _camera.m_Lens.OrthographicSize = _currentElement.EditCameraSize;
         }
         private void OnButtonSwitched(ButtonType type)
         {
