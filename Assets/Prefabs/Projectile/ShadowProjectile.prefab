@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifetime: 2.75
   <Speed>k__BackingField: 8
-  damage: 5
+  damage: 4
   destroyParticles: {fileID: 7009393370630760229, guid: 38019305c8ba5ef46b46cbcf4f74cc15, type: 3}
 --- !u!95 &2864142393644405166
 Animator:
