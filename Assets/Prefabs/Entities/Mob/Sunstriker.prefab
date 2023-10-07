@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunstrike: {fileID: 8158618181007959874, guid: 5ad0fd0c519484c43a4f660ae1398936, type: 3}
-  attackRadius: 10
+  attackRadius: 11
 --- !u!114 &805172739104747782
 MonoBehaviour:
   m_ObjectHideFlags: 0
