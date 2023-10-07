@@ -15,5 +15,5 @@ MonoBehaviour:
   _entity: {fileID: 4761289305778857496, guid: cf17e3ad8b759b14bb4a0b76978011ea, type: 3}
   _icon: {fileID: 21300000, guid: 4399b36ec431e8b45bc241566fc281cf, type: 3}
   _description: {fileID: 11400000, guid: 00b76c6f077ddf84f86dcafb0652a19f, type: 2}
-  _baseManacost: 6
-  _cooldown: 2
+  _baseManacost: 10
+  _cooldown: 3

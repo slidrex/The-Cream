@@ -6,12 +6,14 @@ using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Entities.Stats.Strategies;
 using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 {
 	internal class Lotus : Entity, IDamageable, IHealthChangedHandler, IInvulnerable
 	{
-		[UnityEngine.SerializeField] private VictoryEvent onDieEvent;
+		[SerializeField] private VictoryEvent onDieEvent;
+		[SerializeField] private ParticleSystem onDamage;
 		public override EntityTypeBase ThisType => new EntityType<MobTag>().Any();
 
 		public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
@@ -27,7 +29,9 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
         public void Damage(int damage, Entity dealer)
 		{
 			EntityHealthStrategy.Damage(this, damage, dealer);
-		}
+			onDamage.Play();
+
+        }
 
 		public void Heal(int heal)
 		{

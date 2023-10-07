@@ -11,10 +11,10 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Dina
     {
         public override int OnDieExp => 8;
 
-        public override byte SpaceRequired => 4;
+        public override byte SpaceRequired => 5;
 
         public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
-        public override AttributeHolder Stats => new AttributeHolder(new SpeedStat(3), new MaxHealthStat(15), new DamageStat(4), new AttackSpeedStat(1));
+        public override AttributeHolder Stats => new AttributeHolder(new SpeedStat(3), new MaxHealthStat(12), new DamageStat(4), new AttackSpeedStat(1));
 
         public Action<int, int, Entity> OnHealthChanged { get; set; }
     }

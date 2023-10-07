@@ -5419,7 +5419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 1425405986}
   IsEmpty: 0
-  <EditorSpaceRequired>k__BackingField: 16
+  <EditorSpaceRequired>k__BackingField: 18
   EditCameraSize: 11
   useRuntimeSize: 1
   RuntimeCameraSize: 7
@@ -9688,7 +9688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 1467514651}
   IsEmpty: 0
-  <EditorSpaceRequired>k__BackingField: 16
+  <EditorSpaceRequired>k__BackingField: 25
   EditCameraSize: 10
   useRuntimeSize: 1
   RuntimeCameraSize: 7
@@ -18319,7 +18319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 159790790}
   IsEmpty: 0
-  <EditorSpaceRequired>k__BackingField: 16
+  <EditorSpaceRequired>k__BackingField: 23
   EditCameraSize: 9
   useRuntimeSize: 1
   RuntimeCameraSize: 7
@@ -25667,7 +25667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 355024499}
   IsEmpty: 0
-  <EditorSpaceRequired>k__BackingField: 16
+  <EditorSpaceRequired>k__BackingField: 26
   EditCameraSize: 9
   useRuntimeSize: 1
   RuntimeCameraSize: 7
@@ -25723,7 +25723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 840958854}
   IsEmpty: 0
-  <EditorSpaceRequired>k__BackingField: 16
+  <EditorSpaceRequired>k__BackingField: 19
   EditCameraSize: 9
   useRuntimeSize: 1
   RuntimeCameraSize: 7
@@ -25778,7 +25778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPosition: {fileID: 335307395}
   IsEmpty: 0
-  <EditorSpaceRequired>k__BackingField: 16
+  <EditorSpaceRequired>k__BackingField: 17
   EditCameraSize: 7
   useRuntimeSize: 0
   RuntimeCameraSize: 7
