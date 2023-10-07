@@ -17,8 +17,6 @@ namespace Assets.Scripts.PlatformConfig
 
 		[DllImport("__Internal")]
 		private static extern void RateGame();
-		[DllImport("__Internal")]
-		private static extern void Hello();
 #endif
 		public static Yandex Instance { get; private set; }
 
@@ -34,18 +32,11 @@ namespace Assets.Scripts.PlatformConfig
 			#endif
 		}
 
-		public void ShowAdv()
+		public void ShowAdvert()
 		{
 #if UNITY_WEBGL && !UNITY_EDITOR
 			ShowAdv();
 #endif
-		}
-
-		public void HelloButton()
-		{
-			#if UNITY_WEBGL && !UNITY_EDITOR
-			Hello();
-			#endif
 		}
 	}
 }

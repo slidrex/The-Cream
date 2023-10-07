@@ -51,9 +51,7 @@ namespace Assets.Editor
         {
             Instance = this;
             Camera = FindObjectOfType<Camera>();
-            #if !UNITY_EDITOR && UNITY_WEBGL
-            FindObjectOfType<Yandex>().HelloButton();
-#endif
+            
             FindObjectOfType<LevelEntryPoint>().OnHolderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
             grid = FindObjectOfType<Grid>();
             if (PersistentData.IsNewbie)

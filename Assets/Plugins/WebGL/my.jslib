@@ -1,9 +1,5 @@
 var myPlugin = {
 
-  	Hello: function () {
-    	window.alert("Hello, world!");
-    	console.log("Hello, world!");
-  	},
     ShowAdv : function(){
             ysdk.adv.showFullscreenAdv({
               callbacks: {

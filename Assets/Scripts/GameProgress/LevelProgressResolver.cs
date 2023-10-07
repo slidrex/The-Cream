@@ -38,7 +38,7 @@ namespace Assets.Scripts.GameProgress
                         break;
                     }
             }
-            Yandex.Instance.ShowAdv();
+            Yandex.Instance.ShowAdvert();
 			Analytics.CustomEvent("level_passed", new Dictionary<string, object>() { ["level_index"] = level});
 			PersistentData.CurrentGameLevel = level + 1;
         }
