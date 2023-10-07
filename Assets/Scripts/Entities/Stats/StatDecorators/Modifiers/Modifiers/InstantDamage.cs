@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Entities.Stats.StatAttributes;
 
 namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
 {
@@ -20,7 +21,7 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
         {
             if (StatsProvider is IDamageable damageable)
             {
-                damageable.Damage((int)(StatsProvider.Stats.GetValue<DamageStat>() * _maxHealthDamagePercent), null);
+                damageable.Damage((int)(StatsProvider.Stats.GetValue<MaxHealthStat>() * _maxHealthDamagePercent), null);
                 return true;
             }
             return false;
