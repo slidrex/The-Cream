@@ -25,7 +25,7 @@ namespace Assets.Scripts.Stage
             public StageTileElement Element;
         }
         private Entity[] _staticEntities;
-        private void Start()
+        private void Awake()
         {
             _staticEntities = GetComponentsInChildren<Entity>();
             ActivateStaticEntities();
