@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Entities.Projectiles.Character.LightEater
 {
-    internal class ShadowProjectile : AttackProjectile<Entities.Player.Characters.LightEater>
+    internal class ShadowProjectile : AttackProjectile
     {
         [SerializeField] private GameObject destroyParticles;
         private float _directionTime;

@@ -94,7 +94,7 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 		private void SinShoot()
 		{
 			var projectile = Instantiate(_bullet, transform.position, Quaternion.Euler(0, 0, _sinTime));
-			projectile.SetOwner(Entity);
+			projectile.Owner = Entity;
 			projectile.SetMoveDirection(projectile.transform.up);
 		}
 		private void CastSpecial()
@@ -108,7 +108,7 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 			{
 				var projectile = Instantiate(_bullet, transform.position, Quaternion.Euler(0, 0, i));
 				projectile.SetMoveDirection(projectile.transform.up);
-				projectile.SetOwner(Entity);
+				projectile.Owner = Entity;
 			}
 		}
 #endregion

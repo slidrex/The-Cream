@@ -21,7 +21,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Skill.Bristleback
                 var spike = Instantiate(_spike, player.transform.position, Quaternion.Euler(0, 0, i));
 
                 spike.SetMoveDirection(spike.transform.up);
-                spike.SetOwner(player);
+                spike.Owner = player;
             }
         }
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Projectiles.Character.Bristleback
 {
-    internal class Bristlespike : AttackProjectile<Player.Player>
+    internal class Bristlespike : AttackProjectile
 	{
         public override EntityTypeBase TriggerEntityType => new EntityType<MobTag>().Any();
     }

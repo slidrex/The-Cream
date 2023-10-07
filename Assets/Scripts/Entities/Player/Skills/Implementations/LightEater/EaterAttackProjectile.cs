@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Entities.Player.Skills.Implementations.LightEater
 {
-    internal class EaterAttackProjectile : AttackProjectile<Assets.Scripts.Entities.Player.Characters.LightEater>
+    internal class EaterAttackProjectile : AttackProjectile
     {
         [SerializeField] private GameObject destroyParticles;
         public override EntityTypeBase TriggerEntityType => new EntityType<MobTag>().Any();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Projectiles.Mob.Boss
 {
-	internal class LotusProjectile : AttackProjectile<Lotus>
+	internal class LotusProjectile : AttackProjectile
 	{
 		public override EntityTypeBase TriggerEntityType =>  new EntityType<PlayerTag>().Any();
 		protected override void OnTargetHit(Entity hit)

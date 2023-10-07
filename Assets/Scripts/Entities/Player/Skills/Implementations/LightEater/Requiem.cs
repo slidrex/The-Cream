@@ -45,7 +45,7 @@ namespace Assets.Scripts.Entities.Player.Skills.Implementations.LightEater
                 Vector2 dir = new Vector2(Mathf.Cos(i), Mathf.Sin(i)); 
                 var obj = Instantiate(_projectile, transform.position, Quaternion.Euler(0, 0, i));
                 obj.SetMoveDirection(obj.transform.up);
-                obj.SetOwner(_entity);
+                obj.Owner = _entity;
                 obj.InitTime(_oneDirectionFlyTime);
             }
             _mutable.IsMuted = false;

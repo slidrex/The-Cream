@@ -32,12 +32,13 @@ namespace Assets.Scripts.GameProgress
                     {
                         #if !UNITY_EDITOR && UNITY_WEBGL
                         Yandex.Instance.RateGameButton();
-#endif
+#endif 
+                        Yandex.Instance.RateGameButton();
                         PersistentData.UnlockedCharacters.Add(Databases.Model.Character.CharacterDatabaseModel.CharacterID.LIGHT_EATER);
                         break;
                     }
             }
-            
+            Yandex.Instance.ShowAdv();
 			Analytics.CustomEvent("level_passed", new Dictionary<string, object>() { ["level_index"] = level});
 			PersistentData.CurrentGameLevel = level + 1;
         }
