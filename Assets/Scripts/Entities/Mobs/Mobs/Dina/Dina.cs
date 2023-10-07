@@ -9,7 +9,7 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Dina
 {
     internal class Dina : ChaseMob, IHealthChangedHandler
     {
-        public override int OnDieExp => 8;
+        public override int OnDieExp => 14;
 
         public override byte SpaceRequired => 5;
 

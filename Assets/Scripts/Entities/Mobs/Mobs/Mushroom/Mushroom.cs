@@ -9,7 +9,7 @@ namespace Assets.Scripts.Entities.Player.Characters
 {
     internal class Mushroom : ChaseMob, IHealthChangedHandler
     {
-        public override int OnDieExp => 7;
+        public override int OnDieExp => 12;
 
         public override byte SpaceRequired => 4;
 

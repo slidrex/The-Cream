@@ -74,7 +74,7 @@ namespace Assets.Scripts.Entities.Player
             onDamageParticles.Play();
         }
 
-        public int GetLevelExperienceCost(int level) => 3 * (level + 1);
+        public int GetLevelExperienceCost(int level) => (int)(3.5f * (level + 1));
 
         public void Heal(int heal) => EntityHealthStrategy.Heal(this, heal);
 

@@ -14,7 +14,7 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Dina
         public override byte SpaceRequired => 1;
 
         public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
-        public override AttributeHolder Stats => new AttributeHolder(new SpeedStat(3), new MaxHealthStat(40), new DamageStat(5), new AttackSpeedStat(1));
+        public override AttributeHolder Stats => new AttributeHolder(new SpeedStat(3), new MaxHealthStat(35), new DamageStat(4), new AttackSpeedStat(1));
 
         public Action<int, int, Entity> OnHealthChanged { get; set; }
     }

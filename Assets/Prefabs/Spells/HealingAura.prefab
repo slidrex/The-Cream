@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Radius>k__BackingField: 1.8
   Duration: 6
-  _percentHealing: 0.05
-  _healingInterval: 2
+  _percentHealing: 0.06
+  _healingInterval: 1
 --- !u!1001 &1753298026015220190
 PrefabInstance:
   m_ObjectHideFlags: 0
