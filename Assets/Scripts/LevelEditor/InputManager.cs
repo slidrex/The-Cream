@@ -105,12 +105,12 @@ internal class InputManager : MonoBehaviour
     }
     public Vector2 GetCursorPosition()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Editor.Camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
         if (hit.collider != null && hit.collider.gameObject.layer != limitingLayer)
         {
-            return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            return Editor.Camera.ScreenToWorldPoint(Input.mousePosition);
         }
         else
             return new Vector2(1000, 1000);

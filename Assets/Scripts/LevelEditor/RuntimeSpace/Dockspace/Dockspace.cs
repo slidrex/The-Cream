@@ -58,7 +58,7 @@ namespace Assets.Scripts.Level.Stages
                 else if (_currentDirection == Direction.RIGHT) _cursorImage.transform.eulerAngles = -Vector3.forward * 90;
                 else if (_currentDirection == Direction.DOWN) _cursorImage.transform.eulerAngles = Vector3.forward * 180;
             }
-            Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+            Vector2 pos = Editor.Editor.Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
             _cursorImage.transform.position = pos;
 
         }

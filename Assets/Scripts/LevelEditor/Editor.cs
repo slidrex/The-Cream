@@ -45,10 +45,12 @@ namespace Assets.Editor
         private Grid grid;
         public static CharacterDatabaseModel.CharacterID SelectedCharacterId;
         [SerializeField] private CharacterModel _specificCharacterModel;
+        public static Camera Camera { get; set; }
 
 		private void Awake()
         {
             Instance = this;
+            Camera = FindObjectOfType<Camera>();
             #if !UNITY_EDITOR && UNITY_WEBGL
             FindObjectOfType<Yandex>().HelloButton();
 #endif

@@ -69,7 +69,9 @@ namespace Assets.Scripts.Entities.Util.Config.Input
                 rawPos = UnityEngine.Input.GetTouch(0).position;
                 isSuccess = true;
 			}
-			clickPosition = Camera.main.ScreenToWorldPoint(rawPos);
+
+            clickPosition = Vector2.zero;
+            if(rawPos != Vector2.zero)  clickPosition = Editor.Editor.Camera.ScreenToWorldPoint(rawPos);
             return isSuccess;
         }
 
