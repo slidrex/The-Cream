@@ -1,5 +1,6 @@
 ﻿using Assets.Editor;
 using Assets.Scripts.CompositeRoots;
+using Assets.Scripts.Databases.dto;
 using Assets.Scripts.Entities;
 using Assets.Scripts.Entities.Player;
 using Assets.Scripts.Stage;
@@ -16,17 +17,11 @@ namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 {
 	internal class HealYourselfChain : TrainingActionChain
 	{
-		[UnityEngine.SerializeField] private GameObject _runtimeEntities;
+		[SerializeField] private GameObject _runtimeEntities;
 		private Player _player;
 		private void Awake()
 		{
 			LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += OnModeChanged;
-			LevelCompositeRoot.Instance.Runner.OnLevelModeChanged += AutoRun;
-		}
-		private void AutoRun(GameMode mode)
-		{
-			_runtimeEntities.gameObject.SetActive(mode == GameMode.RUNTIME);
-
 		}
 		private void OnModeChanged(GameMode mode)
 		{
@@ -42,25 +37,25 @@ namespace Assets.Scripts.Training.ActionChain.Chains._2Tile
 		}
 		protected override void OnConfigure(Player player)
 		{
+            _runtimeEntities.gameObject.SetActive(true);
 			Editor.Editor.Instance._runtimeSystem.CastThroughGameObjects = true;
-			_player =player;
+			_player = player;
 			SetButtonInteractions(true);
 			TrainingCompositeRoot.Instance.HighlightController.HighlightElements(false, _runtimeEntities);
 			TrainingCompositeRoot.Instance.HighlightController.HighlightEntities(new List<SpriteRenderer>() { player.SpriteRenderer });
-			player.OnHealthChanged += OnHealthChanged;
+			Editor.Editor.Instance._runtimeSystem.OnEntityPlaced += OnEnitiyPlaced;
+			Time.timeScale = 0;
 		}
-		private void OnHealthChanged(int oldHealth, int newHealth, Entity dealer)
+		private void OnEnitiyPlaced()
 		{
-			_player.OnHealthChanged -= OnHealthChanged;
-			if (newHealth > oldHealth)
-			{
-				StageController.Singleton.DisableAutoactivateWave = false;
-				TrainingCompositeRoot.Instance.HighlightController.UnhighlightElements();
-				TrainingCompositeRoot.Instance.HighlightController.UnhighlightEntities();
-				Editor.Editor.Instance._runtimeSystem.CastThroughGameObjects = false;
-				LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= OnModeChanged;
-				ConfirmChain();
-			}
+			Time.timeScale = 1;
+            Editor.Editor.Instance._runtimeSystem.OnEntityPlaced -= OnEnitiyPlaced;
+			StageController.Singleton.DisableAutoactivateWave = false;
+			TrainingCompositeRoot.Instance.HighlightController.UnhighlightElements();
+			TrainingCompositeRoot.Instance.HighlightController.UnhighlightEntities();
+			Editor.Editor.Instance._runtimeSystem.CastThroughGameObjects = false;
+			LevelCompositeRoot.Instance.Runner.OnLevelModeChanged -= OnModeChanged;
+			ConfirmChain();
 		}
 	}
 }

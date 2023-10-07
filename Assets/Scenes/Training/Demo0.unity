@@ -309,8 +309,8 @@ MonoBehaviour:
   - {fileID: 151803607}
   - {fileID: 151803606}
   - {fileID: 151803605}
-  - {fileID: 151803604}
   - {fileID: 151803614}
+  - {fileID: 151803604}
   - {fileID: 151803603}
   - {fileID: 151803615}
 --- !u!114 &151803603
@@ -482,6 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActionDescriptionKey: drop_heal
   _runtimeEntities: {fileID: 1423510729}
+  _runtimeContainer: {fileID: 746155403}
 --- !u!114 &151803615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,7 +951,9 @@ MonoBehaviour:
   PlayerPosition: {fileID: 588595199}
   IsEmpty: 1
   <EditorSpaceRequired>k__BackingField: 0
-  CameraSize: 6
+  EditCameraSize: 5
+  useRuntimeSize: 0
+  RuntimeCameraSize: 0
   Elements: []
   SpecificRuntimeSoundtrack: {fileID: 0}
 --- !u!1 &499387722
@@ -1415,7 +1418,9 @@ MonoBehaviour:
   PlayerPosition: {fileID: 175524458}
   IsEmpty: 0
   <EditorSpaceRequired>k__BackingField: 16
-  CameraSize: 5
+  EditCameraSize: 5
+  useRuntimeSize: 0
+  RuntimeCameraSize: 0
   Elements:
   - Direction: 4
     Element: {fileID: 1191995930}
@@ -2121,7 +2126,9 @@ MonoBehaviour:
   PlayerPosition: {fileID: 870980485}
   IsEmpty: 0
   <EditorSpaceRequired>k__BackingField: 19
-  CameraSize: 5
+  EditCameraSize: 5
+  useRuntimeSize: 0
+  RuntimeCameraSize: 0
   Elements:
   - Direction: 1
     Element: {fileID: 443024176}
