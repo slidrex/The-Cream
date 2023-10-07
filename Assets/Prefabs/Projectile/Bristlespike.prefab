@@ -262,7 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifetime: 3
   <Speed>k__BackingField: 13
-  damage: 4
+  damage: 2
 --- !u!1 &2760348236639062059
 GameObject:
   m_ObjectHideFlags: 0
