@@ -13,7 +13,7 @@ namespace Assets.Scripts.Entities.Player.Characters
         public override AttributeHolder Stats { get; } = new AttributeHolder(new MaxHealthStat(85), new SpeedStat(4), new DamageStat(5), new AttackSpeedStat(3));
         public override void OnLevelUp()
         {
-            Stats.Modify<DamageStat>(new Entities.Stats.StatAttributes.AttributeMask() { BaseValue = 0.15f });
+            Stats.Modify<DamageStat>(new Entities.Stats.StatAttributes.AttributeMask() { MaskMultiplier = 0.1f });
             print("i have a bad news. i've level uped");
         }
     }
