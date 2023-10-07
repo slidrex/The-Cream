@@ -11,6 +11,9 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Sunstriker
         [SerializeField] private Sunstrike sunstrike;
         [SerializeField] private float attackRadius;
         private Animator animator;
+        private const float _minTimeToAttack = 1;
+        private const float _maxTimeToAttack = 3;
+        
 
         private float attackSpeedModifier = 1;
         private float timeToNextAttack = 0;
@@ -19,7 +22,7 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Sunstriker
         private void Start()
         {
             animator = GetComponent<Animator>();
-            timeToNextAttack = Random.Range(4, 7);
+            timeToNextAttack = Random.Range(_minTimeToAttack, _maxTimeToAttack);
         }
         protected override void RuntimeUpdate()
         {
@@ -33,7 +36,7 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.Sunstriker
                 currentTime = 0;
                 attackSpeedModifier = Entity.CurrentHealth / Entity.Stats.GetValue<MaxHealthStat>();
                 attackSpeedModifier = Mathf.Clamp(attackSpeedModifier, 0.5f, 1);
-                timeToNextAttack = Random.Range(4, 7) * attackSpeedModifier;
+                timeToNextAttack = Random.Range(_minTimeToAttack, _maxTimeToAttack) * attackSpeedModifier;
             }
         }
 
