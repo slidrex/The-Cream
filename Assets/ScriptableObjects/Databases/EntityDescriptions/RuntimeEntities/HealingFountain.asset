@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81c3f8390d15514ca4409924c226bef, type: 3}
-  m_Name: Runtime
+  m_Script: {fileID: 11500000, guid: 4f62193a71aaae64e8301f702d733e0f, type: 3}
+  m_Name: HealingFountain
   m_EditorClassIdentifier: 
-  <Entities>k__BackingField:
-  - {fileID: 11400000, guid: fda9bf35a7c1f894bb78f298c90aca10, type: 2}
+  <Name>k__BackingField: healing_fountain
+  <DescriptionKey>k__BackingField: 
+  <Characteristics>k__BackingField: []

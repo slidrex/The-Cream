@@ -6,6 +6,6 @@ public class VictoryEvent : MonoBehaviour
     {
         Canvas canvas = GetComponentInChildren<Canvas>();
         canvas.worldCamera = Camera.main;
-        canvas.sortingLayerID = SortingLayer.NameToID("TopUI");
+        canvas.sortingLayerID = SortingLayer.NameToID("Top UI");
     }
 }
