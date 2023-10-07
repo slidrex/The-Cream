@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 6224128882503932527}
   - component: {fileID: 6224128882503932521}
   - component: {fileID: 4306215600491610208}
+  - component: {fileID: 6859023210737820591}
   m_Layer: 0
   m_Name: Lotus
   m_TagString: Untagged
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f05482f274a3bc439794f61ae9de23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onDieEvent: {fileID: 3704654841811897649, guid: 8cc861d37981f034cb80db524fb9d6e5, type: 3}
 --- !u!114 &6224128882503932530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,3 +272,23 @@ PolygonCollider2D:
     - - {x: 0, y: 1}
       - {x: -1, y: -0.98}
       - {x: 1, y: -0.98}
+--- !u!95 &6859023210737820591
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224128882503932529}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4330959c64a132947b269c8dc768d50e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

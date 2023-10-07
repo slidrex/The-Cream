@@ -56,6 +56,7 @@ namespace Assets.Scripts.Stage
             else
             {
                 _camera.Follow = _player.transform;
+                _camera.m_Lens.OrthographicSize = _currentElement.RuntimeCameraSize;
             }
         }
         public static StageController Singleton { get; private set; }
@@ -245,7 +246,7 @@ namespace Assets.Scripts.Stage
             
             _player.HousingElement = _currentElement;
             Instance._spaceController.SetMaxSpaceReqiured(element.EditorSpaceRequired);
-            _camera.m_Lens.OrthographicSize = _currentElement.CameraSize;
+            _camera.m_Lens.OrthographicSize = _currentElement.EditCameraSize;
         }
         private void EnableDockspace()
         {

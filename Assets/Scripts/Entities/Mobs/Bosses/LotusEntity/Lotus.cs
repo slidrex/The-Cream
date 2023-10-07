@@ -11,6 +11,7 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 {
 	internal class Lotus : Entity, IDamageable, IHealthChangedHandler, IInvulnerable
 	{
+		[UnityEngine.SerializeField] private VictoryEvent onDieEvent;
 		public override EntityTypeBase ThisType => new EntityType<MobTag>().Any();
 
 		public override EntityTypeBase TargetType => new EntityType<PlayerTag>().Any();
@@ -35,7 +36,8 @@ namespace Assets.Scripts.Entities.Mobs.Bosses.Lotus
 
 		public void OnDie()
 		{
-
+			Instantiate(onDieEvent, transform.position, UnityEngine.Quaternion.identity);
+			Destroy(gameObject);
 		}
 	}
 }
