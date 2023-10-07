@@ -11,17 +11,17 @@ namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers
 {
     internal class InstantDamage : EntityStatModifier
     {
-        private float _maxHealthDamagePercent;
-        public InstantDamage(Entity statProvider, float maxHealthDamagePercent) : base(statProvider)
+        private float _damage;
+        public InstantDamage(Entity statProvider, int damage) : base(statProvider)
         {
-            _maxHealthDamagePercent = maxHealthDamagePercent;
+            _damage = damage;
         }
 
         public override bool OnEffectStart()
         {
             if (StatsProvider is IDamageable damageable)
             {
-                damageable.Damage((int)(StatsProvider.Stats.GetValue<MaxHealthStat>() * _maxHealthDamagePercent), null);
+                damageable.Damage((int)(_damage), null);
                 return true;
             }
             return false;

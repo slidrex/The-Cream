@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Radius>k__BackingField: 1.36
-  _damagePercent: 0.4
+  _damage: 10
   _particles: {fileID: 3459097421681303295, guid: f47b350f7f3d1704badb98fb3e8d8d90, type: 3}
