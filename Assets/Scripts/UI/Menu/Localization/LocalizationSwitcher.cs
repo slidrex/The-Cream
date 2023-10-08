@@ -22,13 +22,7 @@ namespace Assets.Scripts.UI.Menu.Localization
 		private void Start()
 		{
 			_flagButton.onClick.AddListener(SwitchLanguage);
-			StartCoroutine(InitApply());
-		}
-		private IEnumerator InitApply()
-		{
-			LocalizationSettings.InitializationOperation.WaitForCompletion();
 			ApplySelectedLanguage();
-			yield return null;
 		}
 		private void SwitchLanguage()
 		{
