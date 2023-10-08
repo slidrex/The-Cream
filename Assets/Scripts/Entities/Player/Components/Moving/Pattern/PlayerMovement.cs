@@ -226,7 +226,6 @@ namespace Assets.Scripts.Entities.Player.Moving
 		}
 		private void RefindEnemyTarget()
 		{
-			print("refind");
 			var tempPath = _targetMovement.GetPath(_seeker, _path == null);
 			_timeSinceToRefind = _timeToRefindEmeny;
 			if (tempPath != null)

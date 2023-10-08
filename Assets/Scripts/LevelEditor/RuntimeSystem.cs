@@ -211,7 +211,6 @@ internal class RuntimeSystem : PlacementSystem
 
 	public void OnLevelModeChanged(GameMode mode)
 	{
-        print(mode);
         if (mode == GameMode.RUNTIME) ResetSkillsCooldown();
 	}
 }

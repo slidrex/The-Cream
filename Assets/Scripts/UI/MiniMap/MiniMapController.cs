@@ -61,7 +61,6 @@ namespace Assets.Scripts.UI.MiniMap
         }
         public void ResetMap()
         {
-            print("reset map");
             if(_elements != null)
                 foreach(var el in _elements)
                 {

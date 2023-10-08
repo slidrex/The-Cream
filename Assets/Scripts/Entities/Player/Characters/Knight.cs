@@ -14,7 +14,6 @@ namespace Assets.Scripts.Entities.Player.Characters
         public override void OnLevelUp()
         {
             Stats.Modify<DamageStat>(new Entities.Stats.StatAttributes.AttributeMask() { MaskMultiplier = 0.1f });
-            print("i have a bad news. i've level uped");
         }
     }
 }

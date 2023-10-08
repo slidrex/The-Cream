@@ -84,7 +84,6 @@ namespace Entities.Player.Components.Attacking
 		private void OnAttackAnimationInterrupt()
 		{
 			_inAttackAnimation = false;
-			Debug.LogWarning("Attack interrupt");
 		}
 		private void StartAttack()
 		{
