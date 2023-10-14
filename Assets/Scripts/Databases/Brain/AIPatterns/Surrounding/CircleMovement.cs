@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
-using UnityEngine.Rendering;
-using static UnityEngine.GraphicsBuffer;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Entities.AI.Surrounding
 {

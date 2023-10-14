@@ -1370,13 +1370,35 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -2121076873
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2858100222954377627, guid: e360fe60bc4985846a3514860bca8db9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e360fe60bc4985846a3514860bca8db9, type: 3}
 --- !u!4 &1209205423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1161882624473706107, guid: e360fe60bc4985846a3514860bca8db9, type: 3}
   m_PrefabInstance: {fileID: 1209205422}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1209205424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1161882624473706105, guid: e360fe60bc4985846a3514860bca8db9, type: 3}
+  m_PrefabInstance: {fileID: 1209205422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1209205425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209205424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdeefbfaa92b2774898b49ba70a15b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manualTrigger: 1
+  _showGizmos: 0
+  _minCircleDistance: 0
+  _maxCircleDistance: 0
 --- !u!1001 &1279744960
 PrefabInstance:
   m_ObjectHideFlags: 0

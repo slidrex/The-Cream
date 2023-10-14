@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Entities;
 using Assets.Scripts.Functions;
-using Assets.Scripts.Level.Stages;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +24,7 @@ namespace Assets.Scripts.Stage
             public StageTileElement Element;
         }
         private Entity[] _staticEntities;
-        private void Awake()
+        private void Start()
         {
             _staticEntities = GetComponentsInChildren<Entity>();
             ActivateStaticEntities();
@@ -34,7 +33,10 @@ namespace Assets.Scripts.Stage
 		}
         private void ActivateStaticEntities()
         {
-            foreach (var e in _staticEntities) e.HousingElement = this;
+            foreach (var e in _staticEntities)
+            {
+                e.HousingElement = this;
+            }
         }
         public void TryAddDirection(Direction dir, StageTileElement element)
         {

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Entities.AI.ContextSteering;
+using Assets.Scripts.Entities.AI.ContextSteering;
 using Assets.Scripts.Entities.AI.SightStalking;
 using Assets.Scripts.Entities.AI.Surrounding;
 using Assets.Scripts.Entities.Brain;
@@ -11,10 +11,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Attack
 {
-    [RequireComponent(typeof (Movement))]
-    [RequireComponent(typeof (SteeringMovement))]
+    [RequireComponent(typeof(Movement))]
+    [RequireComponent(typeof(SteeringMovement))]
     [RequireComponent(typeof(Facing))]
-    internal class MobBaseAttack : EntityBrain<Entity>
+    internal class HammerTest : EntityBrain<Entity>
     {
         [Header("Behaviour settings")]
         [SerializeField] private bool _manualTrigger;
@@ -41,8 +41,8 @@ namespace Assets.Scripts.Entities.Attack
         {
             _animator = GetComponent<Animator>();
             _facing = GetComponent<Facing>();
-			_circleMovement = GetComponent<CircleMovement>();
-			Movement = GetComponent<Movement>();
+            _circleMovement = GetComponent<CircleMovement>();
+            Movement = GetComponent<Movement>();
             _data = GetComponent<EnvironmentData>();
             _steeringBehaviour = GetComponent<SteeringMovement>();
             _steeringBehaviour.ConsiderSafeDistance = true;
@@ -60,11 +60,11 @@ namespace Assets.Scripts.Entities.Attack
             if (_data.CurrentTarget == null) return;
             if (_timeSinceBind > 0) _timeSinceBind -= Time.deltaTime;
 
-            if(_inAttackAnimation == false)
+            if (_inAttackAnimation == false)
             {
                 UpdateAttackCooldown();
             }
-            
+
             var curTarget = _data.GetTarget();
             if (curTarget != null)
             {
@@ -85,7 +85,6 @@ namespace Assets.Scripts.Entities.Attack
                     _timeSinceBind = BIND_TIME;
                 }
                 Vector2 targetDir = circleDir;
-
 
                 Movement.SetMoveDirection(targetDir);
             }
@@ -133,14 +132,14 @@ namespace Assets.Scripts.Entities.Attack
             _timeToAttack = 1 / _attackSpeed.GetValue();
             _timeSinceAttack = 0;
         }
-		private void OnDrawGizmos()
-		{
+        private void OnDrawGizmos()
+        {
             if (_showGizmos)
             {
-			    Gizmos.color = Color.red;
+                Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(transform.position, _minCircleDistance);
-			    Gizmos.DrawWireSphere(transform.position, _maxCircleDistance);
+                Gizmos.DrawWireSphere(transform.position, _maxCircleDistance);
             }
-		}
-	}
+        }
+    }
 }

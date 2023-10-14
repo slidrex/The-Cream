@@ -45,7 +45,7 @@ namespace Assets.Scripts.Entities.Player.SpecialAbilities
         {
             int speed = 10;
             float currentTime = 0;
-            float maxTime = 0.1f;
+            float maxTime = 0.09f;
             while (currentTime < maxTime)
             {
                 currentTime += Time.deltaTime;
