@@ -8955,10 +8955,10 @@ MonoBehaviour:
   _flagButton: {fileID: 1605386941}
   _flagImage: {fileID: 1605386939}
   _availableLanguages:
-  - CountryFlag: {fileID: 694635038, guid: 4c023f75f60d711469aebd3c8c685e6e, type: 3}
-    LanguageCode: en
   - CountryFlag: {fileID: -1297576021, guid: 4c023f75f60d711469aebd3c8c685e6e, type: 3}
     LanguageCode: ru
+  - CountryFlag: {fileID: 694635038, guid: 4c023f75f60d711469aebd3c8c685e6e, type: 3}
+    LanguageCode: en
   - CountryFlag: {fileID: 40965178, guid: 4c023f75f60d711469aebd3c8c685e6e, type: 3}
     LanguageCode: es
 --- !u!1 &1464581455
@@ -11002,7 +11002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1297576021, guid: 4c023f75f60d711469aebd3c8c685e6e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
