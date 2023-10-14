@@ -1138,7 +1138,7 @@ MonoBehaviour:
   <EditorSpaceRequired>k__BackingField: 20
   EditCameraSize: 6
   useRuntimeSize: 0
-  RuntimeCameraSize: 0
+  RuntimeCameraSize: 6
   Elements:
   - Direction: 2
     Element: {fileID: 490807834}
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   <EditorSpaceRequired>k__BackingField: 15
   EditCameraSize: 6
   useRuntimeSize: 0
-  RuntimeCameraSize: 0
+  RuntimeCameraSize: 6
   Elements:
   - Direction: 2
     Element: {fileID: 905953610}
