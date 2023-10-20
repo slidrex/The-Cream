@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f62193a71aaae64e8301f702d733e0f, type: 3}
   m_Name: SpikeSpread
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Spikes
+  <Name>k__BackingField: thors_spikes_name
   <DescriptionKey>k__BackingField: thors_spikes
   <Characteristics>k__BackingField: []

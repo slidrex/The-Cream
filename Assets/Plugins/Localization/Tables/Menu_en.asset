@@ -94,6 +94,10 @@ MonoBehaviour:
     m_Localized: You still can try tutorial by clicking this button
     m_Metadata:
       m_Items: []
+  - m_Id: 21528448163389440
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

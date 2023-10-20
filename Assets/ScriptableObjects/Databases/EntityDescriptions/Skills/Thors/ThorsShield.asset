@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f62193a71aaae64e8301f702d733e0f, type: 3}
   m_Name: ThorsShield
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Forest shield
+  <Name>k__BackingField: thors_shield_name
   <DescriptionKey>k__BackingField: thors_shield
   <Characteristics>k__BackingField: []

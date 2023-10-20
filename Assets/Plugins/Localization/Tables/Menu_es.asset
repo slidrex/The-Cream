@@ -94,6 +94,10 @@ MonoBehaviour:
     m_Localized: "A\xFAn puede probar el tutorial haciendo clic en este bot\xF3n"
     m_Metadata:
       m_Items: []
+  - m_Id: 21528448163389440
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
