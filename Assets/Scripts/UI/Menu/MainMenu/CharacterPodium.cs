@@ -20,6 +20,10 @@ public class CharacterPodium : MonoBehaviour
     [SerializeField] private RectTransform DescriptionObject;
 
     [Header("SkillDescription")]
+    [SerializeField] private LocalizeStringEvent _characterNameLocalizer;
+
+    [SerializeField] private TextMeshProUGUI _characterName;
+    [SerializeField] private LocalizeStringEvent _skillNameLicalizer;
     [SerializeField] private LocalizeStringEvent _descriptionLocalizer;
 	[SerializeField] private TextMeshProUGUI skillName;
     [SerializeField] private TextMeshProUGUI skillDescription;
@@ -78,19 +82,28 @@ public class CharacterPodium : MonoBehaviour
                                 "...\n" +
                                 "...";
     }
-    public void InitPodium(Sprite icon, string name)
+    public void InitPodium(Sprite icon, string name, bool applyLocalization = true)
     {
         characterIcon.sprite = icon;
-        characterName.text = name;
+        if (applyLocalization)
+        {
+            _characterNameLocalizer.SetEntry(name);
+            _characterNameLocalizer.RefreshString();
+        }
+        else
+        {
+            _characterName.text = name;
+        }
     }
     public void InitBlockedPodium()
     {
-        InitPodium(_lockedPodiumSprite, _lockedPodiumName);
+        InitPodium(_lockedPodiumSprite, _lockedPodiumName, false);
     }
     public Transform GetSkillContainer() => skillsContainer;
     public void SetPodiumSkill(string name, string descriptionKey) 
     {
-		skillName.text = name;
+        _skillNameLicalizer.SetEntry(name);
+        _skillNameLicalizer.RefreshString();
         _descriptionLocalizer.SetEntry(descriptionKey);
         _descriptionLocalizer.RefreshString();
 	}

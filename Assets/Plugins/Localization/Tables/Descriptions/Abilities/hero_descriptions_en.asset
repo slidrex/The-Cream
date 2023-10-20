@@ -49,6 +49,46 @@ MonoBehaviour:
       of the hero spreading and dealing damage
     m_Metadata:
       m_Items: []
+  - m_Id: 20069394278785024
+    m_Localized: Light Eater
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20069415334191104
+    m_Localized: Thors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20069442089656320
+    m_Localized: Knight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070093796417536
+    m_Localized: Shield attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070160171278336
+    m_Localized: Double damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070183885873152
+    m_Localized: Spikes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070220527312896
+    m_Localized: Thors' shield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070283265712128
+    m_Localized: Soulrun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070294464503808
+    m_Localized: Coil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070338043322368
+    m_Localized: Requiem
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

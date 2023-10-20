@@ -43,6 +43,46 @@ MonoBehaviour:
     m_Key: light_eater_requiem
     m_Metadata:
       m_Items: []
+  - m_Id: 20069394278785024
+    m_Key: light_eater_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20069415334191104
+    m_Key: thors_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20069442089656320
+    m_Key: knight_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070093796417536
+    m_Key: knight_shield_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070160171278336
+    m_Key: knight_double_damage_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070183885873152
+    m_Key: thors_spikes_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070220527312896
+    m_Key: thors_shield_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070283265712128
+    m_Key: light_eater_escape_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070294464503808
+    m_Key: light_eater_coil_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070338043322368
+    m_Key: light_eater_requiem_name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

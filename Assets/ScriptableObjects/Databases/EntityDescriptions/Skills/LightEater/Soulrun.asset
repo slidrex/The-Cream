@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f62193a71aaae64e8301f702d733e0f, type: 3}
   m_Name: Soulrun
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Soulrun
+  <Name>k__BackingField: light_eater_escape_name
   <DescriptionKey>k__BackingField: light_eater_escape
   <Characteristics>k__BackingField: []

@@ -49,6 +49,46 @@ MonoBehaviour:
       que salen de \xE9l, se dispersan y causan da\xF1o"
     m_Metadata:
       m_Items: []
+  - m_Id: 20069442089656320
+    m_Localized: Caballero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20069415334191104
+    m_Localized: Thors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20069394278785024
+    m_Localized: Destructor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070093796417536
+    m_Localized: Ataque escudo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070160171278336
+    m_Localized: "Doble da\xF1o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070183885873152
+    m_Localized: Picos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070220527312896
+    m_Localized: Escudo de Thors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070283265712128
+    m_Localized: Desenfoque
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070294464503808
+    m_Localized: Coil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20070338043322368
+    m_Localized: "R\xE9quiem"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

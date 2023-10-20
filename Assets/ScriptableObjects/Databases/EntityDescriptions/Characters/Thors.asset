@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d5fe0c8d6eb164fbea8c74ef46e6c5, type: 3}
   m_Name: Thors
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Thors
+  <Name>k__BackingField: thors_name
   <DescriptionKey>k__BackingField: 
   <Characteristics>k__BackingField: []
   Skills:
