@@ -5091,7 +5091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfd49c8cf467134792ea6acd10e0501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Nachos
+  _displayName: nachos
   <BarColor>k__BackingField:
     serializedVersion: 2
     rgba: 4289855474
