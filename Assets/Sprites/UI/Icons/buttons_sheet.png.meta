@@ -338,6 +338,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: buttons_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f03ba74c7f9f84a419f0e29edf30bc30
+      internalID: -218283444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c120bc019416641ae160be4d6558d2
+      internalID: -1411991449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -349,6 +391,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      buttons_sheet_10: -218283444
       buttons_sheet_0: -1019265857
       buttons_sheet_1: 1334190849
       buttons_sheet_4: 141151235
@@ -358,6 +401,7 @@ TextureImporter:
       buttons_sheet_7: -331021210
       buttons_sheet_3: 1175788378
       buttons_sheet_2: -1475760139
+      buttons_sheet_11: -1411991449
       buttons_sheet_8: -718119828
   spritePackingTag: 
   pSDRemoveMatte: 0

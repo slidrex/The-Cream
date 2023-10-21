@@ -1,12 +1,7 @@
 ﻿using Assets.Scripts.GameProgress;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Analytics;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.UI.Menu.MainMenu.ActionButtons
 {
@@ -16,7 +11,7 @@ namespace Assets.Scripts.UI.Menu.MainMenu.ActionButtons
 		[SerializeField] private GameObject _tutorialScreen;
 		[SerializeField] private Menus.MainMenu _menu;
 		[SerializeField] private GameObject _tutorialAlers;
-		public bool ShowedByStartButton { get; set; }
+        public bool ShowedByStartButton { get; set; }
 		public void OnClick()
 		{
 			if (PersistentData.IsTutorialPassed)
