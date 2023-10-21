@@ -12562,7 +12562,7 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 1bc72f5de025cd946961a4598154951f, type: 2}
   DescriptionObject: {fileID: 477391940}
   _characterNameLocalizer: {fileID: 1937400582}
-  _characterName: {fileID: 0}
+  _characterName: {fileID: 1937400580}
   _skillNameLicalizer: {fileID: 370435444}
   _descriptionLocalizer: {fileID: 340128294}
   skillName: {fileID: 370435441}
