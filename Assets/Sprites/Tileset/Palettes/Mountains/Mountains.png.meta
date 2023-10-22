@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -923,6 +935,132 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Mountains_39
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d92a7fe99089046bfa045fd97e5042
+      internalID: -2105131358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mountains_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0abc684aaf97f148903b69ff42be681
+      internalID: 2057561761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mountains_41
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e92de06b7d43184da6442a9e9903421
+      internalID: 1116346174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mountains_42
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5973badffcee7bd4989014fa5d861311
+      internalID: 297370326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mountains_43
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d0504817505c345b48ed372fee3247
+      internalID: -517803642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mountains_44
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ffcfb0f57392d745b8c304904d15626
+      internalID: 1248015521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -934,45 +1072,51 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mountains_25: 2025661557
       Mountains_33: -272866440
-      Mountains_0: -467472874
+      Mountains_44: 1248015521
       Mountains_19: -575359857
       Mountains_10: 1165120620
+      Mountains_30: -701672461
+      Mountains_26: 831919944
+      Mountains_3: -744407011
+      Mountains_42: 297370326
+      Mountains_40: 2057561761
+      Mountains_1: -391288724
+      Mountains_34: -320332574
+      Mountains_32: 135853116
+      Mountains_43: -517803642
+      Mountains_35: 2055878749
+      Mountains_12: 2070788189
+      Mountains_21: 1331329744
+      Mountains_22: -866676605
+      Mountains_36: 1256933360
+      Mountains_25: 2025661557
+      Mountains_4: -815096366
+      Mountains_16: 1272840051
+      Mountains_15: -522879785
+      Mountains_41: 1116346174
+      Mountains_23: 1648562275
+      Mountains_0: -467472874
+      Mountains_38: -1215694001
       Mountains_8: 885178535
       Mountains_7: -1089905279
-      Mountains_30: -701672461
       Mountains_5: -104780217
-      Mountains_38: -1215694001
+      Mountains_39: -2105131358
       Mountains_18: -761023249
-      Mountains_26: 831919944
       Mountains_20: -1982514750
       Mountains_24: 1213045803
-      Mountains_3: -744407011
       Mountains_14: 446735147
       Mountains_11: 885526874
       Mountains_29: 760740097
       Mountains_27: -1922782190
       Mountains_13: 1391705252
-      Mountains_1: -391288724
-      Mountains_34: -320332574
       Mountains_37: -4113392
       Mountains_2: -395475596
-      Mountains_32: 135853116
-      Mountains_35: 2055878749
-      Mountains_12: 2070788189
-      Mountains_21: 1331329744
-      Mountains_22: -866676605
       Mountains_31: -635243971
       Mountains_28: 537314981
-      Mountains_36: 1256933360
-      Mountains_4: -815096366
-      Mountains_16: 1272840051
       Mountains_6: -873737930
       Mountains_9: 930743073
-      Mountains_15: -522879785
       Mountains_17: 50341960
-      Mountains_23: 1648562275
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
