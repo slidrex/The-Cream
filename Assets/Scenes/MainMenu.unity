@@ -12231,6 +12231,55 @@ MonoBehaviour:
     - {fileID: 437118726}
     - {fileID: 2066613017}
     StartsWith: 1
+--- !u!1 &998001892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 998001894}
+  - component: {fileID: 998001893}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &998001893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998001892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: b26a7818cfa109e43a64c12537eb107d, type: 2}
+--- !u!4 &998001894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998001892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025584139
 GameObject:
   m_ObjectHideFlags: 0
@@ -19604,11 +19653,11 @@ PrefabInstance:
       objectReference: {fileID: -218283444, guid: 5bf60dba5d95d744c9c6b336830f417b, type: 3}
     - target: {fileID: 1059422332071894389, guid: ccbc9aeac8b8d62479e6ae48aadaedbf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -150.59
+      value: -150.59003
       objectReference: {fileID: 0}
     - target: {fileID: 1059422332071894389, guid: ccbc9aeac8b8d62479e6ae48aadaedbf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 74.7
+      value: 74.69998
       objectReference: {fileID: 0}
     - target: {fileID: 1059422332071894390, guid: ccbc9aeac8b8d62479e6ae48aadaedbf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
