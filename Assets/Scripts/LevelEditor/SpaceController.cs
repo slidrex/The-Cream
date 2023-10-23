@@ -20,6 +20,7 @@ public class SpaceController : MonoBehaviour
 	}
     private void OnModeChanged(GameMode mode)
     {
+        spaceRequired.color = Color.white;
         spaceRequired.gameObject.SetActive(mode == GameMode.EDIT);
     }
 	public void SetMaxSpaceReqiured(int required)
@@ -31,7 +32,7 @@ public class SpaceController : MonoBehaviour
     public void ChangeSpace(int required)
     {
         CurrentSpaceReqiured += required;
-
+        spaceRequired.color = Color.white;
         if (IsOverloaded(0) == true)
         {
             return;
@@ -40,7 +41,7 @@ public class SpaceController : MonoBehaviour
         {
             spaceRequired.text = CurrentSpaceReqiured.ToString() + "/" + maxSpaceReqiured;
             OnSpaceChanged?.Invoke(CurrentSpaceReqiured);
-            spaceRequired.color = Color.white;
+            
         }
 
         if (IsOne() == true)
