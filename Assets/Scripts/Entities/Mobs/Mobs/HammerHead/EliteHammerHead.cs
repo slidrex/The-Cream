@@ -15,7 +15,7 @@ namespace Assets.Scripts.Entities.Mobs.Mobs.HammerHead
 
         public override EntityTypeBase TargetType => new EntityType<PlayerTag>(PlayerTag.PLAYER);
 
-        public override AttributeHolder Stats => new AttributeHolder(new SpeedStat(2), new MaxHealthStat(20), new DamageStat(5), new AttackSpeedStat(1));
+        public override AttributeHolder Stats => new AttributeHolder(new SpeedStat(2), new MaxHealthStat(25), new DamageStat(5), new AttackSpeedStat(1));
 
         public Action<int, int, Entity> OnHealthChanged { get; set; }
     }

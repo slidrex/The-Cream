@@ -7,6 +7,7 @@ using Assets.Scripts.Entities.Stats.StatAttributes;
 using Assets.Scripts.Entities.Stats.StatAttributes.Stats;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers;
 using Assets.Scripts.Entities.Stats.StatDecorators.Modifiers.Modifiers;
+using Assets.Scripts.Entities.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
     internal class ShroomBrain : EntityBrain<Player.Characters.Mushroom>
     {
         private Animator _animator;
+        private EliteMushroom _emushroom;
         [SerializeField] private ParticleSystem _explosionParticles;
         [SerializeField] private float _slowDuration;
         [SerializeField, Range(0, 1.0f)] private float _slowPercentage;
@@ -31,6 +33,7 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
         private Movement movement;
         private void Start()
         {
+            _emushroom = GetComponent<EliteMushroom>();
             _animator = GetComponent<Animator>();
             movement = GetComponent<Movement>();
         }
@@ -42,7 +45,11 @@ namespace Assets.Scripts.Entities.Brain.Mobs.Mushroom
                 foreach (var e in foundEntities)
                 {
                     e.Stats.ModifierHolder.AddModifier(new SpeedBooster(e, _slowPercentage) { Duration = _slowDuration });
-                    (e as IDamageable).Damage((int)Entity.Stats.GetValue<DamageStat>(), Entity);
+                    if(e is IDamageable d)
+                    {
+                        ChaseMob entity = Entity == null ? _emushroom : Entity;
+                        d.Damage((int)entity.Stats.GetValue<DamageStat>(), entity);
+                    }
                 }
             }
             movement.EnableMovement(true);
