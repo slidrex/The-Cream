@@ -1,6 +1,4 @@
 ﻿using Assets.Scripts.Databases.Model.Character;
-using Assets.Scripts.Menu.Character;
-using System;
 using System.Collections.Generic;
 
 namespace Assets.Scripts.GameProgress
