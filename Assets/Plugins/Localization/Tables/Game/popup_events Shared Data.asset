@@ -19,6 +19,22 @@ MonoBehaviour:
     m_Key: victory_event
     m_Metadata:
       m_Items: []
+  - m_Id: 1092738436571136
+    m_Key: death_event
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092784129318912
+    m_Key: pause_event
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093107975725056
+    m_Key: back_to_menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093188091125760
+    m_Key: retry
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
