@@ -22,6 +22,22 @@ MonoBehaviour:
     m_Localized: Victoria
     m_Metadata:
       m_Items: []
+  - m_Id: 1092784129318912
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092738436571136
+    m_Localized: "\xA1Has muerto!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093107975725056
+    m_Localized: "Volver al men\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093188091125760
+    m_Localized: "Int\xE9ntalo de nuevo"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

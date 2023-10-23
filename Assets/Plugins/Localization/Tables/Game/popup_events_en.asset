@@ -22,6 +22,22 @@ MonoBehaviour:
     m_Localized: Victory
     m_Metadata:
       m_Items: []
+  - m_Id: 1092738436571136
+    m_Localized: You died!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092784129318912
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093107975725056
+    m_Localized: Back to menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093188091125760
+    m_Localized: Try again
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
