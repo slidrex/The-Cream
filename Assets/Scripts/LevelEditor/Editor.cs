@@ -52,7 +52,7 @@ namespace Assets.Editor
             Instance = this;
             Camera = FindObjectOfType<Camera>();
             
-            FindObjectOfType<LevelEntryPoint>().OnHoerlderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
+            FindObjectOfType<LevelEntryPoint>().OnHolderActivate += (StageTileElementHolder holder) => { PlacementTileMap = holder.PlacementTileMap; LimitingTileMap = holder.LimitingTileMap; };
             grid = FindObjectOfType<Grid>();
             if (PersistentData.IsNewbie)
             {
