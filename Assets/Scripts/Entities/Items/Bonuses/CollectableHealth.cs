@@ -1,12 +1,6 @@
 ﻿using Assets.Scripts.Entities.Items.Collectable;
 using Assets.Scripts.Entities.Navigation.EntityType;
 using Assets.Scripts.Entities.Stats.Interfaces.Stats;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 namespace Assets.Scripts.Entities.Items.Bonuses
 {
