@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 namespace Assets.Scripts.UI.Menu.Advanced
 {
@@ -17,13 +13,14 @@ namespace Assets.Scripts.UI.Menu.Advanced
 			public int StartsWith = 1;
 		}
 		[SerializeField] private ListObject[] _lists;
-		private void Awake()
+		private void Start()
 		{
 			foreach(var list in _lists)
 			{
 				for(int i = 0; i < list.Containers.Length; i++)
 				{
 					list.Containers[i].Index = list.StartsWith + i;
+					list.Containers[i].GetComponent<LocalizeStringEvent>().RefreshString();
 				}
 			}
 		}
