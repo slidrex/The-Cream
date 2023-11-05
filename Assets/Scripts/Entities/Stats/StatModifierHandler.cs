@@ -59,7 +59,7 @@ namespace Assets.Scripts.Entities.Stats
             }
         }
     }
-    internal sealed class StatModifierHandler
+    public sealed class StatModifierHandler
     {
         private List<DurationableModifier> _activeMods = new();
         public bool AddModifier(EntityStatModifier mod)

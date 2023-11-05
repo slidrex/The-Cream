@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.StatAttributes
 {
-    internal class Stat : IAttribute
+    public class Stat : IAttribute
     {
         public Stat(float baseValue)
         {

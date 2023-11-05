@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using GameProgress;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.Localization.Settings;
@@ -20,7 +21,7 @@ namespace Assets.Scripts.UI.Menu.Localization
 			public Sprite CountryFlag;
 			public string LanguageCode;
 		}
-		private IEnumerator Start()
+		public IEnumerator StartEnum()
 		{
 			yield return LocalizationSettings.InitializationOperation;
 			_flagButton.onClick.AddListener(SwitchLanguage);

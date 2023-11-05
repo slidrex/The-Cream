@@ -20,7 +20,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Entities.Player
 {
-    internal class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IDamageCorrector, IKillCatcher, IMutable
+    public class Player : Entity, IDamageable, ILevelEntity, IResettable, IHealthChangedHandler, IDamageCorrector, IKillCatcher, IMutable
     {
         [SerializeField] private ParticleSystem onDamageParticles;
         private EntityLevelBar _levelBar;

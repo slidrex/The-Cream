@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Stats.StatAttributes
 {
-    internal class AttributeHolder
+    public class AttributeHolder
     {
         public StatModifierHandler ModifierHolder { get; private set; }
         private Stat[] _attributes;

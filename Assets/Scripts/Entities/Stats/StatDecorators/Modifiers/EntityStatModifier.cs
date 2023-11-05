@@ -4,7 +4,7 @@ using Assets.Scripts.Entities.Stats.StatAttributes;
 namespace Assets.Scripts.Entities.Stats.StatDecorators.Modifiers
 {
 
-    internal abstract class EntityStatModifier : StatDecorator
+    public abstract class EntityStatModifier : StatDecorator
     {
         protected Entity StatsProvider;
         public EntityStatModifier(Entity statProvider)

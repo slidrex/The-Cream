@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.GameProgress.DTO;
+using GameProgress;
 using UnityEngine.Analytics;
 
 namespace Assets.Scripts.GameProgress
@@ -38,6 +40,7 @@ namespace Assets.Scripts.GameProgress
                         break;
                     }
             }
+            Yandex.Instance.SaveExternData();
             Yandex.Instance.ShowAdvert();
 			Analytics.CustomEvent("level_passed", new Dictionary<string, object>() { ["level_index"] = level});
 			PersistentData.CurrentGameLevel = level + 1;

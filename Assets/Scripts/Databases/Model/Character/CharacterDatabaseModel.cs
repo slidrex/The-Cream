@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.Scripts.Databases.Model.Character
 {
     [Serializable]
-    internal class CharacterDatabaseModel
+    public class CharacterDatabaseModel
     {
         public enum CharacterID
         {

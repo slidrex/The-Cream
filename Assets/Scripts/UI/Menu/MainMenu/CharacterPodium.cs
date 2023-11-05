@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using Assets.Scripts.GameProgress;
+using GameProgress;
 using UnityEngine.Localization.Components;
 
 public class CharacterPodium : MonoBehaviour

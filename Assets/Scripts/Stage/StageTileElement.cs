@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Stage
 {
-    internal class StageTileElement : MonoBehaviour
+    public class StageTileElement : MonoBehaviour
     {
         public Transform PlayerPosition;
         public bool IsEmpty;

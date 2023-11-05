@@ -13,6 +13,17 @@ var myPlugin = {
             }
             })
         },
+    SaveExtern: function(date){
+        var dateString = UTF8ToString(date);
+        var myObj = JSON.parse(dateString);
+        player.setData(myObj);
+    },
+    LoadExtern: function(){
+        player.getData().then(_date => {
+            const myJSON = JSON.stringify(_date);
+            myGameInstance.SendMessage('Yandex', 'LoadData', myJSON);
+        });
+    },
 
   	RateGame: function () {
     

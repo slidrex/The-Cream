@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.GameProgress;
 using System.Collections.Generic;
+using GameProgress;
 using UnityEngine;
 using UnityEngine.Analytics;
 

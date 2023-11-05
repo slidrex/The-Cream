@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities.Player
 {
-    internal abstract class PlayerSkill : ScriptableObject
+    public abstract class PlayerSkill : ScriptableObject
     {
         public Sprite Icon;
         [field: SerializeField] public SkillDescription Description { get; private set; }

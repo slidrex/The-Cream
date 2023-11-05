@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Entities
 {
-    internal class BaseEntity : MonoBehaviour
+    public class BaseEntity : MonoBehaviour
     {
 
     }

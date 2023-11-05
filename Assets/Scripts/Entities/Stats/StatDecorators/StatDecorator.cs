@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entities.Stats.StatDecorators
 {
-    internal class StatDecorator
+    public class StatDecorator
     {
     }
 }

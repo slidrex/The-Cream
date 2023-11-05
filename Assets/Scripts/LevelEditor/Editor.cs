@@ -15,6 +15,7 @@ using Assets.Scripts.Sound.Soundtrack;
 using Assets.Scripts.Stage;
 using System;
 using System.Collections.Generic;
+using GameProgress;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.Tilemaps;
