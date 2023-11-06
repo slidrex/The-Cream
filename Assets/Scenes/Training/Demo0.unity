@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 151803604}
   - component: {fileID: 151803614}
   - component: {fileID: 151803603}
-  - component: {fileID: 151803615}
+  - component: {fileID: 151803617}
   m_Layer: 0
   m_Name: TutorualChains
   m_TagString: Untagged
@@ -312,7 +312,7 @@ MonoBehaviour:
   - {fileID: 151803614}
   - {fileID: 151803604}
   - {fileID: 151803603}
-  - {fileID: 151803615}
+  - {fileID: 151803617}
 --- !u!114 &151803603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,19 +482,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActionDescriptionKey: drop_heal
   _runtimeEntities: {fileID: 1423510729}
---- !u!114 &151803615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151803599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a7a5a8018308cd488f579f049e24aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ActionDescriptionKey: enter_portal
 --- !u!114 &151803616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +498,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:b967a68d650099d46bc08de9a9417aee
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 26243523205742592
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -535,6 +522,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &151803617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151803599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7a5a8018308cd488f579f049e24aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActionDescriptionKey: enter_portal
 --- !u!1 &175524457
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +663,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2099020008, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: data.dataString
-      value: UEsDBBQAAAgIAAAoIezO6kywVgIAABUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3HEBpKb60hpAcCE9rJxRdhrbEGWfLog8/hv3clf4ZOTojdt0/v7a58JVyaElKr9EJztlQMyI8B8WfyZdAlX+BEd0pu+AUazDtnNvcgGjBv1HKF8aEvM6oAq3n6U+6EB0cYdJJnShdztoNYGWswnFFhAFNaWV8tMXQdkBP+PEx9yRlPo4k/XfA0jQY3PKYgLegO2gAbWIVyMhW0KIF5yR24pa3JJJqpEdHXqWdXQnBTayH2XAavMS2NQycIYJyityDAW82B73LrdfaLV1lmwNaiND3PuMYWVazkl6r6VlCzr5QdqHD+nuHoe1BVkS7/yz8MQzrTqnhp7h1G/g6b83T/Rs8pNbbX2H549lG4k0cq9nQr4D0H+aoWWjnJMGm186XOwGjW/W2txTmk+y5eSb0LuvLz8XgPt+D+FAtebEPnx1VgI1Tod5gSaJzNbxQcVsPUFBj1Kv4a+EN3/R2qE89cG4up2qX08rbKaQ8l89Az78bZWGkJus9QgqTCntfIY+9neJf7vOqZ+udS317nmldwVxLCHT6K7lJrdWynZXJ1XILJV84KLqFrtU+8YqNiJWW1Yn1LTdnG6YymvbKd4+zjbhE2GmZPk3EUTcd0zMbfHh5ZOnqC8SNMtmybRlMSlo9L9EnFuhJatwfHJjtyiYvWfEUGC03LsO5M0+OCXwplOiSXmdqkGkCuKoZWOGi8BB8mmzOODdqAtVyGgZNrQoRK98CSligJTucnq2nSsSSk5AdlfSQhcfhsJMSH22VeazhwOPrLG7Ibuf0DUEsDBBQAAAgIAAAoIezt1L9xbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSipFhmpm5iYGBpUmiSYqJqa5xSrKRWaqJcap5UkpSsoGlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAoIezO6kywVgIAABUFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAoIezt1L9xbQAAAHgAAAAJACQAAAAAAAAAAAAAAKMCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWwMAAAAA
+      value: UEsDBBQAAAgIAAAYIezO6kywVgIAABUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3HEBpKb60hpAcCE9rJxRdhrbEGWfLog8/hv3clf4ZOTojdt0/v7a58JVyaElKr9EJztlQMyI8B8WfyZdAlX+BEd0pu+AUazDtnNvcgGjBv1HKF8aEvM6oAq3n6U+6EB0cYdJJnShdztoNYGWswnFFhAFNaWV8tMXQdkBP+PEx9yRlPo4k/XfA0jQY3PKYgLegO2gAbWIVyMhW0KIF5yR24pa3JJJqpEdHXqWdXQnBTayH2XAavMS2NQycIYJyityDAW82B73LrdfaLV1lmwNaiND3PuMYWVazkl6r6VlCzr5QdqHD+nuHoe1BVkS7/yz8MQzrTqnhp7h1G/g6b83T/Rs8pNbbX2H549lG4k0cq9nQr4D0H+aoWWjnJMGm186XOwGjW/W2txTmk+y5eSb0LuvLz8XgPt+D+FAtebEPnx1VgI1Tod5gSaJzNbxQcVsPUFBj1Kv4a+EN3/R2qE89cG4up2qX08rbKaQ8l89Az78bZWGkJus9QgqTCntfIY+9neJf7vOqZ+udS317nmldwVxLCHT6K7lJrdWynZXJ1XILJV84KLqFrtU+8YqNiJWW1Yn1LTdnG6YymvbKd4+zjbhE2GmZPk3EUTcd0zMbfHh5ZOnqC8SNMtmybRlMSlo9L9EnFuhJatwfHJjtyiYvWfEUGC03LsO5M0+OCXwplOiSXmdqkGkCuKoZWOGi8BB8mmzOODdqAtVyGgZNrQoRK98CSligJTucnq2nSsSSk5AdlfSQhcfhsJMSH22VeazhwOPrLG7Ibuf0DUEsDBBQAAAgIAAAYIezt1L9xbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSipFhmpm5iYGBpUmiSYqJqa5xSrKRWaqJcap5UkpSsoGlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAYIezO6kywVgIAABUFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAYIezt1L9xbQAAAHgAAAAJACQAAAAAAAAAAAAAAKMCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWwMAAAAA
       objectReference: {fileID: 0}
     - target: {fileID: 1252809502851674943, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_IsActive
@@ -673,6 +673,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3600895935464057524, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+      propertyPath: <SoundPlayer>k__BackingField
+      value: 
+      objectReference: {fileID: 954531524}
     - target: {fileID: 3651811768560394061, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -849,7 +853,9 @@ PrefabInstance:
       propertyPath: _disableText
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1367270856607376370, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
+    - {fileID: 3684052788746282229, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5ffdf8565d844e444856c93ee79d9bdf, type: 3}
 --- !u!4 &379247779 stripped
 Transform:
@@ -1831,6 +1837,7 @@ GameObject:
   - component: {fileID: 954531519}
   - component: {fileID: 954531522}
   - component: {fileID: 954531523}
+  - component: {fileID: 954531524}
   m_Layer: 0
   m_Name: DemoScripts
   m_TagString: Untagged
@@ -1894,6 +1901,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _holder: {fileID: 151803602}
+--- !u!114 &954531524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954531518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beaa84a6ce8cb249bf41fcbf0d74968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1127286804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,6 +2215,50 @@ Transform:
   - {fileID: 443024175}
   m_Father: {fileID: 141386733}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1378497685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378497687}
+  - component: {fileID: 1378497686}
+  m_Layer: 0
+  m_Name: Yandex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &1378497686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378497685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe388d8511c7ada48b663cb9522644ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1378497687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378497685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1381273061
 GameObject:

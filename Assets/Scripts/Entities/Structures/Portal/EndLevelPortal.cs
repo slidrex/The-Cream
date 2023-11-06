@@ -1,16 +1,6 @@
 ﻿using Assets.Scripts.CompositeRoots;
-using Assets.Scripts.Entities.Navigation.EntityType;
-using Assets.Scripts.Entities.Stats.StatAttributes;
-using Assets.Scripts.GameProgress;
-using Assets.Scripts.Level;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts.Entities.Structures.Portal
 {

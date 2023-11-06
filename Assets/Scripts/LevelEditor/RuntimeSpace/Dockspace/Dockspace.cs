@@ -46,19 +46,22 @@ namespace Assets.Scripts.Level.Stages
         }
         private void OnDockspaceActive()
         {
-            _currentDirection = EnableArrow();
-
-            _cursorImage.gameObject.SetActive(_currentDirection != Direction.NONE);
-            Cursor.visible = _currentDirection == Direction.NONE;
-            if (_currentDirection != Direction.NONE)
+            if (_cursorImage != null)
             {
-                if (_currentDirection == Direction.UP) _cursorImage.transform.eulerAngles = Vector3.zero;
-                else if (_currentDirection == Direction.LEFT) _cursorImage.transform.eulerAngles = Vector3.forward * 90;
-                else if (_currentDirection == Direction.RIGHT) _cursorImage.transform.eulerAngles = -Vector3.forward * 90;
-                else if (_currentDirection == Direction.DOWN) _cursorImage.transform.eulerAngles = Vector3.forward * 180;
+                _currentDirection = EnableArrow();
+
+                _cursorImage.gameObject.SetActive(_currentDirection != Direction.NONE);
+                Cursor.visible = _currentDirection == Direction.NONE;
+                if (_currentDirection != Direction.NONE)
+                {
+                    if (_currentDirection == Direction.UP) _cursorImage.transform.eulerAngles = Vector3.zero;
+                    else if (_currentDirection == Direction.LEFT) _cursorImage.transform.eulerAngles = Vector3.forward * 90;
+                    else if (_currentDirection == Direction.RIGHT) _cursorImage.transform.eulerAngles = -Vector3.forward * 90;
+                    else if (_currentDirection == Direction.DOWN) _cursorImage.transform.eulerAngles = Vector3.forward * 180;
+                }
+                Vector2 pos = Editor.Editor.Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+                _cursorImage.transform.position = pos;
             }
-            Vector2 pos = Editor.Editor.Camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
-            _cursorImage.transform.position = pos;
 
         }
         private Direction EnableArrow()
