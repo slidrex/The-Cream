@@ -34,7 +34,7 @@ namespace Menus
 
         private void Update()
         {
-            if (isInitialized == false)
+            if (isInitialized == false && PersistentData.IsLoaded)
             {
                 isInitialized = true;
                 Pidoras();
