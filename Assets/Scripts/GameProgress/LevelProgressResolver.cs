@@ -40,10 +40,11 @@ namespace Assets.Scripts.GameProgress
                         break;
                     }
             }
+            PersistentData.CurrentGameLevel = level + 1;
+
             Yandex.Instance.SaveExternData();
             Yandex.Instance.ShowAdvert();
 			Analytics.CustomEvent("level_passed", new Dictionary<string, object>() { ["level_index"] = level});
-			PersistentData.CurrentGameLevel = level + 1;
         }
     }
 }
