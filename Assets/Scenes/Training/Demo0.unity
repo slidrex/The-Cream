@@ -531,7 +531,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 151803599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a7a5a8018308cd488f579f049e24aa1, type: 3}
+  m_Script: {fileID: 11500000, guid: d0d4e50c8e7473549aa03b9f082e6b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ActionDescriptionKey: enter_portal
