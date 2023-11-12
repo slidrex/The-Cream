@@ -34,11 +34,21 @@ namespace Menus
 
         private void Update()
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
             if (isInitialized == false && PersistentData.IsLoaded)
             {
                 isInitialized = true;
                 Pidoras();
             }
+#endif
+
+#if UNITY_EDITOR && !UNITY_WEBGL
+            if (isInitialized == false)
+            {
+                isInitialized = true;
+                Pidoras();
+            }
+#endif
         }
 
         private int selectedID = -1;

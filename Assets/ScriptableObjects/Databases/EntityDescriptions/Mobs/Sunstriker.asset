@@ -19,8 +19,5 @@ MonoBehaviour:
     CharacteristicIcon: {fileID: 0}
     Value: 
   - IconType: 4
-    CharacteristicIcon: {fileID: -2004082995, guid: 5443c9d577b63064899ee540bda514c9, type: 3}
-    Value: 5-7
-  - IconType: 4
     CharacteristicIcon: {fileID: 1813776638, guid: 5443c9d577b63064899ee540bda514c9, type: 3}
-    Value: 10
+    Value: 13

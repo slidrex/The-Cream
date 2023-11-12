@@ -9,7 +9,6 @@ namespace Assets.Scripts.Sound.Soundtrack
 		private void Start()
 		{
 			_listenerTransform = FindObjectOfType<AudioListener>().transform;
-			print("start");
 		}
 		private void Update()
 		{
