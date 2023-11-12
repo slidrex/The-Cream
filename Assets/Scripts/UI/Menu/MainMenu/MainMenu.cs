@@ -41,14 +41,6 @@ namespace Menus
                 Pidoras();
             }
 #endif
-
-#if UNITY_EDITOR && !UNITY_WEBGL
-            if (isInitialized == false)
-            {
-                isInitialized = true;
-                Pidoras();
-            }
-#endif
         }
 
         private int selectedID = -1;
