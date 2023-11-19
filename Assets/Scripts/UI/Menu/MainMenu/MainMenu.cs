@@ -1,13 +1,9 @@
-using System;
-using Assets.Scripts.Entities.Util.Config.Input;
-using Assets.Scripts.Entities.Util.Config.Menu;
 using Assets.Scripts.Sound;
-using Assets.Scripts.Sound.Soundtrack;
 using System.Collections;
 using Assets.Scripts.PlatformConfig;
 using Assets.Scripts.UI.Menu.Localization;
-using GameProgress;
 using UnityEngine;
+using GameProgress;
 using UnityEngine.SceneManagement;
 
 namespace Menus

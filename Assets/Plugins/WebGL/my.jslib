@@ -20,8 +20,10 @@ var myPlugin = {
     },
     LoadExtern: function(){
         player.getData().then(_date => {
+            console.log("load");
             const myJSON = JSON.stringify(_date);
             myGameInstance.SendMessage('Yandex', 'LoadData', myJSON);
+            console.log("load complite");
         });
     },
 

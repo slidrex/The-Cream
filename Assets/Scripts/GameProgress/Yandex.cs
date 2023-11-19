@@ -63,13 +63,16 @@ namespace Assets.Scripts.PlatformConfig
 
 		public static void LoadExternD()
 		{
+			Debug.Log("LoadExternD");
+
 #if UNITY_WEBGL && !UNITY_EDITOR
 			LoadExtern();
 #endif
-		}
+        }
 		public void LoadData(string data)
 		{
 			PersistentData.LoadData(data);
+			Debug.Log("LoadData");
 		}
 	}
 }

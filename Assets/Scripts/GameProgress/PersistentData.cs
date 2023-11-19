@@ -18,7 +18,6 @@ namespace GameProgress
                 return;
             }
 
-            UnityEngine.Debug.Log("priver");
             var dataObj = Newtonsoft.Json.JsonConvert.DeserializeObject<PersistentDataModel>(data);
             CurrentGameLevel = dataObj.CurrentGameLevel;
             SelectedLanguageIndex = dataObj.SelectedLanguageIndex;
@@ -26,7 +25,6 @@ namespace GameProgress
             UnlockedCharacters = new HashSet<CharacterDatabaseModel.CharacterID>();
             UnlockedCharacters = dataObj.UnlockedCharacters.Select(x => (CharacterDatabaseModel.CharacterID)x).ToHashSet();
             IsNewbie = dataObj.IsNewbie;
-            UnityEngine.Debug.Log("poka");
         }
 
         public static string GenerateData()

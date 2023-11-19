@@ -1,10 +1,5 @@
 ﻿using Assets.Scripts.Sound.SoundEffect;
 using Assets.Scripts.Sound.Soundtrack;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Sound
@@ -18,7 +13,10 @@ namespace Assets.Scripts.Sound
 
         private void Awake()
         {
-            Instance = this;
+            if(Instance == null)
+                Instance = this;
+            else
+                Destroy(Instance);
         }
     }
 }
